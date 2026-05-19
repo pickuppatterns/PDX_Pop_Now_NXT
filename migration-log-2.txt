@@ -1,0 +1,2092 @@
+(node:98966) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[⣷] Pulling schema from database...
+[2K[1G[⣯] Pulling schema from database...
+[2K[1G[⣟] Pulling schema from database...
+[2K[1G[⡿] Pulling schema from database...
+[2K[1G[⢿] Pulling schema from database...
+[2K[1G[⣻] Pulling schema from database...
+[2K[1G[⣽] Pulling schema from database...
+[2K[1G[⣷] Pulling schema from database...
+[2K[1G[⣯] Pulling schema from database...
+[2K[1G[⣟] Pulling schema from database...
+[2K[1G[⡿] Pulling schema from database...
+[2K[1G[⢿] Pulling schema from database...
+[2K[1G[⣻] Pulling schema from database...
+[2K[1G[⣽] Pulling schema from database...
+[2K[1G[⣷] Pulling schema from database...
+[2K[1G[⣯] Pulling schema from database...
+[2K[1G[⣟] Pulling schema from database...
+[2K[1G[⡿] Pulling schema from database...
+[2K[1G[⢿] Pulling schema from database...
+[2K[1G[⣻] Pulling schema from database...
+[2K[1G[⣽] Pulling schema from database...
+[2K[1G[⣷] Pulling schema from database...
+[2K[1G[⣯] Pulling schema from database...
+[2K[1G[⣟] Pulling schema from database...
+[2K[1G[⡿] Pulling schema from database...
+[2K[1G[⢿] Pulling schema from database...
+[2K[1G[⣻] Pulling schema from database...
+[2K[1G[⣽] Pulling schema from database...
+[2K[1G[⣷] Pulling schema from database...
+[2K[1G[⣯] Pulling schema from database...
+[2K[1G[⣟] Pulling schema from database...
+[2K[1G[⡿] Pulling schema from database...
+[2K[1G[⢿] Pulling schema from database...
+[2K[1G[⣻] Pulling schema from database...
+[2K[1G[⣽] Pulling schema from database...
+[2K[1G[⣷] Pulling schema from database...
+[2K[1G[⣯] Pulling schema from database...
+[2K[1G[⣟] Pulling schema from database...
+[2K[1G[⡿] Pulling schema from database...
+[2K[1G[⢿] Pulling schema from database...
+[2K[1G[⣻] Pulling schema from database...
+[2K[1G[⣽] Pulling schema from database...
+[2K[1G[⣷] Pulling schema from database...
+[2K[1G[⣯] Pulling schema from database...
+[2K[1G[⣟] Pulling schema from database...
+[2K[1G[⡿] Pulling schema from database...
+[2K[1G[⢿] Pulling schema from database...
+[2K[1G[⣻] Pulling schema from database...
+[2K[1G[⣽] Pulling schema from database...
+[2K[1G[⣷] Pulling schema from database...
+[2K[1G[⣯] Pulling schema from database...
+[2K[1G[⣟] Pulling schema from database...
+[2K[1G[⡿] Pulling schema from database...
+[2K[1G[⢿] Pulling schema from database...
+[2K[1G[⣻] Pulling schema from database...
+[2K[1G[⣽] Pulling schema from database...
+[2K[1G[⣷] Pulling schema from database...
+[2K[1G[⣯] Pulling schema from database...
+[2K[1G[⣟] Pulling schema from database...
+[2K[1G[⡿] Pulling schema from database...
+[2K[1G[⢿] Pulling schema from database...
+[2K[1G[⣻] Pulling schema from database...
+[2K[1G[⣽] Pulling schema from database...
+[2K[1G[⣷] Pulling schema from database...
+[2K[1G[⣯] Pulling schema from database...
+[2K[1G[⣟] Pulling schema from database...
+[2K[1G[⡿] Pulling schema from database...
+[2K[1G[⢿] Pulling schema from database...
+[2K[1G[⣻] Pulling schema from database...
+[2K[1G[⣽] Pulling schema from database...
+[2K[1G[✓] Pulling schema from database...
+[22:35:39] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+
+Fetching all WordPress media...
+
+  Fetched page 1/14 (100 items)
+  Fetched page 2/14 (100 items)
+  Fetched page 3/14 (100 items)
+  Fetched page 4/14 (99 items)
+  Fetched page 5/14 (100 items)
+  Fetched page 6/14 (100 items)
+  Fetched page 7/14 (100 items)
+  Fetched page 8/14 (100 items)
+  Fetched page 9/14 (100 items)
+  Fetched page 10/14 (90 items)
+  Fetched page 11/14 (100 items)
+  Fetched page 12/14 (100 items)
+  Fetched page 13/14 (100 items)
+  Fetched page 14/14 (36 items)
+
+Total WP media items: 1325
+Skipping 180 WP-resized copies
+Migrating 1145 original files
+
+[1/1145] ↺ Already exists — skipping: NURSES.jpg
+[2/1145] ↺ Already exists — skipping: VINNIEDEWAYNE.jpg
+[3/1145] ↺ Already exists — skipping: WHITEGLOVE-e1436464353402.jpg
+[4/1145] ↺ Already exists — skipping: VICEDEVICE.jpg
+[5/1145] ↺ Already exists — skipping: THESTOPS.png
+[6/1145] ↺ Already exists — skipping: THESHIVAS.jpg
+[7/1145] ↺ Already exists — skipping: THELOWER48.jpg
+[8/1145] ↺ Already exists — skipping: THELASTARTFULDOGER.jpg
+[9/1145] ↺ Already exists — skipping: THEDOMESTICS.jpg
+[10/1145] ↺ Already exists — skipping: ROSELITBONE.jpg
+[11/1145] ↺ Already exists — skipping: RAPCLASS.jpg
+[12/1145] ↺ Already exists — skipping: PHONECALL.jpg
+[13/1145] ↺ Already exists — skipping: NOKINDOFRIDER.jpg
+[14/1145] ↺ Already exists — skipping: MUSCLEMARROW.jpg
+[15/1145] ↺ Already exists — skipping: MOPEGROOVES.jpg
+[16/1145] ↺ Already exists — skipping: MOONBYYOU.jpg
+[17/1145] ↺ Already exists — skipping: MODERNKIN.jpg
+[18/1145] ↺ Already exists — skipping: MICCRENSHAW.jpg
+[19/1145] ↺ Already exists — skipping: JACKSONBOONE.jpeg
+[20/1145] ↺ Already exists — skipping: HOTVICTORY.jpg
+[21/1145] ↺ Already exists — skipping: HOLYGROVE.jpg
+[22/1145] ↺ Already exists — skipping: HANDSIN.jpg
+[23/1145] ↺ Already exists — skipping: GOLDENHOUR.jpg
+[24/1145] ↺ Already exists — skipping: DYLANSTARK.jpg
+[25/1145] ↺ Already exists — skipping: DIRTYREVIVAL.jpg
+[26/1145] ↺ Already exists — skipping: DADROCK.jpg
+[27/1145] ↺ Already exists — skipping: COCOCOLUMBIA.jpg
+[28/1145] ↺ Already exists — skipping: CHANTIDARLING.jpg
+[29/1145] ↺ Already exists — skipping: CATHERINEFEENYCHRISJOHNEDIS.jpg
+[30/1145] ↺ Already exists — skipping: BLUECRANES.jpg
+[31/1145] ↺ Already exists — skipping: BIGHAUNT.jpg
+[32/1145] ↺ Already exists — skipping: BIGHAUNT-300x.jpg
+[33/1145] ↺ Already exists — skipping: AMPBAND.jpg
+[34/1145] ↺ Already exists — skipping: AMBERMOON.jpg
+[35/1145] ↺ Already exists — skipping: 1939ENSEMBLE.jpg
+[36/1145] ↺ Already exists — skipping: WHITEGLOVE.jpg
+[37/1145] ↺ Already exists — skipping: 2026_PDX_POP_NOW_Fest_STD_Mobile.png
+[38/1145] ↺ Already exists — skipping: 2026_PDX_POP_NOW_Fest_STD_Desktop.png
+[39/1145] ↺ Already exists — skipping: PDX_POP_NOW_FON_OFFBEAT_032026-1.jpg
+[40/1145] ↺ Already exists — skipping: PDX_POP_NOW_FON_OFFBEAT_032026.jpg
+[41/1145] ↺ Already exists — skipping: 2025_Join_The_Listening_Committee.jpg
+[42/1145] ↺ Already exists — skipping: 2025_Join_The_Listening_Committee_Mobile.jpg
+[43/1145] ↺ Already exists — skipping: 2026_PDX_Pop_Now_Submission_EXT.jpg
+[44/1145] ↺ Already exists — skipping: 2026_PDX_Pop_Now_Submission_EXT_mobile.jpg
+[45/1145] ↺ Already exists — skipping: 2026_PDX_Pop_Now_Submission_web.png
+[46/1145] ↺ Already exists — skipping: 2026_PDX_Pop_Now_Submission_mobile.png
+[47/1145] ↺ Already exists — skipping: 2025_COMP.png
+[48/1145] ↺ Already exists — skipping: 2025_COMP_Mobile.png
+[49/1145] ↺ Already exists — skipping: 2025_Additional_Prog.png
+[50/1145] ↺ Already exists — skipping: 2025_Additional_Prog_Mobile.png
+[51/1145] ↺ Already exists — skipping: Screen-Shot-2025-09-11-at-2.47.47-AM.png
+[52/1145] ↺ Already exists — skipping: 2025_SCHEDULE.png
+[53/1145] ↺ Already exists — skipping: 2025_SCHEDULE_Mobile.png
+[54/1145] ↺ Already exists — skipping: OAC-2.png
+[55/1145] ↺ Already exists — skipping: OAC-1.png
+[56/1145] ↺ Already exists — skipping: OAC.png
+[57/1145] ↺ Already exists — skipping: Oregon_Arts_Commision-1.png
+[58/1145] ↺ Already exists — skipping: Oregon_Arts_Commision.png
+[59/1145] ↺ Already exists — skipping: Veana-Baby.png
+[60/1145] ↺ Already exists — skipping: Tiff2Icy.png
+[61/1145] ↺ Already exists — skipping: The-Wild-Jumps.png
+[62/1145] ↺ Already exists — skipping: The-Upkeeps.png
+[63/1145] ↺ Already exists — skipping: The-Prids.png
+[64/1145] ↺ Already exists — skipping: The-Apricots.png
+[65/1145] ↺ Already exists — skipping: Swiss-Army-Wife.png
+[66/1145] ↺ Already exists — skipping: Stalwart-Young.png
+[67/1145] ↺ Already exists — skipping: Spiderling.png
+[68/1145] ↺ Already exists — skipping: Skipping-Red.png
+[69/1145] ↺ Already exists — skipping: Shadowgraphs.png
+[70/1145] ↺ Already exists — skipping: scumbag.png
+[71/1145] ↺ Already exists — skipping: Rango.png
+[72/1145] ↺ Already exists — skipping: Laine.png
+[73/1145] ↺ Already exists — skipping: Jfray.png
+[74/1145] ↺ Already exists — skipping: Gonzales.png
+[75/1145] ↺ Already exists — skipping: Franklin-Gothic.png
+[76/1145] ↺ Already exists — skipping: Femme-Cell.png
+[77/1145] ↺ Already exists — skipping: DMN.png
+[78/1145] ↺ Already exists — skipping: Coo-Era.png
+[79/1145] ↺ Already exists — skipping: ChamberlainGonzalez.png
+[80/1145] ↺ Already exists — skipping: Camp-Crush.png
+[81/1145] ↺ Already exists — skipping: Caicedo.png
+[82/1145] ↺ Already exists — skipping: Alien-Boy.png
+[83/1145] ↺ Already exists — skipping: Screenshot-2025-07-23-182446.png
+[84/1145] ↺ Already exists — skipping: PDX_Pop_Now_Rigsketball_Mobile.png
+[85/1145] ↺ Already exists — skipping: 2025_PDX_Pop_Now_Rigsketball.png
+[86/1145] ↺ Already exists — skipping: 2025_PDX_Pop_Now_Lineup.png
+[87/1145] ↺ Already exists — skipping: PDX_Pop_Now_Lineup2025_Mobile.png
+[88/1145] ↺ Already exists — skipping: 2014_Rigsketball_thumb.png
+[89/1145] ↺ Already exists — skipping: Rigsketball.mp4
+[90/1145] ↺ Already exists — skipping: rigsketball_45_sm_large-42510.jpg
+[91/1145] ↺ Already exists — skipping: PDX_Pop_Now_Vendors_App.jpg
+[92/1145] ↺ Already exists — skipping: PDX_Pop_Now_Vendors_App_Mobile.jpg
+[93/1145] ↺ Already exists — skipping: 3C2BA300-8A09-47A5-894C-0F23FD4F6D7E-46609-0000083AD734F61A-2.jpg
+[94/1145] ↺ Already exists — skipping: 2025_Listening_Committee.png
+[95/1145] ↺ Already exists — skipping: 2025_Listening_Committee_Mobile.png
+[96/1145] ↺ Already exists — skipping: 2025_SUBMISSION_Extension_Mobile.png
+[97/1145] ↺ Already exists — skipping: 2025_SUBMISSION_EXT.png
+[98/1145] ↺ Already exists — skipping: 2025_Submissions_Closed-1.png
+[99/1145] ↺ Already exists — skipping: 2025_PDX_POP_SUB_END.png
+[100/1145] ↺ Already exists — skipping: 2025_Submissions_Closed.png
+[101/1145] ↺ Already exists — skipping: Submissions_Closed.png
+[102/1145] ↺ Already exists — skipping: 2025_SUBMISSION_END_Mobile.png
+[103/1145] ↺ Already exists — skipping: 2025_SUBMISSION.png
+[104/1145] ↺ Already exists — skipping: 2025_SUBMISSION_Mobile.png
+[105/1145] ↺ Already exists — skipping: Donate_optimized.gif
+[106/1145] ↺ Already exists — skipping: pdx-pop-now_logo.png
+[107/1145] ↺ Already exists — skipping: 2024ArtistSpotlight_DC_Capital.png
+[108/1145] ↺ Already exists — skipping: cropped-2024_favicon-1.png
+[109/1145] ↺ Already exists — skipping: 2024_favicon-1.png
+[110/1145] ↺ Already exists — skipping: 2024_favicon.png
+[111/1145] ↺ Already exists — skipping: 2024ArtistSpotlight-Reptaliens.png
+[112/1145] ↺ Already exists — skipping: 2024ArtistSpotlight-Blank-v2.png
+[113/1145] ↺ Already exists — skipping: 2024FestivalArtist-Sheyana.png
+[114/1145] ↺ Already exists — skipping: 2024ArtistSpotlight-FurCoats.png
+[115/1145] ↺ Already exists — skipping: 2024ArtistSpotlight-FRENZI.png
+[116/1145] ↺ Already exists — skipping: Fur-Coats-1.jpg
+[117/1145] ↺ Already exists — skipping: FRENZI.jpg
+[118/1145] ↺ Already exists — skipping: Reptaliens.png
+[119/1145] ↺ Already exists — skipping: 2024FestivalArtist-TVViking.png
+[120/1145] ↺ Already exists — skipping: 2024FestivalArtist-TheMistons.png
+[121/1145] ↺ Already exists — skipping: 2024FestivalArtist-TheBandulus.png
+[122/1145] ↺ Already exists — skipping: 2024FestivalArtist-SunAtoms.png
+[123/1145] ↺ Already exists — skipping: 2024FestivalArtist-Sheyana.png
+[124/1145] ↺ Already exists — skipping: 2024FestivalArtist-SanGabriel.png
+[125/1145] ↺ Already exists — skipping: 2024FestivalArtist-QueenRodeo.png
+[126/1145] ↺ Already exists — skipping: 2024FestivalArtist-PublicPleasure.png
+[127/1145] ↺ Already exists — skipping: 2024FestivalArtist-PalmasdelSol.png
+[128/1145] ↺ Already exists — skipping: 2024FestivalArtist-NewHere.png
+[129/1145] ↺ Already exists — skipping: 2024FestivalArtist-MrBoy.png
+[130/1145] ↺ Already exists — skipping: 2024FestivalArtist-IsiahSims.png
+[131/1145] ↺ Already exists — skipping: 2024FestivalArtist-GrowingPains.png
+[132/1145] ↺ Already exists — skipping: 2024FestivalArtist-GodBoat.png
+[133/1145] ↺ Already exists — skipping: MBG.png
+[134/1145] ↺ Already exists — skipping: Fracture_Brewing.png
+[135/1145] ↺ Already exists — skipping: Dr_Brew_Logo.png
+[136/1145] ↺ Already exists — skipping: Revival-Drums_Winged-Logo-2021.png
+[137/1145] ↺ Already exists — skipping: Isiah_Simon-rotated.jpeg
+[138/1145] ↺ Already exists — skipping: Aerial-Midtown-Beer-Garden-1.png
+[139/1145] ↺ Already exists — skipping: Midtown-Beer-Garden-community-happy-hour-3584.png
+[140/1145] ↺ Already exists — skipping: Midtown-Beer-Garden-256-0296.png
+[141/1145] ↺ Already exists — skipping: Midtown-Beer-Garden-246-0275.png
+[142/1145] ↺ Already exists — skipping: FundtheFest-mobile.png
+[143/1145] ↺ Already exists — skipping: FundtheFest-banner-web.png
+[144/1145] ↺ Already exists — skipping: FredMeyerRewards-mobile.png
+[145/1145] ↺ Already exists — skipping: FredMeyerRewards-banner.png
+[146/1145] ↺ Already exists — skipping: Festival-web-mobile.png
+[147/1145] ↺ Already exists — skipping: festival-banner-1140px.png
+[148/1145] ↺ Already exists — skipping: AvailableNow-mobile.png
+[149/1145] ↺ Already exists — skipping: AvailableNow-banner.png
+[150/1145] ↺ Already exists — skipping: Rebecca-Flaum-PPN-Artist-2024.jpg
+[151/1145] ↺ Already exists — skipping: pdx-pop-now-2023-comp-img.jpg
+[152/1145] ↺ Already exists — skipping: cropped-stellers-jay-raster-1.png
+[153/1145] ↺ Already exists — skipping: stellers-jay-raster-1.png
+[154/1145] ↺ Already exists — skipping: Public-Pleasure.png
+[155/1145] ↺ Already exists — skipping: TV-Viking-scaled.jpg
+[156/1145] ↺ Already exists — skipping: The-Mistons-scaled.jpg
+[157/1145] ↺ Already exists — skipping: Sun-Atoms-scaled.jpg
+[158/1145] ↺ Already exists — skipping: Sheyana.jpg
+[159/1145] ↺ Already exists — skipping: San-Gabriel.jpg
+[160/1145] ↺ Already exists — skipping: Queen-Rodeo.jpg
+[161/1145] ↺ Already exists — skipping: Palmas-del-Sol-BW-PLAIN-scaled.jpeg
+[162/1145] ↺ Already exists — skipping: New-Here-2-scaled.jpg
+[163/1145] ↺ Already exists — skipping: Mr-Boy-scaled.jpg
+[164/1145] ↺ Already exists — skipping: Growing-Pains.jpg
+[165/1145] ↺ Already exists — skipping: God-Boat.jpg
+[166/1145] ↺ Already exists — skipping: Bandulus-scaled.jpg
+[167/1145] ↺ Already exists — skipping: connect_zero.png
+[168/1145] ↺ Already exists — skipping: 2024-Festival-Poster-with-Sponsor-Strip-2.png
+[169/1145] ↺ Already exists — skipping: 452632782_18449091667037392_7729584087331416908_n.png
+[170/1145] ↺ Already exists — skipping: 2024_PPN_Mobile_Get_Involved.png
+[171/1145] ↺ Already exists — skipping: 2024_Mobile_Comp.png
+[172/1145] ↺ Already exists — skipping: 2024_Mobile_Donate.png
+[173/1145] ↺ Already exists — skipping: 2024_Mobile_Fest.png
+[174/1145] ↺ Already exists — skipping: Get_Involved.png
+[175/1145] ↺ Already exists — skipping: Vortex.png
+[176/1145] ↺ Already exists — skipping: pdx-mercury.png
+[177/1145] ↺ Already exists — skipping: jackpot_recording.png
+[178/1145] ↺ Already exists — skipping: cravedog.png
+[179/1145] ↺ Already exists — skipping: 451326237_874489788044385_5562934133050137352_n.jpg
+[180/1145] ↺ Already exists — skipping: 2024_Compilation.png
+[181/1145] ↺ Already exists — skipping: Artboard-1.png
+[182/1145] ↺ Already exists — skipping: 2024_PRP_PDX_Pop_Banner_Sq-1.png
+[183/1145] ↺ Already exists — skipping: DSC00444-scaled.jpg
+[184/1145] ↺ Already exists — skipping: 2024_PPN_Festival_Web_Graphic.png
+[185/1145] ↺ Already exists — skipping: Screenshot-2024-07-25-at-7.46.48 AM.png
+[186/1145] ↺ Already exists — skipping: 22_MagnoliaManagementLogoFinalBW.png
+[187/1145] ↺ Already exists — skipping: unnamed-1.png
+[188/1145] ↺ Already exists — skipping: 447511363_851566007003430_4632821194120506102_n.jpg
+[189/1145] ↺ Already exists — skipping: 2024_PDXPOPNOW_Sponsorship_Guide.pdf
+[190/1145] ↺ Already exists — skipping: 2024_THANK-YOU-1.png
+[191/1145] ↺ Already exists — skipping: 2024_THANK-YOU_Mobile.png
+[192/1145] ↺ Already exists — skipping: 2024_Open_Positions_v2.png
+[193/1145] ↺ Already exists — skipping: 2024_Submission_Extended.png
+[194/1145] ↺ Already exists — skipping: 2024_Submission_Extended_Mobile.png
+[195/1145] ↺ Already exists — skipping: 2024_Open_Positions_Mobile.png
+[196/1145] ↺ Already exists — skipping: Julz_Clemintine.png
+[197/1145] ↺ Already exists — skipping: 2023_Compilation_Album.jpeg
+[198/1145] ↺ Already exists — skipping: Erin_Norris.png
+[199/1145] ↺ Already exists — skipping: 2022_PDX_POP_NOW_Compilation.jpeg
+[200/1145] ↺ Already exists — skipping: Laura_Mark.png
+[201/1145] ↺ Already exists — skipping: ArtSubmissionsOpen-Banner-web.webp
+[202/1145] ↺ Already exists — skipping: ArtSubmissionsOpen-Banner-web.png
+[203/1145] ↺ Already exists — skipping: CompSubmissionsOpen-Banner-web.webp
+[204/1145] ↺ Already exists — skipping: CompSubmissionsOpen-Banner-web.png
+[205/1145] ↺ Already exists — skipping: IMG_1506.webp
+[206/1145] ↺ Already exists — skipping: IMG_1506.jpeg
+[207/1145] ↺ Already exists — skipping: Sea_Moss_Firkin_Tavern-1.jpg
+[208/1145] ↺ Already exists — skipping: Events_240214.webp
+[209/1145] ↺ Already exists — skipping: Events_240214-300x300-1.png
+[210/1145] ↺ Already exists — skipping: Sea_Moss_Firkin_Tavern.jpg
+[211/1145] ↺ Already exists — skipping: PRP_PDX_Pop_Banner_Sq.webp
+[212/1145] ↺ Already exists — skipping: PRP_PDX_Pop_Banner_Sq.png
+[213/1145] ↺ Already exists — skipping: pdxpopnow2011.jpg
+[214/1145] ↺ Already exists — skipping: James-Mitchell.webp
+[215/1145] ↺ Already exists — skipping: Jodi_Beecham.webp
+[216/1145] ↺ Already exists — skipping: Manu_berelli.webp
+[217/1145] ↺ Already exists — skipping: Mark-Warren-Jacques.webp
+[218/1145] ↺ Already exists — skipping: Michael-Buchino.webp
+[219/1145] ↺ Already exists — skipping: 2024_PDXPop_Hero_Slide.webp
+[220/1145] ↺ Already exists — skipping: pdxpopnow2006.webp
+[221/1145] ↺ Already exists — skipping: pdxpopnow2010.webp
+[222/1145] ↺ Already exists — skipping: ryan_bubnis.webp
+[223/1145] ↺ Already exists — skipping: bg2.webp
+[224/1145] ↺ Already exists — skipping: bg.webp
+[225/1145] ↺ Already exists — skipping: DSC09653.webp
+[226/1145] ↺ Already exists — skipping: pdxpopnow2009.webp
+[227/1145] ↺ Already exists — skipping: Carson_Ellis.webp
+[228/1145] ↺ Already exists — skipping: Cole-Gerst-.webp
+[229/1145] ↺ Already exists — skipping: Emek.webp
+[230/1145] ↺ Already exists — skipping: Dylan-Marcus-McConnell.webp
+[231/1145] ↺ Already exists — skipping: Dan-Stiles.webp
+[232/1145] ↺ Already exists — skipping: ryan_bubnis.webp
+[233/1145] ↺ Already exists — skipping: Glenn_Hendrickson.webp
+[234/1145] ↺ Already exists — skipping: Manu_berelli.webp
+[235/1145] ↺ Already exists — skipping: MUSCLEMARROW.webp
+[236/1145] ↺ Already exists — skipping: MICCRENSHAW.webp
+[237/1145] ↺ Already exists — skipping: THESHIVAS.webp
+[238/1145] ↺ Already exists — skipping: DIRTYREVIVAL.webp
+[239/1145] ↺ Already exists — skipping: COCOCOLUMBIA-scaled.webp
+[240/1145] ↺ Already exists — skipping: CHANTIDARLING.webp
+[241/1145] ↺ Already exists — skipping: CATHERINEFEENYCHRISJOHNEDIS-scaled.webp
+[242/1145] ↺ Already exists — skipping: BLUECRANES-scaled.webp
+[243/1145] ↺ Already exists — skipping: BIGHAUNT.webp
+[244/1145] ↺ Already exists — skipping: BIGHAUNT-300x.webp
+[245/1145] ↺ Already exists — skipping: AMPBAND.webp
+[246/1145] ↺ Already exists — skipping: AMBERMOON.webp
+[247/1145] ↺ Already exists — skipping: 1939ENSEMBLE.webp
+[248/1145] ↺ Already exists — skipping: WHITEGLOVE.webp
+[249/1145] ↺ Already exists — skipping: DSC00700.jpg
+[250/1145] ↺ Already exists — skipping: DSC09653.jpg
+[251/1145] ↺ Already exists — skipping: 2024_PDXPop_Hero_Slide.png
+[252/1145] ↺ Already exists — skipping: bg.png
+[253/1145] ↺ Already exists — skipping: bg2.png
+[254/1145] ↺ Already exists — skipping: ryan_bubnis.jpg
+[255/1145] ↺ Already exists — skipping: Michael-Buchino.png
+[256/1145] ↺ Already exists — skipping: Mark-Warren-Jacques.jpeg
+[257/1145] ↺ Already exists — skipping: Manu_berelli.jpeg
+[258/1145] ↺ Already exists — skipping: Jodi_Beecham.jpeg
+[259/1145] ↺ Already exists — skipping: James-Mitchell.jpg
+[260/1145] ↺ Already exists — skipping: Glenn_Hendrickson.png
+[261/1145] ↺ Already exists — skipping: Emek.jpeg
+[262/1145] ↺ Already exists — skipping: Dylan-Marcus-McConnell.jpg
+[263/1145] ↺ Already exists — skipping: Dan-Stiles.png
+[264/1145] ↺ Already exists — skipping: Cole-Gerst-.jpeg
+[265/1145] ↺ Already exists — skipping: Carson_Ellis.jpeg
+[266/1145] ↺ Already exists — skipping: pdxpopnow2010.jpeg
+[267/1145] ↺ Already exists — skipping: pdxpopnow2009.jpeg
+[268/1145] ↺ Already exists — skipping: pdxpopnow2008.png
+[269/1145] ↺ Already exists — skipping: pdxpopnow2007.png
+[270/1145] ↺ Already exists — skipping: pdxpopnow2006.jpeg
+[271/1145] ↺ Already exists — skipping: pdxpopnow2005.jpeg
+[272/1145] ↺ Already exists — skipping: pdxpopnow2004.png
+[273/1145] ↺ Already exists — skipping: festival_artist_santiago_uceda.jpeg
+[274/1145] ↺ Already exists — skipping: PDXPOPNOW_Graphic_Designer.png
+[275/1145] ↺ Already exists — skipping: 418757524_18410234215037392_6594158481546757327_n.jpeg
+[276/1145] ↺ Already exists — skipping: pdxpopnow2016.jpg
+[277/1145] ↺ Already exists — skipping: pdxpopnow2015.jpg
+[278/1145] ↺ Already exists — skipping: pdxpopnow2014.jpg
+[279/1145] ↺ Already exists — skipping: pdxpopnow2013.webp
+[280/1145] ↺ Already exists — skipping: pdxpopnow2012.jpg
+[281/1145] ↺ Already exists — skipping: pdxpopnow2011.jpg
+[282/1145] ↺ Already exists — skipping: DSC00357.png
+[283/1145] ↺ Already exists — skipping: DSC09757.png
+[284/1145] ↓ Downloading: DSC00700.png
+[284/1145] ✗ Failed: DSC00700.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2024/01/DSC00700.png: 404
+[285/1145] ↺ Already exists — skipping: 2023_Compilation_CD.jpg
+[286/1145] ↺ Already exists — skipping: a2284364341_16.jpeg
+[287/1145] ↺ Already exists — skipping: 2023_PDXPOPNOW_Festival_Graphic.jpg
+[288/1145] ↺ Already exists — skipping: individual-social-Sunday.jpg
+[289/1145] ↺ Already exists — skipping: individual-social-Saturday.jpg
+[290/1145] ↺ Already exists — skipping: individual-social-friday.jpg
+[291/1145] ↺ Already exists — skipping: 2.png
+[292/1145] ↺ Already exists — skipping: PDX_Pop_Now_Banner-1920x1080-1.jpg
+[293/1145] ↺ Already exists — skipping: banner-1920x1080-1-scaled.jpg
+[294/1145] ↺ Already exists — skipping: Arts-and-Film.png
+[295/1145] ↺ Already exists — skipping: Multnomah_County_Cultural_Coalition.png
+[296/1145] ↺ Already exists — skipping: Cooper_Mountain.png
+[297/1145] ↺ Already exists — skipping: Cooper-Mountain-Sound.png
+[298/1145] ↺ Already exists — skipping: DMV-Creative-Studio.png
+[299/1145] ↺ Already exists — skipping: EQ2A4441.jpg
+[300/1145] ↺ Already exists — skipping: 5I9A2642.jpg
+[301/1145] ↺ Already exists — skipping: were-hiring.png
+[302/1145] ↺ Already exists — skipping: Team-Clermont-Logo-2022.jpeg
+[303/1145] ↺ Already exists — skipping: Pirate-Promo-Logo.png
+[304/1145] ↺ Already exists — skipping: PDX_Pop_Now_2021.jpeg
+[305/1145] ↺ Already exists — skipping: PDX_Pop_Now_2020.jpeg
+[306/1145] ↺ Already exists — skipping: PDX_Pop_Now_2019.png
+[307/1145] ↺ Already exists — skipping: PDX_Pop_Now_2019.jpg
+[308/1145] ↺ Already exists — skipping: 5I9A2224-scaled.jpg
+[309/1145] ↺ Already exists — skipping: new-deal-bottle-logo-outline-black.png
+[310/1145] ↺ Already exists — skipping: ETL_logo_green-for-web-1.png
+[311/1145] ↺ Already exists — skipping: ETL_logo_green-for-web.png
+[312/1145] ↺ Already exists — skipping: 2022_Asset_10.png
+[313/1145] ↺ Already exists — skipping: 2022_Asset_9.png
+[314/1145] ↺ Already exists — skipping: 2022_Asset_8.png
+[315/1145] ↺ Already exists — skipping: 2022_Asset_7.png
+[316/1145] ↺ Already exists — skipping: 2022_Asset_6.png
+[317/1145] ↺ Already exists — skipping: 2022_Asset_5.png
+[318/1145] ↺ Already exists — skipping: 2022_Asset_4.png
+[319/1145] ↺ Already exists — skipping: 2022_Asset_3.png
+[320/1145] ↺ Already exists — skipping: 2022_Asset_2.png
+[321/1145] ↺ Already exists — skipping: 2022_Asset_1.png
+[322/1145] ↺ Already exists — skipping: PDX_Pop_Now_2022_Poster.png
+[323/1145] ↺ Already exists — skipping: Donate-1.png
+[324/1145] ↺ Already exists — skipping: Donate.png
+[325/1145] ↺ Already exists — skipping: Dusu_Mali_2011_Festival.png
+[326/1145] ↺ Already exists — skipping: PDX_Pop_Now_Lineup_2022-scaled.jpeg
+[327/1145] ↺ Already exists — skipping: PPN_2022_email.png
+[328/1145] ↺ Already exists — skipping: skyonion.png
+[329/1145] ↺ Already exists — skipping: 2022_Submission_jpg.png
+[330/1145] ↺ Already exists — skipping: 2022_Listening_Committee.png
+[331/1145] ↺ Already exists — skipping: PRP-logo.png
+[332/1145] ↺ Already exists — skipping: COMP_PARTY_2021-2.png
+[333/1145] ↺ Already exists — skipping: COMP_PARTY_2021-1.png
+[334/1145] ↺ Already exists — skipping: COMP_PARTY_2021.png
+[335/1145] ↺ Already exists — skipping: Comp-Slider_01a.png
+[336/1145] ↺ Already exists — skipping: Listen-Slider_01.png
+[337/1145] ↺ Already exists — skipping: Comp-Slider_01.png
+[338/1145] ↺ Already exists — skipping: HomeLight-Square-Logo.png
+[339/1145] ↺ Already exists — skipping: XRAY-Slider_02.png
+[340/1145] ↺ Already exists — skipping: PPN-Slider_03.png
+[341/1145] ↺ Already exists — skipping: Comp-Slider_01.png
+[342/1145] ↺ Already exists — skipping: Pdx_Pop_Now_2020_Favicon.png
+[343/1145] ↺ Already exists — skipping: LC-Slider-Mock-Up.png
+[344/1145] ↺ Already exists — skipping: OUTREACH_Portugal_the_Man.png
+[345/1145] ↺ Already exists — skipping: pdxpopnow_2020_og_500x500.png
+[346/1145] ↺ Already exists — skipping: Comp-Slider-Mock-Up.jpg
+[347/1145] ↺ Already exists — skipping: cropped-favicon.png
+[348/1145] ↺ Already exists — skipping: favicon.png
+[349/1145] ↺ Already exists — skipping: pdxpopnow2004.jpg
+[350/1145] ↺ Already exists — skipping: pdxpopnow2005.jpg
+[351/1145] ↺ Already exists — skipping: pdxpopnow2006.jpg
+[352/1145] ↺ Already exists — skipping: pdxpopnow2007.jpg
+[353/1145] ↓ Downloading: pdxpopnow2008.jpg
+[353/1145] ✓ Uploaded: pdxpopnow2008.jpg
+[354/1145] ↓ Downloading: pdxpopnow2009.jpg
+[354/1145] ✓ Uploaded: pdxpopnow2009.jpg
+[355/1145] ↺ Already exists — skipping: pdxpopnow2010.jpg
+[356/1145] ↺ Already exists — skipping: 2019-Festival-Site-Plan.png
+[357/1145] ↺ Already exists — skipping: CASCADE.png
+[358/1145] ↓ Downloading: Brown-Claculus-Corner-1.jpg
+[358/1145] ✓ Uploaded: Brown-Claculus-Corner-1.jpg
+[359/1145] ↓ Downloading: 22499103_1579379745417151_4892174714680962571_o.jpg
+[359/1145] ✓ Uploaded: 22499103_1579379745417151_4892174714680962571_o.jpg
+[360/1145] ↓ Downloading: BC3.png
+[360/1145] ✓ Uploaded: BC3.png
+[361/1145] ↓ Downloading: EFEC1DCF-A50B-4809-9789-FCA53B79F9C2.jpeg
+[361/1145] ✓ Uploaded: EFEC1DCF-A50B-4809-9789-FCA53B79F9C2.jpeg
+[362/1145] ↓ Downloading: 506D128A-8272-4298-B9E5-93D08D165A64.jpeg
+[362/1145] ✓ Uploaded: 506D128A-8272-4298-B9E5-93D08D165A64.jpeg
+[363/1145] ↓ Downloading: PicsArt_02-13-09.25.46.png
+[363/1145] ✓ Uploaded: PicsArt_02-13-09.25.46.png
+[364/1145] ↓ Downloading: 0015104612_23.jpg
+[364/1145] ✓ Uploaded: 0015104612_23.jpg
+[365/1145] ↓ Downloading: DSC_2102.jpg
+[365/1145] ✓ Uploaded: DSC_2102.jpg
+[366/1145] ↺ Already exists — skipping: SECRETS.png
+[367/1145] ↓ Downloading: IMG_2443.jpg
+[367/1145] ✓ Uploaded: IMG_2443.jpg
+[368/1145] ↓ Downloading: E4B290D2-D696-4A3A-AB5A-79CAB84B4C4F.jpeg
+[368/1145] ✓ Uploaded: E4B290D2-D696-4A3A-AB5A-79CAB84B4C4F.jpeg
+[369/1145] ↓ Downloading: E3A7A146-7E1A-488E-A05E-88FD7058C71D.jpeg
+[369/1145] ✓ Uploaded: E3A7A146-7E1A-488E-A05E-88FD7058C71D.jpeg
+[370/1145] ↓ Downloading: F9AD5033-E5BC-4793-9E97-39F0474497EE.jpeg
+[370/1145] ✓ Uploaded: F9AD5033-E5BC-4793-9E97-39F0474497EE.jpeg
+[371/1145] ↓ Downloading: artist%20profile%20pic.png
+[371/1145] ✓ Uploaded: artist%20profile%20pic.png
+[372/1145] ↓ Downloading: mope%20grooves%20eyes%20(1).jpg
+[372/1145] ✓ Uploaded: mope%20grooves%20eyes%20(1).jpg
+[373/1145] ↓ Downloading: _MG_8568.jpg
+[373/1145] ✓ Uploaded: _MG_8568.jpg
+[374/1145] ↓ Downloading: MOTCbandphoto.jpg
+[374/1145] ✓ Uploaded: MOTCbandphoto.jpg
+[375/1145] ↓ Downloading: D70B1F9D-24E8-4731-A240-8D1E43416F25.jpeg
+[375/1145] ✓ Uploaded: D70B1F9D-24E8-4731-A240-8D1E43416F25.jpeg
+[376/1145] ↓ Downloading: 3E851057-F6F9-439C-9B1B-D35340C1F504.jpeg
+[376/1145] ✓ Uploaded: 3E851057-F6F9-439C-9B1B-D35340C1F504.jpeg
+[377/1145] ↓ Downloading: P-20140508-00023_HiRes-JPEG-24bit-RGB.jpg
+[377/1145] ✗ Failed: P-20140508-00023_HiRes-JPEG-24bit-RGB.jpg — fetch failed
+[378/1145] ↓ Downloading: Federale%20Wallowa%20Lake.jpg
+[378/1145] ✓ Uploaded: Federale%20Wallowa%20Lake.jpg
+[379/1145] ↓ Downloading: 2498DAC7-5311-4F3B-8BEF-C618AC9DED18.jpeg
+[379/1145] ✓ Uploaded: 2498DAC7-5311-4F3B-8BEF-C618AC9DED18.jpeg
+[380/1145] ↓ Downloading: dannyedit5.jpg
+[380/1145] ✓ Uploaded: dannyedit5.jpg
+[381/1145] ↓ Downloading: music_CryBabe_4516.jpg
+[381/1145] ✓ Uploaded: music_CryBabe_4516.jpg
+[382/1145] ↓ Downloading: coast2c%202.jpg
+[382/1145] ✓ Uploaded: coast2c%202.jpg
+[383/1145] ↺ Already exists — skipping: Brown-Claculus-Corner-1.jpg
+[384/1145] ↓ Downloading: brucepromopic.jpg
+[384/1145] ✓ Uploaded: brucepromopic.jpg
+[385/1145] ↓ Downloading: received_1963002863774948%20(2).jpeg
+[385/1145] ✓ Uploaded: received_1963002863774948%20(2).jpeg
+[386/1145] ↓ Downloading: cobra-100.jpg
+[386/1145] ✓ Uploaded: cobra-100.jpg
+[387/1145] ↓ Downloading: 6000px_BODY_SHAME_PROFILE_PRINT.jpg
+[387/1145] ✓ Uploaded: 6000px_BODY_SHAME_PROFILE_PRINT.jpg
+[388/1145] ↓ Downloading: CzREVR9UQAAbulI.jpg
+[388/1145] ✓ Uploaded: CzREVR9UQAAbulI.jpg
+[389/1145] ↺ Already exists — skipping: Festival-Lineup-2019.jpg
+[390/1145] ↺ Already exists — skipping: SECRETS.png
+[391/1145] ↺ Already exists — skipping: slider-mock-ups-2019-fest-4-7.jpg
+[392/1145] ↺ Already exists — skipping: slider-mock-ups-2019-fest-4-6.jpg
+[393/1145] ↺ Already exists — skipping: slider-mock-ups-2019-fest-4-5.jpg
+[394/1145] ↺ Already exists — skipping: slider-mock-ups-2019-fest-4-4.jpg
+[395/1145] ↺ Already exists — skipping: slider-mock-ups-2019-fest-4-3.jpg
+[396/1145] ↺ Already exists — skipping: slider-mock-ups-2019-fest-4-2.jpg
+[397/1145] ↺ Already exists — skipping: slider-mock-ups-2019-fest-4-1.jpg
+[398/1145] ↺ Already exists — skipping: slider-mock-ups-2019-fest-4.jpg
+[399/1145] ↺ Already exists — skipping: slider-mock-ups-2019-fest-1-2.jpg
+[400/1145] ↺ Already exists — skipping: slider-mock-ups-2019-fest-1-1.jpg
+[401/1145] ↺ Already exists — skipping: slider-mock-ups-2019-fest-3.jpg
+[402/1145] ↺ Already exists — skipping: slider-mock-ups-2019-fest-2.jpg
+[403/1145] ↺ Already exists — skipping: slider-mock-ups-2019-fest-1.jpg
+[404/1145] ↺ Already exists — skipping: IMG_0020.jpeg
+[405/1145] ↺ Already exists — skipping: IMG_0022.jpeg
+[406/1145] ↺ Already exists — skipping: IMG_0074.jpeg
+[407/1145] ↺ Already exists — skipping: IMG_0018.jpeg
+[408/1145] ↺ Already exists — skipping: IMG_0021.jpeg
+[409/1145] ↺ Already exists — skipping: IMG_0016.jpeg
+[410/1145] ↺ Already exists — skipping: cropped-16-flav.png
+[411/1145] ↺ Already exists — skipping: 16-flav.png
+[412/1145] ↺ Already exists — skipping: racc_small_blk.png
+[413/1145] ↺ Already exists — skipping: DSC_6163-2-1.jpg
+[414/1145] ↺ Already exists — skipping: DSC_6163-2.jpg
+[415/1145] ↺ Already exists — skipping: 2019_PDXPOPNOW_Sponsorship_Guide.pdf
+[416/1145] ↺ Already exists — skipping: Comp-Slider-2019.png
+[417/1145] ↺ Already exists — skipping: pdxar-exterior-0048-ver-wide.jpg
+[418/1145] ↺ Already exists — skipping: PPNCompilation-Graphic.jpg
+[419/1145] ↺ Already exists — skipping: IMG_3396.jpg
+[420/1145] ↺ Already exists — skipping: Header-Website.png
+[421/1145] ↺ Already exists — skipping: Header_Background.png
+[422/1145] ↺ Already exists — skipping: Comp-Slider-2.jpg
+[423/1145] ↺ Already exists — skipping: Volunteer-Slider-2.jpg
+[424/1145] ↺ Already exists — skipping: Donate-Slider-2.jpg
+[425/1145] ↺ Already exists — skipping: open_positions-2.png
+[426/1145] ↺ Already exists — skipping: open_positions-1.png
+[427/1145] ↺ Already exists — skipping: open_positions.png
+[428/1145] ↺ Already exists — skipping: lucera_logo-3.jpg
+[429/1145] ↺ Already exists — skipping: lucera_logo-2.jpg
+[430/1145] ↺ Already exists — skipping: lucera_logo-1.jpg
+[431/1145] ↺ Already exists — skipping: lucera_logo.jpg
+[432/1145] ↺ Already exists — skipping: Comp-Slider.jpg
+[433/1145] ↺ Already exists — skipping: Lineup-Slider.jpg
+[434/1145] ↺ Already exists — skipping: Volunteer-Slider.jpg
+[435/1145] ↺ Already exists — skipping: 2018_compilation_cover-e1555421293424.png
+[436/1145] ↺ Already exists — skipping: IMG_7559.jpg
+[437/1145] ↺ Already exists — skipping: IMG_7548.jpg
+[438/1145] ↺ Already exists — skipping: IMG_6290.jpg
+[439/1145] ↺ Already exists — skipping: IMG_6260.jpg
+[440/1145] ↺ Already exists — skipping: IMG_4866-1.jpg
+[441/1145] ↺ Already exists — skipping: IMG_4866.jpg
+[442/1145] ↺ Already exists — skipping: IMG_4849.jpg
+[443/1145] ↺ Already exists — skipping: IMG_4831.jpg
+[444/1145] ↺ Already exists — skipping: IMG_4808.jpg
+[445/1145] ↺ Already exists — skipping: IMG_3095-e1525999204911.jpg
+[446/1145] ↺ Already exists — skipping: og_2018_logo.png
+[447/1145] ↺ Already exists — skipping: PDX_pop_now-4.jpg
+[448/1145] ↺ Already exists — skipping: PDX_pop_now-4.jpg
+[449/1145] ↺ Already exists — skipping: 20120721_pdxpopnow_CopyrightIngerKlekacz_005.jpg
+[450/1145] ↺ Already exists — skipping: DSC_8598.jpg
+[451/1145] ↺ Already exists — skipping: 20120721_pdxpopnow_CopyrightIngerKlekacz_005.jpg
+[452/1145] ↺ Already exists — skipping: DSC_8598-1.jpg
+[453/1145] ↺ Already exists — skipping: 20120721_pdxpopnow_CopyrightIngerKlekacz_005.jpg
+[454/1145] ↺ Already exists — skipping: DSC_8598.jpg
+[455/1145] ↺ Already exists — skipping: pdx-pop-now_logo.png
+[456/1145] ↺ Already exists — skipping: 26805131_10155255060630665_7175971005775466368_n.jpg
+[457/1145] ↺ Already exists — skipping: 20120721_pdxpopnow_CopyrightIngerKlekacz_005.jpg
+[458/1145] ↺ Already exists — skipping: DSC_8598-1.jpg
+[459/1145] ↺ Already exists — skipping: Vintage-photos-old-women-ice-cream-cone.jpg
+[460/1145] ↺ Already exists — skipping: DSC_8598-1.jpg
+[461/1145] ↺ Already exists — skipping: DSC_8598.jpg
+[462/1145] ↺ Already exists — skipping: Mobile_Header.png
+[463/1145] ↺ Already exists — skipping: cropped-SkullHand-2.png
+[464/1145] ↺ Already exists — skipping: Header_Background.png
+[465/1145] ↺ Already exists — skipping: PDXPop_Banner_v4.jpg
+[466/1145] ↺ Already exists — skipping: pdxpopnow2016compilation.jpg
+[467/1145] ↺ Already exists — skipping: JodieBeechem.jpg
+[468/1145] ↺ Already exists — skipping: PDX_pop_now-4.jpg
+[469/1145] ↺ Already exists — skipping: Foot-Pedal.jpg
+[470/1145] ↺ Already exists — skipping: Hands-in-Air-.jpg
+[471/1145] ↺ Already exists — skipping: evergreen_on_alpha.png
+[472/1145] ↺ Already exists — skipping: Right_Skull.png
+[473/1145] ↺ Already exists — skipping: Left_Skull.png
+[474/1145] ↺ Already exists — skipping: 2017-Compilation.jpg
+[475/1145] ↺ Already exists — skipping: cropped-SkullHand-1.png
+[476/1145] ↺ Already exists — skipping: SkullHand-1.png
+[477/1145] ↺ Already exists — skipping: cropped-SkullHand.png
+[478/1145] ↺ Already exists — skipping: SkullHand.png
+[479/1145] ↺ Already exists — skipping: Erik_Emanuelson.jpeg
+[480/1145] ↺ Already exists — skipping: Michael_Deresh.jpg
+[481/1145] ↺ Already exists — skipping: Robin_Bacior.jpeg
+[482/1145] ↺ Already exists — skipping: ritchie_young.jpg
+[483/1145] ↺ Already exists — skipping: joelmedina.jpg
+[484/1145] ↺ Already exists — skipping: KXRY_RADIO_SHOW_Featured_Image.png
+[485/1145] ↺ Already exists — skipping: OUTREACH_Portugal_the_Man.png
+[486/1145] ↺ Already exists — skipping: Logo_Footer.png
+[487/1145] ↺ Already exists — skipping: PDX_pop_now-5.jpg
+[488/1145] ↺ Already exists — skipping: 20120721_pdxpopnow_CopyrightIngerKlekacz_005.jpg
+[489/1145] ↺ Already exists — skipping: PDX-Pop-Now-24.jpg
+[490/1145] ↺ Already exists — skipping: 27577001_183915342214394_3070069840388554752_n.jpg
+[491/1145] ↺ Already exists — skipping: 27577038_2056183711267389_394327303997358080_n.jpg
+[492/1145] ↺ Already exists — skipping: 27577038_2056183711267389_394327303997358080_n.jpg
+[493/1145] ↺ Already exists — skipping: 27580616_212800232600125_1501230003554091008_n.jpg
+[494/1145] ↺ Already exists — skipping: 27880813_1620808408006424_1506321824722452480_n.jpg
+[495/1145] ↺ Already exists — skipping: 26864910_182302129168453_6542383210796417024_n.jpg
+[496/1145] ↺ Already exists — skipping: 26864910_182302129168453_6542383210796417024_n.jpg
+[497/1145] ↓ Downloading: 2018_submission_fi.png
+[497/1145] ✗ Failed: 2018_submission_fi.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/02/2018_submission_fi.png: 404
+[498/1145] ↺ Already exists — skipping: 26864524_806343202903812_1575457767257276416_n.jpg
+[499/1145] ↺ Already exists — skipping: 26158436_519821191734555_8523163711861424128_n.jpg
+[500/1145] ↺ Already exists — skipping: 26157654_139742310025779_2958229613555220480_n.jpg
+[501/1145] ↺ Already exists — skipping: 26068381_1921914171456161_3859351320334958592_n.jpg
+[502/1145] ↺ Already exists — skipping: 26065660_223281781547754_6173682988811812864_n.jpg
+[503/1145] ↺ Already exists — skipping: 26066303_358031654661269_7377610253715636224_n.jpg
+[504/1145] ↺ Already exists — skipping: 26273402_1926687897660053_7954827109241716736_n.jpg
+[505/1145] ↺ Already exists — skipping: 26152430_139985696684514_1265548247326261248_n.jpg
+[506/1145] ↺ Already exists — skipping: 25036025_136555920357540_4471046330772357120_n.jpg
+[507/1145] ↺ Already exists — skipping: 26398830_487135295020472_6969100555390025728_n.jpg
+[508/1145] ↺ Already exists — skipping: 25005412_1764491660521980_3245741677901512704_n.jpg
+[509/1145] ↺ Already exists — skipping: 24845564_1211519445615271_8587509120888733696_n-1.jpg
+[510/1145] ↺ Already exists — skipping: 24845564_1211519445615271_8587509120888733696_n.jpg
+[511/1145] ↺ Already exists — skipping: 24174988_309884896163609_1451674241396113408_n.jpg
+[512/1145] ↺ Already exists — skipping: 24125153_140019059987006_2939466185634217984_n.jpg
+[513/1145] ↺ Already exists — skipping: 24125188_804177799783778_4182132526539603968_n.jpg
+[514/1145] ↺ Already exists — skipping: 24126650_146900039367254_5134912012601524224_n.jpg
+[515/1145] ↺ Already exists — skipping: 23824932_310715456080354_1652890676074905600_n.jpg
+[516/1145] ↓ Downloading: outreach_featured_img.png
+[516/1145] ✗ Failed: outreach_featured_img.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/02/outreach_featured_img.png: 404
+[517/1145] ↓ Downloading: board_featured_images.png
+[517/1145] ✗ Failed: board_featured_images.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/08/board_featured_images.png: 404
+[518/1145] ↓ Downloading: info_featured_images.png
+[518/1145] ✗ Failed: info_featured_images.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/04/info_featured_images.png: 404
+[519/1145] ↓ Downloading: volunteers_featured_images.png
+[519/1145] ✗ Failed: volunteers_featured_images.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/volunteers_featured_images.png: 404
+[520/1145] ↓ Downloading: album_featured_images.png
+[520/1145] ✗ Failed: album_featured_images.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/album_featured_images.png: 404
+[521/1145] ↓ Downloading: schedule_featured_img.png
+[521/1145] ✗ Failed: schedule_featured_img.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/schedule_featured_img.png: 404
+[522/1145] ↺ Already exists — skipping: history_featured_img.png
+[523/1145] ↺ Already exists — skipping: 23594264_134124050641406_8973477705563504640_n.jpg
+[524/1145] ↺ Already exists — skipping: open_positions_featured_img.png
+[525/1145] ↺ Already exists — skipping: 22638683_1862127770767740_470203656537374720_n.jpg
+[526/1145] ↺ Already exists — skipping: 22500066_281255632366390_4266438804665008128_n.jpg
+[527/1145] ↺ Already exists — skipping: 22280792_2021482091418565_7885397691591557120_n.jpg
+[528/1145] ↺ Already exists — skipping: 22071354_119403618748037_2317650385411506176_n.jpg
+[529/1145] ↺ Already exists — skipping: 21980153_291400291359045_58632922135003136_n.jpg
+[530/1145] ↺ Already exists — skipping: 21436311_847482615428117_3205113310210949120_n.jpg
+[531/1145] ↺ Already exists — skipping: 20986977_1355016074621040_6885467805446045696_n.jpg
+[532/1145] ↺ Already exists — skipping: 21041675_753831641487311_7450545154953314304_n.jpg
+[533/1145] ↺ Already exists — skipping: 20760019_200736583796128_1675779132320907264_n.jpg
+[534/1145] ↓ Downloading: 20837123_459972994373768_3587326276697849856_n.jpg
+[534/1145] ✗ Failed: 20837123_459972994373768_3587326276697849856_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/20837123_459972994373768_3587326276697849856_n.jpg: 404
+[535/1145] ↓ Downloading: 20837123_459972994373768_3587326276697849856_n.jpg
+[535/1145] ✗ Failed: 20837123_459972994373768_3587326276697849856_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/04/20837123_459972994373768_3587326276697849856_n.jpg: 404
+[536/1145] ↺ Already exists — skipping: 20634010_298285257312076_3421673923576594432_n.jpg
+[537/1145] ↺ Already exists — skipping: 20213966_1708780069424522_534188700628680704_n.jpg
+[538/1145] ↺ Already exists — skipping: 20394370_158519248042097_9113481330036834304_n-2.jpg
+[539/1145] ↺ Already exists — skipping: 20394370_158519248042097_9113481330036834304_n-1.jpg
+[540/1145] ↺ Already exists — skipping: 20394370_158519248042097_9113481330036834304_n.jpg
+[541/1145] ↺ Already exists — skipping: 20393551_474439259583055_3145757300266893312_n.jpg
+[542/1145] ↺ Already exists — skipping: 20347405_487642121569506_1742598292186857472_n.jpg
+[543/1145] ↺ Already exists — skipping: 20347467_105488236803888_1012639750936330240_n.jpg
+[544/1145] ↺ Already exists — skipping: 20225533_2016024191964114_5874325589346746368_n-2.jpg
+[545/1145] ↺ Already exists — skipping: 20225533_2016024191964114_5874325589346746368_n-1.jpg
+[546/1145] ↺ Already exists — skipping: 20225533_2016024191964114_5874325589346746368_n.jpg
+[547/1145] ↺ Already exists — skipping: 20225614_681892532008085_5486489956618600448_n-2.jpg
+[548/1145] ↺ Already exists — skipping: 20225614_681892532008085_5486489956618600448_n-1.jpg
+[549/1145] ↺ Already exists — skipping: 20225614_681892532008085_5486489956618600448_n.jpg
+[550/1145] ↓ Downloading: 20184969_1377551672365710_9175986371347611648_n.jpg
+[550/1145] ✗ Failed: 20184969_1377551672365710_9175986371347611648_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/20184969_1377551672365710_9175986371347611648_n.jpg: 404
+[551/1145] ↺ Already exists — skipping: 20393802_1691675454177499_2625617308814409728_n-1.jpg
+[552/1145] ↺ Already exists — skipping: 20393802_1691675454177499_2625617308814409728_n.jpg
+[553/1145] ↺ Already exists — skipping: 20393802_1691675454177499_2625617308814409728_n.jpg
+[554/1145] ↺ Already exists — skipping: 20393516_305782776561967_778777656387698688_n-2.jpg
+[555/1145] ↺ Already exists — skipping: 20393516_305782776561967_778777656387698688_n-1.jpg
+[556/1145] ↺ Already exists — skipping: 20393516_305782776561967_778777656387698688_n.jpg
+[557/1145] ↺ Already exists — skipping: 20225182_339678883127716_1676643756482232320_n.jpg
+[558/1145] ↺ Already exists — skipping: 20214278_103722256979836_1041626674195595264_n-1.jpg
+[559/1145] ↺ Already exists — skipping: 20214278_103722256979836_1041626674195595264_n.jpg
+[560/1145] ↺ Already exists — skipping: 20225469_118417762124432_7709417827614064640_n.jpg
+[561/1145] ↺ Already exists — skipping: 20225469_118417762124432_7709417827614064640_n.jpg
+[562/1145] ↺ Already exists — skipping: 20225469_118417762124432_7709417827614064640_n.jpg
+[563/1145] ↺ Already exists — skipping: 20346842_1406717322745339_8273325786375651328_n.jpg
+[564/1145] ↺ Already exists — skipping: 20346842_1406717322745339_8273325786375651328_n.jpg
+[565/1145] ↺ Already exists — skipping: 20225208_402943846773866_8182811094369173504_n.jpg
+[566/1145] ↺ Already exists — skipping: 20347445_108157133182429_3169490177148059648_n-2.jpg
+[567/1145] ↺ Already exists — skipping: 20347445_108157133182429_3169490177148059648_n-1.jpg
+[568/1145] ↺ Already exists — skipping: 20347445_108157133182429_3169490177148059648_n.jpg
+[569/1145] ↺ Already exists — skipping: 20214129_1853194158330714_7728369787419492352_n-2.jpg
+[570/1145] ↺ Already exists — skipping: 20214129_1853194158330714_7728369787419492352_n-1.jpg
+[571/1145] ↺ Already exists — skipping: 20214129_1853194158330714_7728369787419492352_n.jpg
+[572/1145] ↺ Already exists — skipping: 20346782_1276256905833983_4489814586236600320_n-1.jpg
+[573/1145] ↺ Already exists — skipping: 20346782_1276256905833983_4489814586236600320_n.jpg
+[574/1145] ↺ Already exists — skipping: 20214662_1643732569010240_3685961592219893760_n.jpg
+[575/1145] ↺ Already exists — skipping: 20214662_1643732569010240_3685961592219893760_n.jpg
+[576/1145] ↺ Already exists — skipping: 20214354_1957396667882966_4274397842920964096_n-2.jpg
+[577/1145] ↺ Already exists — skipping: 20214354_1957396667882966_4274397842920964096_n-1.jpg
+[578/1145] ↺ Already exists — skipping: 20214354_1957396667882966_4274397842920964096_n.jpg
+[579/1145] ↓ Downloading: 20184911_852798261552243_7594246089138503680_n-2.jpg
+[579/1145] ✗ Failed: 20184911_852798261552243_7594246089138503680_n-2.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20184911_852798261552243_7594246089138503680_n-2.jpg: 404
+[580/1145] ↓ Downloading: 20184911_852798261552243_7594246089138503680_n-1.jpg
+[580/1145] ✗ Failed: 20184911_852798261552243_7594246089138503680_n-1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20184911_852798261552243_7594246089138503680_n-1.jpg: 404
+[581/1145] ↓ Downloading: 20184911_852798261552243_7594246089138503680_n.jpg
+[581/1145] ✗ Failed: 20184911_852798261552243_7594246089138503680_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20184911_852798261552243_7594246089138503680_n.jpg: 404
+[582/1145] ↺ Already exists — skipping: 20225304_1240869272702676_9124392380919709696_n.jpg
+[583/1145] ↺ Already exists — skipping: 20225304_1240869272702676_9124392380919709696_n.jpg
+[584/1145] ↺ Already exists — skipping: 20214418_105431840135869_1022726374256803840_n-2.jpg
+[585/1145] ↺ Already exists — skipping: 20214418_105431840135869_1022726374256803840_n-1.jpg
+[586/1145] ↺ Already exists — skipping: 20214418_105431840135869_1022726374256803840_n.jpg
+[587/1145] ↺ Already exists — skipping: 20213982_166896397188557_6948823370540515328_n-2.jpg
+[588/1145] ↺ Already exists — skipping: 20213982_166896397188557_6948823370540515328_n-1.jpg
+[589/1145] ↺ Already exists — skipping: 20213982_166896397188557_6948823370540515328_n.jpg
+[590/1145] ↺ Already exists — skipping: 20214288_519988425059749_2322677764890558464_n-2.jpg
+[591/1145] ↺ Already exists — skipping: 20214288_519988425059749_2322677764890558464_n-1.jpg
+[592/1145] ↺ Already exists — skipping: 20214288_519988425059749_2322677764890558464_n.jpg
+[593/1145] ↺ Already exists — skipping: 20394427_756647161164139_361524053187493888_n.jpg
+[594/1145] ↺ Already exists — skipping: 20394427_756647161164139_361524053187493888_n.jpg
+[595/1145] ↺ Already exists — skipping: 20394427_756647161164139_361524053187493888_n.jpg
+[596/1145] ↺ Already exists — skipping: 20213866_263746600696046_811850532359503872_n-2.jpg
+[597/1145] ↺ Already exists — skipping: 20213866_263746600696046_811850532359503872_n-1.jpg
+[598/1145] ↺ Already exists — skipping: 20213866_263746600696046_811850532359503872_n.jpg
+[599/1145] ↺ Already exists — skipping: 20346926_138025556782704_4972206797319307264_n-2.jpg
+[600/1145] ↺ Already exists — skipping: 20346926_138025556782704_4972206797319307264_n-1.jpg
+[601/1145] ↺ Already exists — skipping: 20346926_138025556782704_4972206797319307264_n.jpg
+[602/1145] ↓ Downloading: 20067304_1834193216895760_8876033917048586240_n.jpg
+[602/1145] ✗ Failed: 20067304_1834193216895760_8876033917048586240_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20067304_1834193216895760_8876033917048586240_n.jpg: 404
+[603/1145] ↓ Downloading: 20184643_125589974722379_6295217120040976384_n.jpg
+[603/1145] ✗ Failed: 20184643_125589974722379_6295217120040976384_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/20184643_125589974722379_6295217120040976384_n.jpg: 404
+[604/1145] ↓ Downloading: 20184643_125589974722379_6295217120040976384_n.jpg
+[604/1145] ✗ Failed: 20184643_125589974722379_6295217120040976384_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20184643_125589974722379_6295217120040976384_n.jpg: 404
+[605/1145] ↓ Downloading: 20184251_344936092608866_8422732846606581760_n.jpg
+[605/1145] ✗ Failed: 20184251_344936092608866_8422732846606581760_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20184251_344936092608866_8422732846606581760_n.jpg: 404
+[606/1145] ↺ Already exists — skipping: 20347693_1576801395717415_2690443715524165632_n.jpg
+[607/1145] ↺ Already exists — skipping: 20347693_1576801395717415_2690443715524165632_n.jpg
+[608/1145] ↺ Already exists — skipping: 20347693_1576801395717415_2690443715524165632_n.jpg
+[609/1145] ↺ Already exists — skipping: 20226157_1078131015662279_4764501818107494400_n-1.jpg
+[610/1145] ↺ Already exists — skipping: 20226157_1078131015662279_4764501818107494400_n.jpg
+[611/1145] ↺ Already exists — skipping: 20226157_1078131015662279_4764501818107494400_n.jpg
+[612/1145] ↓ Downloading: 20184917_337754503322957_9190311027877609472_n-1.jpg
+[612/1145] ✗ Failed: 20184917_337754503322957_9190311027877609472_n-1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20184917_337754503322957_9190311027877609472_n-1.jpg: 404
+[613/1145] ↓ Downloading: 20184917_337754503322957_9190311027877609472_n.jpg
+[613/1145] ✗ Failed: 20184917_337754503322957_9190311027877609472_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20184917_337754503322957_9190311027877609472_n.jpg: 404
+[614/1145] ↓ Downloading: 20184917_337754503322957_9190311027877609472_n.jpg
+[614/1145] ✗ Failed: 20184917_337754503322957_9190311027877609472_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20184917_337754503322957_9190311027877609472_n.jpg: 404
+[615/1145] ↓ Downloading: 20346872_764077387130306_8654834442650517504_n.jpg
+[615/1145] ✗ Failed: 20346872_764077387130306_8654834442650517504_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/20346872_764077387130306_8654834442650517504_n.jpg: 404
+[616/1145] ↺ Already exists — skipping: 20214185_243619646149409_3151592919576608768_n-1.jpg
+[617/1145] ↺ Already exists — skipping: 20214185_243619646149409_3151592919576608768_n.jpg
+[618/1145] ↺ Already exists — skipping: 20214185_243619646149409_3151592919576608768_n.jpg
+[619/1145] ↺ Already exists — skipping: 20225356_1868696166490083_1393168811070324736_n.jpg
+[620/1145] ↺ Already exists — skipping: 20225356_1868696166490083_1393168811070324736_n-1.jpg
+[621/1145] ↺ Already exists — skipping: 20225356_1868696166490083_1393168811070324736_n.jpg
+[622/1145] ↺ Already exists — skipping: 20225954_240229909818576_9050252573851779072_n.jpg
+[623/1145] ↺ Already exists — skipping: 20225954_240229909818576_9050252573851779072_n-1.jpg
+[624/1145] ↺ Already exists — skipping: 20225954_240229909818576_9050252573851779072_n.jpg
+[625/1145] ↺ Already exists — skipping: 20225841_251084092073305_686156184138285056_n.jpg
+[626/1145] ↺ Already exists — skipping: 20225841_251084092073305_686156184138285056_n-1.jpg
+[627/1145] ↺ Already exists — skipping: 20225841_251084092073305_686156184138285056_n.jpg
+[628/1145] ↺ Already exists — skipping: 20225218_1424492354302019_1465586465101578240_n.jpg
+[629/1145] ↺ Already exists — skipping: 20225218_1424492354302019_1465586465101578240_n-1.jpg
+[630/1145] ↺ Already exists — skipping: 20225218_1424492354302019_1465586465101578240_n.jpg
+[631/1145] ↓ Downloading: 20184470_903766573109354_6119931404382896128_n-2.jpg
+[631/1145] ✗ Failed: 20184470_903766573109354_6119931404382896128_n-2.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20184470_903766573109354_6119931404382896128_n-2.jpg: 404
+[632/1145] ↓ Downloading: 20184470_903766573109354_6119931404382896128_n-1.jpg
+[632/1145] ✗ Failed: 20184470_903766573109354_6119931404382896128_n-1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20184470_903766573109354_6119931404382896128_n-1.jpg: 404
+[633/1145] ↓ Downloading: 20184470_903766573109354_6119931404382896128_n.jpg
+[633/1145] ✗ Failed: 20184470_903766573109354_6119931404382896128_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20184470_903766573109354_6119931404382896128_n.jpg: 404
+[634/1145] ↺ Already exists — skipping: 20346929_447410718963910_3763467829014167552_n-1.jpg
+[635/1145] ↺ Already exists — skipping: 20346929_447410718963910_3763467829014167552_n.jpg
+[636/1145] ↺ Already exists — skipping: 20346929_447410718963910_3763467829014167552_n.jpg
+[637/1145] ↓ Downloading: 20181445_290122181454081_2218103875397746688_n-2.jpg
+[637/1145] ✗ Failed: 20181445_290122181454081_2218103875397746688_n-2.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20181445_290122181454081_2218103875397746688_n-2.jpg: 404
+[638/1145] ↓ Downloading: 20181445_290122181454081_2218103875397746688_n-1.jpg
+[638/1145] ✗ Failed: 20181445_290122181454081_2218103875397746688_n-1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20181445_290122181454081_2218103875397746688_n-1.jpg: 404
+[639/1145] ↓ Downloading: 20181445_290122181454081_2218103875397746688_n.jpg
+[639/1145] ✗ Failed: 20181445_290122181454081_2218103875397746688_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20181445_290122181454081_2218103875397746688_n.jpg: 404
+[640/1145] ↺ Already exists — skipping: 20214121_118672198687230_3103164792492261376_n-2.jpg
+[641/1145] ↺ Already exists — skipping: 20214121_118672198687230_3103164792492261376_n-1.jpg
+[642/1145] ↺ Already exists — skipping: 20214121_118672198687230_3103164792492261376_n.jpg
+[643/1145] ↺ Already exists — skipping: 20347591_257301894768060_5933504839911735296_n-2.jpg
+[644/1145] ↺ Already exists — skipping: 20347591_257301894768060_5933504839911735296_n-1.jpg
+[645/1145] ↺ Already exists — skipping: 20347591_257301894768060_5933504839911735296_n.jpg
+[646/1145] ↺ Already exists — skipping: 20181439_1929250453992019_2332294643342901248_n.jpg
+[647/1145] ↺ Already exists — skipping: 20181439_1929250453992019_2332294643342901248_n.jpg
+[648/1145] ↺ Already exists — skipping: 20181439_1929250453992019_2332294643342901248_n.jpg
+[649/1145] ↺ Already exists — skipping: 20214288_306641939806310_8781015122903564288_n-1.jpg
+[650/1145] ↺ Already exists — skipping: 20214288_306641939806310_8781015122903564288_n.jpg
+[651/1145] ↺ Already exists — skipping: 20214288_306641939806310_8781015122903564288_n.jpg
+[652/1145] ↓ Downloading: 20180969_181408512399185_5953743546149240832_n.jpg
+[652/1145] ✗ Failed: 20180969_181408512399185_5953743546149240832_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/20180969_181408512399185_5953743546149240832_n.jpg: 404
+[653/1145] ↓ Downloading: 20180969_181408512399185_5953743546149240832_n-1.jpg
+[653/1145] ✗ Failed: 20180969_181408512399185_5953743546149240832_n-1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20180969_181408512399185_5953743546149240832_n-1.jpg: 404
+[654/1145] ↓ Downloading: 20180969_181408512399185_5953743546149240832_n.jpg
+[654/1145] ✗ Failed: 20180969_181408512399185_5953743546149240832_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20180969_181408512399185_5953743546149240832_n.jpg: 404
+[655/1145] ↓ Downloading: 20184152_311288002631562_1620231594432266240_n.jpg
+[655/1145] ✗ Failed: 20184152_311288002631562_1620231594432266240_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20184152_311288002631562_1620231594432266240_n.jpg: 404
+[656/1145] ↺ Already exists — skipping: 20214715_485995345067420_4141334898482872320_n-2.jpg
+[657/1145] ↺ Already exists — skipping: 20214715_485995345067420_4141334898482872320_n-1.jpg
+[658/1145] ↺ Already exists — skipping: 20214715_485995345067420_4141334898482872320_n.jpg
+[659/1145] ↺ Already exists — skipping: 20214662_106026973401708_1798621141221244928_n.jpg
+[660/1145] ↺ Already exists — skipping: 20214662_106026973401708_1798621141221244928_n-1.jpg
+[661/1145] ↺ Already exists — skipping: 20214662_106026973401708_1798621141221244928_n.jpg
+[662/1145] ↓ Downloading: 20213832_1366170693501838_3254562209287634944_n-1.jpg
+[662/1145] ✗ Failed: 20213832_1366170693501838_3254562209287634944_n-1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20213832_1366170693501838_3254562209287634944_n-1.jpg: 404
+[663/1145] ↺ Already exists — skipping: 20213832_1366170693501838_3254562209287634944_n.jpg
+[664/1145] ↺ Already exists — skipping: 20213832_1366170693501838_3254562209287634944_n.jpg
+[665/1145] ↺ Already exists — skipping: 20347544_423177318083226_724694801131241472_n.jpg
+[666/1145] ↺ Already exists — skipping: 20347544_423177318083226_724694801131241472_n.jpg
+[667/1145] ↺ Already exists — skipping: 20347544_423177318083226_724694801131241472_n.jpg
+[668/1145] ↺ Already exists — skipping: 20184782_131219264143762_2421308072480735232_n.jpg
+[669/1145] ↺ Already exists — skipping: 20184782_131219264143762_2421308072480735232_n.jpg
+[670/1145] ↓ Downloading: 20184885_2032072397027434_1833550929123606528_n-1.jpg
+[670/1145] ✗ Failed: 20184885_2032072397027434_1833550929123606528_n-1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20184885_2032072397027434_1833550929123606528_n-1.jpg: 404
+[671/1145] ↓ Downloading: 20184885_2032072397027434_1833550929123606528_n.jpg
+[671/1145] ✗ Failed: 20184885_2032072397027434_1833550929123606528_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/20184885_2032072397027434_1833550929123606528_n.jpg: 404
+[672/1145] ↓ Downloading: 20184885_2032072397027434_1833550929123606528_n.jpg
+[672/1145] ✗ Failed: 20184885_2032072397027434_1833550929123606528_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20184885_2032072397027434_1833550929123606528_n.jpg: 404
+[673/1145] ↓ Downloading: 20181388_1131879350279277_5415700881171546112_n-2.jpg
+[673/1145] ✗ Failed: 20181388_1131879350279277_5415700881171546112_n-2.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20181388_1131879350279277_5415700881171546112_n-2.jpg: 404
+[674/1145] ↓ Downloading: 20181388_1131879350279277_5415700881171546112_n-1.jpg
+[674/1145] ✗ Failed: 20181388_1131879350279277_5415700881171546112_n-1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20181388_1131879350279277_5415700881171546112_n-1.jpg: 404
+[675/1145] ↓ Downloading: 20181388_1131879350279277_5415700881171546112_n.jpg
+[675/1145] ✗ Failed: 20181388_1131879350279277_5415700881171546112_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20181388_1131879350279277_5415700881171546112_n.jpg: 404
+[676/1145] ↓ Downloading: 19050963_1998351463524016_1239827401882468352_n.jpg
+[676/1145] ✗ Failed: 19050963_1998351463524016_1239827401882468352_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/19050963_1998351463524016_1239827401882468352_n.jpg: 404
+[677/1145] ↓ Downloading: 19050963_1998351463524016_1239827401882468352_n.jpg
+[677/1145] ✗ Failed: 19050963_1998351463524016_1239827401882468352_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/04/19050963_1998351463524016_1239827401882468352_n.jpg: 404
+[678/1145] ↓ Downloading: 19050963_1998351463524016_1239827401882468352_n.jpg
+[678/1145] ✗ Failed: 19050963_1998351463524016_1239827401882468352_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/19050963_1998351463524016_1239827401882468352_n.jpg: 404
+[679/1145] ↺ Already exists — skipping: 20347510_495133027490404_6433248328028258304_n.jpg
+[680/1145] ↺ Already exists — skipping: 20347510_495133027490404_6433248328028258304_n.jpg
+[681/1145] ↺ Already exists — skipping: 20347510_495133027490404_6433248328028258304_n.jpg
+[682/1145] ↓ Downloading: 20213788_124667601477385_1668532521765175296_n-1.jpg
+[682/1145] ✗ Failed: 20213788_124667601477385_1668532521765175296_n-1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20213788_124667601477385_1668532521765175296_n-1.jpg: 404
+[683/1145] ↓ Downloading: 20213788_124667601477385_1668532521765175296_n.jpg
+[683/1145] ✗ Failed: 20213788_124667601477385_1668532521765175296_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20213788_124667601477385_1668532521765175296_n.jpg: 404
+[684/1145] ↓ Downloading: 20213788_124667601477385_1668532521765175296_n.jpg
+[684/1145] ✗ Failed: 20213788_124667601477385_1668532521765175296_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20213788_124667601477385_1668532521765175296_n.jpg: 404
+[685/1145] ↓ Downloading: 20181227_395013887563581_2309916871593295872_n-2.jpg
+[685/1145] ✗ Failed: 20181227_395013887563581_2309916871593295872_n-2.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20181227_395013887563581_2309916871593295872_n-2.jpg: 404
+[686/1145] ↓ Downloading: 20181227_395013887563581_2309916871593295872_n-1.jpg
+[686/1145] ✗ Failed: 20181227_395013887563581_2309916871593295872_n-1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20181227_395013887563581_2309916871593295872_n-1.jpg: 404
+[687/1145] ↓ Downloading: 20181227_395013887563581_2309916871593295872_n.jpg
+[687/1145] ✗ Failed: 20181227_395013887563581_2309916871593295872_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20181227_395013887563581_2309916871593295872_n.jpg: 404
+[688/1145] ↓ Downloading: 20181110_120771718543920_8526992288658751488_n-2.jpg
+[688/1145] ✗ Failed: 20181110_120771718543920_8526992288658751488_n-2.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20181110_120771718543920_8526992288658751488_n-2.jpg: 404
+[689/1145] ↓ Downloading: 20181110_120771718543920_8526992288658751488_n-1.jpg
+[689/1145] ✗ Failed: 20181110_120771718543920_8526992288658751488_n-1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20181110_120771718543920_8526992288658751488_n-1.jpg: 404
+[690/1145] ↓ Downloading: 20181110_120771718543920_8526992288658751488_n.jpg
+[690/1145] ✗ Failed: 20181110_120771718543920_8526992288658751488_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20181110_120771718543920_8526992288658751488_n.jpg: 404
+[691/1145] ↺ Already exists — skipping: 20214001_1953028234941296_2100917165900169216_n.jpg
+[692/1145] ↺ Already exists — skipping: 20214001_1953028234941296_2100917165900169216_n.jpg
+[693/1145] ↓ Downloading: 20067215_1933958653513428_8132101231549087744_n-1.jpg
+[693/1145] ✗ Failed: 20067215_1933958653513428_8132101231549087744_n-1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20067215_1933958653513428_8132101231549087744_n-1.jpg: 404
+[694/1145] ↓ Downloading: 20067215_1933958653513428_8132101231549087744_n.jpg
+[694/1145] ✗ Failed: 20067215_1933958653513428_8132101231549087744_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/20067215_1933958653513428_8132101231549087744_n.jpg: 404
+[695/1145] ↓ Downloading: 20067215_1933958653513428_8132101231549087744_n.jpg
+[695/1145] ✗ Failed: 20067215_1933958653513428_8132101231549087744_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20067215_1933958653513428_8132101231549087744_n.jpg: 404
+[696/1145] ↓ Downloading: 20180752_699395243592211_3926739778115993600_n.jpg
+[696/1145] ✗ Failed: 20180752_699395243592211_3926739778115993600_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20180752_699395243592211_3926739778115993600_n.jpg: 404
+[697/1145] ↓ Downloading: 20067354_124199658190806_7551012858142654464_n-2.jpg
+[697/1145] ✗ Failed: 20067354_124199658190806_7551012858142654464_n-2.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20067354_124199658190806_7551012858142654464_n-2.jpg: 404
+[698/1145] ↓ Downloading: 20067354_124199658190806_7551012858142654464_n-1.jpg
+[698/1145] ✗ Failed: 20067354_124199658190806_7551012858142654464_n-1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20067354_124199658190806_7551012858142654464_n-1.jpg: 404
+[699/1145] ↓ Downloading: 20067354_124199658190806_7551012858142654464_n.jpg
+[699/1145] ✗ Failed: 20067354_124199658190806_7551012858142654464_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20067354_124199658190806_7551012858142654464_n.jpg: 404
+[700/1145] ↓ Downloading: 20184234_110096186313971_1931191302586630144_n-1.jpg
+[700/1145] ✗ Failed: 20184234_110096186313971_1931191302586630144_n-1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20184234_110096186313971_1931191302586630144_n-1.jpg: 404
+[701/1145] ↓ Downloading: 20184234_110096186313971_1931191302586630144_n.jpg
+[701/1145] ✗ Failed: 20184234_110096186313971_1931191302586630144_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/20184234_110096186313971_1931191302586630144_n.jpg: 404
+[702/1145] ↓ Downloading: 20184234_110096186313971_1931191302586630144_n.jpg
+[702/1145] ✗ Failed: 20184234_110096186313971_1931191302586630144_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/20184234_110096186313971_1931191302586630144_n.jpg: 404
+[703/1145] ↓ Downloading: 19228778_1828237637486882_3718040118838165504_n-2.jpg
+[703/1145] ✗ Failed: 19228778_1828237637486882_3718040118838165504_n-2.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/19228778_1828237637486882_3718040118838165504_n-2.jpg: 404
+[704/1145] ↓ Downloading: 19228778_1828237637486882_3718040118838165504_n-1.jpg
+[704/1145] ✗ Failed: 19228778_1828237637486882_3718040118838165504_n-1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/19228778_1828237637486882_3718040118838165504_n-1.jpg: 404
+[705/1145] ↓ Downloading: 19228778_1828237637486882_3718040118838165504_n.jpg
+[705/1145] ✗ Failed: 19228778_1828237637486882_3718040118838165504_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/19228778_1828237637486882_3718040118838165504_n.jpg: 404
+[706/1145] ↓ Downloading: 20180761_1216612391776998_5067821857479065600_n.jpg
+[706/1145] ✗ Failed: 20180761_1216612391776998_5067821857479065600_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/20180761_1216612391776998_5067821857479065600_n.jpg: 404
+[707/1145] ↺ Already exists — skipping: schedule.png
+[708/1145] ↺ Already exists — skipping: ppn-fest_lineup_1440.png
+[709/1145] ↺ Already exists — skipping: ppn-fest_lineup_960.png
+[710/1145] ↺ Already exists — skipping: h_festival_info_link.png
+[711/1145] ↺ Already exists — skipping: festival_info_link.png
+[712/1145] ↓ Downloading: 19955120_127348021202721_3460362976094060544_n.jpg
+[712/1145] ✗ Failed: 19955120_127348021202721_3460362976094060544_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/19955120_127348021202721_3460362976094060544_n.jpg: 404
+[713/1145] ↓ Downloading: 19932878_490735534601607_581248146189844480_n.jpg
+[713/1145] ✗ Failed: 19932878_490735534601607_581248146189844480_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/04/19932878_490735534601607_581248146189844480_n.jpg: 404
+[714/1145] ↓ Downloading: 19932878_490735534601607_581248146189844480_n-1.jpg
+[714/1145] ✗ Failed: 19932878_490735534601607_581248146189844480_n-1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/19932878_490735534601607_581248146189844480_n-1.jpg: 404
+[715/1145] ↓ Downloading: 19932878_490735534601607_581248146189844480_n.jpg
+[715/1145] ✗ Failed: 19932878_490735534601607_581248146189844480_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/19932878_490735534601607_581248146189844480_n.jpg: 404
+[716/1145] ↓ Downloading: 19765046_152592181960037_2478391258746191872_n.jpg
+[716/1145] ✗ Failed: 19765046_152592181960037_2478391258746191872_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/19765046_152592181960037_2478391258746191872_n.jpg: 404
+[717/1145] ↓ Downloading: 19932145_104730606846778_6620195030218833920_n-2.jpg
+[717/1145] ✗ Failed: 19932145_104730606846778_6620195030218833920_n-2.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/19932145_104730606846778_6620195030218833920_n-2.jpg: 404
+[718/1145] ↓ Downloading: 19932145_104730606846778_6620195030218833920_n-1.jpg
+[718/1145] ✗ Failed: 19932145_104730606846778_6620195030218833920_n-1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/19932145_104730606846778_6620195030218833920_n-1.jpg: 404
+[719/1145] ↓ Downloading: 19932145_104730606846778_6620195030218833920_n.jpg
+[719/1145] ✗ Failed: 19932145_104730606846778_6620195030218833920_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/19932145_104730606846778_6620195030218833920_n.jpg: 404
+[720/1145] ↓ Downloading: 19931611_1707027622936338_3904085165659389952_n.jpg
+[720/1145] ✗ Failed: 19931611_1707027622936338_3904085165659389952_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/19931611_1707027622936338_3904085165659389952_n.jpg: 404
+[721/1145] ↺ Already exists — skipping: 19931930_1749964571967330_5915094088935276544_n.jpg
+[722/1145] ↓ Downloading: 19932515_1697618007213744_8577558596491935744_n.jpg
+[722/1145] ✗ Failed: 19932515_1697618007213744_8577558596491935744_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/19932515_1697618007213744_8577558596491935744_n.jpg: 404
+[723/1145] ↓ Downloading: 19932325_2002079470013151_8642047624930656256_n.jpg
+[723/1145] ✗ Failed: 19932325_2002079470013151_8642047624930656256_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/19932325_2002079470013151_8642047624930656256_n.jpg: 404
+[724/1145] ↓ Downloading: 19931872_1897333037257418_1831581841237213184_n.jpg
+[724/1145] ✗ Failed: 19931872_1897333037257418_1831581841237213184_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/19931872_1897333037257418_1831581841237213184_n.jpg: 404
+[725/1145] ↓ Downloading: 19985354_355697258197261_97035027887423488_n.jpg
+[725/1145] ✗ Failed: 19985354_355697258197261_97035027887423488_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/19985354_355697258197261_97035027887423488_n.jpg: 404
+[726/1145] ↓ Downloading: 19932643_1877916185863177_1733240292888281088_n.jpg
+[726/1145] ✗ Failed: 19932643_1877916185863177_1733240292888281088_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/19932643_1877916185863177_1733240292888281088_n.jpg: 404
+[727/1145] ↓ Downloading: 19625042_244110769409527_8390227009397063680_n.jpg
+[727/1145] ✗ Failed: 19625042_244110769409527_8390227009397063680_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/19625042_244110769409527_8390227009397063680_n.jpg: 404
+[728/1145] ↓ Downloading: 19533829_319372655183913_4780294567473709056_n.jpg
+[728/1145] ✗ Failed: 19533829_319372655183913_4780294567473709056_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/19533829_319372655183913_4780294567473709056_n.jpg: 404
+[729/1145] ↓ Downloading: 19436375_1404890186215036_2535314912746405888_n-1.jpg
+[729/1145] ✗ Failed: 19436375_1404890186215036_2535314912746405888_n-1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/19436375_1404890186215036_2535314912746405888_n-1.jpg: 404
+[730/1145] ↓ Downloading: 19436375_1404890186215036_2535314912746405888_n.jpg
+[730/1145] ✗ Failed: 19436375_1404890186215036_2535314912746405888_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/19436375_1404890186215036_2535314912746405888_n.jpg: 404
+[731/1145] ↓ Downloading: 2017PPN-cover_frame-1.jpg
+[731/1145] ✗ Failed: 2017PPN-cover_frame-1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/2017PPN-cover_frame-1.jpg: 404
+[732/1145] ↓ Downloading: 2017PPN-cover_frame.jpg
+[732/1145] ✗ Failed: 2017PPN-cover_frame.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/2017PPN-cover_frame.jpg: 404
+[733/1145] ↓ Downloading: 2017PPN-cover-1.jpg
+[733/1145] ✗ Failed: 2017PPN-cover-1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/2017PPN-cover-1.jpg: 404
+[734/1145] ↓ Downloading: 2017PPN-cover.jpg
+[734/1145] ✗ Failed: 2017PPN-cover.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/2017PPN-cover.jpg: 404
+[735/1145] ↓ Downloading: 19437105_2102220153385119_6970514548818182144_n-1.jpg
+[735/1145] ✗ Failed: 19437105_2102220153385119_6970514548818182144_n-1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/02/19437105_2102220153385119_6970514548818182144_n-1.jpg: 404
+[736/1145] ↓ Downloading: 19437105_2102220153385119_6970514548818182144_n.jpg
+[736/1145] ✗ Failed: 19437105_2102220153385119_6970514548818182144_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/19437105_2102220153385119_6970514548818182144_n.jpg: 404
+[737/1145] ↓ Downloading: 19437105_2102220153385119_6970514548818182144_n.jpg
+[737/1145] ✗ Failed: 19437105_2102220153385119_6970514548818182144_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/02/19437105_2102220153385119_6970514548818182144_n.jpg: 404
+[738/1145] ↓ Downloading: 19425202_114018052545475_5812127767046651904_n.jpg
+[738/1145] ✗ Failed: 19425202_114018052545475_5812127767046651904_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/19425202_114018052545475_5812127767046651904_n.jpg: 404
+[739/1145] ↓ Downloading: 19428647_123820284882266_1880079757245153280_n.jpg
+[739/1145] ✗ Failed: 19428647_123820284882266_1880079757245153280_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/19428647_123820284882266_1880079757245153280_n.jpg: 404
+[740/1145] ↓ Downloading: 19227839_624001057811181_8954640026247888896_n.jpg
+[740/1145] ✗ Failed: 19227839_624001057811181_8954640026247888896_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/19227839_624001057811181_8954640026247888896_n.jpg: 404
+[741/1145] ↓ Downloading: 19367602_483754435303102_1756275168864370688_n.jpg
+[741/1145] ✗ Failed: 19367602_483754435303102_1756275168864370688_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/19367602_483754435303102_1756275168864370688_n.jpg: 404
+[742/1145] ↓ Downloading: 19050829_251829525299850_7243558216963981312_n.jpg
+[742/1145] ✗ Failed: 19050829_251829525299850_7243558216963981312_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/19050829_251829525299850_7243558216963981312_n.jpg: 404
+[743/1145] ↓ Downloading: 18949873_1360137784106388_5760455870206967808_n-1.jpg
+[743/1145] ✗ Failed: 18949873_1360137784106388_5760455870206967808_n-1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/18949873_1360137784106388_5760455870206967808_n-1.jpg: 404
+[744/1145] ↓ Downloading: 18949873_1360137784106388_5760455870206967808_n.jpg
+[744/1145] ✗ Failed: 18949873_1360137784106388_5760455870206967808_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/18949873_1360137784106388_5760455870206967808_n.jpg: 404
+[745/1145] ↓ Downloading: 18645455_133212180571035_3326228690718687232_n.jpg
+[745/1145] ✗ Failed: 18645455_133212180571035_3326228690718687232_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/18645455_133212180571035_3326228690718687232_n.jpg: 404
+[746/1145] ↓ Downloading: 18645204_1286763214769994_1183102214026035200_n.jpg
+[746/1145] ✗ Failed: 18645204_1286763214769994_1183102214026035200_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/18645204_1286763214769994_1183102214026035200_n.jpg: 404
+[747/1145] ↓ Downloading: 18645180_1795741124088776_5515320628967636992_n.jpg
+[747/1145] ✗ Failed: 18645180_1795741124088776_5515320628967636992_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/18645180_1795741124088776_5515320628967636992_n.jpg: 404
+[748/1145] ↓ Downloading: 18645586_436501496709186_1365251558006063104_n.jpg
+[748/1145] ✗ Failed: 18645586_436501496709186_1365251558006063104_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/18645586_436501496709186_1365251558006063104_n.jpg: 404
+[749/1145] ↺ Already exists — skipping: GUERRILLA_smallanddiagonal.pdf
+[750/1145] ↺ Already exists — skipping: WDLogo4c.jpg
+[751/1145] ↺ Already exists — skipping: xrayfm.png
+[752/1145] ↺ Already exists — skipping: PortlandMercury.png
+[753/1145] ↺ Already exists — skipping: guerrilla-1.png
+[754/1145] ↺ Already exists — skipping: guerrilla.png
+[755/1145] ↓ Downloading: 18443770_1826039887723306_5139695725700972544_n-2.jpg
+[755/1145] ✗ Failed: 18443770_1826039887723306_5139695725700972544_n-2.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/18443770_1826039887723306_5139695725700972544_n-2.jpg: 404
+[756/1145] ↓ Downloading: 18443770_1826039887723306_5139695725700972544_n-1.jpg
+[756/1145] ✗ Failed: 18443770_1826039887723306_5139695725700972544_n-1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/18443770_1826039887723306_5139695725700972544_n-1.jpg: 404
+[757/1145] ↓ Downloading: 18443770_1826039887723306_5139695725700972544_n.jpg
+[757/1145] ✗ Failed: 18443770_1826039887723306_5139695725700972544_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/18443770_1826039887723306_5139695725700972544_n.jpg: 404
+[758/1145] ↓ Downloading: 18299640_218365068650793_2939743966939054080_n.jpg
+[758/1145] ✗ Failed: 18299640_218365068650793_2939743966939054080_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/18299640_218365068650793_2939743966939054080_n.jpg: 404
+[759/1145] ↺ Already exists — skipping: IMG_3596.jpg
+[760/1145] ↺ Already exists — skipping: PDXPop-logo-2.png
+[761/1145] ↺ Already exists — skipping: PDXPop-logo-1.png
+[762/1145] ↺ Already exists — skipping: PDXPop-logo.png
+[763/1145] ↓ Downloading: 18161919_289173271537941_3322217045235335168_n.jpg
+[763/1145] ✗ Failed: 18161919_289173271537941_3322217045235335168_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/18161919_289173271537941_3322217045235335168_n.jpg: 404
+[764/1145] ↓ Downloading: 17931917_1903703873247606_7106649159377092608_n.jpg
+[764/1145] ✗ Failed: 17931917_1903703873247606_7106649159377092608_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/04/17931917_1903703873247606_7106649159377092608_n.jpg: 404
+[765/1145] ↺ Already exists — skipping: banner2E.jpg
+[766/1145] ↓ Downloading: 17881793_473819846293623_4681523466560602112_n.jpg
+[766/1145] ✗ Failed: 17881793_473819846293623_4681523466560602112_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/17881793_473819846293623_4681523466560602112_n.jpg: 404
+[767/1145] ↓ Downloading: New-Logo-Square.jpg
+[767/1145] ✗ Failed: New-Logo-Square.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/New-Logo-Square.jpg: 404
+[768/1145] ↓ Downloading: Vortex-Music-Magazine-Logo.png
+[768/1145] ✗ Failed: Vortex-Music-Magazine-Logo.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/Vortex-Music-Magazine-Logo.png: 404
+[769/1145] ↓ Downloading: VacasaBlueLogo.png
+[769/1145] ✗ Failed: VacasaBlueLogo.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/VacasaBlueLogo.png: 404
+[770/1145] ↓ Downloading: 17438674_1207376446038195_1595630571516592128_n.jpg
+[770/1145] ✗ Failed: 17438674_1207376446038195_1595630571516592128_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/17438674_1207376446038195_1595630571516592128_n.jpg: 404
+[771/1145] ↓ Downloading: 17586555_802782779870630_2468257987785916416_n.jpg
+[771/1145] ✗ Failed: 17586555_802782779870630_2468257987785916416_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/17586555_802782779870630_2468257987785916416_n.jpg: 404
+[772/1145] ↓ Downloading: 17495167_2304686683088809_478698951525007360_n.jpg
+[772/1145] ✗ Failed: 17495167_2304686683088809_478698951525007360_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/17495167_2304686683088809_478698951525007360_n.jpg: 404
+[773/1145] ↓ Downloading: 17332380_1869511603318928_3887504676341415936_n.jpg
+[773/1145] ✗ Failed: 17332380_1869511603318928_3887504676341415936_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/17332380_1869511603318928_3887504676341415936_n.jpg: 404
+[774/1145] ↓ Downloading: 17268051_121822051685810_3872386700697141248_n.jpg
+[774/1145] ✗ Failed: 17268051_121822051685810_3872386700697141248_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/17268051_121822051685810_3872386700697141248_n.jpg: 404
+[775/1145] ↓ Downloading: 17333112_813858212094759_4839310845504651264_n-1.jpg
+[775/1145] ✗ Failed: 17333112_813858212094759_4839310845504651264_n-1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/17333112_813858212094759_4839310845504651264_n-1.jpg: 404
+[776/1145] ↓ Downloading: 17333112_813858212094759_4839310845504651264_n.jpg
+[776/1145] ✗ Failed: 17333112_813858212094759_4839310845504651264_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/17333112_813858212094759_4839310845504651264_n.jpg: 404
+[777/1145] ↺ Already exists — skipping: pdxpopnow2007.jpg
+[778/1145] ↺ Already exists — skipping: ppn-start2.jpg
+[779/1145] ↓ Downloading: 17076270_184863458677165_6619314738016813056_n.jpg
+[779/1145] ✗ Failed: 17076270_184863458677165_6619314738016813056_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/17076270_184863458677165_6619314738016813056_n.jpg: 404
+[780/1145] ↺ Already exists — skipping: 2017_Banner_300px.jpg
+[781/1145] ↺ Already exists — skipping: banner1Edited.png
+[782/1145] ↺ Already exists — skipping: banner1Edited.jpg
+[783/1145] ↺ Already exists — skipping: favicon1.png
+[784/1145] ↺ Already exists — skipping: ppn-start2.jpg
+[785/1145] ↺ Already exists — skipping: favicon.png
+[786/1145] ↺ Already exists — skipping: banner1E.jpg
+[787/1145] ↓ Downloading: 16229082_1776698332356333_767865999914434560_n.jpg
+[787/1145] ✗ Failed: 16229082_1776698332356333_767865999914434560_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/16229082_1776698332356333_767865999914434560_n.jpg: 404
+[788/1145] ↓ Downloading: 14368950_1728640827358391_3791861260807569408_n.jpg
+[788/1145] ✗ Failed: 14368950_1728640827358391_3791861260807569408_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/14368950_1728640827358391_3791861260807569408_n.jpg: 404
+[789/1145] ↓ Downloading: 16229152_628282574039457_6480287114796728320_n.jpg
+[789/1145] ✗ Failed: 16229152_628282574039457_6480287114796728320_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/02/16229152_628282574039457_6480287114796728320_n.jpg: 404
+[790/1145] ↓ Downloading: Thank-you1.jpg
+[790/1145] ✗ Failed: Thank-you1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/06/Thank-you1.jpg: 404
+[791/1145] ↓ Downloading: 16229245_126669687841653_4333643781443158016_n1.jpg
+[791/1145] ✗ Failed: 16229245_126669687841653_4333643781443158016_n1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/16229245_126669687841653_4333643781443158016_n1.jpg: 404
+[792/1145] ↓ Downloading: 16229245_126669687841653_4333643781443158016_n.jpg
+[792/1145] ✗ Failed: 16229245_126669687841653_4333643781443158016_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/16229245_126669687841653_4333643781443158016_n.jpg: 404
+[793/1145] ↓ Downloading: 15624589_188568824942343_4432404849312661504_n1.jpg
+[793/1145] ✗ Failed: 15624589_188568824942343_4432404849312661504_n1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/15624589_188568824942343_4432404849312661504_n1.jpg: 404
+[794/1145] ↓ Downloading: 15624589_188568824942343_4432404849312661504_n.jpg
+[794/1145] ✗ Failed: 15624589_188568824942343_4432404849312661504_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/15624589_188568824942343_4432404849312661504_n.jpg: 404
+[795/1145] ↓ Downloading: 15403327_1814353068852116_1781510824737636352_n.jpg
+[795/1145] ✗ Failed: 15403327_1814353068852116_1781510824737636352_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/15403327_1814353068852116_1781510824737636352_n.jpg: 404
+[796/1145] ↓ Downloading: 15403327_1814353068852116_1781510824737636352_n.jpg
+[796/1145] ✗ Failed: 15403327_1814353068852116_1781510824737636352_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/02/15403327_1814353068852116_1781510824737636352_n.jpg: 404
+[797/1145] ↓ Downloading: 15253086_1145694158879800_4574373790691098624_n.jpg
+[797/1145] ✗ Failed: 15253086_1145694158879800_4574373790691098624_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/15253086_1145694158879800_4574373790691098624_n.jpg: 404
+[798/1145] ↓ Downloading: 15258888_1412789458754047_1976306618316357632_n.jpg
+[798/1145] ✗ Failed: 15258888_1412789458754047_1976306618316357632_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/15258888_1412789458754047_1976306618316357632_n.jpg: 404
+[799/1145] ↓ Downloading: 15258955_224022698023406_4828626190937882624_n.jpg
+[799/1145] ✗ Failed: 15258955_224022698023406_4828626190937882624_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/15258955_224022698023406_4828626190937882624_n.jpg: 404
+[800/1145] ↓ Downloading: 15048178_696754967144184_7100248691738411008_n.jpg
+[800/1145] ✗ Failed: 15048178_696754967144184_7100248691738411008_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/15048178_696754967144184_7100248691738411008_n.jpg: 404
+[801/1145] ↓ Downloading: 14561903_1795881150660209_1498717623779590144_n.jpg
+[801/1145] ✗ Failed: 14561903_1795881150660209_1498717623779590144_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/14561903_1795881150660209_1498717623779590144_n.jpg: 404
+[802/1145] ↓ Downloading: 14540449_339913473040156_2317610004128989184_n.jpg
+[802/1145] ✗ Failed: 14540449_339913473040156_2317610004128989184_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/14540449_339913473040156_2317610004128989184_n.jpg: 404
+[803/1145] ↓ Downloading: 14624846_371833883208038_6469627714637660160_n.jpg
+[803/1145] ✗ Failed: 14624846_371833883208038_6469627714637660160_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/14624846_371833883208038_6469627714637660160_n.jpg: 404
+[804/1145] ↓ Downloading: Centered3.png
+[804/1145] ✗ Failed: Centered3.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/06/Centered3.png: 404
+[805/1145] ↓ Downloading: 14876436_10154659440839183_300495327653599936_o.jpg
+[805/1145] ✗ Failed: 14876436_10154659440839183_300495327653599936_o.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/06/14876436_10154659440839183_300495327653599936_o.jpg: 404
+[806/1145] ↓ Downloading: 14718412_288183908248149_3821057718341337088_n.jpg
+[806/1145] ✗ Failed: 14718412_288183908248149_3821057718341337088_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/14718412_288183908248149_3821057718341337088_n.jpg: 404
+[807/1145] ↓ Downloading: 14733143_1210081172395303_403187039844958208_n.jpg
+[807/1145] ✗ Failed: 14733143_1210081172395303_403187039844958208_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/14733143_1210081172395303_403187039844958208_n.jpg: 404
+[808/1145] ↓ Downloading: 14549907_1061778310586475_5829696481094795264_n1.jpg
+[808/1145] ✗ Failed: 14549907_1061778310586475_5829696481094795264_n1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/14549907_1061778310586475_5829696481094795264_n1.jpg: 404
+[809/1145] ↓ Downloading: 14549907_1061778310586475_5829696481094795264_n.jpg
+[809/1145] ✗ Failed: 14549907_1061778310586475_5829696481094795264_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/14549907_1061778310586475_5829696481094795264_n.jpg: 404
+[810/1145] ↓ Downloading: 14712373_715255601959620_7524883587078815744_n.jpg
+[810/1145] ✗ Failed: 14712373_715255601959620_7524883587078815744_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/04/14712373_715255601959620_7524883587078815744_n.jpg: 404
+[811/1145] ↓ Downloading: 14723450_1121812611265826_6750990412313264128_n1.jpg
+[811/1145] ✗ Failed: 14723450_1121812611265826_6750990412313264128_n1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/14723450_1121812611265826_6750990412313264128_n1.jpg: 404
+[812/1145] ↓ Downloading: 14723450_1121812611265826_6750990412313264128_n.jpg
+[812/1145] ✗ Failed: 14723450_1121812611265826_6750990412313264128_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/14723450_1121812611265826_6750990412313264128_n.jpg: 404
+[813/1145] ↓ Downloading: 14597428_553177098216230_1436738101782249472_n.jpg
+[813/1145] ✗ Failed: 14597428_553177098216230_1436738101782249472_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/14597428_553177098216230_1436738101782249472_n.jpg: 404
+[814/1145] ↓ Downloading: 14478361_1167539603304816_8521238415461580800_n.jpg
+[814/1145] ✗ Failed: 14478361_1167539603304816_8521238415461580800_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/14478361_1167539603304816_8521238415461580800_n.jpg: 404
+[815/1145] ↓ Downloading: 14369002_948142251999003_1195878406_n.jpg
+[815/1145] ✗ Failed: 14369002_948142251999003_1195878406_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/14369002_948142251999003_1195878406_n.jpg: 404
+[816/1145] ↓ Downloading: 14310834_1642022462794725_1236865087_n.jpg
+[816/1145] ✗ Failed: 14310834_1642022462794725_1236865087_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/14310834_1642022462794725_1236865087_n.jpg: 404
+[817/1145] ↓ Downloading: 13743219_226942841034232_2063721868_n.jpg
+[817/1145] ✗ Failed: 13743219_226942841034232_2063721868_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/13743219_226942841034232_2063721868_n.jpg: 404
+[818/1145] ↓ Downloading: 13694834_1223012524438663_1518640642_n.jpg
+[818/1145] ✗ Failed: 13694834_1223012524438663_1518640642_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13694834_1223012524438663_1518640642_n.jpg: 404
+[819/1145] ↓ Downloading: 13715084_995020027263904_1910511147_n.jpg
+[819/1145] ✗ Failed: 13715084_995020027263904_1910511147_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13715084_995020027263904_1910511147_n.jpg: 404
+[820/1145] ↓ Downloading: 13704372_681139478700438_157348270_n.jpg
+[820/1145] ✗ Failed: 13704372_681139478700438_157348270_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13704372_681139478700438_157348270_n.jpg: 404
+[821/1145] ↺ Already exists — skipping: 13707426_1084144038328260_1671577037_n.jpg
+[822/1145] ↓ Downloading: 13768226_840346472763045_804247785_n.jpg
+[822/1145] ✗ Failed: 13768226_840346472763045_804247785_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13768226_840346472763045_804247785_n.jpg: 404
+[823/1145] ↓ Downloading: 13694890_173811559699482_1832618893_n1.jpg
+[823/1145] ✗ Failed: 13694890_173811559699482_1832618893_n1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13694890_173811559699482_1832618893_n1.jpg: 404
+[824/1145] ↓ Downloading: 13694890_173811559699482_1832618893_n.jpg
+[824/1145] ✗ Failed: 13694890_173811559699482_1832618893_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13694890_173811559699482_1832618893_n.jpg: 404
+[825/1145] ↓ Downloading: 13732296_1785477861680807_1443056551_n.jpg
+[825/1145] ✗ Failed: 13732296_1785477861680807_1443056551_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13732296_1785477861680807_1443056551_n.jpg: 404
+[826/1145] ↓ Downloading: 13714087_1034878033285771_801265142_n1.jpg
+[826/1145] ✗ Failed: 13714087_1034878033285771_801265142_n1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13714087_1034878033285771_801265142_n1.jpg: 404
+[827/1145] ↓ Downloading: 13714087_1034878033285771_801265142_n.jpg
+[827/1145] ✗ Failed: 13714087_1034878033285771_801265142_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13714087_1034878033285771_801265142_n.jpg: 404
+[828/1145] ↓ Downloading: 13734514_1732372980364988_238500252_n2.jpg
+[828/1145] ✗ Failed: 13734514_1732372980364988_238500252_n2.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13734514_1732372980364988_238500252_n2.jpg: 404
+[829/1145] ↓ Downloading: 13734514_1732372980364988_238500252_n1.jpg
+[829/1145] ✗ Failed: 13734514_1732372980364988_238500252_n1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13734514_1732372980364988_238500252_n1.jpg: 404
+[830/1145] ↓ Downloading: 13734514_1732372980364988_238500252_n.jpg
+[830/1145] ✗ Failed: 13734514_1732372980364988_238500252_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13734514_1732372980364988_238500252_n.jpg: 404
+[831/1145] ↓ Downloading: 13743671_1244596532225195_1662383538_n.jpg
+[831/1145] ✗ Failed: 13743671_1244596532225195_1662383538_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/04/13743671_1244596532225195_1662383538_n.jpg: 404
+[832/1145] ↓ Downloading: 13743671_1244596532225195_1662383538_n.jpg
+[832/1145] ✗ Failed: 13743671_1244596532225195_1662383538_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/13743671_1244596532225195_1662383538_n.jpg: 404
+[833/1145] ↓ Downloading: 13712107_172686296483865_118103562_n.jpg
+[833/1145] ✗ Failed: 13712107_172686296483865_118103562_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/13712107_172686296483865_118103562_n.jpg: 404
+[834/1145] ↓ Downloading: 13712107_172686296483865_118103562_n.jpg
+[834/1145] ✗ Failed: 13712107_172686296483865_118103562_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13712107_172686296483865_118103562_n.jpg: 404
+[835/1145] ↓ Downloading: 13696713_1638303086497719_14548517_n1.jpg
+[835/1145] ✗ Failed: 13696713_1638303086497719_14548517_n1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13696713_1638303086497719_14548517_n1.jpg: 404
+[836/1145] ↓ Downloading: 13696713_1638303086497719_14548517_n.jpg
+[836/1145] ✗ Failed: 13696713_1638303086497719_14548517_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13696713_1638303086497719_14548517_n.jpg: 404
+[837/1145] ↓ Downloading: 13739526_1567577710210213_1321294459_n1.jpg
+[837/1145] ✗ Failed: 13739526_1567577710210213_1321294459_n1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13739526_1567577710210213_1321294459_n1.jpg: 404
+[838/1145] ↓ Downloading: 13739526_1567577710210213_1321294459_n.jpg
+[838/1145] ✗ Failed: 13739526_1567577710210213_1321294459_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13739526_1567577710210213_1321294459_n.jpg: 404
+[839/1145] ↓ Downloading: 13628191_1636275476685881_1590558535_n.jpg
+[839/1145] ✗ Failed: 13628191_1636275476685881_1590558535_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/13628191_1636275476685881_1590558535_n.jpg: 404
+[840/1145] ↓ Downloading: 13725522_533219980203681_124449801_n.jpg
+[840/1145] ✗ Failed: 13725522_533219980203681_124449801_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13725522_533219980203681_124449801_n.jpg: 404
+[841/1145] ↺ Already exists — skipping: 13736896_157746124648586_1487486477_n.jpg
+[842/1145] ↺ Already exists — skipping: 13736896_157746124648586_1487486477_n.jpg
+[843/1145] ↓ Downloading: 13744110_1569184556721392_2035584325_n1.jpg
+[843/1145] ✗ Failed: 13744110_1569184556721392_2035584325_n1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13744110_1569184556721392_2035584325_n1.jpg: 404
+[844/1145] ↓ Downloading: 13744110_1569184556721392_2035584325_n.jpg
+[844/1145] ✗ Failed: 13744110_1569184556721392_2035584325_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13744110_1569184556721392_2035584325_n.jpg: 404
+[845/1145] ↓ Downloading: 13745117_898376513601048_2099750215_n1.jpg
+[845/1145] ✗ Failed: 13745117_898376513601048_2099750215_n1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13745117_898376513601048_2099750215_n1.jpg: 404
+[846/1145] ↓ Downloading: 13745117_898376513601048_2099750215_n.jpg
+[846/1145] ✗ Failed: 13745117_898376513601048_2099750215_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13745117_898376513601048_2099750215_n.jpg: 404
+[847/1145] ↓ Downloading: 13652174_1725259041024971_808847486_n1.jpg
+[847/1145] ✗ Failed: 13652174_1725259041024971_808847486_n1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13652174_1725259041024971_808847486_n1.jpg: 404
+[848/1145] ↓ Downloading: 13652174_1725259041024971_808847486_n.jpg
+[848/1145] ✗ Failed: 13652174_1725259041024971_808847486_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/13652174_1725259041024971_808847486_n.jpg: 404
+[849/1145] ↓ Downloading: 13652174_1725259041024971_808847486_n.jpg
+[849/1145] ✗ Failed: 13652174_1725259041024971_808847486_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13652174_1725259041024971_808847486_n.jpg: 404
+[850/1145] ↓ Downloading: 13704162_825366160931361_1554915316_n.jpg
+[850/1145] ✗ Failed: 13704162_825366160931361_1554915316_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13704162_825366160931361_1554915316_n.jpg: 404
+[851/1145] ↓ Downloading: 13715081_154988101591381_432936776_n.jpg
+[851/1145] ✗ Failed: 13715081_154988101591381_432936776_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13715081_154988101591381_432936776_n.jpg: 404
+[852/1145] ↓ Downloading: 13744230_525943110948898_494366948_n.jpg
+[852/1145] ✗ Failed: 13744230_525943110948898_494366948_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13744230_525943110948898_494366948_n.jpg: 404
+[853/1145] ↓ Downloading: 13744230_525943110948898_494366948_n.jpg
+[853/1145] ✗ Failed: 13744230_525943110948898_494366948_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13744230_525943110948898_494366948_n.jpg: 404
+[854/1145] ↓ Downloading: 13734490_1216123101740564_1076835717_n1.jpg
+[854/1145] ✗ Failed: 13734490_1216123101740564_1076835717_n1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13734490_1216123101740564_1076835717_n1.jpg: 404
+[855/1145] ↓ Downloading: 13734490_1216123101740564_1076835717_n.jpg
+[855/1145] ✗ Failed: 13734490_1216123101740564_1076835717_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13734490_1216123101740564_1076835717_n.jpg: 404
+[856/1145] ↓ Downloading: 13712526_1419085678107856_383961789_n.jpg
+[856/1145] ✗ Failed: 13712526_1419085678107856_383961789_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13712526_1419085678107856_383961789_n.jpg: 404
+[857/1145] ↓ Downloading: 13712526_1419085678107856_383961789_n.jpg
+[857/1145] ✗ Failed: 13712526_1419085678107856_383961789_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/13712526_1419085678107856_383961789_n.jpg: 404
+[858/1145] ↓ Downloading: 13741432_534694906714441_1058295232_n2.jpg
+[858/1145] ✗ Failed: 13741432_534694906714441_1058295232_n2.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13741432_534694906714441_1058295232_n2.jpg: 404
+[859/1145] ↓ Downloading: 13741432_534694906714441_1058295232_n1.jpg
+[859/1145] ✗ Failed: 13741432_534694906714441_1058295232_n1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13741432_534694906714441_1058295232_n1.jpg: 404
+[860/1145] ↓ Downloading: 13741432_534694906714441_1058295232_n.jpg
+[860/1145] ✗ Failed: 13741432_534694906714441_1058295232_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13741432_534694906714441_1058295232_n.jpg: 404
+[861/1145] ↓ Downloading: 13744038_799636183506043_1869894686_n.jpg
+[861/1145] ✗ Failed: 13744038_799636183506043_1869894686_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13744038_799636183506043_1869894686_n.jpg: 404
+[862/1145] ↓ Downloading: 13704119_1638191919831598_962860966_n.jpg
+[862/1145] ✗ Failed: 13704119_1638191919831598_962860966_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/04/13704119_1638191919831598_962860966_n.jpg: 404
+[863/1145] ↓ Downloading: 13745213_883825275077864_816055648_n.jpg
+[863/1145] ✗ Failed: 13745213_883825275077864_816055648_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13745213_883825275077864_816055648_n.jpg: 404
+[864/1145] ↓ Downloading: 13702966_1726918044242162_626030084_n1.jpg
+[864/1145] ✗ Failed: 13702966_1726918044242162_626030084_n1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13702966_1726918044242162_626030084_n1.jpg: 404
+[865/1145] ↓ Downloading: 13702966_1726918044242162_626030084_n.jpg
+[865/1145] ✗ Failed: 13702966_1726918044242162_626030084_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13702966_1726918044242162_626030084_n.jpg: 404
+[866/1145] ↓ Downloading: 13702964_1772249319678553_2002888967_n.jpg
+[866/1145] ✗ Failed: 13702964_1772249319678553_2002888967_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13702964_1772249319678553_2002888967_n.jpg: 404
+[867/1145] ↓ Downloading: 13767663_920945051349820_1071352337_n1.jpg
+[867/1145] ✗ Failed: 13767663_920945051349820_1071352337_n1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13767663_920945051349820_1071352337_n1.jpg: 404
+[868/1145] ↓ Downloading: 13767663_920945051349820_1071352337_n.jpg
+[868/1145] ✗ Failed: 13767663_920945051349820_1071352337_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/04/13767663_920945051349820_1071352337_n.jpg: 404
+[869/1145] ↓ Downloading: 13767663_920945051349820_1071352337_n.jpg
+[869/1145] ✗ Failed: 13767663_920945051349820_1071352337_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13767663_920945051349820_1071352337_n.jpg: 404
+[870/1145] ↓ Downloading: 13731386_276854629344634_1108039339_n1.jpg
+[870/1145] ✗ Failed: 13731386_276854629344634_1108039339_n1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13731386_276854629344634_1108039339_n1.jpg: 404
+[871/1145] ↓ Downloading: 13731386_276854629344634_1108039339_n.jpg
+[871/1145] ✗ Failed: 13731386_276854629344634_1108039339_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13731386_276854629344634_1108039339_n.jpg: 404
+[872/1145] ↓ Downloading: 13732126_1256256931081720_586624601_n.jpg
+[872/1145] ✗ Failed: 13732126_1256256931081720_586624601_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/03/13732126_1256256931081720_586624601_n.jpg: 404
+[873/1145] ↓ Downloading: 13732126_1256256931081720_586624601_n1.jpg
+[873/1145] ✗ Failed: 13732126_1256256931081720_586624601_n1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13732126_1256256931081720_586624601_n1.jpg: 404
+[874/1145] ↓ Downloading: 13732126_1256256931081720_586624601_n.jpg
+[874/1145] ✗ Failed: 13732126_1256256931081720_586624601_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13732126_1256256931081720_586624601_n.jpg: 404
+[875/1145] ↓ Downloading: 13735835_1100596843327186_1948419135_n.jpg
+[875/1145] ✗ Failed: 13735835_1100596843327186_1948419135_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/04/13735835_1100596843327186_1948419135_n.jpg: 404
+[876/1145] ↓ Downloading: 13636031_262730874112586_820191540_n1.jpg
+[876/1145] ✗ Failed: 13636031_262730874112586_820191540_n1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13636031_262730874112586_820191540_n1.jpg: 404
+[877/1145] ↓ Downloading: 13636031_262730874112586_820191540_n.jpg
+[877/1145] ✗ Failed: 13636031_262730874112586_820191540_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13636031_262730874112586_820191540_n.jpg: 404
+[878/1145] ↓ Downloading: 13721225_150235428736889_432756125_n1.jpg
+[878/1145] ✗ Failed: 13721225_150235428736889_432756125_n1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13721225_150235428736889_432756125_n1.jpg: 404
+[879/1145] ↓ Downloading: 13721225_150235428736889_432756125_n.jpg
+[879/1145] ✗ Failed: 13721225_150235428736889_432756125_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13721225_150235428736889_432756125_n.jpg: 404
+[880/1145] ↓ Downloading: 13827186_1785165041728632_922074921_n2.jpg
+[880/1145] ✗ Failed: 13827186_1785165041728632_922074921_n2.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13827186_1785165041728632_922074921_n2.jpg: 404
+[881/1145] ↓ Downloading: 13827186_1785165041728632_922074921_n1.jpg
+[881/1145] ✗ Failed: 13827186_1785165041728632_922074921_n1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13827186_1785165041728632_922074921_n1.jpg: 404
+[882/1145] ↓ Downloading: 13827186_1785165041728632_922074921_n.jpg
+[882/1145] ✗ Failed: 13827186_1785165041728632_922074921_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13827186_1785165041728632_922074921_n.jpg: 404
+[883/1145] ↺ Already exists — skipping: 13768116_1585165758444514_600239043_n.jpg
+[884/1145] ↺ Already exists — skipping: 13768116_1585165758444514_600239043_n.jpg
+[885/1145] ↺ Already exists — skipping: 13768116_1585165758444514_600239043_n.jpg
+[886/1145] ↓ Downloading: 13774300_273306236369954_793116853_n.jpg
+[886/1145] ✗ Failed: 13774300_273306236369954_793116853_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13774300_273306236369954_793116853_n.jpg: 404
+[887/1145] ↓ Downloading: 13774300_273306236369954_793116853_n.jpg
+[887/1145] ✗ Failed: 13774300_273306236369954_793116853_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/13774300_273306236369954_793116853_n.jpg: 404
+[888/1145] ↓ Downloading: 13696880_1669603783363867_2219342_n.jpg
+[888/1145] ✗ Failed: 13696880_1669603783363867_2219342_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13696880_1669603783363867_2219342_n.jpg: 404
+[889/1145] ↓ Downloading: 13694588_574309942748305_913481230_n.jpg
+[889/1145] ✗ Failed: 13694588_574309942748305_913481230_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13694588_574309942748305_913481230_n.jpg: 404
+[890/1145] ↓ Downloading: 13743399_1557213344588534_1393768096_n.jpg
+[890/1145] ✗ Failed: 13743399_1557213344588534_1393768096_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13743399_1557213344588534_1393768096_n.jpg: 404
+[891/1145] ↓ Downloading: 13743399_1557213344588534_1393768096_n.jpg
+[891/1145] ✗ Failed: 13743399_1557213344588534_1393768096_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/13743399_1557213344588534_1393768096_n.jpg: 404
+[892/1145] ↓ Downloading: 13731343_1168645346526986_618787364_n.jpg
+[892/1145] ✗ Failed: 13731343_1168645346526986_618787364_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/13731343_1168645346526986_618787364_n.jpg: 404
+[893/1145] ↓ Downloading: 13732067_828441483955537_1806138689_n.jpg
+[893/1145] ✗ Failed: 13732067_828441483955537_1806138689_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/13732067_828441483955537_1806138689_n.jpg: 404
+[894/1145] ↓ Downloading: 13706839_1179237118807675_2107101596_n.jpg
+[894/1145] ✗ Failed: 13706839_1179237118807675_2107101596_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/13706839_1179237118807675_2107101596_n.jpg: 404
+[895/1145] ↓ Downloading: 13707381_558880754318973_367737275_n1.jpg
+[895/1145] ✗ Failed: 13707381_558880754318973_367737275_n1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13707381_558880754318973_367737275_n1.jpg: 404
+[896/1145] ↓ Downloading: 13707381_558880754318973_367737275_n.jpg
+[896/1145] ✗ Failed: 13707381_558880754318973_367737275_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/04/13707381_558880754318973_367737275_n.jpg: 404
+[897/1145] ↓ Downloading: 13707381_558880754318973_367737275_n.jpg
+[897/1145] ✗ Failed: 13707381_558880754318973_367737275_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13707381_558880754318973_367737275_n.jpg: 404
+[898/1145] ↓ Downloading: 13741348_652922938193397_1718903218_n1.jpg
+[898/1145] ✗ Failed: 13741348_652922938193397_1718903218_n1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13741348_652922938193397_1718903218_n1.jpg: 404
+[899/1145] ↓ Downloading: 13741348_652922938193397_1718903218_n.jpg
+[899/1145] ✗ Failed: 13741348_652922938193397_1718903218_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13741348_652922938193397_1718903218_n.jpg: 404
+[900/1145] ↓ Downloading: 13737056_140548089711438_1257596874_n.jpg
+[900/1145] ✗ Failed: 13737056_140548089711438_1257596874_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13737056_140548089711438_1257596874_n.jpg: 404
+[901/1145] ↓ Downloading: 13724627_1026823774100040_278069773_n1.jpg
+[901/1145] ✗ Failed: 13724627_1026823774100040_278069773_n1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13724627_1026823774100040_278069773_n1.jpg: 404
+[902/1145] ↓ Downloading: 13724627_1026823774100040_278069773_n.jpg
+[902/1145] ✗ Failed: 13724627_1026823774100040_278069773_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13724627_1026823774100040_278069773_n.jpg: 404
+[903/1145] ↺ Already exists — skipping: 13704281_256186738099583_277682581_n.jpg
+[904/1145] ↺ Already exists — skipping: 13704281_256186738099583_277682581_n.jpg
+[905/1145] ↓ Downloading: 13768088_1712557502327483_1873440801_n1.jpg
+[905/1145] ✗ Failed: 13768088_1712557502327483_1873440801_n1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13768088_1712557502327483_1873440801_n1.jpg: 404
+[906/1145] ↓ Downloading: 13768088_1712557502327483_1873440801_n.jpg
+[906/1145] ✗ Failed: 13768088_1712557502327483_1873440801_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13768088_1712557502327483_1873440801_n.jpg: 404
+[907/1145] ↓ Downloading: 13768088_1712557502327483_1873440801_n.jpg
+[907/1145] ✗ Failed: 13768088_1712557502327483_1873440801_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13768088_1712557502327483_1873440801_n.jpg: 404
+[908/1145] ↓ Downloading: 13696417_816896891744796_542358591_n.jpg
+[908/1145] ✗ Failed: 13696417_816896891744796_542358591_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13696417_816896891744796_542358591_n.jpg: 404
+[909/1145] ↓ Downloading: 13827426_1072065786205457_361334556_n1.jpg
+[909/1145] ✗ Failed: 13827426_1072065786205457_361334556_n1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13827426_1072065786205457_361334556_n1.jpg: 404
+[910/1145] ↓ Downloading: 13827426_1072065786205457_361334556_n.jpg
+[910/1145] ✗ Failed: 13827426_1072065786205457_361334556_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13827426_1072065786205457_361334556_n.jpg: 404
+[911/1145] ↓ Downloading: 13731096_1891469357746999_748185597_n1.jpg
+[911/1145] ✗ Failed: 13731096_1891469357746999_748185597_n1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13731096_1891469357746999_748185597_n1.jpg: 404
+[912/1145] ↓ Downloading: 13731096_1891469357746999_748185597_n.jpg
+[912/1145] ✗ Failed: 13731096_1891469357746999_748185597_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/13731096_1891469357746999_748185597_n.jpg: 404
+[913/1145] ↓ Downloading: 13731096_1891469357746999_748185597_n.jpg
+[913/1145] ✗ Failed: 13731096_1891469357746999_748185597_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13731096_1891469357746999_748185597_n.jpg: 404
+[914/1145] ↓ Downloading: 13741034_1621335484844538_2004876224_n.jpg
+[914/1145] ✗ Failed: 13741034_1621335484844538_2004876224_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13741034_1621335484844538_2004876224_n.jpg: 404
+[915/1145] ↓ Downloading: 13741034_1621335484844538_2004876224_n.jpg
+[915/1145] ✗ Failed: 13741034_1621335484844538_2004876224_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/04/13741034_1621335484844538_2004876224_n.jpg: 404
+[916/1145] ↓ Downloading: 13734384_860340677432942_1529304849_n1.jpg
+[916/1145] ✗ Failed: 13734384_860340677432942_1529304849_n1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13734384_860340677432942_1529304849_n1.jpg: 404
+[917/1145] ↓ Downloading: 13734384_860340677432942_1529304849_n.jpg
+[917/1145] ✗ Failed: 13734384_860340677432942_1529304849_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13734384_860340677432942_1529304849_n.jpg: 404
+[918/1145] ↓ Downloading: 13745182_171788886559979_2043965844_n1.jpg
+[918/1145] ✗ Failed: 13745182_171788886559979_2043965844_n1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13745182_171788886559979_2043965844_n1.jpg: 404
+[919/1145] ↓ Downloading: 13745182_171788886559979_2043965844_n.jpg
+[919/1145] ✗ Failed: 13745182_171788886559979_2043965844_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/04/13745182_171788886559979_2043965844_n.jpg: 404
+[920/1145] ↓ Downloading: 13745182_171788886559979_2043965844_n.jpg
+[920/1145] ✗ Failed: 13745182_171788886559979_2043965844_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13745182_171788886559979_2043965844_n.jpg: 404
+[921/1145] ↓ Downloading: 13715148_1763985597181547_734876240_n.jpg
+[921/1145] ✗ Failed: 13715148_1763985597181547_734876240_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/13715148_1763985597181547_734876240_n.jpg: 404
+[922/1145] ↓ Downloading: 13715148_1763985597181547_734876240_n.jpg
+[922/1145] ✗ Failed: 13715148_1763985597181547_734876240_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13715148_1763985597181547_734876240_n.jpg: 404
+[923/1145] ↓ Downloading: 13743460_1803679896527069_1529215810_n.jpg
+[923/1145] ✗ Failed: 13743460_1803679896527069_1529215810_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13743460_1803679896527069_1529215810_n.jpg: 404
+[924/1145] ↓ Downloading: 13696813_516616331874211_1316927352_n1.jpg
+[924/1145] ✗ Failed: 13696813_516616331874211_1316927352_n1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13696813_516616331874211_1316927352_n1.jpg: 404
+[925/1145] ↓ Downloading: 13696813_516616331874211_1316927352_n.jpg
+[925/1145] ✗ Failed: 13696813_516616331874211_1316927352_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13696813_516616331874211_1316927352_n.jpg: 404
+[926/1145] ↓ Downloading: 13696533_152029925222444_1209077154_n1.jpg
+[926/1145] ✗ Failed: 13696533_152029925222444_1209077154_n1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13696533_152029925222444_1209077154_n1.jpg: 404
+[927/1145] ↓ Downloading: 13696533_152029925222444_1209077154_n.jpg
+[927/1145] ✗ Failed: 13696533_152029925222444_1209077154_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/04/13696533_152029925222444_1209077154_n.jpg: 404
+[928/1145] ↓ Downloading: 13696533_152029925222444_1209077154_n.jpg
+[928/1145] ✗ Failed: 13696533_152029925222444_1209077154_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13696533_152029925222444_1209077154_n.jpg: 404
+[929/1145] ↓ Downloading: 13724562_103022813473807_1647012023_n.jpg
+[929/1145] ✗ Failed: 13724562_103022813473807_1647012023_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13724562_103022813473807_1647012023_n.jpg: 404
+[930/1145] ↓ Downloading: 13724562_103022813473807_1647012023_n.jpg
+[930/1145] ✗ Failed: 13724562_103022813473807_1647012023_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/13724562_103022813473807_1647012023_n.jpg: 404
+[931/1145] ↓ Downloading: with-new-logos.jpg
+[931/1145] ✗ Failed: with-new-logos.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/06/with-new-logos.jpg: 404
+[932/1145] ↓ Downloading: 2016-PPN-Sponsors-Banner-8x3-page-web.jpg
+[932/1145] ✗ Failed: 2016-PPN-Sponsors-Banner-8x3-page-web.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/06/2016-PPN-Sponsors-Banner-8x3-page-web.jpg: 404
+[933/1145] ↓ Downloading: 2016-PPN-Sponsors-Banner-8x3-page-0011.jpg
+[933/1145] ✗ Failed: 2016-PPN-Sponsors-Banner-8x3-page-0011.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/06/2016-PPN-Sponsors-Banner-8x3-page-0011.jpg: 404
+[934/1145] ↓ Downloading: 2016-PPN-Sponsors-Banner-8x3-page-001.jpg
+[934/1145] ✗ Failed: 2016-PPN-Sponsors-Banner-8x3-page-001.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/06/2016-PPN-Sponsors-Banner-8x3-page-001.jpg: 404
+[935/1145] ↓ Downloading: 13732248_550088298510974_473659139_n.jpg
+[935/1145] ✗ Failed: 13732248_550088298510974_473659139_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13732248_550088298510974_473659139_n.jpg: 404
+[936/1145] ↺ Already exists — skipping: Lineup2016_transzplant.png
+[937/1145] ↓ Downloading: 13739532_316429722029595_984219798_n2.jpg
+[937/1145] ✗ Failed: 13739532_316429722029595_984219798_n2.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13739532_316429722029595_984219798_n2.jpg: 404
+[938/1145] ↓ Downloading: 13739532_316429722029595_984219798_n1.jpg
+[938/1145] ✗ Failed: 13739532_316429722029595_984219798_n1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13739532_316429722029595_984219798_n1.jpg: 404
+[939/1145] ↓ Downloading: 13739532_316429722029595_984219798_n.jpg
+[939/1145] ✗ Failed: 13739532_316429722029595_984219798_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13739532_316429722029595_984219798_n.jpg: 404
+[940/1145] ↓ Downloading: 13597647_1275940795750739_1300426411_n.jpg
+[940/1145] ✗ Failed: 13597647_1275940795750739_1300426411_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13597647_1275940795750739_1300426411_n.jpg: 404
+[941/1145] ↓ Downloading: 13696460_1327088227319845_1547587901_n.jpg
+[941/1145] ✗ Failed: 13696460_1327088227319845_1547587901_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13696460_1327088227319845_1547587901_n.jpg: 404
+[942/1145] ↓ Downloading: 13704122_1619671025028525_1160200516_n.jpg
+[942/1145] ✗ Failed: 13704122_1619671025028525_1160200516_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13704122_1619671025028525_1160200516_n.jpg: 404
+[943/1145] ↓ Downloading: 13768139_1027917033912155_436095974_n.jpg
+[943/1145] ✗ Failed: 13768139_1027917033912155_436095974_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13768139_1027917033912155_436095974_n.jpg: 404
+[944/1145] ↓ Downloading: 13731180_1049889365101948_6953969_n.jpg
+[944/1145] ✗ Failed: 13731180_1049889365101948_6953969_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/07/13731180_1049889365101948_6953969_n.jpg: 404
+[945/1145] ↺ Already exists — skipping: Screen-Shot-2016-07-21-at-10.31.27-AM.png
+[946/1145] ↓ Downloading: 2016-Schedule-2-stages-outside.html
+[22:40:51] [31mERROR[39m: [36mFile type 'text/html' not allowed 2016-Schedule-2-stages-outside.html: Restricted file type detected -- set 'allowRestrictedFileTypes' to true to skip this check for this Collection.[39m
+[946/1145] ✗ Failed: 2016-Schedule-2-stages-outside.html — The following field is invalid: file
+[947/1145] ↓ Downloading: PPN-2016-Festival-Poster_final.jpg
+[947/1145] ✗ Failed: PPN-2016-Festival-Poster_final.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/06/PPN-2016-Festival-Poster_final.jpg: 404
+[948/1145] ↓ Downloading: media-banner-final.png
+[948/1145] ✗ Failed: media-banner-final.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/06/media-banner-final.png: 404
+[949/1145] ↓ Downloading: 1466099480-ppn_2016_festival_poster.jpg
+[949/1145] ✗ Failed: 1466099480-ppn_2016_festival_poster.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/06/1466099480-ppn_2016_festival_poster.jpg: 404
+[950/1145] ↓ Downloading: cover-1.jpeg
+[950/1145] ✗ Failed: cover-1.jpeg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/06/cover-1.jpeg: 404
+[951/1145] ↓ Downloading: Comp-Release-Poster-2016-FINAL1.jpg
+[951/1145] ✗ Failed: Comp-Release-Poster-2016-FINAL1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/06/Comp-Release-Poster-2016-FINAL1.jpg: 404
+[952/1145] ↓ Downloading: Comp-Release-Poster-2016-FINAL.jpg
+[952/1145] ✗ Failed: Comp-Release-Poster-2016-FINAL.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/06/Comp-Release-Poster-2016-FINAL.jpg: 404
+[953/1145] ↓ Downloading: withkulululu.jpg
+[953/1145] ✗ Failed: withkulululu.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/06/withkulululu.jpg: 404
+[954/1145] ↓ Downloading: header-final.jpg
+[954/1145] ✗ Failed: header-final.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/06/header-final.jpg: 404
+[955/1145] ↓ Downloading: Listening-Comm-Button.png
+[955/1145] ✗ Failed: Listening-Comm-Button.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/06/Listening-Comm-Button.png: 404
+[956/1145] ↓ Downloading: main-image-isolated-02.png
+[956/1145] ✗ Failed: main-image-isolated-02.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/03/main-image-isolated-02.png: 404
+[957/1145] ↓ Downloading: Centered2.png
+[957/1145] ✗ Failed: Centered2.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/06/Centered2.png: 404
+[958/1145] ↓ Downloading: Centered1.png
+[958/1145] ✗ Failed: Centered1.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/06/Centered1.png: 404
+[959/1145] ↓ Downloading: Centered-e1452646819727.png
+[959/1145] ✗ Failed: Centered-e1452646819727.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/06/Centered-e1452646819727.png: 404
+[960/1145] ↺ Already exists — skipping: favicon2016.png
+[961/1145] ↺ Already exists — skipping: PPN_Logo_2016.png
+[962/1145] ↓ Downloading: Thank-you.jpg
+[962/1145] ✗ Failed: Thank-you.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/06/Thank-you.jpg: 404
+[963/1145] ↓ Downloading: Capture.jpg
+[963/1145] ✗ Failed: Capture.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/06/Capture.jpg: 404
+[964/1145] ↓ Downloading: 12-YEAR-header.png
+[964/1145] ✗ Failed: 12-YEAR-header.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/06/12-YEAR-header.png: 404
+[965/1145] ↓ Downloading: PDX-Pop-album-2008.jpg
+[965/1145] ✗ Failed: PDX-Pop-album-2008.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/03/PDX-Pop-album-2008.jpg: 404
+[966/1145] ↺ Already exists — skipping: pdxpopnow2009.jpg
+[967/1145] ↓ Downloading: 2010-Carson-Ellis.jpg
+[967/1145] ✗ Failed: 2010-Carson-Ellis.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/03/2010-Carson-Ellis.jpg: 404
+[968/1145] ↺ Already exists — skipping: Cravedog-Logo.gif
+[969/1145] ↺ Already exists — skipping: Cravedog-Logo.pdf
+[970/1145] ↺ Already exists — skipping: ksk-press-pic.jpg
+[971/1145] ↓ Downloading: Artwork-Small.jpg
+[971/1145] ✗ Failed: Artwork-Small.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/03/Artwork-Small.jpg: 404
+[972/1145] ↓ Downloading: FINAL.jpg
+[972/1145] ✗ Failed: FINAL.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/03/FINAL.jpg: 404
+[973/1145] ↓ Downloading: PDXPOPNOW_GIF2_FINAL_LOW.gif
+[973/1145] ✗ Failed: PDXPOPNOW_GIF2_FINAL_LOW.gif — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/03/PDXPOPNOW_GIF2_FINAL_LOW.gif: 404
+[974/1145] ↺ Already exists — skipping: fb_butt1.png
+[975/1145] ↺ Already exists — skipping: pdxpopnow2014compilation.jpg
+[976/1145] ↺ Already exists — skipping: fb_butt.png
+[977/1145] ↺ Already exists — skipping: marquee1.png
+[978/1145] ↺ Already exists — skipping: car2go-logo.jpg
+[979/1145] ↺ Already exists — skipping: PPN-Give-Guide-2014_alt.png
+[980/1145] ↺ Already exists — skipping: PDXPOP_BANNER_FINAL.png
+[981/1145] ↺ Already exists — skipping: header.png
+[982/1145] ↺ Already exists — skipping: colethumb.jpg
+[983/1145] ↺ Already exists — skipping: PDX_pop_now-3.jpg
+[984/1145] ↺ Already exists — skipping: adidas-logo.jpg
+[985/1145] ↺ Already exists — skipping: WERESQUATCH.jpg
+[986/1145] ↓ Downloading: VINNIE DEWAYNE.jpg
+[986/1145] ✗ Failed: VINNIE DEWAYNE.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/2015_BAND_IMG/VINNIE DEWAYNE.jpg: 404
+[987/1145] ↓ Downloading: VICE DEVICE.jpg
+[987/1145] ✗ Failed: VICE DEVICE.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/2015_BAND_IMG/VICE DEVICE.jpg: 404
+[988/1145] ↓ Downloading: THE STOPS.png
+[988/1145] ✗ Failed: THE STOPS.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/2015_BAND_IMG/THE STOPS.png: 404
+[989/1145] ↓ Downloading: THE SHIVAS.jpg
+[989/1145] ✗ Failed: THE SHIVAS.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/2015_BAND_IMG/THE SHIVAS.jpg: 404
+[990/1145] ↓ Downloading: THE LOWER48.jpg
+[990/1145] ✗ Failed: THE LOWER48.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/2015_BAND_IMG/THE LOWER48.jpg: 404
+[991/1145] ↓ Downloading: THE LASTARTFUL DOGER.jpg
+[991/1145] ✗ Failed: THE LASTARTFUL DOGER.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/2015_BAND_IMG/THE LASTARTFUL DOGER.jpg: 404
+[992/1145] ↓ Downloading: THE DOMESTICS.jpg
+[992/1145] ✗ Failed: THE DOMESTICS.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/2015_BAND_IMG/THE DOMESTICS.jpg: 404
+[993/1145] ↺ Already exists — skipping: TALKATIVE.jpg
+[994/1145] ↓ Downloading: ROSELIT BONE.jpg
+[994/1145] ✗ Failed: ROSELIT BONE.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/2015_BAND_IMG/ROSELIT BONE.jpg: 404
+[995/1145] ↓ Downloading: RAP CLASS.jpg
+[995/1145] ✗ Failed: RAP CLASS.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/2015_BAND_IMG/RAP CLASS.jpg: 404
+[996/1145] ↓ Downloading: PHONE CALL.jpg
+[996/1145] ✗ Failed: PHONE CALL.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/2015_BAND_IMG/PHONE CALL.jpg: 404
+[997/1145] ↓ Downloading: NO KIND OF RIDER.jpg
+[997/1145] ✗ Failed: NO KIND OF RIDER.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/2015_BAND_IMG/NO KIND OF RIDER.jpg: 404
+[998/1145] ↓ Downloading: MUSCLE MARROW.jpg
+[998/1145] ✗ Failed: MUSCLE MARROW.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/2015_BAND_IMG/MUSCLE MARROW.jpg: 404
+[999/1145] ↓ Downloading: MOPE GROOVES.jpg
+[999/1145] ✗ Failed: MOPE GROOVES.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/2015_BAND_IMG/MOPE GROOVES.jpg: 404
+[1000/1145] ↓ Downloading: MOON BY YOU.jpg
+[1000/1145] ✗ Failed: MOON BY YOU.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/2015_BAND_IMG/MOON BY YOU.jpg: 404
+[1001/1145] ↓ Downloading: MODERN KIN.jpg
+[1001/1145] ✗ Failed: MODERN KIN.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/2015_BAND_IMG/MODERN KIN.jpg: 404
+[1002/1145] ↓ Downloading: MIC CRENSHAW.jpg
+[1002/1145] ✗ Failed: MIC CRENSHAW.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/2015_BAND_IMG/MIC CRENSHAW.jpg: 404
+[1003/1145] ↺ Already exists — skipping: MARRIAGE+CANCER.jpg
+[1004/1145] ↺ Already exists — skipping: LONGKNIFE.jpg
+[1005/1145] ↺ Already exists — skipping: LADYWOLF.jpg
+[1006/1145] ↓ Downloading: JACKSON BOONE.jpeg
+[1006/1145] ✗ Failed: JACKSON BOONE.jpeg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/2015_BAND_IMG/JACKSON BOONE.jpeg: 404
+[1007/1145] ↓ Downloading: HOT VICTORY.jpg
+[1007/1145] ✗ Failed: HOT VICTORY.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/2015_BAND_IMG/HOT VICTORY.jpg: 404
+[1008/1145] ↓ Downloading: HOLY GROVE.jpg
+[1008/1145] ✗ Failed: HOLY GROVE.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/2015_BAND_IMG/HOLY GROVE.jpg: 404
+[1009/1145] ↓ Downloading: HANDS IN.jpg
+[1009/1145] ✗ Failed: HANDS IN.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/2015_BAND_IMG/HANDS IN.jpg: 404
+[1010/1145] ↓ Downloading: GOLDEN HOUR.jpg
+[1010/1145] ✗ Failed: GOLDEN HOUR.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/2015_BAND_IMG/GOLDEN HOUR.jpg: 404
+[1011/1145] ↺ Already exists — skipping: DYNASTY.jpg
+[1012/1145] ↓ Downloading: DYLAN STARK.jpg
+[1012/1145] ✗ Failed: DYLAN STARK.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/2015_BAND_IMG/DYLAN STARK.jpg: 404
+[1013/1145] ↓ Downloading: DIRTY REVIVAL.jpg
+[1013/1145] ✗ Failed: DIRTY REVIVAL.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/2015_BAND_IMG/DIRTY REVIVAL.jpg: 404
+[1014/1145] ↓ Downloading: DAD ROCK.jpg
+[1014/1145] ✗ Failed: DAD ROCK.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/2015_BAND_IMG/DAD ROCK.jpg: 404
+[1015/1145] ↓ Downloading: COCO COLUMBIA.jpg
+[1015/1145] ✗ Failed: COCO COLUMBIA.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/2015_BAND_IMG/COCO COLUMBIA.jpg: 404
+[1016/1145] ↓ Downloading: CHANTI DARLING.jpg
+[1016/1145] ✗ Failed: CHANTI DARLING.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/2015_BAND_IMG/CHANTI DARLING.jpg: 404
+[1017/1145] ↓ Downloading: CATHERINE FEENY CHRIS JOHNEDIS.jpg
+[1017/1145] ✗ Failed: CATHERINE FEENY CHRIS JOHNEDIS.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/2015_BAND_IMG/CATHERINE FEENY CHRIS JOHNEDIS.jpg: 404
+[1018/1145] ↓ Downloading: BLUE  CRANES.jpg
+[1018/1145] ✗ Failed: BLUE  CRANES.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/2015_BAND_IMG/BLUE  CRANES.jpg: 404
+[1019/1145] ↺ Already exists — skipping: BLOSSUM.jpg
+[1020/1145] ↓ Downloading: BIG HAUNT.jpg
+[1020/1145] ✗ Failed: BIG HAUNT.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/2015_BAND_IMG/BIG HAUNT.jpg: 404
+[1021/1145] ↺ Already exists — skipping: BED.jpg
+[1022/1145] ↺ Already exists — skipping: BALTO.JPG
+[1023/1145] ↺ Already exists — skipping: AUTONOMICS.jpg
+[1024/1145] ↺ Already exists — skipping: ARBO.jpg
+[1025/1145] ↺ Already exists — skipping: APPENDIXES.jpg
+[1026/1145] ↓ Downloading: AMP BAND.jpg
+[1026/1145] ✗ Failed: AMP BAND.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/2015_BAND_IMG/AMP BAND.jpg: 404
+[1027/1145] ↓ Downloading: AMBER MOON.jpg
+[1027/1145] ✗ Failed: AMBER MOON.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/2015_BAND_IMG/AMBER MOON.jpg: 404
+[1028/1145] ↓ Downloading: 1939 ENSEMBLE.jpg
+[1028/1145] ✗ Failed: 1939 ENSEMBLE.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/2015_BAND_IMG/1939 ENSEMBLE.jpg: 404
+[1029/1145] ↓ Downloading: PPN-2015-Festival-Poster-FINAL.jpg
+[1029/1145] ✗ Failed: PPN-2015-Festival-Poster-FINAL.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/06/PPN-2015-Festival-Poster-FINAL.jpg: 404
+[1030/1145] ↓ Downloading: WW-Ad_PPN-Comp-2015-Final-JPEG.jpg
+[1030/1145] ✗ Failed: WW-Ad_PPN-Comp-2015-Final-JPEG.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/06/WW-Ad_PPN-Comp-2015-Final-JPEG.jpg: 404
+[1031/1145] ↓ Downloading: Ryanlogo1.jpg
+[1031/1145] ✗ Failed: Ryanlogo1.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/06/Ryanlogo1.jpg: 404
+[1032/1145] ↓ Downloading: Ryanlogo.jpg
+[1032/1145] ✗ Failed: Ryanlogo.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/06/Ryanlogo.jpg: 404
+[1033/1145] ↓ Downloading: GG2014.jpg
+[1033/1145] ✗ Failed: GG2014.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/06/GG2014.jpg: 404
+[1034/1145] ↓ Downloading: 236_25959555664_84_n.jpg
+[1034/1145] ✗ Failed: 236_25959555664_84_n.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/06/236_25959555664_84_n.jpg: 404
+[1035/1145] ↓ Downloading: PDXPOP_BIGBANNER.jpg
+[1035/1145] ✗ Failed: PDXPOP_BIGBANNER.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/01/PDXPOP_BIGBANNER.jpg: 404
+[1036/1145] ↓ Downloading: ppn_favicon.jpg
+[1036/1145] ✗ Failed: ppn_favicon.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2015/01/ppn_favicon.jpg: 404
+[1037/1145] ↓ Downloading: SquareGeneral.jpg
+[1037/1145] ✗ Failed: SquareGeneral.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/11/SquareGeneral.jpg: 404
+[1038/1145] ↓ Downloading: GiveGuideHeader.jpg
+[1038/1145] ✗ Failed: GiveGuideHeader.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/10/GiveGuideHeader.jpg: 404
+[1039/1145] ↺ Already exists — skipping: 10561024_1440674842874112_1401239842_s.jpg
+[1040/1145] ↺ Already exists — skipping: 10547355_797450290300404_1080210551_s.jpg
+[1041/1145] ↺ Already exists — skipping: 10535147_485278691608004_199772864_s.jpg
+[1042/1145] ↺ Already exists — skipping: 10561204_265925690274466_1144034572_s.jpg
+[1043/1145] ↺ Already exists — skipping: 10549651_739920982735835_1283050608_s.jpg
+[1044/1145] ↺ Already exists — skipping: 10540342_659283857480541_120532956_s.jpg
+[1045/1145] ↺ Already exists — skipping: 10561122_638946219536421_249984910_s.jpg
+[1046/1145] ↺ Already exists — skipping: 10514033_423057681170837_1204769527_s.jpg
+[1047/1145] ↺ Already exists — skipping: 891419_340584162733278_1312561344_s.jpg
+[1048/1145] ↺ Already exists — skipping: 926820_342120225936857_787483678_s.jpg
+[1049/1145] ↺ Already exists — skipping: 10514113_821236897910760_1199300062_s.jpg
+[1050/1145] ↺ Already exists — skipping: 10520282_1436329799982696_1485743925_s.jpg
+[1051/1145] ↺ Already exists — skipping: 10554247_684774671588295_507321147_s.jpg
+[1052/1145] ↺ Already exists — skipping: 10499179_555988151190978_1626997764_s.jpg
+[1053/1145] ↺ Already exists — skipping: 10517985_768960496501365_1497530462_s.jpg
+[1054/1145] ↺ Already exists — skipping: 10554109_256013377938786_1121889946_s.jpg
+[1055/1145] ↺ Already exists — skipping: 10413084_790481817681074_2042503835_s.jpg
+[1056/1145] ↺ Already exists — skipping: 926850_1438419606422614_1430514038_s.jpg
+[1057/1145] ↺ Already exists — skipping: 10554044_504193683060310_454197522_s.jpg
+[1058/1145] ↓ Downloading: lonesomebillies1201.png
+[1058/1145] ✗ Failed: lonesomebillies1201.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/lonesomebillies1201.png: 404
+[1059/1145] ↓ Downloading: handsin1201.jpg
+[1059/1145] ✗ Failed: handsin1201.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/handsin1201.jpg: 404
+[1060/1145] ↓ Downloading: handsin120.jpg
+[1060/1145] ✗ Failed: handsin120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/handsin120.jpg: 404
+[1061/1145] ↺ Already exists — skipping: 927119_1498361827048368_1756714839_s.jpg
+[1062/1145] ↓ Downloading: handsIn120.jpg
+[1062/1145] ✗ Failed: handsIn120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/handsIn120.jpg: 404
+[1063/1145] ↓ Downloading: marquee3.png
+[1063/1145] ✗ Failed: marquee3.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/marquee3.png: 404
+[1064/1145] ↓ Downloading: marquee2.png
+[1064/1145] ✗ Failed: marquee2.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/marquee2.png: 404
+[1065/1145] ↓ Downloading: marquee11.png
+[1065/1145] ✗ Failed: marquee11.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/marquee11.png: 404
+[1066/1145] ↺ Already exists — skipping: marquee1.png
+[1067/1145] ↓ Downloading: WP_Login_Logo.png
+[1067/1145] ✗ Failed: WP_Login_Logo.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/02/WP_Login_Logo.png: 404
+[1068/1145] ↺ Already exists — skipping: 10358369_635414916541955_342942771_s.jpg
+[1069/1145] ↺ Already exists — skipping: 10358369_635414916541955_342942771_s.jpg
+[1070/1145] ↺ Already exists — skipping: 10358218_825689564107802_455847394_s.jpg
+[1071/1145] ↺ Already exists — skipping: 10358218_825689564107802_455847394_s.jpg
+[1072/1145] ↺ Already exists — skipping: 928568_1420164861597458_805308099_s.jpg
+[1073/1145] ↺ Already exists — skipping: 928568_1420164861597458_805308099_s.jpg
+[1074/1145] ↺ Already exists — skipping: 10453926_661484817272316_1292184634_s.jpg
+[1075/1145] ↺ Already exists — skipping: 10453926_661484817272316_1292184634_s.jpg
+[1076/1145] ↺ Already exists — skipping: 10467963_614181238689656_1658905083_s.jpg
+[1077/1145] ↺ Already exists — skipping: 10467963_614181238689656_1658905083_s.jpg
+[1078/1145] ↺ Already exists — skipping: 926485_1503433203209814_1846007267_s.jpg
+[1079/1145] ↺ Already exists — skipping: 926485_1503433203209814_1846007267_s.jpg
+[1080/1145] ↺ Already exists — skipping: 10454052_677236895682563_837691347_s.jpg
+[1081/1145] ↺ Already exists — skipping: 10454052_677236895682563_837691347_s.jpg
+[1082/1145] ↺ Already exists — skipping: 10401624_1625483894342792_258668329_s.jpg
+[1083/1145] ↓ Downloading: landlines120.jpg
+[1083/1145] ✗ Failed: landlines120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/landlines120.jpg: 404
+[1084/1145] ↓ Downloading: snowblindtraveler1201.jpg
+[1084/1145] ✗ Failed: snowblindtraveler1201.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/snowblindtraveler1201.jpg: 404
+[1085/1145] ↓ Downloading: snowblindtraveler120.jpg
+[1085/1145] ✗ Failed: snowblindtraveler120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/snowblindtraveler120.jpg: 404
+[1086/1145] ↓ Downloading: mykebogan120.jpg
+[1086/1145] ✗ Failed: mykebogan120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/mykebogan120.jpg: 404
+[1087/1145] ↓ Downloading: furcoats120.jpg
+[1087/1145] ✗ Failed: furcoats120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/furcoats120.jpg: 404
+[1088/1145] ↓ Downloading: minden120.jpg
+[1088/1145] ✗ Failed: minden120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/minden120.jpg: 404
+[1089/1145] ↓ Downloading: thebugs120.jpg
+[1089/1145] ✗ Failed: thebugs120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/thebugs120.jpg: 404
+[1090/1145] ↓ Downloading: oldage120.jpg
+[1090/1145] ✗ Failed: oldage120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/oldage120.jpg: 404
+[1091/1145] ↓ Downloading: comaserfs120.jpg
+[1091/1145] ✗ Failed: comaserfs120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/comaserfs120.jpg: 404
+[1092/1145] ↓ Downloading: alameda1201.jpg
+[1092/1145] ✗ Failed: alameda1201.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/alameda1201.jpg: 404
+[1093/1145] ↓ Downloading: barrabrownquintet120.jpg
+[1093/1145] ✗ Failed: barrabrownquintet120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/barrabrownquintet120.jpg: 404
+[1094/1145] ↓ Downloading: blouse120.jpg
+[1094/1145] ✗ Failed: blouse120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/blouse120.jpg: 404
+[1095/1145] ↓ Downloading: brownishblack120.jpg
+[1095/1145] ✗ Failed: brownishblack120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/brownishblack120.jpg: 404
+[1096/1145] ↓ Downloading: cambrianexplosion120.jpg
+[1096/1145] ✗ Failed: cambrianexplosion120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/cambrianexplosion120.jpg: 404
+[1097/1145] ↓ Downloading: etbonz120.jpg
+[1097/1145] ✗ Failed: etbonz120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/etbonz120.jpg: 404
+[1098/1145] ↓ Downloading: eyelids120.jpg
+[1098/1145] ✗ Failed: eyelids120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/eyelids120.jpg: 404
+[1099/1145] ↓ Downloading: fringeclass120.jpg
+[1099/1145] ✗ Failed: fringeclass120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/fringeclass120.jpg: 404
+[1100/1145] ↓ Downloading: gulls120.jpg
+[1100/1145] ✗ Failed: gulls120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/gulls120.jpg: 404
+[1101/1145] ↓ Downloading: grandparents120.jpg
+[1101/1145] ✗ Failed: grandparents120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/grandparents120.jpg: 404
+[1102/1145] ↓ Downloading: hustleanddrone120.jpg
+[1102/1145] ✗ Failed: hustleanddrone120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/hustleanddrone120.jpg: 404
+[1103/1145] ↓ Downloading: lonesomebillies120.png
+[1103/1145] ✗ Failed: lonesomebillies120.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/lonesomebillies120.png: 404
+[1104/1145] ↓ Downloading: lunch120.jpg
+[1104/1145] ✗ Failed: lunch120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/lunch120.jpg: 404
+[1105/1145] ↓ Downloading: orquestrapacificotropical120.jpg
+[1105/1145] ✗ Failed: orquestrapacificotropical120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/orquestrapacificotropical120.jpg: 404
+[1106/1145] ↓ Downloading: phillipgrass120.jpg
+[1106/1145] ✗ Failed: phillipgrass120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/phillipgrass120.jpg: 404
+[1107/1145] ↓ Downloading: psychomagic120.jpg
+[1107/1145] ✗ Failed: psychomagic120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/psychomagic120.jpg: 404
+[1108/1145] ↓ Downloading: pursecandy120.jpg
+[1108/1145] ✗ Failed: pursecandy120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/pursecandy120.jpg: 404
+[1109/1145] ↓ Downloading: riogrands120.jpg
+[1109/1145] ✗ Failed: riogrands120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/riogrands120.jpg: 404
+[1110/1145] ↓ Downloading: sadhorse120.jpg
+[1110/1145] ✗ Failed: sadhorse120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/sadhorse120.jpg: 404
+[1111/1145] ↓ Downloading: samadams120.jpg
+[1111/1145] ✗ Failed: samadams120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/samadams120.jpg: 404
+[1112/1145] ↓ Downloading: souvenirdriver120.jpg
+[1112/1145] ✗ Failed: souvenirdriver120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/souvenirdriver120.jpg: 404
+[1113/1145] ↓ Downloading: spellcaster120.jpg
+[1113/1145] ✗ Failed: spellcaster120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/spellcaster120.jpg: 404
+[1114/1145] ↓ Downloading: stewartvillian120.jpg
+[1114/1145] ✗ Failed: stewartvillian120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/stewartvillian120.jpg: 404
+[1115/1145] ↓ Downloading: summercannibals120.jpg
+[1115/1145] ✗ Failed: summercannibals120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/summercannibals120.jpg: 404
+[1116/1145] ↓ Downloading: tezetaband120.jpg
+[1116/1145] ✗ Failed: tezetaband120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/tezetaband120.jpg: 404
+[1117/1145] ↓ Downloading: thanks120.jpg
+[1117/1145] ✗ Failed: thanks120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/thanks120.jpg: 404
+[1118/1145] ↓ Downloading: thecry120.jpg
+[1118/1145] ✗ Failed: thecry120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/thecry120.jpg: 404
+[1119/1145] ↓ Downloading: theestranged120.png
+[1119/1145] ✗ Failed: theestranged120.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/theestranged120.png: 404
+[1120/1145] ↓ Downloading: theresistance120.jpg
+[1120/1145] ✗ Failed: theresistance120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/theresistance120.jpg: 404
+[1121/1145] ↓ Downloading: TreRedeau120.jpg
+[1121/1145] ✗ Failed: TreRedeau120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/TreRedeau120.jpg: 404
+[1122/1145] ↓ Downloading: usnea120.jpg
+[1122/1145] ✗ Failed: usnea120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/usnea120.jpg: 404
+[1123/1145] ↓ Downloading: vikeshkapoor120.jpg
+[1123/1145] ✗ Failed: vikeshkapoor120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/vikeshkapoor120.jpg: 404
+[1124/1145] ↓ Downloading: wampire120.jpg
+[1124/1145] ✗ Failed: wampire120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/wampire120.jpg: 404
+[1125/1145] ↓ Downloading: wmte120.jpg
+[1125/1145] ✗ Failed: wmte120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/wmte120.jpg: 404
+[1126/1145] ↓ Downloading: Wishyunu1201.jpg
+[1126/1145] ✗ Failed: Wishyunu1201.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/Wishyunu1201.jpg: 404
+[1127/1145] ↓ Downloading: zirakzigil.jpg
+[1127/1145] ✗ Failed: zirakzigil.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/zirakzigil.jpg: 404
+[1128/1145] ↓ Downloading: alameda120.jpg
+[1128/1145] ✗ Failed: alameda120.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/07/alameda120.jpg: 404
+[1129/1145] ↓ Downloading: rm_img.png
+[1129/1145] ✗ Failed: rm_img.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/04/rm_img.png: 404
+[1130/1145] ↓ Downloading: WP_Footer_Logo.png
+[1130/1145] ✗ Failed: WP_Footer_Logo.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/04/WP_Footer_Logo.png: 404
+[1131/1145] ↓ Downloading: WP_Login_Logo.png
+[1131/1145] ✗ Failed: WP_Login_Logo.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/04/WP_Login_Logo.png: 404
+[1132/1145] ↓ Downloading: 300x600_Web.png
+[1132/1145] ✗ Failed: 300x600_Web.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/04/300x600_Web.png: 404
+[1133/1145] ↓ Downloading: 300x200_Web.png
+[1133/1145] ✗ Failed: 300x200_Web.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/04/300x200_Web.png: 404
+[1134/1145] ↓ Downloading: 300x100_Web.png
+[1134/1145] ✗ Failed: 300x100_Web.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/04/300x100_Web.png: 404
+[1135/1145] ↓ Downloading: PDX-Pop-Poster24.png
+[1135/1145] ✗ Failed: PDX-Pop-Poster24.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/02/PDX-Pop-Poster24.png: 404
+[1136/1145] ↓ Downloading: PDX-Pop-Poster23.png
+[1136/1145] ✗ Failed: PDX-Pop-Poster23.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/02/PDX-Pop-Poster23.png: 404
+[1137/1145] ↓ Downloading: PDX-Pop-Poster22.png
+[1137/1145] ✗ Failed: PDX-Pop-Poster22.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/02/PDX-Pop-Poster22.png: 404
+[1138/1145] ↓ Downloading: PDX-Pop-Poster21.png
+[1138/1145] ✗ Failed: PDX-Pop-Poster21.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/02/PDX-Pop-Poster21.png: 404
+[1139/1145] ↓ Downloading: PDX-Pop-Poster2.png
+[1139/1145] ✗ Failed: PDX-Pop-Poster2.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/02/PDX-Pop-Poster2.png: 404
+[1140/1145] ↺ Already exists — skipping: Donate.png
+[1141/1145] ↓ Downloading: ppn2014background.png
+[1141/1145] ✗ Failed: ppn2014background.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/02/ppn2014background.png: 404
+[1142/1145] ↓ Downloading: pdxpopnowbackground.png
+[1142/1145] ✗ Failed: pdxpopnowbackground.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/02/pdxpopnowbackground.png: 404
+[1143/1145] ↓ Downloading: 2014_background.jpg
+[1143/1145] ✗ Failed: 2014_background.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/02/2014_background.jpg: 404
+[1144/1145] ↓ Downloading: ppn_favicon.jpg
+[1144/1145] ✗ Failed: ppn_favicon.jpg — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/02/ppn_favicon.jpg: 404
+[1145/1145] ↓ Downloading: headerimage.png
+[1145/1145] ✗ Failed: headerimage.png — Failed to download https://pdxpopnow.com/wp-content/uploads/2014/02/headerimage.png: 404
+
+--- Migration Summary ---
+✓ Success:  30
+↺ Skipped:  712
+✗ Failed:   403
+
+Failed files:
+  - DSC00700.png
+  - P-20140508-00023_HiRes-JPEG-24bit-RGB.jpg
+  - 2018_submission_fi.png
+  - outreach_featured_img.png
+  - board_featured_images.png
+  - info_featured_images.png
+  - volunteers_featured_images.png
+  - album_featured_images.png
+  - schedule_featured_img.png
+  - 20837123_459972994373768_3587326276697849856_n.jpg
+  - 20837123_459972994373768_3587326276697849856_n.jpg
+  - 20184969_1377551672365710_9175986371347611648_n.jpg
+  - 20184911_852798261552243_7594246089138503680_n-2.jpg
+  - 20184911_852798261552243_7594246089138503680_n-1.jpg
+  - 20184911_852798261552243_7594246089138503680_n.jpg
+  - 20067304_1834193216895760_8876033917048586240_n.jpg
+  - 20184643_125589974722379_6295217120040976384_n.jpg
+  - 20184643_125589974722379_6295217120040976384_n.jpg
+  - 20184251_344936092608866_8422732846606581760_n.jpg
+  - 20184917_337754503322957_9190311027877609472_n-1.jpg
+  - 20184917_337754503322957_9190311027877609472_n.jpg
+  - 20184917_337754503322957_9190311027877609472_n.jpg
+  - 20346872_764077387130306_8654834442650517504_n.jpg
+  - 20184470_903766573109354_6119931404382896128_n-2.jpg
+  - 20184470_903766573109354_6119931404382896128_n-1.jpg
+  - 20184470_903766573109354_6119931404382896128_n.jpg
+  - 20181445_290122181454081_2218103875397746688_n-2.jpg
+  - 20181445_290122181454081_2218103875397746688_n-1.jpg
+  - 20181445_290122181454081_2218103875397746688_n.jpg
+  - 20180969_181408512399185_5953743546149240832_n.jpg
+  - 20180969_181408512399185_5953743546149240832_n-1.jpg
+  - 20180969_181408512399185_5953743546149240832_n.jpg
+  - 20184152_311288002631562_1620231594432266240_n.jpg
+  - 20213832_1366170693501838_3254562209287634944_n-1.jpg
+  - 20184885_2032072397027434_1833550929123606528_n-1.jpg
+  - 20184885_2032072397027434_1833550929123606528_n.jpg
+  - 20184885_2032072397027434_1833550929123606528_n.jpg
+  - 20181388_1131879350279277_5415700881171546112_n-2.jpg
+  - 20181388_1131879350279277_5415700881171546112_n-1.jpg
+  - 20181388_1131879350279277_5415700881171546112_n.jpg
+  - 19050963_1998351463524016_1239827401882468352_n.jpg
+  - 19050963_1998351463524016_1239827401882468352_n.jpg
+  - 19050963_1998351463524016_1239827401882468352_n.jpg
+  - 20213788_124667601477385_1668532521765175296_n-1.jpg
+  - 20213788_124667601477385_1668532521765175296_n.jpg
+  - 20213788_124667601477385_1668532521765175296_n.jpg
+  - 20181227_395013887563581_2309916871593295872_n-2.jpg
+  - 20181227_395013887563581_2309916871593295872_n-1.jpg
+  - 20181227_395013887563581_2309916871593295872_n.jpg
+  - 20181110_120771718543920_8526992288658751488_n-2.jpg
+  - 20181110_120771718543920_8526992288658751488_n-1.jpg
+  - 20181110_120771718543920_8526992288658751488_n.jpg
+  - 20067215_1933958653513428_8132101231549087744_n-1.jpg
+  - 20067215_1933958653513428_8132101231549087744_n.jpg
+  - 20067215_1933958653513428_8132101231549087744_n.jpg
+  - 20180752_699395243592211_3926739778115993600_n.jpg
+  - 20067354_124199658190806_7551012858142654464_n-2.jpg
+  - 20067354_124199658190806_7551012858142654464_n-1.jpg
+  - 20067354_124199658190806_7551012858142654464_n.jpg
+  - 20184234_110096186313971_1931191302586630144_n-1.jpg
+  - 20184234_110096186313971_1931191302586630144_n.jpg
+  - 20184234_110096186313971_1931191302586630144_n.jpg
+  - 19228778_1828237637486882_3718040118838165504_n-2.jpg
+  - 19228778_1828237637486882_3718040118838165504_n-1.jpg
+  - 19228778_1828237637486882_3718040118838165504_n.jpg
+  - 20180761_1216612391776998_5067821857479065600_n.jpg
+  - 19955120_127348021202721_3460362976094060544_n.jpg
+  - 19932878_490735534601607_581248146189844480_n.jpg
+  - 19932878_490735534601607_581248146189844480_n-1.jpg
+  - 19932878_490735534601607_581248146189844480_n.jpg
+  - 19765046_152592181960037_2478391258746191872_n.jpg
+  - 19932145_104730606846778_6620195030218833920_n-2.jpg
+  - 19932145_104730606846778_6620195030218833920_n-1.jpg
+  - 19932145_104730606846778_6620195030218833920_n.jpg
+  - 19931611_1707027622936338_3904085165659389952_n.jpg
+  - 19932515_1697618007213744_8577558596491935744_n.jpg
+  - 19932325_2002079470013151_8642047624930656256_n.jpg
+  - 19931872_1897333037257418_1831581841237213184_n.jpg
+  - 19985354_355697258197261_97035027887423488_n.jpg
+  - 19932643_1877916185863177_1733240292888281088_n.jpg
+  - 19625042_244110769409527_8390227009397063680_n.jpg
+  - 19533829_319372655183913_4780294567473709056_n.jpg
+  - 19436375_1404890186215036_2535314912746405888_n-1.jpg
+  - 19436375_1404890186215036_2535314912746405888_n.jpg
+  - 2017PPN-cover_frame-1.jpg
+  - 2017PPN-cover_frame.jpg
+  - 2017PPN-cover-1.jpg
+  - 2017PPN-cover.jpg
+  - 19437105_2102220153385119_6970514548818182144_n-1.jpg
+  - 19437105_2102220153385119_6970514548818182144_n.jpg
+  - 19437105_2102220153385119_6970514548818182144_n.jpg
+  - 19425202_114018052545475_5812127767046651904_n.jpg
+  - 19428647_123820284882266_1880079757245153280_n.jpg
+  - 19227839_624001057811181_8954640026247888896_n.jpg
+  - 19367602_483754435303102_1756275168864370688_n.jpg
+  - 19050829_251829525299850_7243558216963981312_n.jpg
+  - 18949873_1360137784106388_5760455870206967808_n-1.jpg
+  - 18949873_1360137784106388_5760455870206967808_n.jpg
+  - 18645455_133212180571035_3326228690718687232_n.jpg
+  - 18645204_1286763214769994_1183102214026035200_n.jpg
+  - 18645180_1795741124088776_5515320628967636992_n.jpg
+  - 18645586_436501496709186_1365251558006063104_n.jpg
+  - 18443770_1826039887723306_5139695725700972544_n-2.jpg
+  - 18443770_1826039887723306_5139695725700972544_n-1.jpg
+  - 18443770_1826039887723306_5139695725700972544_n.jpg
+  - 18299640_218365068650793_2939743966939054080_n.jpg
+  - 18161919_289173271537941_3322217045235335168_n.jpg
+  - 17931917_1903703873247606_7106649159377092608_n.jpg
+  - 17881793_473819846293623_4681523466560602112_n.jpg
+  - New-Logo-Square.jpg
+  - Vortex-Music-Magazine-Logo.png
+  - VacasaBlueLogo.png
+  - 17438674_1207376446038195_1595630571516592128_n.jpg
+  - 17586555_802782779870630_2468257987785916416_n.jpg
+  - 17495167_2304686683088809_478698951525007360_n.jpg
+  - 17332380_1869511603318928_3887504676341415936_n.jpg
+  - 17268051_121822051685810_3872386700697141248_n.jpg
+  - 17333112_813858212094759_4839310845504651264_n-1.jpg
+  - 17333112_813858212094759_4839310845504651264_n.jpg
+  - 17076270_184863458677165_6619314738016813056_n.jpg
+  - 16229082_1776698332356333_767865999914434560_n.jpg
+  - 14368950_1728640827358391_3791861260807569408_n.jpg
+  - 16229152_628282574039457_6480287114796728320_n.jpg
+  - Thank-you1.jpg
+  - 16229245_126669687841653_4333643781443158016_n1.jpg
+  - 16229245_126669687841653_4333643781443158016_n.jpg
+  - 15624589_188568824942343_4432404849312661504_n1.jpg
+  - 15624589_188568824942343_4432404849312661504_n.jpg
+  - 15403327_1814353068852116_1781510824737636352_n.jpg
+  - 15403327_1814353068852116_1781510824737636352_n.jpg
+  - 15253086_1145694158879800_4574373790691098624_n.jpg
+  - 15258888_1412789458754047_1976306618316357632_n.jpg
+  - 15258955_224022698023406_4828626190937882624_n.jpg
+  - 15048178_696754967144184_7100248691738411008_n.jpg
+  - 14561903_1795881150660209_1498717623779590144_n.jpg
+  - 14540449_339913473040156_2317610004128989184_n.jpg
+  - 14624846_371833883208038_6469627714637660160_n.jpg
+  - Centered3.png
+  - 14876436_10154659440839183_300495327653599936_o.jpg
+  - 14718412_288183908248149_3821057718341337088_n.jpg
+  - 14733143_1210081172395303_403187039844958208_n.jpg
+  - 14549907_1061778310586475_5829696481094795264_n1.jpg
+  - 14549907_1061778310586475_5829696481094795264_n.jpg
+  - 14712373_715255601959620_7524883587078815744_n.jpg
+  - 14723450_1121812611265826_6750990412313264128_n1.jpg
+  - 14723450_1121812611265826_6750990412313264128_n.jpg
+  - 14597428_553177098216230_1436738101782249472_n.jpg
+  - 14478361_1167539603304816_8521238415461580800_n.jpg
+  - 14369002_948142251999003_1195878406_n.jpg
+  - 14310834_1642022462794725_1236865087_n.jpg
+  - 13743219_226942841034232_2063721868_n.jpg
+  - 13694834_1223012524438663_1518640642_n.jpg
+  - 13715084_995020027263904_1910511147_n.jpg
+  - 13704372_681139478700438_157348270_n.jpg
+  - 13768226_840346472763045_804247785_n.jpg
+  - 13694890_173811559699482_1832618893_n1.jpg
+  - 13694890_173811559699482_1832618893_n.jpg
+  - 13732296_1785477861680807_1443056551_n.jpg
+  - 13714087_1034878033285771_801265142_n1.jpg
+  - 13714087_1034878033285771_801265142_n.jpg
+  - 13734514_1732372980364988_238500252_n2.jpg
+  - 13734514_1732372980364988_238500252_n1.jpg
+  - 13734514_1732372980364988_238500252_n.jpg
+  - 13743671_1244596532225195_1662383538_n.jpg
+  - 13743671_1244596532225195_1662383538_n.jpg
+  - 13712107_172686296483865_118103562_n.jpg
+  - 13712107_172686296483865_118103562_n.jpg
+  - 13696713_1638303086497719_14548517_n1.jpg
+  - 13696713_1638303086497719_14548517_n.jpg
+  - 13739526_1567577710210213_1321294459_n1.jpg
+  - 13739526_1567577710210213_1321294459_n.jpg
+  - 13628191_1636275476685881_1590558535_n.jpg
+  - 13725522_533219980203681_124449801_n.jpg
+  - 13744110_1569184556721392_2035584325_n1.jpg
+  - 13744110_1569184556721392_2035584325_n.jpg
+  - 13745117_898376513601048_2099750215_n1.jpg
+  - 13745117_898376513601048_2099750215_n.jpg
+  - 13652174_1725259041024971_808847486_n1.jpg
+  - 13652174_1725259041024971_808847486_n.jpg
+  - 13652174_1725259041024971_808847486_n.jpg
+  - 13704162_825366160931361_1554915316_n.jpg
+  - 13715081_154988101591381_432936776_n.jpg
+  - 13744230_525943110948898_494366948_n.jpg
+  - 13744230_525943110948898_494366948_n.jpg
+  - 13734490_1216123101740564_1076835717_n1.jpg
+  - 13734490_1216123101740564_1076835717_n.jpg
+  - 13712526_1419085678107856_383961789_n.jpg
+  - 13712526_1419085678107856_383961789_n.jpg
+  - 13741432_534694906714441_1058295232_n2.jpg
+  - 13741432_534694906714441_1058295232_n1.jpg
+  - 13741432_534694906714441_1058295232_n.jpg
+  - 13744038_799636183506043_1869894686_n.jpg
+  - 13704119_1638191919831598_962860966_n.jpg
+  - 13745213_883825275077864_816055648_n.jpg
+  - 13702966_1726918044242162_626030084_n1.jpg
+  - 13702966_1726918044242162_626030084_n.jpg
+  - 13702964_1772249319678553_2002888967_n.jpg
+  - 13767663_920945051349820_1071352337_n1.jpg
+  - 13767663_920945051349820_1071352337_n.jpg
+  - 13767663_920945051349820_1071352337_n.jpg
+  - 13731386_276854629344634_1108039339_n1.jpg
+  - 13731386_276854629344634_1108039339_n.jpg
+  - 13732126_1256256931081720_586624601_n.jpg
+  - 13732126_1256256931081720_586624601_n1.jpg
+  - 13732126_1256256931081720_586624601_n.jpg
+  - 13735835_1100596843327186_1948419135_n.jpg
+  - 13636031_262730874112586_820191540_n1.jpg
+  - 13636031_262730874112586_820191540_n.jpg
+  - 13721225_150235428736889_432756125_n1.jpg
+  - 13721225_150235428736889_432756125_n.jpg
+  - 13827186_1785165041728632_922074921_n2.jpg
+  - 13827186_1785165041728632_922074921_n1.jpg
+  - 13827186_1785165041728632_922074921_n.jpg
+  - 13774300_273306236369954_793116853_n.jpg
+  - 13774300_273306236369954_793116853_n.jpg
+  - 13696880_1669603783363867_2219342_n.jpg
+  - 13694588_574309942748305_913481230_n.jpg
+  - 13743399_1557213344588534_1393768096_n.jpg
+  - 13743399_1557213344588534_1393768096_n.jpg
+  - 13731343_1168645346526986_618787364_n.jpg
+  - 13732067_828441483955537_1806138689_n.jpg
+  - 13706839_1179237118807675_2107101596_n.jpg
+  - 13707381_558880754318973_367737275_n1.jpg
+  - 13707381_558880754318973_367737275_n.jpg
+  - 13707381_558880754318973_367737275_n.jpg
+  - 13741348_652922938193397_1718903218_n1.jpg
+  - 13741348_652922938193397_1718903218_n.jpg
+  - 13737056_140548089711438_1257596874_n.jpg
+  - 13724627_1026823774100040_278069773_n1.jpg
+  - 13724627_1026823774100040_278069773_n.jpg
+  - 13768088_1712557502327483_1873440801_n1.jpg
+  - 13768088_1712557502327483_1873440801_n.jpg
+  - 13768088_1712557502327483_1873440801_n.jpg
+  - 13696417_816896891744796_542358591_n.jpg
+  - 13827426_1072065786205457_361334556_n1.jpg
+  - 13827426_1072065786205457_361334556_n.jpg
+  - 13731096_1891469357746999_748185597_n1.jpg
+  - 13731096_1891469357746999_748185597_n.jpg
+  - 13731096_1891469357746999_748185597_n.jpg
+  - 13741034_1621335484844538_2004876224_n.jpg
+  - 13741034_1621335484844538_2004876224_n.jpg
+  - 13734384_860340677432942_1529304849_n1.jpg
+  - 13734384_860340677432942_1529304849_n.jpg
+  - 13745182_171788886559979_2043965844_n1.jpg
+  - 13745182_171788886559979_2043965844_n.jpg
+  - 13745182_171788886559979_2043965844_n.jpg
+  - 13715148_1763985597181547_734876240_n.jpg
+  - 13715148_1763985597181547_734876240_n.jpg
+  - 13743460_1803679896527069_1529215810_n.jpg
+  - 13696813_516616331874211_1316927352_n1.jpg
+  - 13696813_516616331874211_1316927352_n.jpg
+  - 13696533_152029925222444_1209077154_n1.jpg
+  - 13696533_152029925222444_1209077154_n.jpg
+  - 13696533_152029925222444_1209077154_n.jpg
+  - 13724562_103022813473807_1647012023_n.jpg
+  - 13724562_103022813473807_1647012023_n.jpg
+  - with-new-logos.jpg
+  - 2016-PPN-Sponsors-Banner-8x3-page-web.jpg
+  - 2016-PPN-Sponsors-Banner-8x3-page-0011.jpg
+  - 2016-PPN-Sponsors-Banner-8x3-page-001.jpg
+  - 13732248_550088298510974_473659139_n.jpg
+  - 13739532_316429722029595_984219798_n2.jpg
+  - 13739532_316429722029595_984219798_n1.jpg
+  - 13739532_316429722029595_984219798_n.jpg
+  - 13597647_1275940795750739_1300426411_n.jpg
+  - 13696460_1327088227319845_1547587901_n.jpg
+  - 13704122_1619671025028525_1160200516_n.jpg
+  - 13768139_1027917033912155_436095974_n.jpg
+  - 13731180_1049889365101948_6953969_n.jpg
+  - 2016-Schedule-2-stages-outside.html
+  - PPN-2016-Festival-Poster_final.jpg
+  - media-banner-final.png
+  - 1466099480-ppn_2016_festival_poster.jpg
+  - cover-1.jpeg
+  - Comp-Release-Poster-2016-FINAL1.jpg
+  - Comp-Release-Poster-2016-FINAL.jpg
+  - withkulululu.jpg
+  - header-final.jpg
+  - Listening-Comm-Button.png
+  - main-image-isolated-02.png
+  - Centered2.png
+  - Centered1.png
+  - Centered-e1452646819727.png
+  - Thank-you.jpg
+  - Capture.jpg
+  - 12-YEAR-header.png
+  - PDX-Pop-album-2008.jpg
+  - 2010-Carson-Ellis.jpg
+  - Artwork-Small.jpg
+  - FINAL.jpg
+  - PDXPOPNOW_GIF2_FINAL_LOW.gif
+  - VINNIE DEWAYNE.jpg
+  - VICE DEVICE.jpg
+  - THE STOPS.png
+  - THE SHIVAS.jpg
+  - THE LOWER48.jpg
+  - THE LASTARTFUL DOGER.jpg
+  - THE DOMESTICS.jpg
+  - ROSELIT BONE.jpg
+  - RAP CLASS.jpg
+  - PHONE CALL.jpg
+  - NO KIND OF RIDER.jpg
+  - MUSCLE MARROW.jpg
+  - MOPE GROOVES.jpg
+  - MOON BY YOU.jpg
+  - MODERN KIN.jpg
+  - MIC CRENSHAW.jpg
+  - JACKSON BOONE.jpeg
+  - HOT VICTORY.jpg
+  - HOLY GROVE.jpg
+  - HANDS IN.jpg
+  - GOLDEN HOUR.jpg
+  - DYLAN STARK.jpg
+  - DIRTY REVIVAL.jpg
+  - DAD ROCK.jpg
+  - COCO COLUMBIA.jpg
+  - CHANTI DARLING.jpg
+  - CATHERINE FEENY CHRIS JOHNEDIS.jpg
+  - BLUE  CRANES.jpg
+  - BIG HAUNT.jpg
+  - AMP BAND.jpg
+  - AMBER MOON.jpg
+  - 1939 ENSEMBLE.jpg
+  - PPN-2015-Festival-Poster-FINAL.jpg
+  - WW-Ad_PPN-Comp-2015-Final-JPEG.jpg
+  - Ryanlogo1.jpg
+  - Ryanlogo.jpg
+  - GG2014.jpg
+  - 236_25959555664_84_n.jpg
+  - PDXPOP_BIGBANNER.jpg
+  - ppn_favicon.jpg
+  - SquareGeneral.jpg
+  - GiveGuideHeader.jpg
+  - lonesomebillies1201.png
+  - handsin1201.jpg
+  - handsin120.jpg
+  - handsIn120.jpg
+  - marquee3.png
+  - marquee2.png
+  - marquee11.png
+  - WP_Login_Logo.png
+  - landlines120.jpg
+  - snowblindtraveler1201.jpg
+  - snowblindtraveler120.jpg
+  - mykebogan120.jpg
+  - furcoats120.jpg
+  - minden120.jpg
+  - thebugs120.jpg
+  - oldage120.jpg
+  - comaserfs120.jpg
+  - alameda1201.jpg
+  - barrabrownquintet120.jpg
+  - blouse120.jpg
+  - brownishblack120.jpg
+  - cambrianexplosion120.jpg
+  - etbonz120.jpg
+  - eyelids120.jpg
+  - fringeclass120.jpg
+  - gulls120.jpg
+  - grandparents120.jpg
+  - hustleanddrone120.jpg
+  - lonesomebillies120.png
+  - lunch120.jpg
+  - orquestrapacificotropical120.jpg
+  - phillipgrass120.jpg
+  - psychomagic120.jpg
+  - pursecandy120.jpg
+  - riogrands120.jpg
+  - sadhorse120.jpg
+  - samadams120.jpg
+  - souvenirdriver120.jpg
+  - spellcaster120.jpg
+  - stewartvillian120.jpg
+  - summercannibals120.jpg
+  - tezetaband120.jpg
+  - thanks120.jpg
+  - thecry120.jpg
+  - theestranged120.png
+  - theresistance120.jpg
+  - TreRedeau120.jpg
+  - usnea120.jpg
+  - vikeshkapoor120.jpg
+  - wampire120.jpg
+  - wmte120.jpg
+  - Wishyunu1201.jpg
+  - zirakzigil.jpg
+  - alameda120.jpg
+  - rm_img.png
+  - WP_Footer_Logo.png
+  - WP_Login_Logo.png
+  - 300x600_Web.png
+  - 300x200_Web.png
+  - 300x100_Web.png
+  - PDX-Pop-Poster24.png
+  - PDX-Pop-Poster23.png
+  - PDX-Pop-Poster22.png
+  - PDX-Pop-Poster21.png
+  - PDX-Pop-Poster2.png
+  - ppn2014background.png
+  - pdxpopnowbackground.png
+  - 2014_background.jpg
+  - ppn_favicon.jpg
+  - headerimage.png
