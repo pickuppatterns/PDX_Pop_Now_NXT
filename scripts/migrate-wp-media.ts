@@ -150,7 +150,7 @@ async function migrate() {
       if (filepath && existsSync(filepath)) {
         try {
           unlinkSync(filepath)
-        } catch {}
+        } catch (_err) { /* cleanup failure is non-fatal */ }
       }
     }
 
