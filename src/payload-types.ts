@@ -118,10 +118,12 @@ export interface Config {
   globals: {
     header: Header;
     footer: Footer;
+    'site-settings': SiteSetting;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
+    'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
   };
   locale: null;
   widgets: {
@@ -2094,6 +2096,137 @@ export interface Footer {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings".
+ */
+export interface SiteSetting {
+  id: number;
+  siteTitle?: string | null;
+  tagline?: string | null;
+  logo?: (number | null) | Media;
+  /**
+   * Recommended: 32x32px or 64x64px PNG or ICO file
+   */
+  favicon?: (number | null) | Media;
+  socialLinks?: {
+    facebook?: string | null;
+    instagram?: string | null;
+    twitter?: string | null;
+    youtube?: string | null;
+    vimeo?: string | null;
+    linkedin?: string | null;
+    bandcamp?: string | null;
+    soundcloud?: string | null;
+  };
+  socialAtHeader?: boolean | null;
+  socialAtFooter?: boolean | null;
+  socialAtSubFooter?: boolean | null;
+  colors?: {
+    /**
+     * Hex, HSL, or RGBA value
+     */
+    brandColor?: string | null;
+    /**
+     * Hex, HSL, or RGBA value
+     */
+    gradientColor1?: string | null;
+    /**
+     * Hex, HSL, or RGBA value
+     */
+    gradientColor2?: string | null;
+    /**
+     * Hex, HSL, or RGBA value
+     */
+    titleColor?: string | null;
+    /**
+     * Hex, HSL, or RGBA value
+     */
+    primaryTextColor?: string | null;
+    /**
+     * Hex, HSL, or RGBA value
+     */
+    secondaryTextColor?: string | null;
+    /**
+     * Hex, HSL, or RGBA value
+     */
+    contentBackgroundColor?: string | null;
+    /**
+     * Hex, HSL, or RGBA value
+     */
+    pageTitleBackgroundColor?: string | null;
+    /**
+     * Hex, HSL, or RGBA value
+     */
+    pageTextBackgroundColor?: string | null;
+  };
+  contentBackground?: {
+    image?: (number | null) | Media;
+    repeat?: ('repeat' | 'repeat-x' | 'repeat-y' | 'no-repeat' | 'cover' | 'contain') | null;
+    position?:
+      | (
+          | 'top left'
+          | 'top center'
+          | 'top right'
+          | 'center left'
+          | 'center center'
+          | 'center right'
+          | 'bottom left'
+          | 'bottom center'
+          | 'bottom right'
+        )
+      | null;
+    attachment?: ('scroll' | 'fixed') | null;
+  };
+  fonts?: {
+    titleFont?:
+      | (
+          | 'Inter'
+          | 'Playfair Display'
+          | 'Oswald'
+          | 'Montserrat'
+          | 'Roboto'
+          | 'Lato'
+          | 'Raleway'
+          | 'Open Sans'
+          | 'Nunito'
+          | 'Poppins'
+        )
+      | null;
+    textFont?:
+      | ('Inter' | 'Roboto' | 'Lato' | 'Open Sans' | 'Nunito' | 'Poppins' | 'Merriweather' | 'Source Serif 4')
+      | null;
+    footerTitleFont?: ('Inter' | 'Playfair Display' | 'Oswald' | 'Montserrat' | 'Roboto') | null;
+    footerTextFont?: ('Inter' | 'Roboto' | 'Lato' | 'Open Sans') | null;
+  };
+  footer?: {
+    disableFooter?: boolean | null;
+    /**
+     * Appears in the sub-footer. Supports basic HTML.
+     */
+    copyrightText?: string | null;
+    footerColumns?: ('full' | '2' | '3' | '4') | null;
+    /**
+     * Hex, HSL, or RGBA value
+     */
+    footerBackgroundColor?: string | null;
+    /**
+     * Hex, HSL, or RGBA value
+     */
+    footerTitleColor?: string | null;
+    /**
+     * Hex, HSL, or RGBA value
+     */
+    footerTextColor?: string | null;
+    footerLogoImage?: (number | null) | Media;
+  };
+  /**
+   * Injected into every page. Use sparingly — prefer Tailwind classes.
+   */
+  customCSS?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -2134,6 +2267,75 @@ export interface FooterSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings_select".
+ */
+export interface SiteSettingsSelect<T extends boolean = true> {
+  siteTitle?: T;
+  tagline?: T;
+  logo?: T;
+  favicon?: T;
+  socialLinks?:
+    | T
+    | {
+        facebook?: T;
+        instagram?: T;
+        twitter?: T;
+        youtube?: T;
+        vimeo?: T;
+        linkedin?: T;
+        bandcamp?: T;
+        soundcloud?: T;
+      };
+  socialAtHeader?: T;
+  socialAtFooter?: T;
+  socialAtSubFooter?: T;
+  colors?:
+    | T
+    | {
+        brandColor?: T;
+        gradientColor1?: T;
+        gradientColor2?: T;
+        titleColor?: T;
+        primaryTextColor?: T;
+        secondaryTextColor?: T;
+        contentBackgroundColor?: T;
+        pageTitleBackgroundColor?: T;
+        pageTextBackgroundColor?: T;
+      };
+  contentBackground?:
+    | T
+    | {
+        image?: T;
+        repeat?: T;
+        position?: T;
+        attachment?: T;
+      };
+  fonts?:
+    | T
+    | {
+        titleFont?: T;
+        textFont?: T;
+        footerTitleFont?: T;
+        footerTextFont?: T;
+      };
+  footer?:
+    | T
+    | {
+        disableFooter?: T;
+        copyrightText?: T;
+        footerColumns?: T;
+        footerBackgroundColor?: T;
+        footerTitleColor?: T;
+        footerTextColor?: T;
+        footerLogoImage?: T;
+      };
+  customCSS?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

@@ -25,6 +25,7 @@ export const Media: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'alt',
+    defaultColumns: ['filename', 'alt', 'updatedAt'],
   },
   fields: [
     {

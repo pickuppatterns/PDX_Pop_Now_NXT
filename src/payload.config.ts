@@ -18,6 +18,7 @@ import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
 import { s3Storage } from '@payloadcms/storage-s3'
+import { SiteSettings } from './globals/SiteSettings'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -68,7 +69,7 @@ export default buildConfig({
   }),
   collections: [Pages, Posts, Media, Categories, Users, Products, Orders, CartItems],
   cors: [getServerSideURL()].filter(Boolean),
-  globals: [Header, Footer],
+  globals: [Header, Footer, SiteSettings],
   plugins: [
     ...plugins,
     s3Storage({
