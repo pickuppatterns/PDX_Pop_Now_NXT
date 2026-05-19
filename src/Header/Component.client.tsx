@@ -39,7 +39,8 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data, logo }) => {
               alt={logo.alt}
               width={193}
               height={64}
-              className="max-w-[12rem] w-full h-auto"
+              style={{ width: 'auto', height: '64px' }}
+              className="max-w-[12rem]"
               priority
             />
           ) : (
