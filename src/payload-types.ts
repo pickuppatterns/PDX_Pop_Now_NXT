@@ -207,7 +207,129 @@ export interface Page {
       | null;
     media?: (number | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
+  layout: (
+    | CallToActionBlock
+    | ContentBlock
+    | MediaBlock
+    | ArchiveBlock
+    | FormBlock
+    | {
+        heading: string;
+        subheading?: string | null;
+        backgroundImage?: (number | null) | Media;
+        overlay?: ('none' | 'dark' | 'light') | null;
+        ctas?:
+          | {
+              label: string;
+              url: string;
+              style?: ('primary' | 'secondary' | 'outline') | null;
+              id?: string | null;
+            }[]
+          | null;
+        textAlign?: ('left' | 'center' | 'right') | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'hero';
+      }
+    | {
+        heading?: string | null;
+        sponsors: {
+          logo: number | Media;
+          name: string;
+          url?: string | null;
+          tier?: ('presenting' | 'gold' | 'silver' | 'supporter') | null;
+          id?: string | null;
+        }[];
+        columns?: ('2' | '3' | '4' | '6') | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'sponsorGrid';
+      }
+    | {
+        heading?: string | null;
+        events: {
+          title: string;
+          date: string;
+          venue?: string | null;
+          address?: string | null;
+          url?: string | null;
+          free?: boolean | null;
+          allAges?: boolean | null;
+          image?: (number | null) | Media;
+          description?: string | null;
+          id?: string | null;
+        }[];
+        layout?: ('list' | 'grid' | 'cards') | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'eventList';
+      }
+    | {
+        title: string;
+        volume?: number | null;
+        year?: number | null;
+        artwork?: (number | null) | Media;
+        description?: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        tracks?:
+          | {
+              number?: number | null;
+              artist: string;
+              title: string;
+              duration?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        streamingLinks?:
+          | {
+              platform?: ('bandcamp' | 'spotify' | 'apple' | 'soundcloud' | 'youtube' | 'other') | null;
+              url: string;
+              label?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'compilation';
+      }
+    | {
+        heading?: string | null;
+        subheading?: string | null;
+        members: {
+          name: string;
+          role: string;
+          bio?: string | null;
+          email?: string | null;
+          photo?: (number | null) | Media;
+          socialUrls?:
+            | {
+                platform?: ('instagram' | 'twitter' | 'linkedin' | 'website') | null;
+                url: string;
+                id?: string | null;
+              }[]
+            | null;
+          id?: string | null;
+        }[];
+        columns?: ('2' | '3' | '4') | null;
+        style?: ('cards' | 'minimal' | 'list') | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'teamGrid';
+      }
+  )[];
   meta?: {
     title?: string | null;
     /**
@@ -1200,6 +1322,119 @@ export interface PagesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
+        hero?:
+          | T
+          | {
+              heading?: T;
+              subheading?: T;
+              backgroundImage?: T;
+              overlay?: T;
+              ctas?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                    style?: T;
+                    id?: T;
+                  };
+              textAlign?: T;
+              id?: T;
+              blockName?: T;
+            };
+        sponsorGrid?:
+          | T
+          | {
+              heading?: T;
+              sponsors?:
+                | T
+                | {
+                    logo?: T;
+                    name?: T;
+                    url?: T;
+                    tier?: T;
+                    id?: T;
+                  };
+              columns?: T;
+              id?: T;
+              blockName?: T;
+            };
+        eventList?:
+          | T
+          | {
+              heading?: T;
+              events?:
+                | T
+                | {
+                    title?: T;
+                    date?: T;
+                    venue?: T;
+                    address?: T;
+                    url?: T;
+                    free?: T;
+                    allAges?: T;
+                    image?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              layout?: T;
+              id?: T;
+              blockName?: T;
+            };
+        compilation?:
+          | T
+          | {
+              title?: T;
+              volume?: T;
+              year?: T;
+              artwork?: T;
+              description?: T;
+              tracks?:
+                | T
+                | {
+                    number?: T;
+                    artist?: T;
+                    title?: T;
+                    duration?: T;
+                    id?: T;
+                  };
+              streamingLinks?:
+                | T
+                | {
+                    platform?: T;
+                    url?: T;
+                    label?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        teamGrid?:
+          | T
+          | {
+              heading?: T;
+              subheading?: T;
+              members?:
+                | T
+                | {
+                    name?: T;
+                    role?: T;
+                    bio?: T;
+                    email?: T;
+                    photo?: T;
+                    socialUrls?:
+                      | T
+                      | {
+                          platform?: T;
+                          url?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              columns?: T;
+              style?: T;
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T

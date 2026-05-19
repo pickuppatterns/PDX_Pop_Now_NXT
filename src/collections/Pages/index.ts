@@ -12,6 +12,13 @@ import { slugField } from 'payload'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
+import {
+  HeroBlock,
+  SponsorGridBlock,
+  EventListBlock,
+  CompilationBlock,
+  TeamGridBlock,
+} from '@/blocks/PDXBlocks/config'
 
 import {
   MetaDescriptionField,
@@ -72,7 +79,18 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock],
+              blocks: [
+                CallToAction,
+                Content,
+                MediaBlock,
+                Archive,
+                FormBlock,
+                HeroBlock,
+                SponsorGridBlock,
+                EventListBlock,
+                CompilationBlock,
+                TeamGridBlock,
+              ],
               required: true,
               admin: {
                 initCollapsed: true,
