@@ -78,18 +78,22 @@ export function SponsorGridBlockComponent({
               }
 
               const inner = (
-                <div className="flex items-center justify-center p-4 grayscale hover:grayscale-0 transition-all duration-300">
+                <div className="flex items-center justify-center p-4 transition-all duration-300 group/sponsor">
                   {logo && 'url' in logo ? (
                     <div className="relative w-full h-16" style={filterStyle}>
                       <Image
                         src={logo.url as string}
                         alt={sponsor.name}
                         fill
-                        className="object-contain"
+                        className="object-contain grayscale group-hover/sponsor:grayscale-0 transition-all duration-300"
+                      />
+                      <div
+                        className="absolute inset-0 opacity-0 group-hover/sponsor:opacity-20 transition-opacity duration-300 mix-blend-color pointer-events-none"
+                        style={{ backgroundColor: 'var(--color-brand, #ec2680)' }}
                       />
                     </div>
                   ) : (
-                    <span className="text-sm font-medium text-gray-600">
+                    <span className="text-sm font-medium text-gray-600 group-hover/sponsor:text-[color:var(--color-brand)]">
                       {sponsor.name}
                     </span>
                   )}
