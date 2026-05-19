@@ -84,11 +84,33 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   )
 }
 
-export const metadata: Metadata = {
-  metadataBase: new URL(getServerSideURL()),
-  openGraph: mergeOpenGraph(),
-  twitter: {
-    card: 'summary_large_image',
-    creator: '@payloadcms',
-  },
+export async function generateMetadata(): Promise<Metadata> {
+  const payload = await getPayload({ config })
+  const siteSettings = await payload
+    .findGlobal({
+      slug: 'site-settings',
+      depth: 0,
+    })
+    .catch(() => null)
+
+  const siteTitle = siteSettings?.siteTitle ?? 'PDX Pop Now!'
+  const tagline = siteSettings?.tagline ?? 'Free. All-ages. All-local. Portland music.'
+
+  return {
+    metadataBase: new URL(getServerSideURL()),
+    title: {
+      default: siteTitle,
+      template: `%s | ${siteTitle}`,
+    },
+    description: tagline,
+    openGraph: mergeOpenGraph({
+      siteName: siteTitle,
+      title: siteTitle,
+      description: tagline,
+    }),
+    twitter: {
+      card: 'summary_large_image',
+      creator: '@pdxpopnow',
+    },
+  }
 }

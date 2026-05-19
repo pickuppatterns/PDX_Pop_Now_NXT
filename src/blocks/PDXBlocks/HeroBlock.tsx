@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { Page } from '@/payload-types'
 
-type HeroBlockProps = Extract
+type HeroBlockProps = Extract<
   NonNullable<Page['layout']>[number],
   { blockType: 'hero' }
 >
