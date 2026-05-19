@@ -239,6 +239,15 @@ export interface Page {
           logo: number | Media;
           name: string;
           url?: string | null;
+          /**
+           * Adjust logo appearance for dark/light backgrounds
+           */
+          logoFilters?: {
+            invert?: boolean | null;
+            opacity?: number | null;
+            brightness?: number | null;
+            contrast?: number | null;
+          };
           tier?: ('presenting' | 'gold' | 'silver' | 'supporter') | null;
           id?: string | null;
         }[];
@@ -1353,6 +1362,14 @@ export interface PagesSelect<T extends boolean = true> {
                     logo?: T;
                     name?: T;
                     url?: T;
+                    logoFilters?:
+                      | T
+                      | {
+                          invert?: T;
+                          opacity?: T;
+                          brightness?: T;
+                          contrast?: T;
+                        };
                     tier?: T;
                     id?: T;
                   };

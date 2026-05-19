@@ -86,6 +86,46 @@ export const SponsorGridBlock: Block = {
         { name: 'name', type: 'text', required: true },
         { name: 'url', type: 'text' },
         {
+          name: 'logoFilters',
+          type: 'group',
+          label: 'Logo Display',
+          admin: {
+            description: 'Adjust logo appearance for dark/light backgrounds',
+          },
+          fields: [
+            {
+              name: 'invert',
+              type: 'checkbox',
+              label: 'Invert colors (white logo on dark bg)',
+              defaultValue: false,
+            },
+            {
+              name: 'opacity',
+              type: 'number',
+              label: 'Opacity (0-100)',
+              defaultValue: 100,
+              min: 0,
+              max: 100,
+            },
+            {
+              name: 'brightness',
+              type: 'number',
+              label: 'Brightness (100 = normal)',
+              defaultValue: 100,
+              min: 0,
+              max: 200,
+            },
+            {
+              name: 'contrast',
+              type: 'number',
+              label: 'Contrast (100 = normal)',
+              defaultValue: 100,
+              min: 0,
+              max: 200,
+            },
+          ],
+        },
+        {
           name: 'tier',
           type: 'select',
           defaultValue: 'supporter',

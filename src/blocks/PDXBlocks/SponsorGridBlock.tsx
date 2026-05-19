@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import React from 'react'
 import type { Page } from '@/payload-types'
 
 type SponsorGridBlockProps = Extract<
@@ -52,10 +53,34 @@ export function SponsorGridBlockComponent({
                 sponsor.logo && typeof sponsor.logo === 'object'
                   ? sponsor.logo
                   : null
+
+              const filters = (sponsor as any).logoFilters as {
+                invert?: boolean
+                opacity?: number
+                brightness?: number
+                contrast?: number
+              } | undefined
+
+              const filterStyle: React.CSSProperties = {
+                filter: [
+                  filters?.invert ? 'invert(1)' : '',
+                  filters?.brightness !== undefined && filters.brightness !== 100
+                    ? `brightness(${filters.brightness / 100})`
+                    : '',
+                  filters?.contrast !== undefined && filters.contrast !== 100
+                    ? `contrast(${filters.contrast / 100})`
+                    : '',
+                ]
+                  .filter(Boolean)
+                  .join(' ') || undefined,
+                opacity:
+                  filters?.opacity !== undefined ? filters.opacity / 100 : undefined,
+              }
+
               const inner = (
                 <div className="flex items-center justify-center p-4 grayscale hover:grayscale-0 transition-all duration-300">
                   {logo && 'url' in logo ? (
-                    <div className="relative w-full h-16">
+                    <div className="relative w-full h-16" style={filterStyle}>
                       <Image
                         src={logo.url as string}
                         alt={sponsor.name}
@@ -70,6 +95,7 @@ export function SponsorGridBlockComponent({
                   )}
                 </div>
               )
+
               return sponsor.url ? (
                 <Link key={i} href={sponsor.url} target="_blank" rel="noopener noreferrer">
                   {inner}
