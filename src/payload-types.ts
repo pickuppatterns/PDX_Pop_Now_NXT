@@ -75,6 +75,7 @@ export interface Config {
     products: Product;
     orders: Order;
     'cart-items': CartItem;
+    fonts: Font;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -100,6 +101,7 @@ export interface Config {
     products: ProductsSelect<false> | ProductsSelect<true>;
     orders: OrdersSelect<false> | OrdersSelect<true>;
     'cart-items': CartItemsSelect<false> | CartItemsSelect<true>;
+    fonts: FontsSelect<false> | FontsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -1014,6 +1016,35 @@ export interface CartItem {
   createdAt: string;
 }
 /**
+ * Upload custom fonts to use across the site. Preferred format: .woff2 (smallest file size, best performance). Also supports .woff, .ttf, and .otf.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "fonts".
+ */
+export interface Font {
+  id: number;
+  /**
+   * Display name shown in font dropdowns (e.g. "My Brand Font")
+   */
+  name: string;
+  /**
+   * The CSS font-family name used in @font-face (e.g. "MyBrandFont"). No spaces — use dashes or camelCase.
+   */
+  fontFamily: string;
+  /**
+   * Preferred: .woff2 — best compression and performance. Also accepts .woff, .ttf, and .otf.
+   */
+  file: number | Media;
+  weight?: ('100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900') | null;
+  style?: ('normal' | 'italic' | 'oblique') | null;
+  /**
+   * Optional — license info, usage notes, or source URL.
+   */
+  notes?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
@@ -1234,6 +1265,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'cart-items';
         value: number | CartItem;
+      } | null)
+    | ({
+        relationTo: 'fonts';
+        value: number | Font;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -1780,6 +1815,20 @@ export interface CartItemsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "fonts_select".
+ */
+export interface FontsSelect<T extends boolean = true> {
+  name?: T;
+  fontFamily?: T;
+  file?: T;
+  weight?: T;
+  style?: T;
+  notes?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects_select".
  */
 export interface RedirectsSelect<T extends boolean = true> {
@@ -2194,186 +2243,10 @@ export interface SiteSetting {
     attachment?: ('scroll' | 'fixed') | null;
   };
   fonts?: {
-    titleFont?:
-      | (
-          | 'Inter'
-          | 'Roboto'
-          | 'Open Sans'
-          | 'Lato'
-          | 'Montserrat'
-          | 'Poppins'
-          | 'Nunito'
-          | 'Raleway'
-          | 'Oswald'
-          | 'Ubuntu'
-          | 'Noto Sans'
-          | 'Source Sans 3'
-          | 'Barlow'
-          | 'Mulish'
-          | 'Outfit'
-          | 'DM Sans'
-          | 'Figtree'
-          | 'Plus Jakarta Sans'
-          | 'Playfair Display'
-          | 'Merriweather'
-          | 'Lora'
-          | 'PT Serif'
-          | 'Libre Baskerville'
-          | 'Crimson Text'
-          | 'EB Garamond'
-          | 'Cormorant Garamond'
-          | 'Source Serif 4'
-          | 'Noto Serif'
-          | 'Bebas Neue'
-          | 'Anton'
-          | 'Righteous'
-          | 'Abril Fatface'
-          | 'Fredoka'
-          | 'Pacifico'
-          | 'Lobster'
-          | 'Titan One'
-          | 'Black Han Sans'
-          | 'JetBrains Mono'
-          | 'Fira Code'
-          | 'Source Code Pro'
-          | 'Space Mono'
-        )
-      | null;
-    textFont?:
-      | (
-          | 'Inter'
-          | 'Roboto'
-          | 'Open Sans'
-          | 'Lato'
-          | 'Montserrat'
-          | 'Poppins'
-          | 'Nunito'
-          | 'Raleway'
-          | 'Oswald'
-          | 'Ubuntu'
-          | 'Noto Sans'
-          | 'Source Sans 3'
-          | 'Barlow'
-          | 'Mulish'
-          | 'Outfit'
-          | 'DM Sans'
-          | 'Figtree'
-          | 'Plus Jakarta Sans'
-          | 'Playfair Display'
-          | 'Merriweather'
-          | 'Lora'
-          | 'PT Serif'
-          | 'Libre Baskerville'
-          | 'Crimson Text'
-          | 'EB Garamond'
-          | 'Cormorant Garamond'
-          | 'Source Serif 4'
-          | 'Noto Serif'
-          | 'Bebas Neue'
-          | 'Anton'
-          | 'Righteous'
-          | 'Abril Fatface'
-          | 'Fredoka'
-          | 'Pacifico'
-          | 'Lobster'
-          | 'Titan One'
-          | 'Black Han Sans'
-          | 'JetBrains Mono'
-          | 'Fira Code'
-          | 'Source Code Pro'
-          | 'Space Mono'
-        )
-      | null;
-    footerTitleFont?:
-      | (
-          | 'Inter'
-          | 'Roboto'
-          | 'Open Sans'
-          | 'Lato'
-          | 'Montserrat'
-          | 'Poppins'
-          | 'Nunito'
-          | 'Raleway'
-          | 'Oswald'
-          | 'Ubuntu'
-          | 'Noto Sans'
-          | 'Source Sans 3'
-          | 'Barlow'
-          | 'Mulish'
-          | 'Outfit'
-          | 'DM Sans'
-          | 'Figtree'
-          | 'Plus Jakarta Sans'
-          | 'Playfair Display'
-          | 'Merriweather'
-          | 'Lora'
-          | 'PT Serif'
-          | 'Libre Baskerville'
-          | 'Crimson Text'
-          | 'EB Garamond'
-          | 'Cormorant Garamond'
-          | 'Source Serif 4'
-          | 'Noto Serif'
-          | 'Bebas Neue'
-          | 'Anton'
-          | 'Righteous'
-          | 'Abril Fatface'
-          | 'Fredoka'
-          | 'Pacifico'
-          | 'Lobster'
-          | 'Titan One'
-          | 'Black Han Sans'
-          | 'JetBrains Mono'
-          | 'Fira Code'
-          | 'Source Code Pro'
-          | 'Space Mono'
-        )
-      | null;
-    footerTextFont?:
-      | (
-          | 'Inter'
-          | 'Roboto'
-          | 'Open Sans'
-          | 'Lato'
-          | 'Montserrat'
-          | 'Poppins'
-          | 'Nunito'
-          | 'Raleway'
-          | 'Oswald'
-          | 'Ubuntu'
-          | 'Noto Sans'
-          | 'Source Sans 3'
-          | 'Barlow'
-          | 'Mulish'
-          | 'Outfit'
-          | 'DM Sans'
-          | 'Figtree'
-          | 'Plus Jakarta Sans'
-          | 'Playfair Display'
-          | 'Merriweather'
-          | 'Lora'
-          | 'PT Serif'
-          | 'Libre Baskerville'
-          | 'Crimson Text'
-          | 'EB Garamond'
-          | 'Cormorant Garamond'
-          | 'Source Serif 4'
-          | 'Noto Serif'
-          | 'Bebas Neue'
-          | 'Anton'
-          | 'Righteous'
-          | 'Abril Fatface'
-          | 'Fredoka'
-          | 'Pacifico'
-          | 'Lobster'
-          | 'Titan One'
-          | 'Black Han Sans'
-          | 'JetBrains Mono'
-          | 'Fira Code'
-          | 'Source Code Pro'
-          | 'Space Mono'
-        )
-      | null;
+    titleFont?: string | null;
+    textFont?: string | null;
+    footerTitleFont?: string | null;
+    footerTextFont?: string | null;
   };
   footer?: {
     disableFooter?: boolean | null;
