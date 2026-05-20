@@ -79,7 +79,8 @@ export async function Footer() {
               alt={siteSettings?.siteTitle ?? 'Site Logo'}
               width={160}
               height={50}
-              className="max-w-[10rem] w-full h-auto"
+              style={{ width: 'auto', height: '50px' }}
+              className="max-w-[10rem]"
             />
           ) : (
             <Logo />

@@ -1,4 +1,5 @@
 import { getPayload } from 'payload'
+import { Pool } from 'pg'
 import config from '../src/payload.config.js'
 import path from 'path'
 import { createWriteStream, mkdirSync, unlinkSync, existsSync } from 'fs'
@@ -6,6 +7,7 @@ import { pipeline } from 'stream/promises'
 import { Readable } from 'stream'
 
 const WP_BASE = 'https://pdxpopnow.com/wp-json/wp/v2'
+const pool = new Pool({ connectionString: process.env.DATABASE_URL })
 const TEMP_DIR = '/tmp/wp-media-migration'
 
 // Skip WP-generated resized copies like image-300x219.jpg
@@ -124,7 +126,7 @@ async function migrate() {
       const fileBuffer = readFileSync(filepath)
 
       // Upload to Payload (which sends to B2)
-      await payload.create({
+      const created = await payload.create({
         collection: 'media',
         data: {
           alt: item.title?.rendered ?? filename,
@@ -138,6 +140,15 @@ async function migrate() {
         overrideAccess: true,
         context: { disableRevalidate: true },
       })
+
+      // Backfill original WP creation date directly in Postgres
+      if (item.date_gmt) {
+        const originalDate = new Date(item.date_gmt + 'Z').toISOString()
+        await pool.query(
+          'UPDATE media SET created_at = $1, updated_at = $2 WHERE id = $3',
+          [originalDate, originalDate, created.id]
+        )
+      }
 
       console.log(`${progress} ✓ Uploaded: ${filename}`)
       results.success++
@@ -168,6 +179,7 @@ async function migrate() {
     results.failedFiles.forEach((f) => console.log(`  - ${f}`))
   }
 
+  await pool.end()
   process.exit(0)
 }
 
