@@ -124,6 +124,25 @@
   --warning: oklch(89% 0.1 75deg);
   --error: oklch(75% 0.15 25deg);
 }
+:root {
+  --font-title: 'Inter', sans-serif;
+  --font-text: 'Inter', sans-serif;
+  --font-footer-title: 'Inter', sans-serif;
+  --font-footer-text: 'Inter', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-title);
+}
+
+body {
+  font-family: var(--font-text);
+}
 
 [data-theme='dark'] {
   --background: oklch(14.5% 0 0deg);

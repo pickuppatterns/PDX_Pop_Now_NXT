@@ -36,6 +36,26 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   const customCSS = siteSettings?.customCSS ?? null
   const siteTitle = siteSettings?.siteTitle ?? 'PDX Pop Now!'
+  const fonts = siteSettings?.fonts as Record<string, string> | undefined
+
+  // Build Google Fonts URL
+  const fontFamilies = fonts ? [...new Set(Object.values(fonts).filter(Boolean))] : ['Inter']
+
+  const googleFontsUrl = `https://fonts.googleapis.com/css2?${fontFamilies
+    .map((f) => `family=${f.replace(/ /g, '+')}:wght@300;400;500;600;700`)
+    .join('&')}&display=swap`
+
+  // Build font CSS variables
+  const fontVars = fonts
+    ? `
+  :root {
+    --font-title: '${fonts.titleFont ?? 'Inter'}', sans-serif;
+    --font-text: '${fonts.textFont ?? 'Inter'}', sans-serif;
+    --font-footer-title: '${fonts.footerTitleFont ?? 'Inter'}', sans-serif;
+    --font-footer-text: '${fonts.footerTextFont ?? 'Inter'}', sans-serif;
+  }
+`
+    : ''
 
   const colors = siteSettings?.colors as Record<string, string> | undefined
   const cssVars = colors
@@ -66,6 +86,21 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         )}
         {(cssVars || customCSS) && (
           <style dangerouslySetInnerHTML={{ __html: `${cssVars}${customCSS ?? ''}` }} />
+        )}
+        <InitTheme />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href={googleFontsUrl} rel="stylesheet" />
+        {favicon ? (
+          <link href={favicon} rel="icon" />
+        ) : (
+          <>
+            <link href="/favicon.ico" rel="icon" sizes="32x32" />
+            <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+          </>
+        )}
+        {(cssVars || fontVars || customCSS) && (
+          <style dangerouslySetInnerHTML={{ __html: `${cssVars}${fontVars}${customCSS ?? ''}` }} />
         )}
       </head>
       <body>
