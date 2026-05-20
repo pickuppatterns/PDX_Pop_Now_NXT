@@ -80,7 +80,7 @@ export default function CartPage() {
   if (loading) {
     return (
       <main className="max-w-3xl mx-auto px-4 py-12">
-        <p className="text-gray-500">Loading cart...</p>
+        <p className="text-[var(--color-text-secondary)]">Loading cart...</p>
       </main>
     )
   }
@@ -90,7 +90,7 @@ export default function CartPage() {
       <h1 className="text-3xl font-medium mb-8">Your cart</h1>
       {cartItems.length === 0 ? (
         <div data-testid="cart-empty">
-          <p className="text-gray-500 mb-4">Your cart is empty.</p>
+          <p className="text-[var(--color-text-secondary)] mb-4">Your cart is empty.</p>
           <Link href="/shop" className="underline text-sm">
             Continue shopping
           </Link>
@@ -106,7 +106,7 @@ export default function CartPage() {
                   className="flex gap-4 border rounded-lg p-4 items-center"
                   data-testid="cart-item"
                 >
-                  <div className="w-16 h-16 bg-gray-100 rounded relative overflow-hidden flex-shrink-0">
+                  <div className="w-16 h-16 bg-[var(--color-content-bg)] rounded relative overflow-hidden flex-shrink-0">
                     {imageUrl ? (
                       <Image
                         src={imageUrl}
@@ -115,14 +115,14 @@ export default function CartPage() {
                         className="object-cover"
                       />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs">
+                      <div className="w-full h-full flex items-center justify-center text-[var(--color-text-secondary)] text-xs">
                         No image
                       </div>
                     )}
                   </div>
                   <div className="flex-1">
                     <p className="font-medium text-sm">{item.product.name}</p>
-                    <p className="text-gray-500 text-sm">
+                    <p className="text-[var(--color-text-secondary)] text-sm">
                       Qty: {item.quantity}
                     </p>
                   </div>
@@ -150,7 +150,7 @@ export default function CartPage() {
           <button
             onClick={handleCheckout}
             disabled={checkingOut}
-            className="w-full bg-black text-white rounded-md px-6 py-3 text-sm font-medium hover:opacity-80 disabled:opacity-50"
+            className="w-full bg-[var(--color-brand)] text-white rounded-md px-6 py-3 text-sm font-medium hover:opacity-80 disabled:opacity-50"
           >
             {checkingOut ? 'Redirecting to checkout...' : 'Checkout'}
           </button>

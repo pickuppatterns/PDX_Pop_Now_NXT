@@ -44,7 +44,7 @@ export function SponsorGridBlockComponent({
       )}
       {Object.entries(grouped).map(([tier, tierSponsors]) => (
         <div key={tier} className="mb-12">
-          <p className="text-xs font-medium uppercase tracking-widest text-gray-400 text-center mb-6">
+          <p className="text-xs font-medium uppercase tracking-widest text-[var(--color-text-secondary)] text-center mb-6">
             {tierLabel[tier]}
           </p>
           <div className={`grid gap-8 ${columnClass[columns ?? '4']}`}>
@@ -93,7 +93,7 @@ export function SponsorGridBlockComponent({
                       />
                     </div>
                   ) : (
-                    <span className="text-sm font-medium text-gray-600 group-hover/sponsor:text-[color:var(--color-brand)]">
+                    <span className="text-sm font-medium text-[var(--color-text-primary)] group-hover/sponsor:text-[color:var(--color-brand)]">
                       {sponsor.name}
                     </span>
                   )}

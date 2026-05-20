@@ -22,7 +22,7 @@ export default async function ShopPage() {
       <h1 className="text-3xl font-medium mb-8">Shop</h1>
 
       {products.length === 0 ? (
-        <p className="text-gray-500" data-testid="no-products">
+        <p className="text-[var(--color-text-secondary)]" data-testid="no-products">
           No products available yet.
         </p>
       ) : (
@@ -43,7 +43,7 @@ export default async function ShopPage() {
                 className="group border rounded-lg overflow-hidden hover:shadow-md transition-shadow"
                 data-testid="product-card"
               >
-                <div className="aspect-square bg-gray-100 relative overflow-hidden">
+                <div className="aspect-square bg-[var(--color-content-bg)] relative overflow-hidden">
                   {image && typeof image === 'object' && 'url' in image ? (
                     <Image
                       src={image.url as string}
@@ -52,14 +52,14 @@ export default async function ShopPage() {
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center text-gray-400 text-sm">
+                    <div className="w-full h-full flex items-center justify-center text-[var(--color-text-secondary)] text-sm">
                       No image
                     </div>
                   )}
                 </div>
                 <div className="p-4">
                   <h2 className="font-medium text-sm">{product.name}</h2>
-                  <p className="text-gray-600 text-sm mt-1">
+                  <p className="text-[var(--color-text-primary)] text-sm mt-1">
                     ${((product.price ?? 0) / 100).toFixed(2)}
                   </p>
                 </div>

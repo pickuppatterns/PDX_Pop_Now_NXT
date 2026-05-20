@@ -95,7 +95,7 @@ export default function SignupPage() {
             type="submit"
             disabled={loading}
             data-testid="signup-submit"
-            className="bg-black text-white rounded-md px-4 py-2 text-sm font-medium hover:opacity-80 disabled:opacity-50"
+            className="bg-[var(--color-brand)] text-white rounded-md px-4 py-2 text-sm font-medium hover:opacity-80 disabled:opacity-50"
           >
             {loading ? 'Creating account...' : 'Create account'}
           </button>

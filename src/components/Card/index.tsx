@@ -42,7 +42,7 @@ export const Card: React.FC<{
     >
       <div className="relative w-full">
         {!cardImage && (
-          <div className="aspect-video bg-gray-100 flex items-center justify-center text-gray-400 text-sm">
+          <div className="aspect-video bg-[var(--color-content-bg)] flex items-center justify-center text-[var(--color-text-secondary)] text-sm">
             No image
           </div>
         )}

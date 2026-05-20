@@ -14,7 +14,7 @@ const statusColors: Record<string, string> = {
   shipped: 'bg-indigo-100 text-indigo-800',
   delivered: 'bg-green-100 text-green-800',
   cancelled: 'bg-red-100 text-red-800',
-  refunded: 'bg-gray-100 text-gray-800',
+  refunded: 'bg-[var(--color-content-bg)] text-gray-800',
 }
 
 export default async function OrdersPage() {
@@ -47,7 +47,7 @@ export default async function OrdersPage() {
 
       {orders.length === 0 ? (
         <div>
-          <p className="text-gray-500 mb-4">No orders yet.</p>
+          <p className="text-[var(--color-text-secondary)] mb-4">No orders yet.</p>
           <Link href="/shop" className="underline text-sm">
             Browse the shop
           </Link>
@@ -58,8 +58,8 @@ export default async function OrdersPage() {
             <div key={order.id} className="border rounded-lg p-6">
               <div className="flex justify-between items-start mb-4">
                 <div>
-                  <p className="text-xs text-gray-500 mb-1">Order #{order.id}</p>
-                  <p className="text-xs text-gray-400">
+                  <p className="text-xs text-[var(--color-text-secondary)] mb-1">Order #{order.id}</p>
+                  <p className="text-xs text-[var(--color-text-secondary)]">
                     {new Date(order.createdAt).toLocaleDateString('en-US', {
                       year: 'numeric',
                       month: 'long',
@@ -69,7 +69,7 @@ export default async function OrdersPage() {
                 </div>
                 <span
                   className={`text-xs font-medium px-2 py-1 rounded-full ${
-                    statusColors[order.status] ?? 'bg-gray-100 text-gray-800'
+                    statusColors[order.status] ?? 'bg-[var(--color-content-bg)] text-gray-800'
                   }`}
                 >
                   {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
@@ -82,10 +82,10 @@ export default async function OrdersPage() {
                   const product = typeof item.product === 'object' ? item.product : null
                   return (
                     <div key={index} className="flex justify-between text-sm">
-                      <span className="text-gray-700">
+                      <span className="text-[var(--color-text-primary)]">
                         {product?.name ?? 'Product'} × {item.quantity}
                       </span>
-                      <span className="text-gray-600">
+                      <span className="text-[var(--color-text-primary)]">
                         ${((item.price * item.quantity) / 100).toFixed(2)}
                       </span>
                     </div>
@@ -101,7 +101,7 @@ export default async function OrdersPage() {
               </div>
 
               {order.trackingNumber && (
-                <div className="mt-3 text-xs text-gray-500">
+                <div className="mt-3 text-xs text-[var(--color-text-secondary)]">
                   Tracking: <span className="font-medium">{order.trackingNumber}</span>
                 </div>
               )}

@@ -46,7 +46,7 @@ export default function AddToCartButton({ productId, disabled }: Props) {
       onClick={handleAddToCart}
       disabled={disabled || loading}
       data-testid="add-to-cart"
-      className="w-full bg-black text-white rounded-md px-6 py-3 text-sm font-medium hover:opacity-80 disabled:opacity-50 transition-opacity"
+      className="w-full bg-[var(--color-brand)] text-white rounded-md px-6 py-3 text-sm font-medium hover:opacity-80 disabled:opacity-50 transition-opacity"
     >
       {loading ? 'Adding...' : added ? 'Added to cart!' : 'Add to cart'}
     </button>
