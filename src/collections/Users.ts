@@ -43,6 +43,7 @@ export const Users: CollectionConfig = {
         { label: 'Vendor', value: 'vendor' },
         { label: 'Venue', value: 'venue' },
         { label: 'Sponsor', value: 'sponsor' },
+        { label: 'Customer (legacy)', value: 'customer' },
       ],
       admin: {
         description: 'Primary role — determines billing and content access',
