@@ -8,12 +8,12 @@ type CompilationBlockProps = Extract<
 >
 
 const platformLabels: Record<string, string> = {
-  bandcamp:   'Bandcamp',
-  spotify:    'Spotify',
-  apple:      'Apple Music',
+  bandcamp: 'Bandcamp',
+  spotify: 'Spotify',
+  apple: 'Apple Music',
   soundcloud: 'SoundCloud',
-  youtube:    'YouTube Music',
-  other:      'Listen',
+  youtube: 'YouTube Music',
+  other: 'Listen',
 }
 
 export function CompilationBlockComponent({
@@ -24,23 +24,14 @@ export function CompilationBlockComponent({
   tracks,
   streamingLinks,
 }: CompilationBlockProps) {
-  const artworkImage =
-    artwork && typeof artwork === 'object' && 'url' in artwork
-      ? artwork
-      : null
+  const artworkImage = artwork && typeof artwork === 'object' && 'url' in artwork ? artwork : null
 
   return (
     <section className="w-full max-w-5xl mx-auto px-6 py-16">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-
         <div className="aspect-square bg-gray-100 relative rounded-lg overflow-hidden">
           {artworkImage ? (
-            <Image
-              src={artworkImage.url as string}
-              alt={title}
-              fill
-              className="object-cover"
-            />
+            <Image src={artworkImage.url as string} alt={title} fill className="object-cover" />
           ) : (
             <div className="w-full h-full flex items-center justify-center text-gray-400 text-sm">
               No artwork
@@ -74,28 +65,37 @@ export function CompilationBlockComponent({
 
           {tracks && tracks.length > 0 && (
             <div className="border-t pt-4">
-              <p className="text-xs uppercase tracking-widest text-gray-400 mb-3">
-                Track Listing
-              </p>
-              <ol className="flex flex-col gap-2">
-                {tracks.map((track, i) => (
-                  <li key={i} className="flex gap-3 text-sm">
-                    <span className="text-gray-400 w-6 text-right flex-shrink-0">
-                      {track.number ?? i + 1}
-                    </span>
-                    <span className="flex-1">
-                      <span className="font-medium">{track.artist}</span>
-                      {' — '}
-                      <span className="text-gray-600">{track.title}</span>
-                    </span>
-                    {track.duration && (
-                      <span className="text-gray-400 flex-shrink-0">
-                        {track.duration}
-                      </span>
+              <p className="text-xs uppercase tracking-widest text-gray-400 mb-3">Track Listing</p>
+              {['1', '2', '3'].map((disc) => {
+                const discTracks = tracks.filter((t: any) => (t.disc ?? '1') === disc)
+                if (!discTracks.length) return null
+                return (
+                  <div key={disc} className="mb-4">
+                    {tracks.some((t: any) => t.disc === '2') && (
+                      <p className="text-xs uppercase tracking-widest text-gray-400 mb-2">
+                        Disc {disc}
+                      </p>
                     )}
-                  </li>
-                ))}
-              </ol>
+                    <ol className="flex flex-col gap-2">
+                      {discTracks.map((track: any, i: number) => (
+                        <li key={i} className="flex gap-3 text-sm">
+                          <span className="text-gray-400 w-6 text-right flex-shrink-0">
+                            {track.number ?? i + 1}
+                          </span>
+                          <span className="flex-1">
+                            <span className="font-medium">{track.artist}</span>
+                            {' — '}
+                            <span className="text-gray-600">{track.title}</span>
+                          </span>
+                          {track.duration && (
+                            <span className="text-gray-400 flex-shrink-0">{track.duration}</span>
+                          )}
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                )
+              })}
             </div>
           )}
         </div>

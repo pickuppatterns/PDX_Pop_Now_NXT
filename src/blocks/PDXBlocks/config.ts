@@ -234,6 +234,17 @@ export const CompilationBlock: Block = {
       label: 'Track Listing',
       fields: [
         { name: 'number', type: 'number', label: 'Track #' },
+        {
+          name: 'disc',
+          type: 'select',
+          label: 'Disc',
+          defaultValue: '1',
+          options: [
+            { label: 'Disc 1', value: '1' },
+            { label: 'Disc 2', value: '2' },
+            { label: 'Disc 3', value: '3' },
+          ],
+        },
         { name: 'artist', type: 'text', required: true },
         { name: 'title', type: 'text', required: true },
         { name: 'duration', type: 'text', label: 'Duration (e.g. 3:42)' },

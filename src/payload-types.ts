@@ -76,6 +76,7 @@ export interface Config {
     orders: Order;
     'cart-items': CartItem;
     fonts: Font;
+    compilations: Compilation;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -102,6 +103,7 @@ export interface Config {
     orders: OrdersSelect<false> | OrdersSelect<true>;
     'cart-items': CartItemsSelect<false> | CartItemsSelect<true>;
     fonts: FontsSelect<false> | FontsSelect<true>;
+    compilations: CompilationsSelect<false> | CompilationsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -300,6 +302,7 @@ export interface Page {
         tracks?:
           | {
               number?: number | null;
+              disc?: ('1' | '2' | '3') | null;
               artist: string;
               title: string;
               duration?: string | null;
@@ -1046,6 +1049,70 @@ export interface Font {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "compilations".
+ */
+export interface Compilation {
+  id: number;
+  title: string;
+  volume?: number | null;
+  year?: number | null;
+  artwork?: (number | null) | Media;
+  /**
+   * Designer name e.g. "Layout & Design — Erin Norris"
+   */
+  artworkCredit?: string | null;
+  albumNotes?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  streamingLinks?:
+    | {
+        platform?: ('bandcamp' | 'spotify' | 'apple' | 'soundcloud' | 'youtube' | 'other') | null;
+        url: string;
+        label?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Add tracks in order. Use disc field for double albums.
+   */
+  tracks?:
+    | {
+        disc?: ('1' | '2' | '3') | null;
+        number?: number | null;
+        artist: string;
+        title: string;
+        duration?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    image?: (number | null) | Media;
+  };
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1271,6 +1338,10 @@ export interface PayloadLockedDocument {
         value: number | Font;
       } | null)
     | ({
+        relationTo: 'compilations';
+        value: number | Compilation;
+      } | null)
+    | ({
         relationTo: 'redirects';
         value: number | Redirect;
       } | null)
@@ -1446,6 +1517,7 @@ export interface PagesSelect<T extends boolean = true> {
                 | T
                 | {
                     number?: T;
+                    disc?: T;
                     artist?: T;
                     title?: T;
                     duration?: T;
@@ -1826,6 +1898,48 @@ export interface FontsSelect<T extends boolean = true> {
   notes?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "compilations_select".
+ */
+export interface CompilationsSelect<T extends boolean = true> {
+  title?: T;
+  volume?: T;
+  year?: T;
+  artwork?: T;
+  artworkCredit?: T;
+  albumNotes?: T;
+  streamingLinks?:
+    | T
+    | {
+        platform?: T;
+        url?: T;
+        label?: T;
+        id?: T;
+      };
+  tracks?:
+    | T
+    | {
+        disc?: T;
+        number?: T;
+        artist?: T;
+        title?: T;
+        duration?: T;
+        id?: T;
+      };
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
+  generateSlug?: T;
+  slug?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -2417,6 +2531,10 @@ export interface TaskSchedulePublish {
       | ({
           relationTo: 'posts';
           value: number | Post;
+        } | null)
+      | ({
+          relationTo: 'compilations';
+          value: number | Compilation;
         } | null);
     global?: string | null;
     user?: (number | null) | User;
