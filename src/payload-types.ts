@@ -80,6 +80,7 @@ export interface Config {
     'festival-gfx-artists': FestivalGfxArtist;
     shifts: Shift;
     'volunteer-assignments': VolunteerAssignment;
+    volunteers: Volunteer;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -110,6 +111,7 @@ export interface Config {
     'festival-gfx-artists': FestivalGfxArtistsSelect<false> | FestivalGfxArtistsSelect<true>;
     shifts: ShiftsSelect<false> | ShiftsSelect<true>;
     'volunteer-assignments': VolunteerAssignmentsSelect<false> | VolunteerAssignmentsSelect<true>;
+    volunteers: VolunteersSelect<false> | VolunteersSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -1300,6 +1302,61 @@ export interface VolunteerAssignment {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "volunteers".
+ */
+export interface Volunteer {
+  id: number;
+  firstName: string;
+  lastName?: string | null;
+  email: string;
+  phone: string;
+  emergencyContact?: string | null;
+  positions: (
+    | 'no_preference'
+    | 'setup'
+    | 'merch'
+    | 'green_room'
+    | 'wristband'
+    | 'videographer'
+    | 'donation'
+    | 'crowd_counter'
+    | 'floater'
+    | 'ice_cream'
+    | 'kids_craft'
+  )[];
+  experience?: string | null;
+  accommodations?: string | null;
+  shirtSize?: ('XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL') | null;
+  heardFrom?: string | null;
+  additionalNotes?: string | null;
+  /**
+   * Set by staff when the festival approaches.
+   */
+  assignedShift?:
+    | ('fri_setup' | 'fri_evening' | 'sat_afternoon' | 'sat_evening' | 'sun_afternoon' | 'sun_evening')
+    | null;
+  /**
+   * Set by staff when the festival approaches.
+   */
+  assignedPosition?:
+    | (
+        | 'setup'
+        | 'merch'
+        | 'green_room'
+        | 'wristband'
+        | 'videographer'
+        | 'donation'
+        | 'crowd_counter'
+        | 'floater'
+        | 'ice_cream'
+        | 'kids_craft'
+      )
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1539,6 +1596,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'volunteer-assignments';
         value: number | VolunteerAssignment;
+      } | null)
+    | ({
+        relationTo: 'volunteers';
+        value: number | Volunteer;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -2225,6 +2286,27 @@ export interface VolunteerAssignmentsSelect<T extends boolean = true> {
   confirmedAt?: T;
   notes?: T;
   notificationSent?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "volunteers_select".
+ */
+export interface VolunteersSelect<T extends boolean = true> {
+  firstName?: T;
+  lastName?: T;
+  email?: T;
+  phone?: T;
+  emergencyContact?: T;
+  positions?: T;
+  experience?: T;
+  accommodations?: T;
+  shirtSize?: T;
+  heardFrom?: T;
+  additionalNotes?: T;
+  assignedShift?: T;
+  assignedPosition?: T;
   updatedAt?: T;
   createdAt?: T;
 }

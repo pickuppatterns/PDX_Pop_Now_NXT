@@ -26,6 +26,7 @@ import { Shifts } from './collections/Shifts'
 import { VolunteerAssignments } from './collections/VolunteerAssignments'
 import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
 import nodemailer from 'nodemailer'
+import { Volunteers } from './collections/Volunteers'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -99,6 +100,7 @@ export default buildConfig({
     FestivalGFXArtists,
     Shifts,
     VolunteerAssignments,
+    Volunteers,
   ],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer, SiteSettings],

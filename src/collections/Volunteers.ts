@@ -1,0 +1,93 @@
+import type { CollectionConfig } from 'payload'
+
+export const Volunteers: CollectionConfig = {
+  slug: 'volunteers',
+  labels: { singular: 'Volunteer', plural: 'Volunteers' },
+  admin: {
+    useAsTitle: 'email',
+    defaultColumns: ['firstName', 'lastName', 'email', 'shirtSize', 'createdAt'],
+    group: 'Festival',
+  },
+  access: {
+    read: ({ req }) => Boolean(req.user),
+    create: () => true,
+    update: ({ req }) => Boolean(req.user),
+    delete: ({ req }) => Boolean(req.user),
+  },
+  fields: [
+    {
+      type: 'row',
+      fields: [
+        { name: 'firstName', type: 'text', label: 'First Name', required: true },
+        { name: 'lastName', type: 'text', label: 'Last Name' },
+      ],
+    },
+    { name: 'email', type: 'email', label: 'Email', required: true },
+    { name: 'phone', type: 'text', label: 'Phone Number', required: true },
+    { name: 'emergencyContact', type: 'text', label: 'Emergency Contact' },
+    {
+      name: 'positions',
+      type: 'select',
+      label: 'Preferred Positions',
+      hasMany: true,
+      required: true,
+      options: [
+        { label: 'No Preference', value: 'no_preference' },
+        { label: 'Set-Up Volunteer', value: 'setup' },
+        { label: 'Merch Booth Volunteer', value: 'merch' },
+        { label: 'Green Room Volunteer', value: 'green_room' },
+        { label: '21+ Wristband Station Volunteer', value: 'wristband' },
+        { label: 'Videographer', value: 'videographer' },
+        { label: 'Donation Taker', value: 'donation' },
+        { label: 'Crowd Counter', value: 'crowd_counter' },
+        { label: 'Floater', value: 'floater' },
+        { label: 'Ice Cream & Popcorn Attendant', value: 'ice_cream' },
+        { label: 'Kids Craft Table Attendant', value: 'kids_craft' },
+      ],
+    },
+    { name: 'experience', type: 'textarea', label: 'Relevant Experience / Skills' },
+    { name: 'accommodations', type: 'textarea', label: 'Accommodations Needed' },
+    {
+      name: 'shirtSize',
+      type: 'select',
+      label: 'Shirt Size (Unisex)',
+      options: ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'].map((s) => ({ label: s, value: s })),
+    },
+    { name: 'heardFrom', type: 'text', label: 'How Did They Hear About Us' },
+    { name: 'additionalNotes', type: 'textarea', label: 'Additional Notes' },
+    // Shift assignment — filled in by staff at festival time
+    {
+      name: 'assignedShift',
+      type: 'select',
+      label: 'Assigned Shift',
+      admin: { description: 'Set by staff when the festival approaches.' },
+      options: [
+        { label: 'Friday 12:00–5:00 PM (Set-Up)', value: 'fri_setup' },
+        { label: 'Friday 4:30–10:00 PM', value: 'fri_evening' },
+        { label: 'Saturday 12:30 PM–5:30 PM', value: 'sat_afternoon' },
+        { label: 'Saturday 5:00–10:00 PM', value: 'sat_evening' },
+        { label: 'Sunday 12:30 PM–5:30 PM', value: 'sun_afternoon' },
+        { label: 'Sunday 5:00–10:00 PM', value: 'sun_evening' },
+      ],
+    },
+    {
+      name: 'assignedPosition',
+      type: 'select',
+      label: 'Assigned Position',
+      admin: { description: 'Set by staff when the festival approaches.' },
+      options: [
+        { label: 'Set-Up Volunteer', value: 'setup' },
+        { label: 'Merch Booth Volunteer', value: 'merch' },
+        { label: 'Green Room Volunteer', value: 'green_room' },
+        { label: '21+ Wristband Station Volunteer', value: 'wristband' },
+        { label: 'Videographer', value: 'videographer' },
+        { label: 'Donation Taker', value: 'donation' },
+        { label: 'Crowd Counter', value: 'crowd_counter' },
+        { label: 'Floater', value: 'floater' },
+        { label: 'Ice Cream & Popcorn Attendant', value: 'ice_cream' },
+        { label: 'Kids Craft Table Attendant', value: 'kids_craft' },
+      ],
+    },
+  ],
+  timestamps: true,
+}
