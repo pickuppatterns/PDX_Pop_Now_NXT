@@ -78,6 +78,8 @@ export interface Config {
     fonts: Font;
     compilations: Compilation;
     'festival-gfx-artists': FestivalGfxArtist;
+    shifts: Shift;
+    'volunteer-assignments': VolunteerAssignment;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -106,6 +108,8 @@ export interface Config {
     fonts: FontsSelect<false> | FontsSelect<true>;
     compilations: CompilationsSelect<false> | CompilationsSelect<true>;
     'festival-gfx-artists': FestivalGfxArtistsSelect<false> | FestivalGfxArtistsSelect<true>;
+    shifts: ShiftsSelect<false> | ShiftsSelect<true>;
+    'volunteer-assignments': VolunteerAssignmentsSelect<false> | VolunteerAssignmentsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -569,7 +573,7 @@ export interface User {
   /**
    * Primary role — determines billing and content access
    */
-  role: 'super-admin' | 'editor' | 'volunteer' | 'musician' | 'vendor' | 'venue' | 'sponsor';
+  role: 'super-admin' | 'editor' | 'volunteer' | 'musician' | 'vendor' | 'venue' | 'sponsor' | 'customer';
   /**
    * Controls access to paid features. Volunteers are always active.
    */
@@ -1219,6 +1223,83 @@ export interface FestivalGfxArtist {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "shifts".
+ */
+export interface Shift {
+  id: number;
+  /**
+   * e.g. "Saturday Merch Booth PM"
+   */
+  name: string;
+  festivalYear: number;
+  date: 'friday' | 'saturday' | 'sunday';
+  /**
+   * e.g. 12:30 PM
+   */
+  startTime: string;
+  /**
+   * e.g. 5:30 PM
+   */
+  endTime: string;
+  role:
+    | 'setup'
+    | 'merch'
+    | 'green-room'
+    | 'wristband'
+    | 'videographer'
+    | 'donation'
+    | 'crowd-counter'
+    | 'floater'
+    | 'ice-cream'
+    | 'kids-craft';
+  /**
+   * e.g. "Main Stage", "Merch Booth", "Beer Garden Entrance"
+   */
+  location?: string | null;
+  /**
+   * Maximum number of volunteers for this shift
+   */
+  maxVolunteers?: number | null;
+  /**
+   * Instructions or details shown to assigned volunteers
+   */
+  notes?: string | null;
+  /**
+   * Uncheck to hide this shift from the run of show
+   */
+  isActive?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "volunteer-assignments".
+ */
+export interface VolunteerAssignment {
+  id: number;
+  /**
+   * The volunteer assigned to this shift
+   */
+  volunteer: number | User;
+  shift: number | Shift;
+  status: 'assigned' | 'confirmed' | 'cancelled' | 'no-show' | 'completed';
+  /**
+   * Set automatically when volunteer confirms
+   */
+  confirmedAt?: string | null;
+  /**
+   * Internal notes from the Volunteer Director
+   */
+  notes?: string | null;
+  /**
+   * Set automatically when assignment email is sent
+   */
+  notificationSent?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1450,6 +1531,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'festival-gfx-artists';
         value: number | FestivalGfxArtist;
+      } | null)
+    | ({
+        relationTo: 'shifts';
+        value: number | Shift;
+      } | null)
+    | ({
+        relationTo: 'volunteer-assignments';
+        value: number | VolunteerAssignment;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -2106,6 +2195,38 @@ export interface FestivalGfxArtistsSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "shifts_select".
+ */
+export interface ShiftsSelect<T extends boolean = true> {
+  name?: T;
+  festivalYear?: T;
+  date?: T;
+  startTime?: T;
+  endTime?: T;
+  role?: T;
+  location?: T;
+  maxVolunteers?: T;
+  notes?: T;
+  isActive?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "volunteer-assignments_select".
+ */
+export interface VolunteerAssignmentsSelect<T extends boolean = true> {
+  volunteer?: T;
+  shift?: T;
+  status?: T;
+  confirmedAt?: T;
+  notes?: T;
+  notificationSent?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

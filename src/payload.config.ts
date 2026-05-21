@@ -22,6 +22,8 @@ import { SiteSettings } from './globals/SiteSettings'
 import { Fonts } from './collections/Fonts'
 import { Compilations } from './collections/Compilations'
 import { FestivalGFXArtists } from './collections/FestivalGFXArtists'
+import { Shifts } from './collections/Shifts'
+import { VolunteerAssignments } from './collections/VolunteerAssignments'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -82,6 +84,8 @@ export default buildConfig({
     Fonts,
     Compilations,
     FestivalGFXArtists,
+    Shifts,
+    VolunteerAssignments,
   ],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer, SiteSettings],
