@@ -77,6 +77,7 @@ export interface Config {
     'cart-items': CartItem;
     fonts: Font;
     compilations: Compilation;
+    'festival-gfx-artists': FestivalGfxArtist;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -104,6 +105,7 @@ export interface Config {
     'cart-items': CartItemsSelect<false> | CartItemsSelect<true>;
     fonts: FontsSelect<false> | FontsSelect<true>;
     compilations: CompilationsSelect<false> | CompilationsSelect<true>;
+    'festival-gfx-artists': FestivalGfxArtistsSelect<false> | FestivalGfxArtistsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -1113,6 +1115,66 @@ export interface Compilation {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "festival-gfx-artists".
+ */
+export interface FestivalGfxArtist {
+  id: number;
+  artistName: string;
+  year: number;
+  bio?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  featuredImage?: (number | null) | Media;
+  /**
+   * Additional artwork or portfolio images
+   */
+  portfolioImages?:
+    | {
+        image: number | Media;
+        caption?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  socialLinks?:
+    | {
+        platform?: ('instagram' | 'website' | 'behance' | 'dribbble' | 'twitter' | 'other') | null;
+        url: string;
+        handle?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * The compilation CD this artist designed artwork for
+   */
+  compilationVolume?: (number | null) | Compilation;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    image?: (number | null) | Media;
+  };
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1340,6 +1402,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'compilations';
         value: number | Compilation;
+      } | null)
+    | ({
+        relationTo: 'festival-gfx-artists';
+        value: number | FestivalGfxArtist;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -1928,6 +1994,44 @@ export interface CompilationsSelect<T extends boolean = true> {
         duration?: T;
         id?: T;
       };
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
+  generateSlug?: T;
+  slug?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "festival-gfx-artists_select".
+ */
+export interface FestivalGfxArtistsSelect<T extends boolean = true> {
+  artistName?: T;
+  year?: T;
+  bio?: T;
+  featuredImage?: T;
+  portfolioImages?:
+    | T
+    | {
+        image?: T;
+        caption?: T;
+        id?: T;
+      };
+  socialLinks?:
+    | T
+    | {
+        platform?: T;
+        url?: T;
+        handle?: T;
+        id?: T;
+      };
+  compilationVolume?: T;
   meta?:
     | T
     | {
@@ -2535,6 +2639,10 @@ export interface TaskSchedulePublish {
       | ({
           relationTo: 'compilations';
           value: number | Compilation;
+        } | null)
+      | ({
+          relationTo: 'festival-gfx-artists';
+          value: number | FestivalGfxArtist;
         } | null);
     global?: string | null;
     user?: (number | null) | User;
