@@ -24,11 +24,24 @@ import { Compilations } from './collections/Compilations'
 import { FestivalGFXArtists } from './collections/FestivalGFXArtists'
 import { Shifts } from './collections/Shifts'
 import { VolunteerAssignments } from './collections/VolunteerAssignments'
+import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
+import nodemailer from 'nodemailer'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
+  email: nodemailerAdapter({
+    defaultFromAddress: process.env.GMAIL_USER ?? 'noreply@pdxpopnow.com',
+    defaultFromName: 'PDX Pop Now!',
+    transport: nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_APP_PASSWORD,
+      },
+    }),
+  }),
   admin: {
     components: {
       // The `BeforeLogin` component renders a message that you see while logging into your admin panel.
