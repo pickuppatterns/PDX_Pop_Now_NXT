@@ -89,7 +89,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
           await payload.update({
             collection: 'users',
             id: users.docs[0].id,
-            data: { role: 'guest' },
+            data: { role: 'volunteer' },
             overrideAccess: true,
           })
         }

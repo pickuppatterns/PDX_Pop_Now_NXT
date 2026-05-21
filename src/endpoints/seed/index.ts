@@ -97,7 +97,9 @@ export const seed = async ({
         email: 'demo-author@example.com',
         password: 'password',
         role: 'editor',
+        accountStatus: 'active',
       },
+      draft: false,
     }),
     payload.create({
       collection: 'media',

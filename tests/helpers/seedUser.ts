@@ -5,7 +5,7 @@ export const testUser = {
   email: 'dev@payloadcms.com',
   password: 'test',
   name: 'Test User',
-  role: 'customer' as const,
+  role: 'volunteer' as const,
 }
 
 export const testAdminUser = {
@@ -32,8 +32,10 @@ export async function seedTestUser(suffix = 'default'): Promise<{ email: string;
       email,
       password: 'test',
       name: 'Test User',
-      role: 'customer' as const,
+      role: 'volunteer' as const,
+      accountStatus: 'active' as const,
     },
+    draft: false,
   })
 
   return { email, id: String(user.id) }
@@ -66,7 +68,9 @@ export async function seedAdminUser(suffix = 'default'): Promise<{ email: string
       password: 'test',
       name: 'Test Admin',
       role: 'super-admin' as const,
+      accountStatus: 'active' as const,
     },
+    draft: false,
   })
 
   return { email, id: String(user.id) }

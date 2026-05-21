@@ -566,9 +566,53 @@ export interface Category {
 export interface User {
   id: number;
   name?: string | null;
-  role: 'super-admin' | 'editor' | 'customer' | 'musician' | 'guest';
   /**
-   * Set automatically when customer checks out
+   * Primary role — determines billing and content access
+   */
+  role: 'super-admin' | 'editor' | 'volunteer' | 'musician' | 'vendor' | 'venue' | 'sponsor';
+  /**
+   * Controls access to paid features. Volunteers are always active.
+   */
+  accountStatus: 'pending' | 'active' | 'inactive' | 'suspended';
+  /**
+   * Can be true regardless of primary role or account status
+   */
+  isVolunteer?: boolean | null;
+  /**
+   * Only visible when Is a Volunteer is checked
+   */
+  volunteerStatus?: ('pending' | 'approved' | 'assigned' | 'inactive') | null;
+  volunteerProfile?: {
+    phone?: string | null;
+    emergencyContact?: string | null;
+    shirtSize?: ('xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl') | null;
+    availability?:
+      | ('fri-noon-setup' | 'fri-evening' | 'sat-afternoon' | 'sat-evening' | 'sun-afternoon' | 'sun-evening')[]
+      | null;
+    rolePreference?:
+      | (
+          | 'no-preference'
+          | 'setup'
+          | 'merch'
+          | 'green-room'
+          | 'wristband'
+          | 'videographer'
+          | 'donation'
+          | 'crowd-counter'
+          | 'floater'
+          | 'ice-cream'
+          | 'kids-craft'
+        )[]
+      | null;
+    multipleShifts?: ('multi-same-day' | 'multi-days' | 'multi-all' | 'no' | 'maybe') | null;
+    experience?: string | null;
+    accommodations?: string | null;
+    hearAbout?: ('friend' | 'social' | 'website' | 'email' | 'other') | null;
+    hearAboutOther?: string | null;
+    additionalNotes?: string | null;
+  };
+  /**
+   * Set automatically when user subscribes
    */
   stripeCustomerId?: string | null;
   updatedAt: string;
@@ -1878,6 +1922,24 @@ export interface CategoriesSelect<T extends boolean = true> {
 export interface UsersSelect<T extends boolean = true> {
   name?: T;
   role?: T;
+  accountStatus?: T;
+  isVolunteer?: T;
+  volunteerStatus?: T;
+  volunteerProfile?:
+    | T
+    | {
+        phone?: T;
+        emergencyContact?: T;
+        shirtSize?: T;
+        availability?: T;
+        rolePreference?: T;
+        multipleShifts?: T;
+        experience?: T;
+        accommodations?: T;
+        hearAbout?: T;
+        hearAboutOther?: T;
+        additionalNotes?: T;
+      };
   stripeCustomerId?: T;
   updatedAt?: T;
   createdAt?: T;
