@@ -58,7 +58,6 @@ async function getUser() {
     const session = await auth.api.getSession({
       headers: await headers(),
     })
-    console.log('SESSION:', JSON.stringify(session?.user ?? null))
     return session?.user ?? null
   } catch (e) {
     console.log('SESSION ERROR:', e)
