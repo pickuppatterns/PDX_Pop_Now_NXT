@@ -573,9 +573,27 @@ export interface User {
   id: number;
   name?: string | null;
   /**
-   * Primary role — determines billing and content access
+   * Primary role — determines dashboard access and billing
    */
-  role: 'super-admin' | 'editor' | 'volunteer' | 'musician' | 'vendor' | 'venue' | 'sponsor' | 'customer';
+  role:
+    | 'super-admin'
+    | 'web_admin'
+    | 'editor'
+    | 'volunteer_director'
+    | 'compilation_director'
+    | 'booking_director'
+    | 'sponsorship_director'
+    | 'social_director'
+    | 'radio_director'
+    | 'listening_director'
+    | 'orders_director'
+    | 'support_director'
+    | 'volunteer'
+    | 'musician'
+    | 'vendor'
+    | 'venue'
+    | 'sponsor'
+    | 'customer';
   /**
    * Controls access to paid features. Volunteers are always active.
    */

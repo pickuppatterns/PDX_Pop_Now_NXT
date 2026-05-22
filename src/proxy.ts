@@ -5,6 +5,22 @@ import type { Session } from '@/lib/auth'
 const protectedRoutes = ['/account', '/checkout', '/orders']
 const authRoutes = ['/login', '/signup']
 
+const ROLE_DASHBOARDS: Record<string, string> = {
+  'super-admin': '/dashboard',
+  web_admin: '/dashboard',
+  volunteer_director: '/dashboard/volunteers',
+  compilation_director: '/dashboard/compilation',
+  booking_director: '/dashboard/booking',
+  sponsorship_director: '/dashboard/sponsorship',
+  social_director: '/dashboard/social',
+  radio_director: '/dashboard/radio',
+  listening_director: '/dashboard/listening',
+  orders_director: '/dashboard/orders',
+  support_director: '/dashboard/support',
+}
+
+const DIRECTOR_ROLES = Object.keys(ROLE_DASHBOARDS)
+
 export async function proxy(req: NextRequest): Promise<NextResponse> {
   const path = req.nextUrl.pathname
 
@@ -21,6 +37,33 @@ export async function proxy(req: NextRequest): Promise<NextResponse> {
 
   const isAuthenticated = !!session?.user
 
+  // ─── Dashboard protection ────────────────────────────────────────
+  if (path.startsWith('/dashboard') && !path.startsWith('/dashboard-login')) {
+    if (!isAuthenticated) {
+      const loginUrl = new URL('/dashboard-login', req.url)
+      loginUrl.searchParams.set('redirect', path)
+      return NextResponse.redirect(loginUrl)
+    }
+
+    const role = session?.user?.role as string | undefined
+
+    if (!role || !DIRECTOR_ROLES.includes(role)) {
+      return NextResponse.redirect(new URL('/', req.url))
+    }
+
+    if (role === 'super-admin' || role === 'web_admin') {
+      return NextResponse.next()
+    }
+
+    const home = ROLE_DASHBOARDS[role]
+    if (home && !path.startsWith(home)) {
+      return NextResponse.redirect(new URL(home, req.url))
+    }
+
+    return NextResponse.next()
+  }
+
+  // ─── Existing auth routes ────────────────────────────────────────
   if (authRoutes.some((route) => path.startsWith(route)) && isAuthenticated) {
     return NextResponse.redirect(new URL('/account', req.url))
   }
