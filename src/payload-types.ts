@@ -1349,6 +1349,25 @@ export interface Volunteer {
   experience?: string | null;
   accommodations?: string | null;
   shirtSize?: ('XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL') | null;
+  musicGenres?:
+    | (
+        | 'classical'
+        | 'country'
+        | 'electronic'
+        | 'experimental'
+        | 'folk_americana'
+        | 'hip_hop'
+        | 'international'
+        | 'rb_soul'
+        | 'jazz'
+        | 'metal_hardcore'
+        | 'pop'
+        | 'post_punk'
+        | 'rock_alt_punk'
+        | 'indie_rock_pop'
+        | 'goth_darkwave'
+      )[]
+    | null;
   heardFrom?: string | null;
   additionalNotes?: string | null;
   /**
@@ -2330,6 +2349,7 @@ export interface VolunteersSelect<T extends boolean = true> {
   experience?: T;
   accommodations?: T;
   shirtSize?: T;
+  musicGenres?: T;
   heardFrom?: T;
   additionalNotes?: T;
   assignedShift?: T;

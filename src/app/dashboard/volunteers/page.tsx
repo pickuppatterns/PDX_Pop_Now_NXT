@@ -15,6 +15,7 @@ type Volunteer = {
   emergencyContact: string
   positions: string[]
   shirtSize: string
+  musicGenres: string[]
   experience: string
   accommodations: string
   heardFrom: string
@@ -94,6 +95,22 @@ export default function VolunteersPage() {
       width: 80,
       filter: true,
       sortable: true,
+    },
+    {
+      field: 'musicGenres',
+      headerName: 'Music Genres',
+      width: 220,
+      autoHeight: true,
+      wrapText: true,
+      valueFormatter: (p) =>
+        Array.isArray(p.value) ? p.value.map((v: string) => v.replace(/_/g, ' ')).join(', ') : '',
+      filter: true,
+      cellStyle: {
+        whiteSpace: 'pre-wrap',
+        lineHeight: '1.4',
+        paddingTop: '8px',
+        paddingBottom: '8px',
+      },
     },
     {
       field: 'assignedShift',
@@ -296,11 +313,14 @@ export default function VolunteersPage() {
           <AgGridReact
             rowData={volunteers}
             columnDefs={colDefs}
-            defaultColDef={{ resizable: true }}
+            defaultColDef={{
+              resizable: true,
+              autoHeight: false,
+              cellStyle: { display: 'flex', alignItems: 'center' },
+            }}
             onCellValueChanged={handleCellEdit}
             pagination={true}
             paginationPageSize={25}
-            rowHeight={40}
             stopEditingWhenCellsLoseFocus={true}
             paginationPageSizeSelector={[25, 50, 100]}
           />

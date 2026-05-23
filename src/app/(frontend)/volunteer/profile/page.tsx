@@ -12,6 +12,7 @@ type VolunteerProfile = {
   phone: string
   emergencyContact: string
   shirtSize: string
+  musicGenres: string[]
   positions: string[]
   assignedShift: string | null
   assignedPosition: string | null
@@ -57,6 +58,8 @@ export default function VolunteerProfilePage() {
     phone: '',
     emergencyContact: '',
     status: 'active' as 'active' | 'inactive',
+    shirtSize: '',
+    musicGenres: [] as string[],
   })
 
   const fetchProfile = useCallback(async () => {
@@ -70,6 +73,8 @@ export default function VolunteerProfilePage() {
         lastName: data.lastName ?? '',
         phone: data.phone ?? '',
         emergencyContact: data.emergencyContact ?? '',
+        shirtSize: data.shirtSize ?? '',
+        musicGenres: data.musicGenres ?? [],
         status: data.status ?? 'active',
       })
     } catch (e) {
@@ -299,7 +304,77 @@ export default function VolunteerProfilePage() {
               style={inputStyle}
             />
           </div>
+          <div style={{ marginBottom: '1rem' }}>
+            <label style={labelStyle}>Shirt Size (Unisex)</label>
+            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+              {['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'].map((s) => (
+                <button
+                  key={s}
+                  onClick={() => setForm({ ...form, shirtSize: s })}
+                  style={{
+                    padding: '6px 14px',
+                    borderRadius: 8,
+                    border: `1px solid ${form.shirtSize === s ? '#ff8c42' : 'rgba(255,255,255,0.15)'}`,
+                    background: form.shirtSize === s ? 'rgba(255,140,66,0.15)' : 'transparent',
+                    color: form.shirtSize === s ? '#ff8c42' : '#aaa',
+                    cursor: 'pointer',
+                    fontFamily: "'Courier New', monospace",
+                    fontSize: '0.8rem',
+                  }}
+                >
+                  {s}
+                </button>
+              ))}
+            </div>
+          </div>
 
+          <div style={{ marginBottom: '1.5rem' }}>
+            <label style={labelStyle}>Favorite Music Genres</label>
+            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+              {[
+                { label: 'Classical', value: 'classical' },
+                { label: 'Country', value: 'country' },
+                { label: 'Electronic', value: 'electronic' },
+                { label: 'Experimental', value: 'experimental' },
+                { label: 'Folk / Americana', value: 'folk_americana' },
+                { label: 'Hip Hop / Rap', value: 'hip_hop' },
+                { label: 'International', value: 'international' },
+                { label: 'R&B / Soul', value: 'rb_soul' },
+                { label: 'Jazz', value: 'jazz' },
+                { label: 'Metal / Hardcore', value: 'metal_hardcore' },
+                { label: 'Pop', value: 'pop' },
+                { label: 'Post-Punk', value: 'post_punk' },
+                { label: 'Rock / Alt / Punk', value: 'rock_alt_punk' },
+                { label: 'Indie Rock / Pop', value: 'indie_rock_pop' },
+                { label: 'Goth / Dark-Wave', value: 'goth_darkwave' },
+              ].map((g) => (
+                <button
+                  key={g.value}
+                  onClick={() => {
+                    const current = form.musicGenres
+                    const updated = current.includes(g.value)
+                      ? current.filter((v) => v !== g.value)
+                      : [...current, g.value]
+                    setForm({ ...form, musicGenres: updated })
+                  }}
+                  style={{
+                    padding: '6px 14px',
+                    borderRadius: 8,
+                    border: `1px solid ${form.musicGenres.includes(g.value) ? '#ff8c42' : 'rgba(255,255,255,0.15)'}`,
+                    background: form.musicGenres.includes(g.value)
+                      ? 'rgba(255,140,66,0.15)'
+                      : 'transparent',
+                    color: form.musicGenres.includes(g.value) ? '#ff8c42' : '#aaa',
+                    cursor: 'pointer',
+                    fontFamily: "'Courier New', monospace",
+                    fontSize: '0.8rem',
+                  }}
+                >
+                  {g.label}
+                </button>
+              ))}
+            </div>
+          </div>
           <div style={{ marginBottom: '1.5rem' }}>
             <label style={labelStyle}>My Status</label>
             <div style={{ display: 'flex', gap: '1rem' }}>
