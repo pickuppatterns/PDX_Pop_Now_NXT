@@ -23,6 +23,15 @@ export const Volunteers: CollectionConfig = {
       ],
     },
     { name: 'email', type: 'email', label: 'Email', required: true },
+    {
+      name: 'betterAuthId',
+      type: 'text',
+      label: 'Better Auth User ID',
+      admin: {
+        readOnly: true,
+        description: 'Set automatically on signup',
+      },
+    },
     { name: 'phone', type: 'text', label: 'Phone Number', required: true },
     { name: 'emergencyContact', type: 'text', label: 'Emergency Contact' },
     {

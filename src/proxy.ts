@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { betterFetch } from '@better-fetch/fetch'
 import type { Session } from '@/lib/auth'
 
-const protectedRoutes = ['/account', '/checkout', '/orders']
+const protectedRoutes = ['/account', '/checkout', '/orders', '/volunteer/profile']
 const authRoutes = ['/login', '/signup']
 
 const ROLE_DASHBOARDS: Record<string, string> = {
@@ -65,6 +65,10 @@ export async function proxy(req: NextRequest): Promise<NextResponse> {
 
   // ─── Existing auth routes ────────────────────────────────────────
   if (authRoutes.some((route) => path.startsWith(route)) && isAuthenticated) {
+    const role = session?.user?.role as string | undefined
+    if (role === 'volunteer') {
+      return NextResponse.redirect(new URL('/volunteer/profile', req.url))
+    }
     return NextResponse.redirect(new URL('/account', req.url))
   }
 
@@ -72,6 +76,12 @@ export async function proxy(req: NextRequest): Promise<NextResponse> {
     const loginUrl = new URL('/login', req.url)
     loginUrl.searchParams.set('redirect', path)
     return NextResponse.redirect(loginUrl)
+  }
+  if (path.startsWith('/volunteer/profile') && isAuthenticated) {
+    const role = session?.user?.role as string | undefined
+    if (role !== 'volunteer' && role !== 'super-admin' && role !== 'web_admin') {
+      return NextResponse.redirect(new URL('/', req.url))
+    }
   }
 
   return NextResponse.next()

@@ -1327,6 +1327,10 @@ export interface Volunteer {
   firstName: string;
   lastName?: string | null;
   email: string;
+  /**
+   * Set automatically on signup
+   */
+  betterAuthId?: string | null;
   phone: string;
   emergencyContact?: string | null;
   positions: (
@@ -2315,6 +2319,7 @@ export interface VolunteersSelect<T extends boolean = true> {
   firstName?: T;
   lastName?: T;
   email?: T;
+  betterAuthId?: T;
   phone?: T;
   emergencyContact?: T;
   positions?: T;

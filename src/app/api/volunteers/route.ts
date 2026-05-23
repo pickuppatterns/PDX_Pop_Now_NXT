@@ -64,7 +64,7 @@ export async function POST(req: NextRequest) {
       Math.random().toString(36).slice(-10) + Math.random().toString(36).slice(-10)
 
     try {
-      await auth.api.signUpEmail({
+      const authResult = await auth.api.signUpEmail({
         body: {
           name: `${firstName}${lastName ? ' ' + lastName : ''}`,
           email,
@@ -72,6 +72,16 @@ export async function POST(req: NextRequest) {
           role: 'volunteer',
         },
       })
+
+      // Link Better Auth user to Payload volunteer record
+      if (authResult?.user?.id) {
+        await payload.update({
+          collection: 'volunteers',
+          where: { email: { equals: email } },
+          data: { betterAuthId: authResult.user.id },
+          overrideAccess: true,
+        })
+      }
     } catch (authErr: unknown) {
       // If account already exists, don't fail the whole signup
       const msg = authErr instanceof Error ? authErr.message : ''
