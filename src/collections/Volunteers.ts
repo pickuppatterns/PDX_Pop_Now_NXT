@@ -25,6 +25,7 @@ export const Volunteers: CollectionConfig = {
     { name: 'email', type: 'email', label: 'Email', required: true },
     {
       name: 'betterAuthId',
+      index: true,
       type: 'text',
       label: 'Better Auth User ID',
       admin: {
@@ -96,6 +97,19 @@ export const Volunteers: CollectionConfig = {
         { label: 'Ice Cream & Popcorn Attendant', value: 'ice_cream' },
         { label: 'Kids Craft Table Attendant', value: 'kids_craft' },
       ],
+    },
+    {
+      name: 'status',
+      type: 'select',
+      label: 'Volunteer Status',
+      defaultValue: 'active',
+      options: [
+        { label: 'Active', value: 'active' },
+        { label: 'Inactive', value: 'inactive' },
+      ],
+      admin: {
+        description: 'Set by volunteer or director',
+      },
     },
   ],
   timestamps: true,

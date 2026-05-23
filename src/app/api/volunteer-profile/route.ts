@@ -14,7 +14,7 @@ export async function GET() {
     const payload = await getPayload({ config })
     const result = await payload.find({
       collection: 'volunteers',
-      where: { betterAuthId: { equals: session.user.id } },
+      where: { email: { equals: session.user.email } },
       limit: 1,
       overrideAccess: true,
     })
@@ -42,7 +42,7 @@ export async function PATCH(req: NextRequest) {
     // Find the volunteer record by Better Auth ID
     const result = await payload.find({
       collection: 'volunteers',
-      where: { betterAuthId: { equals: session.user.id } },
+      where: { email: { equals: session.user.email } },
       limit: 1,
       overrideAccess: true,
     })
@@ -55,7 +55,7 @@ export async function PATCH(req: NextRequest) {
     const body = await req.json()
 
     // Only allow updating contact fields — not assigned shift/position
-    const { firstName, lastName, phone, emergencyContact } = body
+    const { firstName, lastName, phone, emergencyContact, status } = body
 
     const updated = await payload.update({
       collection: 'volunteers',
@@ -65,6 +65,7 @@ export async function PATCH(req: NextRequest) {
         ...(lastName !== undefined && { lastName }),
         ...(phone !== undefined && { phone }),
         ...(emergencyContact !== undefined && { emergencyContact }),
+        ...(status !== undefined && { status }),
       },
       overrideAccess: true,
     })

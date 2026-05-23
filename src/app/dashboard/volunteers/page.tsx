@@ -21,6 +21,7 @@ type Volunteer = {
   additionalNotes: string
   assignedShift: string
   assignedPosition: string
+  status: string
   createdAt: string
 }
 
@@ -163,6 +164,21 @@ export default function VolunteersPage() {
         }
         return labels[p.value] ?? p.value ?? ''
       },
+    },
+    {
+      field: 'status',
+      headerName: 'Status',
+      width: 120,
+      editable: true,
+      filter: true,
+      sortable: true,
+      cellEditor: 'agSelectCellEditor',
+      cellEditorParams: {
+        values: ['active', 'inactive'],
+      },
+      cellStyle: (params) => ({
+        color: params.value === 'inactive' ? '#ef9a9a' : '#a5d6a7',
+      }),
     },
     {
       field: 'experience',

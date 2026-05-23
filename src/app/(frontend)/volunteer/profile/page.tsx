@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useSession, signOut } from '@/lib/auth-client'
 import Link from 'next/link'
 
@@ -18,6 +18,7 @@ type VolunteerProfile = {
   experience: string
   accommodations: string
   additionalNotes: string
+  status: 'active' | 'inactive'
 }
 
 const SHIFT_LABELS: Record<string, string> = {
@@ -55,32 +56,33 @@ export default function VolunteerProfilePage() {
     lastName: '',
     phone: '',
     emergencyContact: '',
+    status: 'active' as 'active' | 'inactive',
   })
+
+  const fetchProfile = useCallback(async () => {
+    try {
+      const res = await fetch('/api/volunteer-profile')
+      if (!res.ok) throw new Error('Failed to load profile')
+      const data = await res.json()
+      setProfile(data)
+      setForm({
+        firstName: data.firstName ?? '',
+        lastName: data.lastName ?? '',
+        phone: data.phone ?? '',
+        emergencyContact: data.emergencyContact ?? '',
+        status: data.status ?? 'active',
+      })
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Failed to load profile')
+    } finally {
+      setLoading(false)
+    }
+  }, [])
 
   useEffect(() => {
     if (!session?.user) return
-
-    async function fetchProfile() {
-      try {
-        const res = await fetch('/api/volunteer-profile')
-        if (!res.ok) throw new Error('Failed to load profile')
-        const data = await res.json()
-        setProfile(data)
-        setForm({
-          firstName: data.firstName ?? '',
-          lastName: data.lastName ?? '',
-          phone: data.phone ?? '',
-          emergencyContact: data.emergencyContact ?? '',
-        })
-      } catch (e) {
-        setError(e instanceof Error ? e.message : 'Failed to load profile')
-      } finally {
-        setLoading(false)
-      }
-    }
-
     fetchProfile()
-  }, [session])
+  }, [session, fetchProfile])
 
   async function handleSave() {
     setSaving(true)
@@ -95,6 +97,7 @@ export default function VolunteerProfilePage() {
       })
       if (!res.ok) throw new Error('Failed to save changes')
       setSuccess(true)
+      await fetchProfile()
       setTimeout(() => setSuccess(false), 3000)
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Failed to save')
@@ -295,6 +298,31 @@ export default function VolunteerProfilePage() {
               onChange={(e) => setForm({ ...form, emergencyContact: e.target.value })}
               style={inputStyle}
             />
+          </div>
+
+          <div style={{ marginBottom: '1.5rem' }}>
+            <label style={labelStyle}>My Status</label>
+            <div style={{ display: 'flex', gap: '1rem' }}>
+              {(['active', 'inactive'] as const).map((s) => (
+                <button
+                  key={s}
+                  onClick={() => setForm({ ...form, status: s })}
+                  style={{
+                    padding: '8px 20px',
+                    borderRadius: 8,
+                    border: `1px solid ${form.status === s ? '#ff8c42' : 'rgba(255,255,255,0.15)'}`,
+                    background: form.status === s ? 'rgba(255,140,66,0.15)' : 'transparent',
+                    color: form.status === s ? '#ff8c42' : '#aaa',
+                    cursor: 'pointer',
+                    fontFamily: "'Courier New', monospace",
+                    fontSize: '0.85rem',
+                    textTransform: 'capitalize',
+                  }}
+                >
+                  {s}
+                </button>
+              ))}
+            </div>
           </div>
 
           {error && (

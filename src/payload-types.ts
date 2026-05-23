@@ -1374,6 +1374,10 @@ export interface Volunteer {
         | 'kids_craft'
       )
     | null;
+  /**
+   * Set by volunteer or director
+   */
+  status?: ('active' | 'inactive') | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -2330,6 +2334,7 @@ export interface VolunteersSelect<T extends boolean = true> {
   additionalNotes?: T;
   assignedShift?: T;
   assignedPosition?: T;
+  status?: T;
   updatedAt?: T;
   createdAt?: T;
 }
