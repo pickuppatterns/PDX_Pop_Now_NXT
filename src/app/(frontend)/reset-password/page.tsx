@@ -3,6 +3,7 @@
 import { useState, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { authClient } from '@/lib/auth-client'
+import Link from 'next/link'
 
 function ResetPasswordForm() {
   const searchParams = useSearchParams()
@@ -44,23 +45,34 @@ function ResetPasswordForm() {
         throw new Error(result.error.message ?? 'Failed to reset password.')
       }
 
+      // Sign out so user goes through login and password manager can capture credentials
+      await authClient.signOut()
       setSuccess(true)
-      setTimeout(() => {
-        window.location.href = '/login'
-      }, 2000)
     } catch (e: unknown) {
       setError(e instanceof Error ? e.message : 'Failed to reset password.')
     } finally {
       setLoading(false)
     }
   }
-
   if (success) {
     return (
       <div style={cardStyle}>
-        <p style={{ color: '#a5d6a7', textAlign: 'center', fontFamily: 'Georgia, serif' }}>
-          ✓ Password reset successfully! Redirecting to login…
+        <p
+          style={{
+            color: '#a5d6a7',
+            textAlign: 'center',
+            fontFamily: 'Georgia, serif',
+            marginBottom: '1.5rem',
+          }}
+        >
+          ✓ Password set! You&apos;re ready to go.
         </p>
+        <Link
+          href="/login"
+          style={{ ...buttonStyle, display: 'block', textAlign: 'center', textDecoration: 'none' }}
+        >
+          Log In to View Your Profile →
+        </Link>
       </div>
     )
   }
@@ -91,13 +103,24 @@ function ResetPasswordForm() {
       </div>
 
       {error && (
-        <p style={{ background: '#2a0a0a', border: '1px solid #c62828', borderRadius: 8, padding: '10px 12px', color: '#ef9a9a', fontSize: '0.85rem', marginBottom: '1rem', fontFamily: 'Georgia, serif' }}>
+        <p
+          style={{
+            background: '#2a0a0a',
+            border: '1px solid #c62828',
+            borderRadius: 8,
+            padding: '10px 12px',
+            color: '#ef9a9a',
+            fontSize: '0.85rem',
+            marginBottom: '1rem',
+            fontFamily: 'Georgia, serif',
+          }}
+        >
           {error}
         </p>
       )}
 
       <button onClick={handleReset} disabled={loading} style={buttonStyle}>
-        {loading ? 'Resetting…' : 'Reset Password →'}
+        {loading ? 'Resetting…' : 'Set Your Password →'}
       </button>
     </div>
   )
@@ -108,11 +131,29 @@ export default function ResetPasswordPage() {
     <main style={pageStyle}>
       <div style={{ width: '100%', maxWidth: 400 }}>
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-          <p style={{ color: '#ff8c42', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '0.5rem', fontFamily: "'Courier New', monospace" }}>
+          <p
+            style={{
+              color: '#ff8c42',
+              fontSize: '0.75rem',
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              marginBottom: '0.5rem',
+              fontFamily: "'Courier New', monospace",
+            }}
+          >
             PDX Pop Now!
           </p>
-          <h1 style={{ color: '#fff', fontSize: '1.75rem', fontWeight: 900, fontStyle: 'italic', margin: 0, fontFamily: 'Georgia, serif' }}>
-            Reset Password
+          <h1
+            style={{
+              color: '#fff',
+              fontSize: '1.75rem',
+              fontWeight: 900,
+              fontStyle: 'italic',
+              margin: 0,
+              fontFamily: 'Georgia, serif',
+            }}
+          >
+            Set Your Password
           </h1>
         </div>
         <Suspense fallback={<div style={{ color: '#666' }}>Loading…</div>}>
