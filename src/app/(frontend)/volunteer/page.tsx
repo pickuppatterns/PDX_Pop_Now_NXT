@@ -19,6 +19,24 @@ const POSITIONS = [
 
 const SHIRT_SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL']
 
+const MUSIC_GENRES = [
+  { id: 'classical', label: 'Classical' },
+  { id: 'country', label: 'Country' },
+  { id: 'electronic', label: 'Electronic' },
+  { id: 'experimental', label: 'Experimental' },
+  { id: 'folk_americana', label: 'Folk / Americana' },
+  { id: 'hip_hop', label: 'Hip Hop / Rap' },
+  { id: 'international', label: 'International' },
+  { id: 'rb_soul', label: 'R&B / Soul' },
+  { id: 'jazz', label: 'Jazz' },
+  { id: 'metal_hardcore', label: 'Metal / Hardcore' },
+  { id: 'pop', label: 'Pop' },
+  { id: 'post_punk', label: 'Post-Punk' },
+  { id: 'rock_alt_punk', label: 'Rock / Alternative / Punk' },
+  { id: 'indie_rock_pop', label: 'Indie Rock / Pop' },
+  { id: 'goth_darkwave', label: 'Goth / Dark-Wave' },
+]
+
 const HEARD_FROM_OPTIONS = [
   'Friend/Word of Mouth',
   'Social Media',
@@ -37,6 +55,7 @@ type FormData = {
   experience: string
   accommodations: string
   shirtSize: string
+  musicGenres: string[]
   heardFrom: string
   heardFromOther: string
   additionalNotes: string
@@ -52,6 +71,7 @@ const initialForm: FormData = {
   experience: '',
   accommodations: '',
   shirtSize: '',
+  musicGenres: [],
   heardFrom: '',
   heardFromOther: '',
   additionalNotes: '',
@@ -97,7 +117,10 @@ export default function VolunteerPage() {
 
   function nextStep() {
     const err = validateStep()
-    if (err) { setError(err); return }
+    if (err) {
+      setError(err)
+      return
+    }
     setError(null)
     setStep((s) => Math.min(s + 1, totalSteps - 1))
   }
@@ -109,7 +132,10 @@ export default function VolunteerPage() {
 
   async function handleSubmit() {
     const err = validateStep()
-    if (err) { setError(err); return }
+    if (err) {
+      setError(err)
+      return
+    }
     setError(null)
     setSubmitting(true)
 
@@ -144,7 +170,11 @@ export default function VolunteerPage() {
       <div className="vol-hero">
         <div className="vol-hero-inner">
           <p className="vol-preheader">PDX Pop Now! 2025 Festival</p>
-          <h1 className="vol-title">Volunteer<br />Application</h1>
+          <h1 className="vol-title">
+            Volunteer
+            <br />
+            Application
+          </h1>
           <p className="vol-subtitle">
             Every volunteer gets a free t-shirt and a free meal for each shift. Help keep the music
             alive and support Portland's local scene!
@@ -155,7 +185,10 @@ export default function VolunteerPage() {
       <div className="vol-form-wrap">
         <div className="vol-progress">
           {stepTitles.map((s, i) => (
-            <div key={i} className={`vol-step-indicator ${i === step ? 'active' : i < step ? 'done' : ''}`}>
+            <div
+              key={i}
+              className={`vol-step-indicator ${i === step ? 'active' : i < step ? 'done' : ''}`}
+            >
               <span className="vol-step-num">{i < step ? '✓' : i + 1}</span>
               <span className="vol-step-label">{s.title}</span>
             </div>
@@ -173,25 +206,56 @@ export default function VolunteerPage() {
             <div className="vol-fields">
               <div className="vol-row">
                 <div className="vol-field">
-                  <label>First Name <span className="req">*</span></label>
-                  <input value={form.firstName} onChange={(e) => setField('firstName', e.target.value)} placeholder="Ada" />
+                  <label>
+                    First Name <span className="req">*</span>
+                  </label>
+                  <input
+                    value={form.firstName}
+                    onChange={(e) => setField('firstName', e.target.value)}
+                    placeholder="Ada"
+                  />
                 </div>
                 <div className="vol-field">
                   <label>Last Name</label>
-                  <input value={form.lastName} onChange={(e) => setField('lastName', e.target.value)} placeholder="Lovelace" />
+                  <input
+                    value={form.lastName}
+                    onChange={(e) => setField('lastName', e.target.value)}
+                    placeholder="Lovelace"
+                  />
                 </div>
               </div>
               <div className="vol-field">
-                <label>Email Address <span className="req">*</span></label>
-                <input type="email" value={form.email} onChange={(e) => setField('email', e.target.value)} placeholder="you@example.com" />
+                <label>
+                  Email Address <span className="req">*</span>
+                </label>
+                <input
+                  type="email"
+                  value={form.email}
+                  onChange={(e) => setField('email', e.target.value)}
+                  placeholder="you@example.com"
+                />
               </div>
               <div className="vol-field">
-                <label>Phone Number <span className="req">*</span></label>
-                <input type="tel" value={form.phone} onChange={(e) => setField('phone', e.target.value)} placeholder="(503) 555-0100" />
+                <label>
+                  Phone Number <span className="req">*</span>
+                </label>
+                <input
+                  type="tel"
+                  value={form.phone}
+                  onChange={(e) => setField('phone', e.target.value)}
+                  placeholder="(503) 555-0100"
+                />
               </div>
               <div className="vol-field">
-                <label>Emergency Contact Name &amp; Phone <span className="optional">(optional but recommended)</span></label>
-                <input value={form.emergencyContact} onChange={(e) => setField('emergencyContact', e.target.value)} placeholder="Jane Doe — (503) 555-0199" />
+                <label>
+                  Emergency Contact Name &amp; Phone{' '}
+                  <span className="optional">(optional but recommended)</span>
+                </label>
+                <input
+                  value={form.emergencyContact}
+                  onChange={(e) => setField('emergencyContact', e.target.value)}
+                  placeholder="Jane Doe — (503) 555-0199"
+                />
               </div>
             </div>
           )}
@@ -200,16 +264,24 @@ export default function VolunteerPage() {
           {step === 1 && (
             <div className="vol-fields">
               <div className="vol-field">
-                <label>Which volunteer position(s) are you most interested in? <span className="req">*</span></label>
+                <label>
+                  Which volunteer position(s) are you most interested in?{' '}
+                  <span className="req">*</span>
+                </label>
                 <div className="vol-checks vol-checks--grid">
                   {POSITIONS.map((p) => (
-                    <label key={p.id} className={`vol-check-label ${form.positions.includes(p.id) ? 'checked' : ''}`}>
+                    <label
+                      key={p.id}
+                      className={`vol-check-label ${form.positions.includes(p.id) ? 'checked' : ''}`}
+                    >
                       <input
                         type="checkbox"
                         checked={form.positions.includes(p.id)}
                         onChange={() => toggleArray('positions', p.id)}
                       />
-                      <span>{p.emoji} {p.label}</span>
+                      <span>
+                        {p.emoji} {p.label}
+                      </span>
                     </label>
                   ))}
                 </div>
@@ -239,7 +311,9 @@ export default function VolunteerPage() {
           {step === 2 && (
             <div className="vol-fields">
               <div className="vol-field">
-                <label>Shirt Size (unisex) <span className="req">*</span></label>
+                <label>
+                  Shirt Size (unisex) <span className="req">*</span>
+                </label>
                 <div className="vol-size-grid">
                   {SHIRT_SIZES.map((sz) => (
                     <button
@@ -252,12 +326,36 @@ export default function VolunteerPage() {
                     </button>
                   ))}
                 </div>
+                <div className="vol-field">
+                  <label>Favorite Music Genres (select all that apply)</label>
+                  <div className="vol-size-grid">
+                    {MUSIC_GENRES.map((g) => (
+                      <button
+                        key={g.id}
+                        type="button"
+                        className={`vol-size-btn ${form.musicGenres.includes(g.id) ? 'selected' : ''}`}
+                        onClick={() => {
+                          const current = form.musicGenres
+                          const updated = current.includes(g.id)
+                            ? current.filter((v) => v !== g.id)
+                            : [...current, g.id]
+                          setField('musicGenres', updated)
+                        }}
+                      >
+                        {g.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
               </div>
               <div className="vol-field">
                 <label>How did you hear about volunteering with PDX Pop Now!?</label>
                 <div className="vol-radios">
                   {HEARD_FROM_OPTIONS.map((o) => (
-                    <label key={o} className={`vol-radio-label ${form.heardFrom === o ? 'checked' : ''}`}>
+                    <label
+                      key={o}
+                      className={`vol-radio-label ${form.heardFrom === o ? 'checked' : ''}`}
+                    >
                       <input
                         type="radio"
                         name="heardFrom"

@@ -36,16 +36,14 @@ export default function VolunteerThankYouPage() {
             marginBottom: '0.75rem',
           }}
         >
-          Thanks for signing up to volunteer with <strong style={{ color: '#ff8c42' }}>PDX Pop Now! 2025</strong>.
-          We&apos;ll be in touch with your shift assignment and details soon.
+          Thanks for signing up to volunteer with{' '}
+          <strong style={{ color: '#ff8c42' }}>PDX Pop Now! </strong>. We&apos;ll be in touch with
+          your shift assignment and details soon.
         </p>
         <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)', marginBottom: '2rem' }}>
           Questions? Email{' '}
-          <a
-            href="mailto:mike.elliott@pdxpopnow.com"
-            style={{ color: '#e63946', textDecoration: 'none' }}
-          >
-            mike.elliott@pdxpopnow.com
+          <a href="volunteers@pdxpopnow.com" style={{ color: '#e63946', textDecoration: 'none' }}>
+            volunteers@pdxpopnow.com
           </a>
         </p>
         <Link

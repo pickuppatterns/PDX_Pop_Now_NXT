@@ -195,6 +195,8 @@ export default function VolunteersPage() {
       },
       cellStyle: (params) => ({
         color: params.value === 'inactive' ? '#ef9a9a' : '#a5d6a7',
+        display: 'flex',
+        alignItems: 'center',
       }),
     },
     {
