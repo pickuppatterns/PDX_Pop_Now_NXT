@@ -18,6 +18,11 @@ export default function DashboardLoginPage() {
         email,
         password,
       })
+
+      if (result.error) {
+        throw new Error(result.error.message ?? 'Invalid email or password.')
+      }
+
       type AuthUser = {
         id: string
         email: string

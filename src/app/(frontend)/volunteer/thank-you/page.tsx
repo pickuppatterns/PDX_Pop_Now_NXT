@@ -26,7 +26,7 @@ export default function VolunteerThankYouPage() {
             marginBottom: '1.25rem',
           }}
         >
-          You&apos;re In!
+          Right On, Welcome!
         </h1>
         <p
           style={{
@@ -37,12 +37,15 @@ export default function VolunteerThankYouPage() {
           }}
         >
           Thanks for signing up to volunteer with{' '}
-          <strong style={{ color: '#ff8c42' }}>PDX Pop Now! </strong>. We&apos;ll be in touch with
-          your shift assignment and details soon.
+          <strong style={{ color: '#ff8c42' }}>PDX Pop Now! </strong>. An email with a link to
+          finalize your account will be sent promptly. Follow the link to set up your profile page.
         </p>
         <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)', marginBottom: '2rem' }}>
           Questions? Email{' '}
-          <a href="volunteers@pdxpopnow.com" style={{ color: '#e63946', textDecoration: 'none' }}>
+          <a
+            href="mailto:volunteers@pdxpopnow.com"
+            style={{ color: '#e63946', textDecoration: 'none' }}
+          >
             volunteers@pdxpopnow.com
           </a>
         </p>

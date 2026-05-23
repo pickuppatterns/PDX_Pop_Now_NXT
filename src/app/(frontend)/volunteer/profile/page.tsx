@@ -168,6 +168,23 @@ export default function VolunteerProfilePage() {
             >
               Volunteer Profile
             </h1>
+            <p
+              style={{
+                color: 'rgba(255,255,255,0.6)',
+                fontSize: '0.9rem',
+                margin: '6px 0 0',
+                fontFamily: 'Georgia, serif',
+              }}
+            >
+              {(() => {
+                const hour = new Date().getHours()
+                if (hour >= 6 && hour < 12)
+                  return `☀️ Good Morning, ${`${form.firstName ? form.firstName + (form.lastName ? ' ' + form.lastName : '') : (session.user.name ?? session.user.email)}`}`
+                if (hour >= 12 && hour < 18)
+                  return `🌤️ Good Afternoon, ${`${form.firstName ? form.firstName + (form.lastName ? ' ' + form.lastName : '') : (session.user.name ?? session.user.email)}`}`
+                return `🌙 Good Evening, ${`${form.firstName ? form.firstName + (form.lastName ? ' ' + form.lastName : '') : (session.user.name ?? session.user.email)}`}`
+              })()}
+            </p>
           </div>
           <button
             onClick={() => {

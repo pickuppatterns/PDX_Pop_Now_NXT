@@ -105,6 +105,8 @@ export default function VolunteerPage() {
       if (!form.firstName.trim()) return 'First name is required.'
       if (!form.email.trim()) return 'Email is required.'
       if (!form.phone.trim()) return 'Phone number is required.'
+      const phoneDigits = form.phone.replace(/\D/g, '')
+      if (phoneDigits.length !== 10) return 'Please enter a valid 10-digit phone number.'
     }
     if (step === 1) {
       if (form.positions.length === 0) return 'Please select at least one position.'
@@ -242,8 +244,20 @@ export default function VolunteerPage() {
                 <input
                   type="tel"
                   value={form.phone}
-                  onChange={(e) => setField('phone', e.target.value)}
-                  placeholder="(503) 555-0100"
+                  onChange={(e) => {
+                    const digits = e.target.value.replace(/\D/g, '').slice(0, 10)
+                    let formatted = digits
+                    if (digits.length >= 7) {
+                      formatted = `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`
+                    } else if (digits.length >= 4) {
+                      formatted = `(${digits.slice(0, 3)}) ${digits.slice(3)}`
+                    } else if (digits.length >= 1) {
+                      formatted = `(${digits}`
+                    }
+                    setField('phone', formatted)
+                  }}
+                  maxLength={14}
+                  placeholder="(503) 555-1234"
                 />
               </div>
               <div className="vol-field">
@@ -289,6 +303,7 @@ export default function VolunteerPage() {
               <div className="vol-field">
                 <label>Relevant experience or skills?</label>
                 <textarea
+                  maxLength={250}
                   value={form.experience}
                   onChange={(e) => setField('experience', e.target.value)}
                   placeholder="Tell us anything helpful for the positions you're interested in..."
@@ -298,6 +313,7 @@ export default function VolunteerPage() {
               <div className="vol-field">
                 <label>Do you need any accommodations?</label>
                 <textarea
+                  maxLength={250}
                   value={form.accommodations}
                   onChange={(e) => setField('accommodations', e.target.value)}
                   placeholder="Accessibility, modified duties, etc."
@@ -379,6 +395,7 @@ export default function VolunteerPage() {
               <div className="vol-field">
                 <label>Anything else you'd like us to know?</label>
                 <textarea
+                  maxLength={250}
                   value={form.additionalNotes}
                   onChange={(e) => setField('additionalNotes', e.target.value)}
                   placeholder="Any other thoughts, questions, or notes..."

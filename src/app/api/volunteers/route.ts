@@ -6,6 +6,10 @@ import { auth } from '@/lib/auth'
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
+    console.log(
+      'Volunteer signup body:',
+      JSON.stringify({ email: body.email, firstName: body.firstName }),
+    )
     const {
       firstName,
       lastName,
@@ -65,7 +69,6 @@ export async function POST(req: NextRequest) {
         },
       })
 
-      // Link Better Auth user to Payload volunteer record
       if (authResult?.user?.id) {
         await payload.update({
           collection: 'volunteers',
@@ -74,26 +77,27 @@ export async function POST(req: NextRequest) {
           overrideAccess: true,
         })
       }
-
-      // Send welcome + password setup email via Better Auth HTTP endpoint
-      const resetRes = await fetch(
-        `${process.env.NEXT_PUBLIC_SERVER_URL}/api/auth/request-password-reset`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            email,
-            redirectTo: `${process.env.NEXT_PUBLIC_SERVER_URL}/reset-password`,
-          }),
-        },
-      )
-      console.log('Reset email status:', resetRes.status)
     } catch (authErr: unknown) {
       const msg = authErr instanceof Error ? authErr.message : ''
       if (!msg.toLowerCase().includes('already') && !msg.toLowerCase().includes('exists')) {
         console.error('[/api/volunteers] Better Auth signup error:', authErr)
       }
     }
+
+    // Send welcome email outside try/catch so it always runs
+    await new Promise((resolve) => setTimeout(resolve, 500))
+    const resetRes = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/auth/request-password-reset`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          redirectTo: `${process.env.NEXT_PUBLIC_SERVER_URL}/reset-password`,
+        }),
+      },
+    )
+    console.log('Reset email status:', resetRes.status)
 
     return NextResponse.json({ success: true })
   } catch (err) {
