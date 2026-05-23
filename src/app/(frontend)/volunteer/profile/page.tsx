@@ -11,6 +11,7 @@ function gravatarUrl(email: string, size = 80) {
 
 type VolunteerProfile = {
   id: number
+  avatarUrl?: string | null
   firstName: string
   lastName: string
   email: string
@@ -56,6 +57,7 @@ export default function VolunteerProfilePage() {
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState(false)
+  const [uploading, setUploading] = useState(false)
 
   const [form, setForm] = useState({
     firstName: '',
@@ -93,6 +95,39 @@ export default function VolunteerProfilePage() {
     if (!session?.user) return
     fetchProfile()
   }, [session, fetchProfile])
+
+  async function handleAvatarUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0]
+    if (!file) return
+
+    setUploading(true)
+    try {
+      const formData = new FormData()
+      formData.append('file', file)
+      formData.append('alt', `${form.firstName} ${form.lastName} avatar`)
+
+      const res = await fetch('/api/volunteer-avatar', {
+        method: 'POST',
+        body: formData,
+      })
+
+      if (!res.ok) throw new Error('Upload failed')
+      const data = await res.json()
+      const url = data.doc?.url ?? data.url
+
+      await fetch('/api/volunteer-profile', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ avatarUrl: url }),
+      })
+
+      await fetchProfile()
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Upload failed')
+    } finally {
+      setUploading(false)
+    }
+  }
 
   async function handleSave() {
     setSaving(true)
@@ -141,17 +176,68 @@ export default function VolunteerProfilePage() {
     <main style={pageStyle}>
       <div style={{ maxWidth: 600, width: '100%' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
-          <img
-            src={gravatarUrl(session.user.email, 80)}
-            alt="Profile avatar"
-            style={{
-              width: 80,
-              height: 80,
-              borderRadius: '50%',
-              border: '2px solid rgba(255,140,66,0.4)',
-              flexShrink: 0,
-            }}
-          />
+          <div style={{ position: 'relative', flexShrink: 0 }}>
+            <img
+              src={profile?.avatarUrl ?? gravatarUrl(session.user.email, 80)}
+              alt="Profile avatar"
+              style={{
+                width: 80,
+                height: 80,
+                borderRadius: '50%',
+                border: '2px solid rgba(255,140,66,0.4)',
+                display: 'block',
+                opacity: uploading ? 0.4 : 1,
+                transition: 'opacity 0.2s',
+              }}
+            />
+            {uploading && (
+              <div
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius: '50%',
+                }}
+              >
+                <span
+                  style={{
+                    color: '#fff',
+                    fontSize: '0.65rem',
+                    fontFamily: "'Courier New', monospace",
+                  }}
+                >
+                  uploading…
+                </span>
+              </div>
+            )}
+            <label
+              style={{
+                position: 'absolute',
+                bottom: 0,
+                right: 0,
+                background: uploading ? '#666' : '#e63946',
+                borderRadius: '50%',
+                width: 24,
+                height: 24,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: uploading ? 'not-allowed' : 'pointer',
+                fontSize: '0.7rem',
+              }}
+            >
+              {uploading ? '…' : '✎'}
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleAvatarUpload}
+                style={{ display: 'none' }}
+                disabled={uploading}
+              />
+            </label>
+          </div>
           <div style={{ flex: 1 }}>
             <p
               style={{

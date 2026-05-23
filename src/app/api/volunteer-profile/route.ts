@@ -55,7 +55,16 @@ export async function PATCH(req: NextRequest) {
     const body = await req.json()
 
     // Only allow updating contact fields — not assigned shift/position
-    const { firstName, lastName, phone, emergencyContact, status, shirtSize, musicGenres } = body
+    const {
+      firstName,
+      lastName,
+      phone,
+      emergencyContact,
+      status,
+      shirtSize,
+      musicGenres,
+      avatarUrl,
+    } = body
 
     const updated = await payload.update({
       collection: 'volunteers',
@@ -68,6 +77,7 @@ export async function PATCH(req: NextRequest) {
         ...(shirtSize !== undefined && { shirtSize }),
         ...(musicGenres !== undefined && { musicGenres }),
         ...(status !== undefined && { status }),
+        ...(avatarUrl !== undefined && { avatarUrl }),
       },
       overrideAccess: true,
     })

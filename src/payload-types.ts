@@ -1331,6 +1331,10 @@ export interface Volunteer {
    * Set automatically on signup
    */
   betterAuthId?: string | null;
+  /**
+   * Set automatically when volunteer uploads a profile picture
+   */
+  avatarUrl?: string | null;
   phone: string;
   emergencyContact?: string | null;
   positions: (
@@ -2343,6 +2347,7 @@ export interface VolunteersSelect<T extends boolean = true> {
   lastName?: T;
   email?: T;
   betterAuthId?: T;
+  avatarUrl?: T;
   phone?: T;
   emergencyContact?: T;
   positions?: T;

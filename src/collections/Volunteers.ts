@@ -33,6 +33,15 @@ export const Volunteers: CollectionConfig = {
         description: 'Set automatically on signup',
       },
     },
+    {
+      name: 'avatarUrl',
+      type: 'text',
+      label: 'Avatar URL',
+      admin: {
+        readOnly: true,
+        description: 'Set automatically when volunteer uploads a profile picture',
+      },
+    },
     { name: 'phone', type: 'text', label: 'Phone Number', required: true },
     { name: 'emergencyContact', type: 'text', label: 'Emergency Contact' },
     {
