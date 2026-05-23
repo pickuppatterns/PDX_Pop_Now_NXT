@@ -36,7 +36,17 @@ export async function proxy(req: NextRequest): Promise<NextResponse> {
   })
 
   const isAuthenticated = !!session?.user
-
+  // ─── Post-login role redirect ────────────────────────────────────
+  if (path.startsWith('/auth-redirect')) {
+    if (!isAuthenticated) {
+      return NextResponse.redirect(new URL('/login', req.url))
+    }
+    const role = session?.user?.role as string | undefined
+    if (role === 'volunteer') {
+      return NextResponse.redirect(new URL('/volunteer/profile', req.url))
+    }
+    return NextResponse.redirect(new URL('/account', req.url))
+  }
   // ─── Dashboard protection ────────────────────────────────────────
   if (path.startsWith('/dashboard') && !path.startsWith('/dashboard-login')) {
     if (!isAuthenticated) {
@@ -83,7 +93,14 @@ export async function proxy(req: NextRequest): Promise<NextResponse> {
       return NextResponse.redirect(new URL('/', req.url))
     }
   }
-
+  if (authRoutes.some((route) => path.startsWith(route)) && isAuthenticated) {
+    const role = session?.user?.role as string | undefined
+    console.log('AUTH REDIRECT - role:', role, 'path:', path)
+    if (role === 'volunteer') {
+      return NextResponse.redirect(new URL('/volunteer/profile', req.url))
+    }
+    return NextResponse.redirect(new URL('/account', req.url))
+  }
   return NextResponse.next()
 }
 
