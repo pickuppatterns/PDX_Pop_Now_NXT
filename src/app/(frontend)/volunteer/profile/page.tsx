@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useSession, signOut } from '@/lib/auth-client'
+import Link from 'next/link'
 
 type VolunteerProfile = {
   id: number
@@ -115,9 +116,9 @@ export default function VolunteerProfilePage() {
       <main style={pageStyle}>
         <div style={cardStyle}>
           <p style={{ color: '#fff', marginBottom: '1rem' }}>Please log in to view your profile.</p>
-          <a href="/login" style={buttonStyle}>
+          <Link href="/login" style={buttonStyle}>
             Log In →
-          </a>
+          </Link>
         </div>
       </main>
     )
