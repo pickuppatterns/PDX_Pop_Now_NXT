@@ -3,6 +3,11 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useSession, signOut } from '@/lib/auth-client'
 import Link from 'next/link'
+import md5 from 'md5'
+
+function gravatarUrl(email: string, size = 80) {
+  return `https://www.gravatar.com/avatar/${md5(email.trim().toLowerCase())}?d=retro&s=${size}`
+}
 
 type VolunteerProfile = {
   id: number
@@ -135,15 +140,19 @@ export default function VolunteerProfilePage() {
   return (
     <main style={pageStyle}>
       <div style={{ maxWidth: 600, width: '100%' }}>
-        <div
-          style={{
-            marginBottom: '2rem',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'flex-end',
-          }}
-        >
-          <div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
+          <img
+            src={gravatarUrl(session.user.email, 80)}
+            alt="Profile avatar"
+            style={{
+              width: 80,
+              height: 80,
+              borderRadius: '50%',
+              border: '2px solid rgba(255,140,66,0.4)',
+              flexShrink: 0,
+            }}
+          />
+          <div style={{ flex: 1 }}>
             <p
               style={{
                 color: '#ff8c42',
@@ -177,12 +186,13 @@ export default function VolunteerProfilePage() {
               }}
             >
               {(() => {
+                const name = form.firstName
+                  ? form.firstName + (form.lastName ? ' ' + form.lastName : '')
+                  : (session.user.name ?? session.user.email)
                 const hour = new Date().getHours()
-                if (hour >= 6 && hour < 12)
-                  return `☀️ Good Morning, ${`${form.firstName ? form.firstName + (form.lastName ? ' ' + form.lastName : '') : (session.user.name ?? session.user.email)}`}`
-                if (hour >= 12 && hour < 18)
-                  return `🌤️ Good Afternoon, ${`${form.firstName ? form.firstName + (form.lastName ? ' ' + form.lastName : '') : (session.user.name ?? session.user.email)}`}`
-                return `🌙 Good Evening, ${`${form.firstName ? form.firstName + (form.lastName ? ' ' + form.lastName : '') : (session.user.name ?? session.user.email)}`}`
+                if (hour >= 6 && hour < 12) return `☀️ Good Morning, ${name}`
+                if (hour >= 12 && hour < 18) return `🌤️ Good Afternoon, ${name}`
+                return `🌙 Good Evening, ${name}`
               })()}
             </p>
           </div>
@@ -198,6 +208,7 @@ export default function VolunteerProfilePage() {
               fontSize: '0.75rem',
               cursor: 'pointer',
               fontFamily: "'Courier New', monospace",
+              alignSelf: 'flex-start',
             }}
           >
             Sign out

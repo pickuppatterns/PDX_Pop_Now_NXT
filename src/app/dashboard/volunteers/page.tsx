@@ -275,7 +275,7 @@ export default function VolunteersPage() {
               margin: '0 0 8px',
             }}
           >
-            PDX Pop Now! 2025
+            PDX Pop Now!
           </p>
           <h1
             style={{

@@ -171,7 +171,7 @@ export default function VolunteerPage() {
     <main className="volunteer-page">
       <div className="vol-hero">
         <div className="vol-hero-inner">
-          <p className="vol-preheader">PDX Pop Now! 2025 Festival</p>
+          <p className="vol-preheader">PDX Pop Now! Festival</p>
           <h1 className="vol-title">
             Volunteer
             <br />
