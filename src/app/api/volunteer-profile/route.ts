@@ -14,10 +14,11 @@ export async function GET() {
     const payload = await getPayload({ config })
     const result = await payload.find({
       collection: 'volunteers',
-      where: { email: { equals: session.user.email } },
+      where: { betterAuthId: { equals: session.user.id } },
       limit: 1,
       overrideAccess: true,
     })
+    console.log('betterAuthId query:', result.totalDocs, 'id:', session.user.id)
 
     if (!result.docs.length) {
       return NextResponse.json({ message: 'Volunteer profile not found' }, { status: 404 })
@@ -42,7 +43,7 @@ export async function PATCH(req: NextRequest) {
     // Find the volunteer record by Better Auth ID
     const result = await payload.find({
       collection: 'volunteers',
-      where: { email: { equals: session.user.email } },
+      where: { betterAuthId: { equals: session.user.id } },
       limit: 1,
       overrideAccess: true,
     })
