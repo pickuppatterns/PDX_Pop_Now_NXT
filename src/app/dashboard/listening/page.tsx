@@ -3,6 +3,7 @@
 import { useEffect, useState, useCallback } from 'react'
 import { AgGridReact } from 'ag-grid-react'
 import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community'
+import type { ColDef } from 'ag-grid-community'
 
 ModuleRegistry.registerModules([AllCommunityModule])
 
@@ -56,7 +57,7 @@ export default function ListeningDashboard() {
     }
   }
 
-  const colDefs = [
+  const colDefs: ColDef<Listener>[] = [
     { field: 'firstName', headerName: 'First', width: 110, filter: true, sortable: true },
     { field: 'lastName', headerName: 'Last', width: 120, filter: true, sortable: true },
     { field: 'email', headerName: 'Email', width: 220, filter: true, sortable: true },
