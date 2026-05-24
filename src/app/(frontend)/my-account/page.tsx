@@ -39,7 +39,9 @@ export default function MyAccountPage() {
             emoji: '🎪',
           })
         }
-      } catch {}
+      } catch {
+        // volunteer record not found
+      }
 
       // Check listening committee record
       try {
@@ -52,7 +54,9 @@ export default function MyAccountPage() {
             emoji: '🎧',
           })
         }
-      } catch {}
+      } catch {
+        // listening committee record not found
+      }
 
       // Orders check — coming soon
 
