@@ -81,6 +81,7 @@ export interface Config {
     shifts: Shift;
     'volunteer-assignments': VolunteerAssignment;
     volunteers: Volunteer;
+    'listening-committee': ListeningCommittee;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -112,6 +113,7 @@ export interface Config {
     shifts: ShiftsSelect<false> | ShiftsSelect<true>;
     'volunteer-assignments': VolunteerAssignmentsSelect<false> | VolunteerAssignmentsSelect<true>;
     volunteers: VolunteersSelect<false> | VolunteersSelect<true>;
+    'listening-committee': ListeningCommitteeSelect<false> | ListeningCommitteeSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -1406,6 +1408,65 @@ export interface Volunteer {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "listening-committee".
+ */
+export interface ListeningCommittee {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  /**
+   * Set automatically on signup
+   */
+  betterAuthId?: string | null;
+  genreFirst:
+    | 'classical'
+    | 'country'
+    | 'electronic'
+    | 'experimental'
+    | 'folk_americana'
+    | 'hip_hop'
+    | 'international'
+    | 'rb_soul'
+    | 'jazz'
+    | 'metal_hardcore'
+    | 'pop'
+    | 'post_punk'
+    | 'rock_alt_punk'
+    | 'indie_rock_pop'
+    | 'goth_darkwave';
+  genreSecond?:
+    | (
+        | 'classical'
+        | 'country'
+        | 'electronic'
+        | 'experimental'
+        | 'folk_americana'
+        | 'hip_hop'
+        | 'international'
+        | 'rb_soul'
+        | 'jazz'
+        | 'metal_hardcore'
+        | 'pop'
+        | 'post_punk'
+        | 'rock_alt_punk'
+        | 'indie_rock_pop'
+        | 'goth_darkwave'
+      )
+    | null;
+  isReturning: 'yes' | 'no';
+  mailingList?: boolean | null;
+  status?: ('active' | 'inactive') | null;
+  /**
+   * Set by director when listening process begins
+   */
+  assignedBatch?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1649,6 +1710,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'volunteers';
         value: number | Volunteer;
+      } | null)
+    | ({
+        relationTo: 'listening-committee';
+        value: number | ListeningCommittee;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -2360,6 +2425,25 @@ export interface VolunteersSelect<T extends boolean = true> {
   assignedShift?: T;
   assignedPosition?: T;
   status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "listening-committee_select".
+ */
+export interface ListeningCommitteeSelect<T extends boolean = true> {
+  firstName?: T;
+  lastName?: T;
+  email?: T;
+  phone?: T;
+  betterAuthId?: T;
+  genreFirst?: T;
+  genreSecond?: T;
+  isReturning?: T;
+  mailingList?: T;
+  status?: T;
+  assignedBatch?: T;
   updatedAt?: T;
   createdAt?: T;
 }
