@@ -6,10 +6,6 @@ import { auth } from '@/lib/auth'
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
-    console.log(
-      'Volunteer signup body:',
-      JSON.stringify({ email: body.email, firstName: body.firstName }),
-    )
     const {
       firstName,
       lastName,
@@ -97,11 +93,9 @@ export async function POST(req: NextRequest) {
         }),
       },
     )
-    console.log('Reset email status:', resetRes.status)
 
     return NextResponse.json({ success: true })
   } catch (err) {
-    console.error('[/api/volunteers] Error:', err)
     return NextResponse.json({ message: 'Server error. Please try again.' }, { status: 500 })
   }
 }

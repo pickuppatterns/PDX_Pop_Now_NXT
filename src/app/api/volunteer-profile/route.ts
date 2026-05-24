@@ -18,7 +18,6 @@ export async function GET() {
       limit: 1,
       overrideAccess: true,
     })
-    console.log('betterAuthId query:', result.totalDocs, 'id:', session.user.id)
 
     if (!result.docs.length) {
       return NextResponse.json({ message: 'Volunteer profile not found' }, { status: 404 })
