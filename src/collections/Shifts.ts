@@ -5,8 +5,8 @@ import { anyone } from '../access/anyone'
 export const Shifts: CollectionConfig = {
   slug: 'shifts',
   labels: {
-    singular: 'Shift',
-    plural: 'Shifts',
+    singular: 'Volunteer Shift',
+    plural: 'Volunteer Shifts',
   },
   access: {
     create: authenticated,
@@ -17,7 +17,7 @@ export const Shifts: CollectionConfig = {
   admin: {
     useAsTitle: 'name',
     defaultColumns: ['name', 'date', 'startTime', 'endTime', 'role', 'maxVolunteers'],
-    group: 'PDX Pop Now!',
+    group: 'Festival',
   },
   fields: [
     {

@@ -82,6 +82,8 @@ export interface Config {
     'volunteer-assignments': VolunteerAssignment;
     volunteers: Volunteer;
     'listening-committee': ListeningCommittee;
+    'compilation-submissions': CompilationSubmission;
+    'compilation-media': CompilationMedia;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -114,6 +116,8 @@ export interface Config {
     'volunteer-assignments': VolunteerAssignmentsSelect<false> | VolunteerAssignmentsSelect<true>;
     volunteers: VolunteersSelect<false> | VolunteersSelect<true>;
     'listening-committee': ListeningCommitteeSelect<false> | ListeningCommitteeSelect<true>;
+    'compilation-submissions': CompilationSubmissionsSelect<false> | CompilationSubmissionsSelect<true>;
+    'compilation-media': CompilationMediaSelect<false> | CompilationMediaSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -1467,6 +1471,106 @@ export interface ListeningCommittee {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "compilation-submissions".
+ */
+export interface CompilationSubmission {
+  id: string;
+  artistName: string;
+  songTitle: string;
+  genre:
+    | 'classical'
+    | 'country'
+    | 'electronic'
+    | 'experimental'
+    | 'folk_americana'
+    | 'hip_hop'
+    | 'international'
+    | 'rb_soul'
+    | 'jazz'
+    | 'metal_hardcore'
+    | 'pop'
+    | 'post_punk'
+    | 'rock_alt_punk'
+    | 'indie_rock_pop'
+    | 'goth_darkwave';
+  releaseStatus: 'unreleased' | 'self_released' | 'on_label' | 'soundcloud';
+  labelName?: string | null;
+  radioAppropriate: 'radio_friendly' | 'parental_advisory';
+  songwritingCreditMusic?:
+    | {
+        name?: string | null;
+        split?: number | null;
+        id?: string | null;
+      }[]
+    | null;
+  songwritingCreditLyrics?:
+    | {
+        name?: string | null;
+        split?: number | null;
+        id?: string | null;
+      }[]
+    | null;
+  publishers?:
+    | {
+        name?: string | null;
+        split?: number | null;
+        id?: string | null;
+      }[]
+    | null;
+  soundRecordingOwners?:
+    | {
+        name?: string | null;
+        split?: number | null;
+        id?: string | null;
+      }[]
+    | null;
+  promoLink?: string | null;
+  bandcamp?: string | null;
+  instagram?: string | null;
+  website?: string | null;
+  firstName: string;
+  lastName: string;
+  affiliation: 'songwriter' | 'band_member' | 'manager' | 'label_rep' | 'other';
+  email: string;
+  phone: string;
+  trackUrl?: string | null;
+  bandPhotoUrl?: string | null;
+  trackFilename?: string | null;
+  betterAuthId?: string | null;
+  agreementAccepted?: boolean | null;
+  agreementTimestamp?: string | null;
+  agreementIp?: string | null;
+  agreementVersion?: string | null;
+  status?: ('pending' | 'under_review' | 'selected' | 'not_selected') | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * MP3s and band photos from compilation submissions. Do not delete.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "compilation-media".
+ */
+export interface CompilationMedia {
+  id: number;
+  alt?: string | null;
+  year?: number | null;
+  fileType?: ('track' | 'band_photo') | null;
+  prefix?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1714,6 +1818,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'listening-committee';
         value: number | ListeningCommittee;
+      } | null)
+    | ({
+        relationTo: 'compilation-submissions';
+        value: string | CompilationSubmission;
+      } | null)
+    | ({
+        relationTo: 'compilation-media';
+        value: number | CompilationMedia;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -2446,6 +2558,88 @@ export interface ListeningCommitteeSelect<T extends boolean = true> {
   assignedBatch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "compilation-submissions_select".
+ */
+export interface CompilationSubmissionsSelect<T extends boolean = true> {
+  id?: T;
+  artistName?: T;
+  songTitle?: T;
+  genre?: T;
+  releaseStatus?: T;
+  labelName?: T;
+  radioAppropriate?: T;
+  songwritingCreditMusic?:
+    | T
+    | {
+        name?: T;
+        split?: T;
+        id?: T;
+      };
+  songwritingCreditLyrics?:
+    | T
+    | {
+        name?: T;
+        split?: T;
+        id?: T;
+      };
+  publishers?:
+    | T
+    | {
+        name?: T;
+        split?: T;
+        id?: T;
+      };
+  soundRecordingOwners?:
+    | T
+    | {
+        name?: T;
+        split?: T;
+        id?: T;
+      };
+  promoLink?: T;
+  bandcamp?: T;
+  instagram?: T;
+  website?: T;
+  firstName?: T;
+  lastName?: T;
+  affiliation?: T;
+  email?: T;
+  phone?: T;
+  trackUrl?: T;
+  bandPhotoUrl?: T;
+  trackFilename?: T;
+  betterAuthId?: T;
+  agreementAccepted?: T;
+  agreementTimestamp?: T;
+  agreementIp?: T;
+  agreementVersion?: T;
+  status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "compilation-media_select".
+ */
+export interface CompilationMediaSelect<T extends boolean = true> {
+  alt?: T;
+  year?: T;
+  fileType?: T;
+  prefix?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

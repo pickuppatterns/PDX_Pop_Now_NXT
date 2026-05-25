@@ -28,6 +28,8 @@ import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
 import nodemailer from 'nodemailer'
 import { Volunteers } from './collections/Volunteers'
 import { ListeningCommittee } from './collections/ListeningCommittee'
+import { CompilationSubmissions } from './collections/CompilationSubmissions'
+import { CompilationMedia } from './collections/compilation-media'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -104,6 +106,8 @@ export default buildConfig({
     VolunteerAssignments,
     Volunteers,
     ListeningCommittee,
+    CompilationSubmissions,
+    CompilationMedia,
   ],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer, SiteSettings],
@@ -114,6 +118,26 @@ export default buildConfig({
         media: true,
       },
       bucket: process.env.B2_BUCKET_NAME!,
+      config: {
+        credentials: {
+          accessKeyId: process.env.B2_KEY_ID!,
+          secretAccessKey: process.env.B2_APP_KEY!,
+        },
+        region: process.env.B2_BUCKET_REGION!,
+        endpoint: `https://${process.env.B2_ENDPOINT}`,
+        forcePathStyle: true,
+        requestChecksumCalculation: 'WHEN_REQUIRED',
+        responseChecksumValidation: 'WHEN_REQUIRED',
+        customUserAgent: 'payload-cms',
+      },
+    }),
+    s3Storage({
+      collections: {
+        'compilation-media': {
+          prefix: '2026',
+        },
+      },
+      bucket: process.env.B2_SUBMISSION_ASSETS!,
       config: {
         credentials: {
           accessKeyId: process.env.B2_KEY_ID!,

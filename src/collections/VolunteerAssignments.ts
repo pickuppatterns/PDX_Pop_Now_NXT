@@ -27,7 +27,7 @@ export const VolunteerAssignments: CollectionConfig = {
   admin: {
     useAsTitle: 'id',
     defaultColumns: ['volunteer', 'shift', 'status', 'confirmedAt'],
-    group: 'PDX Pop Now!',
+    group: 'Festival',
   },
   fields: [
     {

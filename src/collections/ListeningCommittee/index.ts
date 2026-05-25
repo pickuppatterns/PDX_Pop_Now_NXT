@@ -14,7 +14,7 @@ export const ListeningCommittee: CollectionConfig = {
       'status',
       'createdAt',
     ],
-    group: 'Festival',
+    group: 'Compilation',
   },
   access: {
     read: ({ req }) => Boolean(req.user),
