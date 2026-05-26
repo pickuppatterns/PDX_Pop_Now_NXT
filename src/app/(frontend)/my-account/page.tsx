@@ -57,6 +57,20 @@ export default function MyAccountPage() {
       } catch {
         // listening committee record not found
       }
+      // Check submission record
+      try {
+        const res = await fetch('/api/submission-profile')
+        if (res.ok) {
+          found.push({
+            title: 'Submission Profile',
+            description: 'View your compilation submission status and result.',
+            href: '/submission/profile',
+            emoji: '🎵',
+          })
+        }
+      } catch {
+        // submission record not found
+      }
 
       // Orders check — coming soon
 

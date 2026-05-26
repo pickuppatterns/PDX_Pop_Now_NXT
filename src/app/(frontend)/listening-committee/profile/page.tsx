@@ -142,7 +142,7 @@ export default function ListeningCommitteeProfilePage() {
         {/* Header */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
           <img
-            src={gravatarUrl(session.user.email, 80)}
+            src={(session.user as any).image ?? gravatarUrl(session.user.email, 80)}
             alt="Avatar"
             style={{
               width: 80,

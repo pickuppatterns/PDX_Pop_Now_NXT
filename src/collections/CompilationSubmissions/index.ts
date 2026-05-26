@@ -165,6 +165,22 @@ export const CompilationSubmissions: CollectionConfig = {
         { label: 'Not Selected', value: 'not_selected' },
       ],
     },
+    { name: 'avatarUrl', type: 'text', label: 'Avatar URL', admin: { readOnly: true } },
+    {
+      name: 'selectedForCompilation',
+      type: 'checkbox',
+      label: 'Selected for Compilation',
+      defaultValue: false,
+    },
+    {
+      name: 'resultMessage',
+      type: 'select',
+      label: 'Result Message',
+      options: [
+        { label: 'Selected', value: 'selected' },
+        { label: 'Not Selected', value: 'not_selected' },
+      ],
+    },
   ],
   timestamps: true,
 }

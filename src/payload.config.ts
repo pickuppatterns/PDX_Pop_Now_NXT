@@ -29,7 +29,8 @@ import nodemailer from 'nodemailer'
 import { Volunteers } from './collections/Volunteers'
 import { ListeningCommittee } from './collections/ListeningCommittee'
 import { CompilationSubmissions } from './collections/CompilationSubmissions'
-import { CompilationMedia } from './collections/compilation-media'
+import { CompilationSongs } from './collections/compilation-songs'
+import { CompilationPhotos } from './collections/compilation-photos'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -107,7 +108,8 @@ export default buildConfig({
     Volunteers,
     ListeningCommittee,
     CompilationSubmissions,
-    CompilationMedia,
+    CompilationSongs,
+    CompilationPhotos,
   ],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer, SiteSettings],
@@ -133,11 +135,31 @@ export default buildConfig({
     }),
     s3Storage({
       collections: {
-        'compilation-media': {
+        'compilation-songs': {
           prefix: '2026',
         },
       },
-      bucket: process.env.B2_SUBMISSION_ASSETS!,
+      bucket: process.env.B2_SUBMISSION_SONGS!,
+      config: {
+        credentials: {
+          accessKeyId: process.env.B2_KEY_ID!,
+          secretAccessKey: process.env.B2_APP_KEY!,
+        },
+        region: process.env.B2_BUCKET_REGION!,
+        endpoint: `https://${process.env.B2_ENDPOINT}`,
+        forcePathStyle: true,
+        requestChecksumCalculation: 'WHEN_REQUIRED',
+        responseChecksumValidation: 'WHEN_REQUIRED',
+        customUserAgent: 'payload-cms',
+      },
+    }),
+    s3Storage({
+      collections: {
+        'compilation-photos': {
+          prefix: '2026',
+        },
+      },
+      bucket: process.env.B2_SUBMISSION_PHOTOS!,
       config: {
         credentials: {
           accessKeyId: process.env.B2_KEY_ID!,

@@ -96,11 +96,10 @@ export async function POST(req: NextRequest) {
     // Upload MP3 to compilation-media collection (separate from general media)
     const mp3Buffer = Buffer.from(await mp3File.arrayBuffer())
     const mp3Result = await payload.create({
-      collection: 'compilation-media',
+      collection: 'compilation-songs',
       data: {
         alt: mp3Filename,
         year,
-        fileType: 'track',
       },
       file: {
         data: mp3Buffer,
@@ -118,11 +117,10 @@ export async function POST(req: NextRequest) {
       const ext = bandPhotoFile.name.substring(bandPhotoFile.name.lastIndexOf('.'))
       const photoFilename = `${year}_${submissionId}_photo_${safeArtist}${ext}`
       const photoResult = await payload.create({
-        collection: 'compilation-media',
+        collection: 'compilation-photos',
         data: {
           alt: `${artistName} band photo`,
           year,
-          fileType: 'band_photo',
         },
         file: {
           data: photoBuffer,
@@ -148,32 +146,44 @@ export async function POST(req: NextRequest) {
     })
 
     // Create Better Auth account
-    const tempPassword =
-      Math.random().toString(36).slice(-10) + Math.random().toString(36).slice(-10)
-
+    // Link to Better Auth account — find existing or create new
     try {
-      const authResult = await auth.api.signUpEmail({
-        body: {
-          name: `${firstName}${lastName ? ' ' + lastName : ''}`,
-          email,
-          password: tempPassword,
-          role: 'submitter',
-        },
-      })
+      let betterAuthUserId: string | null = null
 
-      if (authResult?.user?.id) {
+      try {
+        const db = payload.db.drizzle
+        const result = await db.execute(`SELECT id FROM "user" WHERE email = '${email}' LIMIT 1`)
+        if (result.rows?.length) {
+          betterAuthUserId = result.rows[0].id as string
+        }
+      } catch {
+        // fall through to signup
+      }
+
+      if (!betterAuthUserId) {
+        const tempPassword =
+          Math.random().toString(36).slice(-10) + Math.random().toString(36).slice(-10)
+        const authResult = await auth.api.signUpEmail({
+          body: {
+            name: `${firstName}${lastName ? ' ' + lastName : ''}`,
+            email,
+            password: tempPassword,
+            role: 'submitter',
+          },
+        })
+        betterAuthUserId = authResult?.user?.id ?? null
+      }
+
+      if (betterAuthUserId) {
         await payload.update({
           collection: 'compilation-submissions',
           id: fullId,
-          data: { betterAuthId: authResult.user.id },
+          data: { betterAuthId: betterAuthUserId },
           overrideAccess: true,
         })
       }
     } catch (authErr: unknown) {
-      const msg = authErr instanceof Error ? authErr.message : ''
-      if (!msg.toLowerCase().includes('already') && !msg.toLowerCase().includes('exists')) {
-        console.error('[/api/submission] Better Auth signup error:', authErr)
-      }
+      console.error('[/api/submission] Better Auth error:', authErr)
     }
 
     // Send password setup email

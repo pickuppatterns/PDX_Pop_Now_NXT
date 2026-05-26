@@ -8,6 +8,7 @@ const protectedRoutes = [
   '/orders',
   '/volunteer/profile',
   '/listening-committee/profile',
+  '/submission/profile',
   '/my-account',
 ]
 const authRoutes = ['/login', '/signup']
@@ -105,6 +106,17 @@ export async function proxy(req: NextRequest): Promise<NextResponse> {
     const role = session?.user?.role as string | undefined
     if (
       role !== 'listening_committee_member' &&
+      role !== 'volunteer' &&
+      role !== 'super-admin' &&
+      role !== 'web_admin'
+    ) {
+      return NextResponse.redirect(new URL('/', req.url))
+    }
+  }
+  if (path.startsWith('/submission/profile') && isAuthenticated) {
+    const role = session?.user?.role as string | undefined
+    if (
+      role !== 'submitter' &&
       role !== 'volunteer' &&
       role !== 'super-admin' &&
       role !== 'web_admin'

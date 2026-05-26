@@ -106,7 +106,7 @@ export default function VolunteerProfilePage() {
       formData.append('file', file)
       formData.append('alt', `${form.firstName} ${form.lastName} avatar`)
 
-      const res = await fetch('/api/volunteer-avatar', {
+      const res = await fetch('/api/avatar', {
         method: 'POST',
         body: formData,
       })
@@ -122,6 +122,7 @@ export default function VolunteerProfilePage() {
       })
 
       await fetchProfile()
+      window.location.reload()
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Upload failed')
     } finally {
@@ -178,7 +179,7 @@ export default function VolunteerProfilePage() {
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
           <div style={{ position: 'relative', flexShrink: 0 }}>
             <img
-              src={profile?.avatarUrl ?? gravatarUrl(session.user.email, 80)}
+              src={(session.user as any).image ?? gravatarUrl(session.user.email, 80)}
               alt="Profile avatar"
               style={{
                 width: 80,

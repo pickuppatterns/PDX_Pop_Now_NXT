@@ -83,7 +83,8 @@ export interface Config {
     volunteers: Volunteer;
     'listening-committee': ListeningCommittee;
     'compilation-submissions': CompilationSubmission;
-    'compilation-media': CompilationMedia;
+    'compilation-songs': CompilationSong;
+    'compilation-photos': CompilationPhoto;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -117,7 +118,8 @@ export interface Config {
     volunteers: VolunteersSelect<false> | VolunteersSelect<true>;
     'listening-committee': ListeningCommitteeSelect<false> | ListeningCommitteeSelect<true>;
     'compilation-submissions': CompilationSubmissionsSelect<false> | CompilationSubmissionsSelect<true>;
-    'compilation-media': CompilationMediaSelect<false> | CompilationMediaSelect<true>;
+    'compilation-songs': CompilationSongsSelect<false> | CompilationSongsSelect<true>;
+    'compilation-photos': CompilationPhotosSelect<false> | CompilationPhotosSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -1542,20 +1544,45 @@ export interface CompilationSubmission {
   agreementIp?: string | null;
   agreementVersion?: string | null;
   status?: ('pending' | 'under_review' | 'selected' | 'not_selected') | null;
+  avatarUrl?: string | null;
+  selectedForCompilation?: boolean | null;
+  resultMessage?: ('selected' | 'not_selected') | null;
   updatedAt: string;
   createdAt: string;
 }
 /**
- * MP3s and band photos from compilation submissions. Do not delete.
+ * MP3s from compilation submissions. Private — do not delete.
  *
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "compilation-media".
+ * via the `definition` "compilation-songs".
  */
-export interface CompilationMedia {
+export interface CompilationSong {
   id: number;
   alt?: string | null;
   year?: number | null;
-  fileType?: ('track' | 'band_photo') | null;
+  prefix?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+}
+/**
+ * Band photos from compilation submissions. Do not delete.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "compilation-photos".
+ */
+export interface CompilationPhoto {
+  id: number;
+  alt?: string | null;
+  year?: number | null;
   prefix?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -1824,8 +1851,12 @@ export interface PayloadLockedDocument {
         value: string | CompilationSubmission;
       } | null)
     | ({
-        relationTo: 'compilation-media';
-        value: number | CompilationMedia;
+        relationTo: 'compilation-songs';
+        value: number | CompilationSong;
+      } | null)
+    | ({
+        relationTo: 'compilation-photos';
+        value: number | CompilationPhoto;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -2617,17 +2648,39 @@ export interface CompilationSubmissionsSelect<T extends boolean = true> {
   agreementIp?: T;
   agreementVersion?: T;
   status?: T;
+  avatarUrl?: T;
+  selectedForCompilation?: T;
+  resultMessage?: T;
   updatedAt?: T;
   createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "compilation-media_select".
+ * via the `definition` "compilation-songs_select".
  */
-export interface CompilationMediaSelect<T extends boolean = true> {
+export interface CompilationSongsSelect<T extends boolean = true> {
   alt?: T;
   year?: T;
-  fileType?: T;
+  prefix?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "compilation-photos_select".
+ */
+export interface CompilationPhotosSelect<T extends boolean = true> {
+  alt?: T;
+  year?: T;
   prefix?: T;
   updatedAt?: T;
   createdAt?: T;
