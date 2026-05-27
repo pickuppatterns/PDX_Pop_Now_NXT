@@ -139,11 +139,17 @@ export interface Config {
     header: Header;
     footer: Footer;
     'site-settings': SiteSetting;
+    'submission-settings': SubmissionSetting;
+    'listening-committee-settings': ListeningCommitteeSetting;
+    'volunteer-settings': VolunteerSetting;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
     'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
+    'submission-settings': SubmissionSettingsSelect<false> | SubmissionSettingsSelect<true>;
+    'listening-committee-settings': ListeningCommitteeSettingsSelect<false> | ListeningCommitteeSettingsSelect<true>;
+    'volunteer-settings': VolunteerSettingsSelect<false> | VolunteerSettingsSelect<true>;
   };
   locale: null;
   widgets: {
@@ -3145,6 +3151,54 @@ export interface SiteSetting {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "submission-settings".
+ */
+export interface SubmissionSetting {
+  id: number;
+  year?: number | null;
+  startDate?: string | null;
+  endDate?: string | null;
+  /**
+   * Managed automatically by start/end dates
+   */
+  isOpen?: boolean | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "listening-committee-settings".
+ */
+export interface ListeningCommitteeSetting {
+  id: number;
+  year?: number | null;
+  startDate?: string | null;
+  endDate?: string | null;
+  /**
+   * Managed automatically by start/end dates
+   */
+  isOpen?: boolean | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "volunteer-settings".
+ */
+export interface VolunteerSetting {
+  id: number;
+  year?: number | null;
+  startDate?: string | null;
+  endDate?: string | null;
+  /**
+   * Managed automatically by start/end dates
+   */
+  isOpen?: boolean | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -3254,6 +3308,45 @@ export interface SiteSettingsSelect<T extends boolean = true> {
         footerLogoImage?: T;
       };
   customCSS?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "submission-settings_select".
+ */
+export interface SubmissionSettingsSelect<T extends boolean = true> {
+  year?: T;
+  startDate?: T;
+  endDate?: T;
+  isOpen?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "listening-committee-settings_select".
+ */
+export interface ListeningCommitteeSettingsSelect<T extends boolean = true> {
+  year?: T;
+  startDate?: T;
+  endDate?: T;
+  isOpen?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "volunteer-settings_select".
+ */
+export interface VolunteerSettingsSelect<T extends boolean = true> {
+  year?: T;
+  startDate?: T;
+  endDate?: T;
+  isOpen?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

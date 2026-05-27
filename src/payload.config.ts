@@ -31,6 +31,9 @@ import { ListeningCommittee } from './collections/ListeningCommittee'
 import { CompilationSubmissions } from './collections/CompilationSubmissions'
 import { CompilationSongs } from './collections/compilation-songs'
 import { CompilationPhotos } from './collections/compilation-photos'
+import { ListeningCommitteeSettings } from './globals/ListeningCommitteeSettings'
+import { VolunteerSettings } from './globals/VolunteerSettings'
+import { SubmissionSettings } from './globals/SubmissionSettings'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -112,7 +115,14 @@ export default buildConfig({
     CompilationPhotos,
   ],
   cors: [getServerSideURL()].filter(Boolean),
-  globals: [Header, Footer, SiteSettings],
+  globals: [
+    Header,
+    Footer,
+    SiteSettings,
+    SubmissionSettings,
+    ListeningCommitteeSettings,
+    VolunteerSettings,
+  ],
   plugins: [
     ...plugins,
     s3Storage({
