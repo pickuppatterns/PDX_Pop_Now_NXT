@@ -58,6 +58,7 @@ export default function ListeningCommitteeProfilePage() {
     mailingList: false,
     status: 'active' as 'active' | 'inactive',
   })
+  const [uploading, setUploading] = useState(false)
 
   async function fetchProfile() {
     try {
@@ -94,6 +95,24 @@ export default function ListeningCommitteeProfilePage() {
     fetchProfile()
   }, [session, isPending])
 
+  async function handleAvatarUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0]
+    if (!file) return
+    setUploading(true)
+    try {
+      const formData = new FormData()
+      formData.append('file', file)
+      formData.append('alt', `${form.firstName} ${form.lastName} avatar`)
+      const res = await fetch('/api/avatar', { method: 'POST', body: formData })
+      if (!res.ok) throw new Error('Upload failed')
+      await new Promise((resolve) => setTimeout(resolve, 500))
+      window.location.reload()
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Upload failed')
+    } finally {
+      setUploading(false)
+    }
+  }
   async function handleSave() {
     setSaving(true)
     setError('')
@@ -141,17 +160,46 @@ export default function ListeningCommitteeProfilePage() {
       <div style={{ maxWidth: 600, width: '100%' }}>
         {/* Header */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
-          <img
-            src={(session.user as any).image ?? gravatarUrl(session.user.email, 80)}
-            alt="Avatar"
-            style={{
-              width: 80,
-              height: 80,
-              borderRadius: '50%',
-              border: '2px solid rgba(255,140,66,0.4)',
-              flexShrink: 0,
-            }}
-          />
+          <div style={{ position: 'relative', flexShrink: 0 }}>
+            <img
+              src={(session.user as any).image ?? gravatarUrl(session.user.email, 80)}
+              alt="Avatar"
+              style={{
+                width: 80,
+                height: 80,
+                borderRadius: '50%',
+                border: '2px solid rgba(255,140,66,0.4)',
+                display: 'block',
+                opacity: uploading ? 0.4 : 1,
+                transition: 'opacity 0.2s',
+              }}
+            />
+            <label
+              style={{
+                position: 'absolute',
+                bottom: 0,
+                right: 0,
+                background: uploading ? '#666' : '#e63946',
+                borderRadius: '50%',
+                width: 24,
+                height: 24,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: uploading ? 'not-allowed' : 'pointer',
+                fontSize: '0.7rem',
+              }}
+            >
+              {uploading ? '…' : '✎'}
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleAvatarUpload}
+                style={{ display: 'none' }}
+                disabled={uploading}
+              />
+            </label>
+          </div>
           <div style={{ flex: 1 }}>
             <p
               style={{

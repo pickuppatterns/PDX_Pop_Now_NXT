@@ -71,6 +71,7 @@ export default function SubmissionProfilePage() {
         body: JSON.stringify({ avatarUrl: url }),
       })
       await fetchProfile()
+      await new Promise((resolve) => setTimeout(resolve, 500))
       window.location.reload()
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Upload failed')

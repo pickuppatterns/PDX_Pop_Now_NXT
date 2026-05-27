@@ -122,6 +122,7 @@ export default function VolunteerProfilePage() {
       })
 
       await fetchProfile()
+      await new Promise((resolve) => setTimeout(resolve, 500))
       window.location.reload()
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Upload failed')

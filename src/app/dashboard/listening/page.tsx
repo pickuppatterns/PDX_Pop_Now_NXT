@@ -19,6 +19,7 @@ type Listener = {
   mailingList: boolean
   status: string
   assignedBatch: string
+  createdAt: string
 }
 
 export default function ListeningDashboard() {
@@ -114,6 +115,20 @@ export default function ListeningDashboard() {
         display: 'flex',
         alignItems: 'center',
       }),
+    },
+    {
+      field: 'createdAt',
+      headerName: 'Joined',
+      width: 160,
+      sortable: true,
+      valueFormatter: (p: { value: string }) =>
+        p.value
+          ? new Date(p.value).toLocaleDateString('en-US', {
+              month: 'short',
+              day: 'numeric',
+              year: 'numeric',
+            })
+          : '',
     },
   ]
 
