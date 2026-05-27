@@ -4,7 +4,7 @@ import config from '@payload-config'
 import { auth } from '@/lib/auth'
 import { headers } from 'next/headers'
 
-export async function PATCH(req: NextRequest, { params }: { params: { id: string } }) {
+export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const session = await auth.api.getSession({ headers: await headers() })
     if (!session?.user) {
