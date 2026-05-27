@@ -30,7 +30,30 @@ export default function VolunteersPage() {
   const [volunteers, setVolunteers] = useState<Volunteer[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [settings, setSettings] = useState<{
+    year?: number
+    startDate?: string
+    endDate?: string
+    isOpen?: boolean
+  } | null>(null)
+  const [settingsForm, setSettingsForm] = useState({ year: '', startDate: '', endDate: '' })
+  const [settingsSaving, setSettingsSaving] = useState(false)
+  const [settingsSuccess, setSettingsSuccess] = useState(false)
 
+  const fetchSettings = useCallback(async () => {
+    try {
+      const res = await fetch('/api/volunteer-settings')
+      const data = await res.json()
+      setSettings(data)
+      setSettingsForm({
+        year: data.year?.toString() ?? '',
+        startDate: data.startDate ? new Date(data.startDate).toISOString().slice(0, 16) : '',
+        endDate: data.endDate ? new Date(data.endDate).toISOString().slice(0, 16) : '',
+      })
+    } catch (e) {
+      console.error('Failed to fetch settings', e)
+    }
+  }, [])
   const fetchVolunteers = useCallback(async () => {
     try {
       const res = await fetch('/api/volunteers-list')
@@ -46,8 +69,31 @@ export default function VolunteersPage() {
 
   useEffect(() => {
     fetchVolunteers()
-  }, [fetchVolunteers])
+    fetchSettings()
+  }, [fetchVolunteers, fetchSettings])
 
+  async function handleSettingsSave() {
+    setSettingsSaving(true)
+    setSettingsSuccess(false)
+    try {
+      await fetch('/api/volunteer-settings', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          year: settingsForm.year ? Number(settingsForm.year) : undefined,
+          startDate: settingsForm.startDate || undefined,
+          endDate: settingsForm.endDate || undefined,
+        }),
+      })
+      await fetchSettings()
+      setSettingsSuccess(true)
+      setTimeout(() => setSettingsSuccess(false), 3000)
+    } catch (e) {
+      console.error('Failed to save settings', e)
+    } finally {
+      setSettingsSaving(false)
+    }
+  }
   const colDefs: ColDef<Volunteer>[] = [
     {
       field: 'firstName',
@@ -277,21 +323,103 @@ export default function VolunteersPage() {
           >
             PDX Pop Now!
           </p>
-          <h1
-            style={{
-              color: '#fff',
-              fontSize: '2rem',
-              fontWeight: 900,
-              fontStyle: 'italic',
-              margin: 0,
-            }}
-          >
+          <h1 style={{ fontSize: '2rem', fontWeight: 700, margin: '0 0 4px', color: '#e8e8e8' }}>
             Volunteers
           </h1>
         </div>
         <p style={{ color: '#666', fontSize: '0.8rem', margin: 0 }}>
           {volunteers.length} volunteer{volunteers.length !== 1 ? 's' : ''}
         </p>
+      </div>
+      <div
+        style={{
+          background: '#1a1a2e',
+          borderRadius: 8,
+          padding: '1rem 1.25rem',
+          border: '1px solid rgba(255,255,255,0.08)',
+          marginBottom: '1.5rem',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+          <p
+            style={{
+              color: '#ff8c42',
+              fontSize: '0.7rem',
+              letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+              fontFamily: "'Courier New', monospace",
+              margin: 0,
+              flexShrink: 0,
+            }}
+          >
+            Campaign
+          </p>
+          <input
+            type="number"
+            placeholder="Year"
+            value={settingsForm.year}
+            onChange={(e) => setSettingsForm({ ...settingsForm, year: e.target.value })}
+            style={{ ...settingsInputStyle, width: 80 }}
+          />
+          <input
+            type="datetime-local"
+            value={settingsForm.startDate}
+            onChange={(e) => setSettingsForm({ ...settingsForm, startDate: e.target.value })}
+            style={settingsInputStyle}
+          />
+          <input
+            type="datetime-local"
+            value={settingsForm.endDate}
+            onChange={(e) => setSettingsForm({ ...settingsForm, endDate: e.target.value })}
+            style={settingsInputStyle}
+          />
+          <button
+            onClick={handleSettingsSave}
+            disabled={settingsSaving}
+            style={{
+              background: '#e63946',
+              color: '#fff',
+              border: 'none',
+              borderRadius: 6,
+              padding: '6px 16px',
+              fontSize: '0.85rem',
+              fontFamily: "'Courier New', monospace",
+              cursor: 'pointer',
+            }}
+          >
+            {settingsSaving ? 'Saving…' : 'Save →'}
+          </button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <div
+              style={{
+                width: 8,
+                height: 8,
+                borderRadius: '50%',
+                background: settings?.isOpen ? '#4caf50' : '#ef9a9a',
+              }}
+            />
+            <span
+              style={{
+                color: settings?.isOpen ? '#4caf50' : '#ef9a9a',
+                fontSize: '0.75rem',
+                fontFamily: "'Courier New', monospace",
+              }}
+            >
+              {settings?.isOpen ? 'Open' : 'Closed'}
+            </span>
+          </div>
+          {settingsSuccess && (
+            <span
+              style={{
+                color: '#a5d6a7',
+                fontSize: '0.8rem',
+                fontFamily: "'Courier New', monospace",
+              }}
+            >
+              ✓ Saved
+            </span>
+          )}
+        </div>
       </div>
 
       {error && (
@@ -330,4 +458,13 @@ export default function VolunteersPage() {
       )}
     </div>
   )
+}
+const settingsInputStyle: React.CSSProperties = {
+  background: '#0f0f1a',
+  color: '#fff',
+  border: '1px solid rgba(255,255,255,0.2)',
+  borderRadius: 6,
+  padding: '6px 10px',
+  fontSize: '0.85rem',
+  fontFamily: "'Courier New', monospace",
 }

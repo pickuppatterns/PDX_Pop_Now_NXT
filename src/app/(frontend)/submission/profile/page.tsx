@@ -27,13 +27,25 @@ export default function SubmissionProfilePage() {
   const [loading, setLoading] = useState(true)
   const [uploading, setUploading] = useState(false)
   const [error, setError] = useState('')
+  const [compilationStatus, setCompilationStatus] = useState<{
+    submissionsOpen: boolean
+    listeningActive: boolean
+  } | null>(null)
 
   const fetchProfile = useCallback(async () => {
     try {
-      const res = await fetch('/api/submission-profile')
-      if (!res.ok) throw new Error('Failed to load profile')
-      const data = await res.json()
+      const [profileRes, settingsRes] = await Promise.all([
+        fetch('/api/submission-profile'),
+        fetch('/api/compilation-settings'),
+      ])
+      if (!profileRes.ok) throw new Error('Failed to load profile')
+      const data = await profileRes.json()
+      const settings = await settingsRes.json()
       setProfile(data)
+      setCompilationStatus({
+        submissionsOpen: settings.isOpen ?? false,
+        listeningActive: false,
+      })
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Failed to load profile')
     } finally {
@@ -219,9 +231,15 @@ export default function SubmissionProfilePage() {
         <div style={{ ...cardStyle, marginBottom: '1rem' }}>
           <p style={sectionLabelStyle}>Compilation Status</p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-            <StatusRow label="Submissions Open" color="gray" />
-            <StatusRow label="Listening Committee" color="gray" />
-            <StatusRow label="Album Finalized" color="gray" />
+            <StatusRow
+              label="Submissions Open"
+              color={compilationStatus?.submissionsOpen ? 'green' : 'red'}
+            />
+            <StatusRow
+              label="Listening Selection Process"
+              color={compilationStatus?.listeningActive ? 'green' : 'gray'}
+            />
+            <StatusRow label="Album Selection Process" color="gray" />
           </div>
         </div>
 

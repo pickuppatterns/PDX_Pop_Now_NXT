@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 
 const POSITIONS = [
@@ -86,6 +86,15 @@ export default function VolunteerPage() {
 
   const totalSteps = 3
 
+  const [isOpen, setIsOpen] = useState<boolean | null>(null)
+
+  useEffect(() => {
+    fetch('/api/volunteer-settings')
+      .then((r) => r.json())
+      .then((d) => setIsOpen(d.isOpen ?? false))
+      .catch(() => setIsOpen(false))
+  }, [])
+
   function setField<K extends keyof FormData>(key: K, value: FormData[K]) {
     setForm((prev) => ({ ...prev, [key]: value }))
   }
@@ -166,6 +175,85 @@ export default function VolunteerPage() {
     { emoji: '🎶', title: 'Where Do You Want to Shine?' },
     { emoji: '✨', title: 'A Few Final Notes' },
   ]
+  if (isOpen === null) {
+    return (
+      <main className="volunteer-page">
+        <div className="vol-hero">
+          <div className="vol-hero-inner" style={{ textAlign: 'center', padding: '4rem 0' }}>
+            <p style={{ color: '#888', fontFamily: "'Courier New', monospace" }}>Loading…</p>
+          </div>
+        </div>
+      </main>
+    )
+  }
+
+  if (!isOpen) {
+    return (
+      <main className="volunteer-page">
+        <div className="vol-hero">
+          <div className="vol-hero-inner">
+            <p className="vol-preheader">PDX Pop Now! Festival</p>
+            <h1 className="vol-title">
+              Volunteer
+              <br />
+              Application
+            </h1>
+          </div>
+        </div>
+        <div
+          style={{
+            maxWidth: 720,
+            margin: '0 auto',
+            padding: '3rem 1.5rem',
+            fontFamily: 'Georgia, serif',
+            color: '#e8e8e8',
+            lineHeight: 1.8,
+          }}
+        >
+          <h3
+            style={{
+              fontFamily: "'Courier New', monospace",
+              color: '#e63946',
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              fontSize: '0.85rem',
+              marginBottom: '0.5rem',
+            }}
+          >
+            Volunteer Applications
+          </h3>
+          <p style={{ marginBottom: '1.5rem' }}>
+            We are currently at capacity with volunteers, check back to this page when the form is
+            live.
+          </p>
+          <p style={{ marginBottom: '1.5rem' }}>
+            We are excited for you to join the PDX Pop Now! volunteer staff team and be part of the
+            thriving Portland music scene. PDX Pop Now! is an entirely volunteer-run nonprofit
+            organization. From the booking committee, to the board of directors, to the festival
+            volunteers, everyone donates their time.
+          </p>
+          <p style={{ marginBottom: '1.5rem' }}>
+            We have open positions available — check here if you&apos;re interested:{' '}
+            <a href="https://www.pdxpopnow.com/open-positions" style={{ color: '#e63946' }}>
+              open positions
+            </a>
+          </p>
+          <p>
+            Any questions? Contact{' '}
+            <a href="mailto:volunteers@pdxpopnow.com" style={{ color: '#e63946' }}>
+              volunteers@pdxpopnow.com
+            </a>
+          </p>
+          <p>
+            Any questions? Contact{' '}
+            <a href="mailto:volunteers@pdxpopnow.com" style={{ color: '#e63946' }}>
+              volunteers@pdxpopnow.com
+            </a>
+          </p>
+        </div>
+      </main>
+    )
+  }
 
   return (
     <main className="volunteer-page">

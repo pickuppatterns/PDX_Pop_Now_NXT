@@ -8,7 +8,7 @@ export async function GET() {
   try {
     const payload = await getPayload({ config })
     const settings = await payload.findGlobal({
-      slug: 'submission-settings',
+      slug: 'listening-committee-settings',
       overrideAccess: true,
     })
 
@@ -19,7 +19,7 @@ export async function GET() {
 
     return NextResponse.json({ ...settings, isOpen })
   } catch (err) {
-    console.error('[/api/compilation-settings] GET Error:', err)
+    console.error('[/api/listening-committee-settings] GET Error:', err)
     return NextResponse.json({ message: 'Server error.' }, { status: 500 })
   }
 }
@@ -41,7 +41,7 @@ export async function PATCH(req: NextRequest) {
 
     const payload = await getPayload({ config })
     const updated = await payload.updateGlobal({
-      slug: 'submission-settings',
+      slug: 'listening-committee-settings',
       data: {
         ...(year !== undefined && { year }),
         ...(startDate !== undefined && { startDate }),
@@ -53,7 +53,7 @@ export async function PATCH(req: NextRequest) {
 
     return NextResponse.json(updated)
   } catch (err) {
-    console.error('[/api/compilation-settings] PATCH Error:', err)
+    console.error('[/api/listening-committee-settings] PATCH Error:', err)
     return NextResponse.json({ message: 'Server error.' }, { status: 500 })
   }
 }

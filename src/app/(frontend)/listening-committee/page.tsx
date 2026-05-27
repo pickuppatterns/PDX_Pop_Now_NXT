@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 
 const GENRES = [
@@ -49,6 +49,14 @@ export default function ListeningCommitteePage() {
   const [form, setForm] = useState<FormData>(initialForm)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const [isOpen, setIsOpen] = useState<boolean | null>(null)
+
+  useEffect(() => {
+    fetch('/api/listening-committee-settings')
+      .then((r) => r.json())
+      .then((d) => setIsOpen(d.isOpen ?? false))
+      .catch(() => setIsOpen(false))
+  }, [])
 
   function setField<K extends keyof FormData>(key: K, value: FormData[K]) {
     setForm((prev) => ({ ...prev, [key]: value }))
@@ -113,6 +121,79 @@ export default function ListeningCommitteePage() {
     { title: 'Contact Info', emoji: '👤' },
     { title: 'Music Preferences', emoji: '🎵' },
   ]
+  if (isOpen === null) {
+    return (
+      <main className="vol-page">
+        <div className="vol-container" style={{ textAlign: 'center', padding: '4rem 0' }}>
+          <p style={{ color: '#888', fontFamily: "'Courier New', monospace" }}>Loading…</p>
+        </div>
+      </main>
+    )
+  }
+
+  if (!isOpen) {
+    return (
+      <main className="vol-page">
+        <div
+          className="vol-container"
+          style={{
+            maxWidth: 720,
+            margin: '0 auto',
+            padding: '3rem 1.5rem',
+            fontFamily: 'Georgia, serif',
+            color: '#e8e8e8',
+            lineHeight: 1.8,
+          }}
+        >
+          <h3
+            style={{
+              fontFamily: "'Courier New', monospace",
+              color: '#e63946',
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              fontSize: '0.85rem',
+              marginBottom: '0.5rem',
+            }}
+          >
+            Listening Committee
+          </h3>
+          <p style={{ marginBottom: '1.5rem' }}>
+            Applications to join the listening committee are now closed, check back when the form
+            goes live.
+          </p>
+          <h3
+            style={{
+              fontFamily: "'Courier New', monospace",
+              color: '#e63946',
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              fontSize: '0.85rem',
+              marginBottom: '0.5rem',
+              marginTop: '2rem',
+            }}
+          >
+            About the Listening Committee!
+          </h3>
+          <p style={{ marginBottom: '1.5rem' }}>
+            Following the submission process, tracks are reviewed anonymously and voted on by our
+            all-volunteer Listening Committee. This could be a chance to listen to unreleased
+            material from your favorite bands &amp; artists, or, this could be a chance to find your
+            new favorite local band! Join the crew and help select the songs that curate the vibe of
+            the city! The tracks are then narrowed down with respect to genre diversity and
+            popularity, making it a completely community-driven compilation. If you would like to be
+            on the Listening Committee, we will be accepting submissions on January 20 – February
+            15. Book mark this page for prompt return when the form drops here online.
+          </p>
+          <p>
+            Any questions? Contact{' '}
+            <a href="mailto:compilations@pdxpopnow.com" style={{ color: '#e63946' }}>
+              compilations@pdxpopnow.com
+            </a>
+          </p>
+        </div>
+      </main>
+    )
+  }
 
   return (
     <main className="vol-page">

@@ -25,7 +25,30 @@ type Listener = {
 export default function ListeningDashboard() {
   const [listeners, setListeners] = useState<Listener[]>([])
   const [loading, setLoading] = useState(true)
+  const [settings, setSettings] = useState<{
+    year?: number
+    startDate?: string
+    endDate?: string
+    isOpen?: boolean
+  } | null>(null)
+  const [settingsForm, setSettingsForm] = useState({ year: '', startDate: '', endDate: '' })
+  const [settingsSaving, setSettingsSaving] = useState(false)
+  const [settingsSuccess, setSettingsSuccess] = useState(false)
 
+  const fetchSettings = useCallback(async () => {
+    try {
+      const res = await fetch('/api/listening-committee-settings')
+      const data = await res.json()
+      setSettings(data)
+      setSettingsForm({
+        year: data.year?.toString() ?? '',
+        startDate: data.startDate ? new Date(data.startDate).toISOString().slice(0, 16) : '',
+        endDate: data.endDate ? new Date(data.endDate).toISOString().slice(0, 16) : '',
+      })
+    } catch (e) {
+      console.error('Failed to fetch settings', e)
+    }
+  }, [])
   const fetchListeners = useCallback(async () => {
     try {
       const res = await fetch('/api/listening-list')
@@ -40,7 +63,31 @@ export default function ListeningDashboard() {
 
   useEffect(() => {
     fetchListeners()
-  }, [fetchListeners])
+    fetchSettings()
+  }, [fetchListeners, fetchSettings])
+
+  async function handleSettingsSave() {
+    setSettingsSaving(true)
+    setSettingsSuccess(false)
+    try {
+      await fetch('/api/listening-committee-settings', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          year: settingsForm.year ? Number(settingsForm.year) : undefined,
+          startDate: settingsForm.startDate || undefined,
+          endDate: settingsForm.endDate || undefined,
+        }),
+      })
+      await fetchSettings()
+      setSettingsSuccess(true)
+      setTimeout(() => setSettingsSuccess(false), 3000)
+    } catch (e) {
+      console.error('Failed to save settings', e)
+    } finally {
+      setSettingsSaving(false)
+    }
+  }
 
   async function handleCellEdit(event: { data: Listener; colDef: { field?: string } }) {
     const { data } = event
@@ -143,7 +190,7 @@ export default function ListeningDashboard() {
         }}
       >
         <div>
-          <h1 style={{ fontSize: '1.5rem', fontWeight: 700, margin: '0 0 4px' }}>
+          <h1 style={{ fontSize: '2rem', fontWeight: 700, margin: '0 0 4px', color: '#e8e8e8' }}>
             Listening Committee
           </h1>
           <p style={{ color: '#888', fontSize: '0.85rem', margin: 0 }}>
@@ -151,7 +198,96 @@ export default function ListeningDashboard() {
           </p>
         </div>
       </div>
-
+      <div
+        style={{
+          background: '#1a1a2e',
+          borderRadius: 8,
+          padding: '1rem 1.25rem',
+          border: '1px solid rgba(255,255,255,0.08)',
+          marginBottom: '1.5rem',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+          <p
+            style={{
+              color: '#ff8c42',
+              fontSize: '0.7rem',
+              letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+              fontFamily: "'Courier New', monospace",
+              margin: 0,
+              flexShrink: 0,
+            }}
+          >
+            Campaign
+          </p>
+          <input
+            type="number"
+            placeholder="Year"
+            value={settingsForm.year}
+            onChange={(e) => setSettingsForm({ ...settingsForm, year: e.target.value })}
+            style={{ ...settingsInputStyle, width: 80 }}
+          />
+          <input
+            type="datetime-local"
+            value={settingsForm.startDate}
+            onChange={(e) => setSettingsForm({ ...settingsForm, startDate: e.target.value })}
+            style={settingsInputStyle}
+          />
+          <input
+            type="datetime-local"
+            value={settingsForm.endDate}
+            onChange={(e) => setSettingsForm({ ...settingsForm, endDate: e.target.value })}
+            style={settingsInputStyle}
+          />
+          <button
+            onClick={handleSettingsSave}
+            disabled={settingsSaving}
+            style={{
+              background: '#e63946',
+              color: '#fff',
+              border: 'none',
+              borderRadius: 6,
+              padding: '6px 16px',
+              fontSize: '0.85rem',
+              fontFamily: "'Courier New', monospace",
+              cursor: 'pointer',
+            }}
+          >
+            {settingsSaving ? 'Saving…' : 'Save →'}
+          </button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <div
+              style={{
+                width: 8,
+                height: 8,
+                borderRadius: '50%',
+                background: settings?.isOpen ? '#4caf50' : '#ef9a9a',
+              }}
+            />
+            <span
+              style={{
+                color: settings?.isOpen ? '#4caf50' : '#ef9a9a',
+                fontSize: '0.75rem',
+                fontFamily: "'Courier New', monospace",
+              }}
+            >
+              {settings?.isOpen ? 'Open' : 'Closed'}
+            </span>
+          </div>
+          {settingsSuccess && (
+            <span
+              style={{
+                color: '#a5d6a7',
+                fontSize: '0.8rem',
+                fontFamily: "'Courier New', monospace",
+              }}
+            >
+              ✓ Saved
+            </span>
+          )}
+        </div>
+      </div>
       {loading ? (
         <p style={{ color: '#666' }}>Loading listeners…</p>
       ) : (
@@ -174,4 +310,13 @@ export default function ListeningDashboard() {
       )}
     </div>
   )
+}
+const settingsInputStyle: React.CSSProperties = {
+  background: '#0f0f1a',
+  color: '#fff',
+  border: '1px solid rgba(255,255,255,0.2)',
+  borderRadius: 6,
+  padding: '6px 10px',
+  fontSize: '0.85rem',
+  fontFamily: "'Courier New', monospace",
 }
