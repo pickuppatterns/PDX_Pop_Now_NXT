@@ -17,6 +17,7 @@ export const RadioSubmissions: CollectionConfig = {
   fields: [
     { name: 'name', type: 'text', label: 'Contact Name', required: true },
     { name: 'artistName', type: 'text', label: 'Artist / Band Name', required: true },
+    { name: 'songTitle', type: 'text', label: 'Song Title' },
     { name: 'email', type: 'email', label: 'Email', required: true },
     { name: 'phone', type: 'text', label: 'Phone', required: true },
     { name: 'zipCode', type: 'text', label: 'Zip Code' },

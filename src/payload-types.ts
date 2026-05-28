@@ -1637,6 +1637,7 @@ export interface RadioSubmission {
   id: number;
   name: string;
   artistName: string;
+  songTitle?: string | null;
   email: string;
   phone: string;
   zipCode?: string | null;
@@ -2788,6 +2789,7 @@ export interface RadioSongsSelect<T extends boolean = true> {
 export interface RadioSubmissionsSelect<T extends boolean = true> {
   name?: T;
   artistName?: T;
+  songTitle?: T;
   email?: T;
   phone?: T;
   zipCode?: T;
