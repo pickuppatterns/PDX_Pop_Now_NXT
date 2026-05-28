@@ -24,63 +24,66 @@ const tierLabel: Record<string, string> = {
   supporter: 'Supporters',
 }
 
-export function SponsorGridBlockComponent({
-  heading,
-  sponsors,
-  columns,
-}: SponsorGridBlockProps) {
+const logoSize: Record<string, string> = {
+  presenting: 'w-56 h-20',
+  gold: 'w-44 h-16',
+  silver: 'w-36 h-14',
+  supporter: 'w-28 h-12',
+}
+
+export function SponsorGridBlockComponent({ heading, sponsors, columns }: SponsorGridBlockProps) {
   if (!sponsors?.length) return null
 
   const grouped = tierOrder.reduce<Record<string, typeof sponsors>>((acc, tier) => {
-    const filtered = sponsors.filter(s => s.tier === tier)
+    const filtered = sponsors.filter((s) => s.tier === tier)
     if (filtered.length) acc[tier] = filtered
     return acc
   }, {})
 
   return (
     <section className="w-full max-w-6xl mx-auto px-6 py-16">
-      {heading && (
-        <h2 className="text-2xl font-medium text-center mb-12">{heading}</h2>
-      )}
+      {heading && <h2 className="text-2xl font-medium text-center mb-12">{heading}</h2>}
       {Object.entries(grouped).map(([tier, tierSponsors]) => (
         <div key={tier} className="mb-12">
           <p className="text-xs font-medium uppercase tracking-widest text-[var(--color-text-secondary)] text-center mb-6">
             {tierLabel[tier]}
           </p>
-          <div className={`grid gap-8 ${columnClass[columns ?? '4']}`}>
+          <div className={`grid gap-8 justify-items-center ${columnClass[columns ?? '4']}`}>
             {tierSponsors.map((sponsor, i) => {
-              const logo =
-                sponsor.logo && typeof sponsor.logo === 'object'
-                  ? sponsor.logo
-                  : null
+              const logo = sponsor.logo && typeof sponsor.logo === 'object' ? sponsor.logo : null
 
-              const filters = (sponsor as any).logoFilters as {
-                invert?: boolean
-                opacity?: number
-                brightness?: number
-                contrast?: number
-              } | undefined
+              const filters = (sponsor as any).logoFilters as
+                | {
+                    invert?: boolean
+                    opacity?: number
+                    brightness?: number
+                    contrast?: number
+                  }
+                | undefined
 
               const filterStyle: React.CSSProperties = {
-                filter: [
-                  filters?.invert ? 'invert(1)' : '',
-                  filters?.brightness !== undefined && filters.brightness !== 100
-                    ? `brightness(${filters.brightness / 100})`
-                    : '',
-                  filters?.contrast !== undefined && filters.contrast !== 100
-                    ? `contrast(${filters.contrast / 100})`
-                    : '',
-                ]
-                  .filter(Boolean)
-                  .join(' ') || undefined,
-                opacity:
-                  filters?.opacity !== undefined ? filters.opacity / 100 : undefined,
+                filter:
+                  [
+                    filters?.invert ? 'invert(1)' : '',
+                    filters?.brightness !== undefined && filters.brightness !== 100
+                      ? `brightness(${filters.brightness / 100})`
+                      : '',
+                    filters?.contrast !== undefined && filters.contrast !== 100
+                      ? `contrast(${filters.contrast / 100})`
+                      : '',
+                  ]
+                    .filter(Boolean)
+                    .join(' ') || undefined,
+                opacity: filters?.opacity !== undefined ? filters.opacity / 100 : undefined,
               }
 
               const inner = (
                 <div className="flex items-center justify-center p-4 transition-all duration-300 group/sponsor">
                   {logo && 'url' in logo ? (
-                    <div className="relative w-full h-16" style={filterStyle}>
+                    <div
+                      className={`relative ${logoSize[tier] ?? 'w-40 h-16'}`}
+                      style={filterStyle}
+                    >
                       <Image
                         src={logo.url as string}
                         alt={sponsor.name}

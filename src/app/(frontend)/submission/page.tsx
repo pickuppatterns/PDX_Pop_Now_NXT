@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import SlideShow from '@/components/SlideShow'
 
 const GENRES = [
   { id: 'classical', label: 'Classical' },
@@ -298,129 +299,167 @@ export default function SubmissionPage() {
       <main className="vol-page">
         <div
           className="vol-container"
-          style={{
-            maxWidth: 720,
-            margin: '0 auto',
-            padding: '3rem 1.5rem',
-            fontFamily: 'Georgia, serif',
-            color: '#e8e8e8',
-            lineHeight: 1.8,
-          }}
+          style={{ maxWidth: 720, margin: '0 auto', padding: '3rem 1.5rem' }}
         >
-          <h3
-            style={{
-              fontFamily: "'Courier New', monospace",
-              color: '#e63946',
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              fontSize: '0.85rem',
-              marginBottom: '0.5rem',
-            }}
-          >
-            Submission
-          </h3>
-          <p style={{ marginBottom: '1.5rem' }}>
-            Submissions for the 2026 PDX Pop Now vol.23 Compilation are <strong>CLOSED</strong> for
-            2026! Thank you to all the amazing artists, musicians, and talent that applied this year
-            to be on the comp! If you are not familiar, PDX Pop Now! curates some of the best and
-            amazing musical talent in the city. Each year we hold a submission for a yearly Various
-            Artists compilation. To participate you do have to be a local Portland Musician/Artist.
-          </p>
-
-          <h3
-            style={{
-              fontFamily: "'Courier New', monospace",
-              color: '#e63946',
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              fontSize: '0.85rem',
-              marginBottom: '0.5rem',
-            }}
-          >
-            So what&apos;s next?
-          </h3>
-          <p style={{ marginBottom: '1.5rem' }}>
-            After receiving all of the submissions, songs are anonymously evaluated by the 100+
-            volunteers on the PDX Pop Now! Listening Committee, as well as the PDX Pop Now! Board of
-            Directors. We will send you an email in mid-March letting you know whether or not your
-            song has been selected. At that time, if you&apos;ve been selected, we&apos;ll be in
-            touch about paperwork, high-quality audio files for mastering, and other info we may
-            need.
-          </p>
-          <p style={{ marginBottom: '2rem' }}>
-            Any questions? Please contact:{' '}
-            <a href="mailto:compilation@pdxpopnow.com" style={{ color: '#e63946' }}>
-              Compilation Committee
-            </a>
-          </p>
-
-          <h4
-            style={{
-              fontFamily: "'Courier New', monospace",
-              color: '#ff8c42',
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              fontSize: '0.8rem',
-              marginBottom: '1rem',
-            }}
-          >
-            Other ways to Get Involved
-          </h4>
-
-          <p style={{ marginBottom: '0.25rem', color: '#ff8c42', fontSize: '0.9rem' }}>
-            Festival Graphic Artist in Residency
-          </p>
-          <p style={{ marginBottom: '1.5rem' }}>
-            Know someone who wants to design an album cover? Each year PDX Pop Now! selects a local
-            artist to do the visual for the Compilation CD album artwork. To find out more &amp;
-            learn about the submission process:{' '}
-            <a href="https://pdxpopnow.com/graphic-artist/" style={{ color: '#e63946' }}>
-              go here
-            </a>
-            .
-          </p>
-
-          <p style={{ marginBottom: '0.25rem', color: '#ff8c42', fontSize: '0.9rem' }}>
-            The Selection Process &amp; Listening Committee
-          </p>
-          <p style={{ marginBottom: '1.5rem' }}>
-            Following the submission process, tracks are reviewed anonymously and voted on by our
-            all-volunteer Listening Committee. The tracks are then narrowed down with respect to
-            genre diversity and popularity, making it a completely community-curated compilation. If
-            you would like to be on the Listening Committee:{' '}
-            <a href="https://pdxpopnow.com/listening-committee" style={{ color: '#e63946' }}>
-              go here
-            </a>
-            .
-          </p>
-
-          <p style={{ marginBottom: '0.25rem', color: '#ff8c42', fontSize: '0.9rem' }}>
-            Portland Radio Project | PDX Pop Now! Radio Show
-          </p>
-          <p style={{ marginBottom: '1.5rem' }}>
-            You can always submit your music, year round to our radio show on{' '}
-            <a href="https://prp.fm/show/pdx-pop-now-radio/" style={{ color: '#e63946' }}>
-              PRP.fm
-            </a>
-            . All you need to do is upload your music:{' '}
-            <a href="https://pdxpopnow.com/radio-show/" style={{ color: '#e63946' }}>
-              go here
-            </a>
-            .
-          </p>
-
-          <p style={{ marginBottom: '0.25rem', color: '#ff8c42', fontSize: '0.9rem' }}>
-            Sign Up for the Volunteer Mailing List
-          </p>
-          <p style={{ marginBottom: '1.5rem' }}>
-            Each year in addition to the festival &amp; compilation CD we put on yearly programming
-            in all ages spaces, Portland Public Schools, and local events throughout the community.
-            Get the word out &amp; get involved:{' '}
-            <a href="https://pdxpopnow.com/volunteer/" style={{ color: '#e63946' }}>
-              go here
-            </a>
-            .
-          </p>
+          <SlideShow
+            accentColor="#e63946"
+            slides={[
+              {
+                content: (
+                  <div style={{ fontFamily: 'Georgia, serif', color: '#e8e8e8', lineHeight: 1.8 }}>
+                    <h3
+                      style={{
+                        fontFamily: "'Courier New', monospace",
+                        color: '#e63946',
+                        letterSpacing: '0.1em',
+                        textTransform: 'uppercase',
+                        fontSize: '0.85rem',
+                        marginBottom: '0.5rem',
+                      }}
+                    >
+                      Submission
+                    </h3>
+                    <p>
+                      Submissions for the 2026 PDX Pop Now vol.23 Compilation are{' '}
+                      <strong>CLOSED</strong> for 2026! Thank you to all the amazing artists,
+                      musicians, and talent that applied this year to be on the comp! If you are not
+                      familiar, PDX Pop Now! curates some of the best and amazing musical talent in
+                      the city. Each year we hold a submission for a yearly Various Artists
+                      compilation. To participate you do have to be a local Portland
+                      Musician/Artist.
+                    </p>
+                  </div>
+                ),
+              },
+              {
+                content: (
+                  <div style={{ fontFamily: 'Georgia, serif', color: '#e8e8e8', lineHeight: 1.8 }}>
+                    <h3
+                      style={{
+                        fontFamily: "'Courier New', monospace",
+                        color: '#e63946',
+                        letterSpacing: '0.1em',
+                        textTransform: 'uppercase',
+                        fontSize: '0.85rem',
+                        marginBottom: '0.5rem',
+                      }}
+                    >
+                      So what&apos;s next?
+                    </h3>
+                    <p>
+                      After receiving all of the submissions, songs are anonymously evaluated by the
+                      100+ volunteers on the PDX Pop Now! Listening Committee, as well as the PDX
+                      Pop Now! Board of Directors. We will send you an email in mid-March letting
+                      you know whether or not your song has been selected. At that time, if
+                      you&apos;ve been selected, we&apos;ll be in touch about paperwork,
+                      high-quality audio files for mastering, and other info we may need.
+                    </p>
+                  </div>
+                ),
+              },
+              {
+                content: (
+                  <div style={{ fontFamily: 'Georgia, serif', color: '#e8e8e8', lineHeight: 1.8 }}>
+                    <h4
+                      style={{
+                        fontFamily: "'Courier New', monospace",
+                        color: '#ff8c42',
+                        letterSpacing: '0.1em',
+                        textTransform: 'uppercase',
+                        fontSize: '0.8rem',
+                        marginBottom: '1rem',
+                      }}
+                    >
+                      Other ways to Get Involved
+                    </h4>
+                    <p style={{ marginBottom: '0.25rem', color: '#ff8c42', fontSize: '0.9rem' }}>
+                      Festival Graphic Artist in Residency
+                    </p>
+                    <p style={{ marginBottom: '1.5rem' }}>
+                      Know someone who wants to design an album cover? Each year PDX Pop Now!
+                      selects a local artist to do the visual for the Compilation CD album artwork.
+                      To find out more &amp; learn about the submission process:{' '}
+                      <a href="https://pdxpopnow.com/graphic-artist/" style={{ color: '#e63946' }}>
+                        go here
+                      </a>
+                      .
+                    </p>
+                    <p style={{ marginBottom: '0.25rem', color: '#ff8c42', fontSize: '0.9rem' }}>
+                      The Selection Process &amp; Listening Committee
+                    </p>
+                    <p>
+                      Following the submission process, tracks are reviewed anonymously and voted on
+                      by our all-volunteer Listening Committee. If you would like to be on the
+                      Listening Committee:{' '}
+                      <a
+                        href="https://pdxpopnow.com/listening-committee"
+                        style={{ color: '#e63946' }}
+                      >
+                        go here
+                      </a>
+                      .
+                    </p>
+                  </div>
+                ),
+              },
+              {
+                content: (
+                  <div style={{ fontFamily: 'Georgia, serif', color: '#e8e8e8', lineHeight: 1.8 }}>
+                    <p style={{ marginBottom: '0.25rem', color: '#ff8c42', fontSize: '0.9rem' }}>
+                      Portland Radio Project | PDX Pop Now! Radio Show
+                    </p>
+                    <p style={{ marginBottom: '1.5rem' }}>
+                      You can always submit your music year round to our radio show on{' '}
+                      <a href="https://prp.fm/show/pdx-pop-now-radio/" style={{ color: '#e63946' }}>
+                        PRP.fm
+                      </a>
+                      . All you need to do is upload your music:{' '}
+                      <a href="https://pdxpopnow.com/radio-show/" style={{ color: '#e63946' }}>
+                        go here
+                      </a>
+                      .
+                    </p>
+                    <p style={{ marginBottom: '0.25rem', color: '#ff8c42', fontSize: '0.9rem' }}>
+                      Sign Up for the Volunteer Mailing List
+                    </p>
+                    <p>
+                      Each year in addition to the festival &amp; compilation CD we put on yearly
+                      programming throughout the community. Get involved:{' '}
+                      <a href="https://pdxpopnow.com/volunteer/" style={{ color: '#e63946' }}>
+                        go here
+                      </a>
+                      .
+                    </p>
+                  </div>
+                ),
+              },
+              {
+                content: (
+                  <div
+                    style={{
+                      fontFamily: 'Georgia, serif',
+                      color: '#e8e8e8',
+                      lineHeight: 1.8,
+                      textAlign: 'center',
+                      padding: '2rem 0',
+                    }}
+                  >
+                    <p style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>Any questions?</p>
+                    <a
+                      href="mailto:compilation@pdxpopnow.com"
+                      style={{
+                        color: '#e63946',
+                        fontFamily: "'Courier New', monospace",
+                        fontSize: '0.9rem',
+                      }}
+                    >
+                      compilation@pdxpopnow.com
+                    </a>
+                  </div>
+                ),
+              },
+            ]}
+          />
         </div>
       </main>
     )

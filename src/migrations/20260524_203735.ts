@@ -8,7 +8,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
     ALTER TABLE "compilation_submissions_publishers" DROP CONSTRAINT IF EXISTS "csp_parent_fk";
     ALTER TABLE "compilation_submissions_sound_recording_owners" DROP CONSTRAINT IF EXISTS "csso_parent_fk";
     ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT IF EXISTS "payload_locked_documents_rels_compilation_submissions_fk";
-    ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT IF EXISTS "payload_locked_documents_rels_compilation_submissions_id_fkey";y
+    ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT IF EXISTS "payload_locked_documents_rels_compilation_submissions_id_fkey";
     -- Alter column types
     ALTER TABLE "compilation_submissions" ALTER COLUMN "id" SET DATA TYPE varchar;
     ALTER TABLE "compilation_submissions_songwriting_credit_music" ALTER COLUMN "_parent_id" SET DATA TYPE varchar;

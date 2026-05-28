@@ -34,6 +34,8 @@ import { CompilationPhotos } from './collections/compilation-photos'
 import { ListeningCommitteeSettings } from './globals/ListeningCommitteeSettings'
 import { VolunteerSettings } from './globals/VolunteerSettings'
 import { SubmissionSettings } from './globals/SubmissionSettings'
+import { RadioSongs } from './collections/RadioSongs'
+import { RadioSubmissions } from './collections/RadioSubmissions'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -113,6 +115,8 @@ export default buildConfig({
     CompilationSubmissions,
     CompilationSongs,
     CompilationPhotos,
+    RadioSongs,
+    RadioSubmissions,
   ],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [
@@ -170,6 +174,24 @@ export default buildConfig({
         },
       },
       bucket: process.env.B2_SUBMISSION_PHOTOS!,
+      config: {
+        credentials: {
+          accessKeyId: process.env.B2_KEY_ID!,
+          secretAccessKey: process.env.B2_APP_KEY!,
+        },
+        region: process.env.B2_BUCKET_REGION!,
+        endpoint: `https://${process.env.B2_ENDPOINT}`,
+        forcePathStyle: true,
+        requestChecksumCalculation: 'WHEN_REQUIRED',
+        responseChecksumValidation: 'WHEN_REQUIRED',
+        customUserAgent: 'payload-cms',
+      },
+    }),
+    s3Storage({
+      collections: {
+        'radio-songs': { prefix: '2026' },
+      },
+      bucket: process.env.B2_SUBMISSION_RADIO!,
       config: {
         credentials: {
           accessKeyId: process.env.B2_KEY_ID!,

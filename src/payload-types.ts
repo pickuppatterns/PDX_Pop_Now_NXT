@@ -85,6 +85,8 @@ export interface Config {
     'compilation-submissions': CompilationSubmission;
     'compilation-songs': CompilationSong;
     'compilation-photos': CompilationPhoto;
+    'radio-songs': RadioSong;
+    'radio-submissions': RadioSubmission;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -120,6 +122,8 @@ export interface Config {
     'compilation-submissions': CompilationSubmissionsSelect<false> | CompilationSubmissionsSelect<true>;
     'compilation-songs': CompilationSongsSelect<false> | CompilationSongsSelect<true>;
     'compilation-photos': CompilationPhotosSelect<false> | CompilationPhotosSelect<true>;
+    'radio-songs': RadioSongsSelect<false> | RadioSongsSelect<true>;
+    'radio-submissions': RadioSubmissionsSelect<false> | RadioSubmissionsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -1603,6 +1607,55 @@ export interface CompilationPhoto {
   focalY?: number | null;
 }
 /**
+ * MP3s from radio submissions. Private — do not delete.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "radio-songs".
+ */
+export interface RadioSong {
+  id: number;
+  alt?: string | null;
+  year?: number | null;
+  prefix?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "radio-submissions".
+ */
+export interface RadioSubmission {
+  id: number;
+  name: string;
+  artistName: string;
+  email: string;
+  phone: string;
+  zipCode?: string | null;
+  portlandBased?: ('YES' | 'NO') | null;
+  genre?: string | null;
+  radioAppropriate?: ('radio_friendly' | 'parental_advisory') | null;
+  downloadLink?: string | null;
+  website?: string | null;
+  comments?: string | null;
+  trackUrl?: string | null;
+  trackFilename?: string | null;
+  agreeLibrary?: boolean | null;
+  agreeNotCompilation?: boolean | null;
+  year?: number | null;
+  status?: ('pending' | 'under_review' | 'added' | 'not_selected') | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
@@ -1863,6 +1916,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'compilation-photos';
         value: number | CompilationPhoto;
+      } | null)
+    | ({
+        relationTo: 'radio-songs';
+        value: number | RadioSong;
+      } | null)
+    | ({
+        relationTo: 'radio-submissions';
+        value: number | RadioSubmission;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -2702,6 +2763,51 @@ export interface CompilationPhotosSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "radio-songs_select".
+ */
+export interface RadioSongsSelect<T extends boolean = true> {
+  alt?: T;
+  year?: T;
+  prefix?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "radio-submissions_select".
+ */
+export interface RadioSubmissionsSelect<T extends boolean = true> {
+  name?: T;
+  artistName?: T;
+  email?: T;
+  phone?: T;
+  zipCode?: T;
+  portlandBased?: T;
+  genre?: T;
+  radioAppropriate?: T;
+  downloadLink?: T;
+  website?: T;
+  comments?: T;
+  trackUrl?: T;
+  trackFilename?: T;
+  agreeLibrary?: T;
+  agreeNotCompilation?: T;
+  year?: T;
+  status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects_select".
  */
 export interface RedirectsSelect<T extends boolean = true> {
@@ -2998,6 +3104,26 @@ export interface Header {
           url?: string | null;
           label: string;
         };
+        subItems?:
+          | {
+              link: {
+                type?: ('reference' | 'custom') | null;
+                newTab?: boolean | null;
+                reference?:
+                  | ({
+                      relationTo: 'pages';
+                      value: number | Page;
+                    } | null)
+                  | ({
+                      relationTo: 'posts';
+                      value: number | Post;
+                    } | null);
+                url?: string | null;
+                label: string;
+              };
+              id?: string | null;
+            }[]
+          | null;
         id?: string | null;
       }[]
     | null;
@@ -3213,6 +3339,20 @@ export interface HeaderSelect<T extends boolean = true> {
               reference?: T;
               url?: T;
               label?: T;
+            };
+        subItems?:
+          | T
+          | {
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    reference?: T;
+                    url?: T;
+                    label?: T;
+                  };
+              id?: T;
             };
         id?: T;
       };
