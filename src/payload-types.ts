@@ -1653,6 +1653,7 @@ export interface RadioSubmission {
   agreeNotCompilation?: boolean | null;
   year?: number | null;
   status?: ('pending' | 'under_review' | 'added' | 'not_selected') | null;
+  reviewed?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -2805,6 +2806,7 @@ export interface RadioSubmissionsSelect<T extends boolean = true> {
   agreeNotCompilation?: T;
   year?: T;
   status?: T;
+  reviewed?: T;
   updatedAt?: T;
   createdAt?: T;
 }

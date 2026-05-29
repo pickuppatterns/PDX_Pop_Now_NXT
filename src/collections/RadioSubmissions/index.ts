@@ -5,7 +5,15 @@ export const RadioSubmissions: CollectionConfig = {
   labels: { singular: 'Radio Submission', plural: 'Radio Submissions' },
   admin: {
     useAsTitle: 'artistName',
-    defaultColumns: ['createdAt', 'artistName', 'name', 'genre', 'radioAppropriate', 'status'],
+    defaultColumns: [
+      'createdAt',
+      'artistName',
+      'name',
+      'genre',
+      'radioAppropriate',
+      'status',
+      'reviewed',
+    ],
     group: 'Radio',
   },
   access: {
@@ -70,6 +78,7 @@ export const RadioSubmissions: CollectionConfig = {
         { label: 'Not Selected', value: 'not_selected' },
       ],
     },
+    { name: 'reviewed', type: 'checkbox', label: 'Reviewed', defaultValue: false },
   ],
   timestamps: true,
 }

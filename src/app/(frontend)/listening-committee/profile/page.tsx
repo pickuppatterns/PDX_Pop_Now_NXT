@@ -211,7 +211,7 @@ export default function ListeningCommitteeProfilePage() {
                 fontFamily: "'Courier New', monospace",
               }}
             >
-              PDX Pop Now! 2026
+              PDX Pop Now!
             </p>
             <h1
               style={{

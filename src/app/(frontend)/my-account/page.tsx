@@ -48,10 +48,16 @@ export default function MyAccountPage() {
         const res = await fetch('/api/listening-committee-profile')
         if (res.ok) {
           found.push({
-            title: 'Listening Committee',
-            description: 'Rate your assigned tracks and view your listening progress.',
-            href: '/listening-committee/profile',
+            title: 'Listening App ',
+            description: 'Rate your assigned tracks and vote on songs.',
+            href: '/listen',
             emoji: '🎧',
+          })
+          found.push({
+            title: 'Listening Committee Profile',
+            description: 'View and update your listening committee profile.',
+            href: '/listening-committee/profile',
+            emoji: '👤',
           })
         }
       } catch {
