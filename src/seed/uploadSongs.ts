@@ -4,10 +4,13 @@ import * as crypto from 'crypto'
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3'
 import { getPayload } from 'payload'
 import config from '../payload.config'
+// @ts-ignore
+import { AudioContext } from 'node-web-audio-api'
 
 const SONGS_DIR = path.resolve(process.env.HOME!, 'Desktop/Songs')
 const YEAR = 2025
 const PREFIX = '2025'
+const PEAKS_COUNT = 200 // number of data points for waveform
 
 const GENRES = [
   'classical',
@@ -41,6 +44,26 @@ const s3 = new S3Client({
 
 const BUCKET = process.env.B2_SUBMISSION_SONGS!
 
+async function computePeaks(buffer: Buffer): Promise<number[]> {
+  const audioContext = new AudioContext()
+  const audioBuffer = await audioContext.decodeAudioData(
+    buffer.buffer.slice(buffer.byteOffset, buffer.byteOffset + buffer.byteLength),
+  )
+  const channelData = audioBuffer.getChannelData(0)
+  const blockSize = Math.floor(channelData.length / PEAKS_COUNT)
+  const peaks: number[] = []
+  for (let i = 0; i < PEAKS_COUNT; i++) {
+    let max = 0
+    for (let j = 0; j < blockSize; j++) {
+      const val = Math.abs(channelData[i * blockSize + j])
+      if (val > max) max = val
+    }
+    peaks.push(Math.round(max * 1000) / 1000)
+  }
+  await audioContext.close()
+  return peaks
+}
+
 async function uploadSongs() {
   const payload = await getPayload({ config })
 
@@ -59,10 +82,14 @@ async function uploadSongs() {
     const safeFilename = file.replace(/[^a-zA-Z0-9._\-() ]/g, '_')
     const b2Key = `${PREFIX}/${shortToken}_${safeFilename}`
     const b2Url = `https://${process.env.B2_ENDPOINT}/${BUCKET}/${b2Key}`
-    const db = payload.db.drizzle // 👈 declare once here
+    const db = payload.db.drizzle
 
     try {
-      // 1. Upload to B2
+      // 1. Compute peaks from audio buffer
+      console.log(`  Computing peaks for ${file}…`)
+      const peaks = await computePeaks(fileBuffer)
+
+      // 2. Upload to B2
       await s3.send(
         new PutObjectCommand({
           Bucket: BUCKET,
@@ -71,17 +98,16 @@ async function uploadSongs() {
           ContentType: 'audio/mpeg',
         }),
       )
-      console.log(`☁️ B2 upload complete: ${b2Key}`)
 
-      // 2. Create compilation_songs record directly
+      // 3. Create compilation_songs record directly
       const songResult = await db.execute(`
-  INSERT INTO compilation_songs (alt, year, url, filename, mime_type, filesize, prefix, updated_at, created_at)
-  VALUES ('${anonToken}', ${YEAR}, '${b2Url}', '${(shortToken + '_' + safeFilename).replace(/'/g, "''")}', 'audio/mpeg', ${fileSize}, '${PREFIX}', NOW(), NOW())
-  RETURNING id
-`)
+        INSERT INTO compilation_songs (alt, year, url, filename, mime_type, filesize, prefix, updated_at, created_at)
+        VALUES ('${anonToken}', ${YEAR}, '${b2Url}', '${(shortToken + '_' + safeFilename).replace(/'/g, "''")}', 'audio/mpeg', ${fileSize}, '${PREFIX}', NOW(), NOW())
+        RETURNING id
+      `)
       const songRecord = { id: (songResult.rows[0] as any).id }
 
-      // 3. Create compilation_submissions record
+      // 4. Create compilation_submissions record
       const submission = await payload.create({
         collection: 'compilation-submissions',
         data: {
@@ -108,13 +134,13 @@ async function uploadSongs() {
         context: { disableRevalidate: true },
       })
 
-      // 4. Create lc_songs record
+      // 5. Create lc_songs record with peaks
       await db.execute(`
-        INSERT INTO lc_songs (submission_id, song_file_id, anon_token, original_filename, year)
-        VALUES ('${submission.id}', ${songRecord.id}, '${anonToken}', '${file.replace(/'/g, "''")}', ${YEAR})
+        INSERT INTO lc_songs (submission_id, song_file_id, anon_token, original_filename, year, peaks)
+        VALUES ('${submission.id}', ${songRecord.id}, '${anonToken}', '${file.replace(/'/g, "''")}', ${YEAR}, '${JSON.stringify(peaks)}')
       `)
 
-      console.log(`✅ ${file} → ${shortToken}_${safeFilename}`)
+      console.log(`✅ [${success + 1}/${files.length}] ${shortToken}_${safeFilename}`)
       success++
     } catch (err) {
       console.error(`❌ ${file}:`, err)

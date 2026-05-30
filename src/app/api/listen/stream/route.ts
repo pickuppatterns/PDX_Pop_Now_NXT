@@ -14,6 +14,8 @@ const s3 = new S3Client({
   region: process.env.B2_BUCKET_REGION!,
   endpoint: `https://${process.env.B2_ENDPOINT}`,
   forcePathStyle: true,
+  requestChecksumCalculation: 'WHEN_REQUIRED',
+  responseChecksumValidation: 'WHEN_REQUIRED',
 })
 
 export async function GET(req: NextRequest) {

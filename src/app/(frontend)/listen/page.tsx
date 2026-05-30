@@ -19,7 +19,6 @@ type VoteState = 'idle' | 'playing' | 'preview_done' | 'voted'
 
 export default function ListenPage() {
   const router = useRouter()
-  const waveformRef = useRef<HTMLDivElement>(null)
   const hiddenWaveformRef = useRef<HTMLDivElement>(null)
   const wavesurferRef = useRef<WaveSurfer | null>(null)
   const regionStartRef = useRef<number>(0)
@@ -38,11 +37,13 @@ export default function ListenPage() {
   const touchStartX = useRef<number | null>(null)
   const previewDoneRef = useRef(false)
   const [waveformPng, setWaveformPng] = useState<string | null>(null)
+  const [bgPosition, setBgPosition] = useState('50% 50%')
+
+  const waveformCacheRef = useRef<Record<string, string>>({})
 
   const currentSong = songs[currentIndex]
   const votedCount = Object.keys(votes).length
 
-  // Fetch queue
   useEffect(() => {
     fetch('/api/listen/queue', { credentials: 'include' })
       .then((r) => {
@@ -82,7 +83,9 @@ export default function ListenPage() {
       wavesurferRef.current.destroy()
       wavesurferRef.current = null
     } catch (err) {
-      console.warn('[killAudio]', err)
+      if (err instanceof Error && err.name !== 'AbortError') {
+        console.warn('[killAudio]', err)
+      }
       wavesurferRef.current = null
     }
   }
@@ -90,24 +93,45 @@ export default function ListenPage() {
   const initWaveSurfer = useCallback(async (anonToken: string, autoplay = false) => {
     if (!hiddenWaveformRef.current) return
 
-    // Inline kill
+    // Kill existing audio
     if (wavesurferRef.current) {
       try {
         wavesurferRef.current.pause()
         wavesurferRef.current.destroy()
         wavesurferRef.current = null
       } catch (err) {
-        console.warn('[killAudio]', err)
+        if (err instanceof Error && err.name !== 'AbortError') {
+          console.warn('[killAudio]', err)
+        }
         wavesurferRef.current = null
       }
+    }
+
+    // Check sessionStorage cache first
+    const storageKey = `waveform_png_${anonToken}`
+    const storedPng = sessionStorage.getItem(storageKey)
+    if (storedPng) {
+      waveformCacheRef.current[anonToken] = storedPng
+      console.log(`[waveform] sessionStorage HIT for ${anonToken.slice(0, 8)}`)
+    }
+
+    const cachedPng = waveformCacheRef.current[anonToken]
+    if (cachedPng) {
+      console.log(`[waveform] cache HIT for ${anonToken.slice(0, 8)}`)
+      setWaveformPng(cachedPng)
+    } else {
+      console.log(`[waveform] cache MISS for ${anonToken.slice(0, 8)} — generating…`)
     }
 
     setAudioLoading(true)
     setVoteState('idle')
     setCurrentTime(0)
-    setWaveformPng(null)
     previewDoneRef.current = false
     regionRef.current = null
+
+    const x = Math.floor(Math.random() * 100)
+    const y = Math.floor(Math.random() * 100)
+    setBgPosition(`${x}% ${y}%`)
 
     const res = await fetch(`/api/listen/stream?token=${anonToken}`, { credentials: 'include' })
     const { url } = await res.json()
@@ -117,12 +141,12 @@ export default function ListenPage() {
     }
 
     const regions = RegionsPlugin.create()
-
     const ws = WaveSurfer.create({
       container: hiddenWaveformRef.current,
       waveColor: 'rgba(255,255,255,0.3)',
-      progressColor: '#e63946',
+      progressColor: 'rgba(255,255,255,0.3)',
       cursorColor: 'transparent',
+      cursorWidth: 0,
       barWidth: 2,
       barGap: 1,
       barRadius: 2,
@@ -141,20 +165,18 @@ export default function ListenPage() {
       regionStartRef.current = start
       regionEndRef.current = end
 
-      // Export clean PNG first — no region, no progress state
-      const png = await ws.exportImage('image/png', 1, 'dataURL')
-      setWaveformPng(typeof png === 'string' ? png : png[0])
+      if (!waveformCacheRef.current[anonToken]) {
+        const png = await ws.exportImage('image/png', 1, 'dataURL')
+        const pngData = typeof png === 'string' ? png : png[0]
+        waveformCacheRef.current[anonToken] = pngData
+        sessionStorage.setItem(storageKey, pngData)
+        console.log(
+          `[waveform] cached PNG for ${anonToken.slice(0, 8)} — cache size: ${Object.keys(waveformCacheRef.current).length}`,
+        )
+        setWaveformPng(pngData)
+      }
 
-      // Then add region overlay
-      regions.addRegion({
-        start,
-        end,
-        color: 'rgba(230,57,70,0.2)',
-        drag: false,
-        resize: false,
-      })
-
-      // Seek to region start
+      regions.addRegion({ start, end, drag: false, resize: false })
       ws.seekTo(start / dur)
       setAudioLoading(false)
 
@@ -166,7 +188,7 @@ export default function ListenPage() {
           setVoteState('idle')
         }
       }
-    }) // 👈 closes ws.on('ready')
+    })
 
     ws.on('timeupdate', (time) => {
       const elapsed = time - regionStartRef.current
@@ -191,8 +213,7 @@ export default function ListenPage() {
 
   useEffect(() => {
     if (!currentSong) return
-    const isFirst = currentIndex === 0
-    initWaveSurfer(currentSong.anonToken, !isFirst)
+    initWaveSurfer(currentSong.anonToken, currentIndex > 0)
     return () => killAudio()
   }, [currentIndex, currentSong?.id])
 
@@ -201,21 +222,16 @@ export default function ListenPage() {
     killAudio()
     setSwipeDir(vote === 'like' ? 'right' : 'left')
     setVoteState('voted')
-
     await fetch('/api/listen/vote', {
       method: 'POST',
       credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ songId: currentSong.id, vote }),
     })
-
     setVotes((prev) => ({ ...prev, [currentSong.id]: vote }))
-
     setTimeout(() => {
       setSwipeDir(null)
-      if (currentIndex < songs.length - 1) {
-        setCurrentIndex((i) => i + 1)
-      }
+      if (currentIndex < songs.length - 1) setCurrentIndex((i) => i + 1)
     }, 600)
   }
 
@@ -234,29 +250,23 @@ export default function ListenPage() {
   function seek(seconds: number) {
     if (!wavesurferRef.current) return
     const dur = totalDurRef.current
-    const regionStart = regionStartRef.current
-    const regionEnd = regionEndRef.current
     const current = wavesurferRef.current.getCurrentTime()
-    const next = Math.max(regionStart, Math.min(current + seconds, regionEnd))
+    const next = Math.max(regionStartRef.current, Math.min(current + seconds, regionEndRef.current))
     wavesurferRef.current.seekTo(next / dur)
   }
 
-  // Click on the region overlay to seek
   function handleRegionClick(e: React.MouseEvent<HTMLDivElement>) {
     if (!wavesurferRef.current) return
     const rect = e.currentTarget.getBoundingClientRect()
     const clickPct = (e.clientX - rect.left) / rect.width
-    const dur = totalDurRef.current
-    const regionStart = regionStartRef.current
-    const seekTime = regionStart + clickPct * 30
-    wavesurferRef.current.seekTo(Math.min(seekTime, regionEndRef.current) / dur)
+    const seekTime = regionStartRef.current + clickPct * 30
+    wavesurferRef.current.seekTo(Math.min(seekTime, regionEndRef.current) / totalDurRef.current)
     if (!wavesurferRef.current.isPlaying()) {
       wavesurferRef.current.play()
       setVoteState('playing')
     }
   }
 
-  // Touch swipe for voting
   function onTouchStart(e: React.TouchEvent) {
     touchStartX.current = e.touches[0].clientX
   }
@@ -269,7 +279,6 @@ export default function ListenPage() {
     touchStartX.current = null
   }
 
-  // Keyboard
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (voteState !== 'preview_done' && voteState !== 'playing') return
@@ -282,35 +291,80 @@ export default function ListenPage() {
 
   const canVote = voteState === 'preview_done' || voteState === 'playing'
   const dur = totalDurRef.current
-  const regionStart = regionStartRef.current
-  const regionEnd = regionEndRef.current
-  const regionLeftPct = dur > 0 ? (regionStart / dur) * 100 : 0
-  const regionWidthPct = dur > 0 ? ((regionEnd - regionStart) / dur) * 100 : 100
+  const regionLeftPct = dur > 0 ? (regionStartRef.current / dur) * 100 : 0
+  const regionWidthPct =
+    dur > 0 ? ((regionEndRef.current - regionStartRef.current) / dur) * 100 : 100
   const progressPct = (currentTime / 30) * regionWidthPct
+
+  const phoneShell: React.CSSProperties = {
+    width: '100%',
+    maxWidth: 390,
+    minHeight: 780,
+    borderRadius: 44,
+    overflow: 'hidden',
+    position: 'relative',
+    boxShadow: '0 32px 80px rgba(0,0,0,0.8), inset 0 0 0 1px rgba(255,255,255,0.08)',
+    background: '#050508',
+    backgroundImage: `url(/api/media/file/BLUECRANES.jpg)`,
+    backgroundSize: '300%',
+    backgroundPosition: bgPosition,
+    transition: 'background-position 1.5s ease',
+  }
+
+  const phoneInner: React.CSSProperties = {
+    position: 'absolute',
+    inset: 0,
+    background: 'linear-gradient(160deg, rgba(5,5,12,0.92) 0%, rgba(5,5,12,0.85) 100%)',
+    backdropFilter: 'blur(2px)',
+    display: 'flex',
+    flexDirection: 'column',
+    padding: '0 0 2rem 0',
+  }
 
   if (loading)
     return (
-      <div style={s.screen}>
-        <div style={s.spinner} />
-        <p style={s.sub}>Loading your playlist…</p>
+      <div style={s.outer}>
+        <div style={phoneShell}>
+          <div style={{ ...phoneInner, alignItems: 'center', justifyContent: 'center' }}>
+            <div style={s.spinner} />
+            <p style={{ ...s.sub, marginTop: '1rem' }}>Loading your playlist…</p>
+          </div>
+        </div>
         <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
       </div>
     )
 
   if (error)
     return (
-      <div style={s.screen}>
-        <p style={{ color: '#e63946', fontFamily: 'Georgia, serif', fontSize: '1.1rem' }}>
-          {error}
-        </p>
+      <div style={s.outer}>
+        <div style={phoneShell}>
+          <div style={{ ...phoneInner, alignItems: 'center', justifyContent: 'center' }}>
+            <p
+              style={{
+                color: '#e63946',
+                fontFamily: 'Georgia, serif',
+                fontSize: '1.1rem',
+                fontStyle: 'italic',
+                textAlign: 'center',
+                padding: '0 2rem',
+              }}
+            >
+              {error}
+            </p>
+          </div>
+        </div>
         <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
       </div>
     )
 
   if (songs.length === 0)
     return (
-      <div style={s.screen}>
-        <p style={s.sub}>No songs assigned to your group yet.</p>
+      <div style={s.outer}>
+        <div style={phoneShell}>
+          <div style={{ ...phoneInner, alignItems: 'center', justifyContent: 'center' }}>
+            <p style={s.sub}>No songs assigned to your group yet.</p>
+          </div>
+        </div>
         <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
       </div>
     )
@@ -319,34 +373,55 @@ export default function ListenPage() {
 
   if (allVoted)
     return (
-      <div style={s.screen}>
-        <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>{'🎵'}</div>
-        <h1
-          style={{
-            color: '#fff',
-            fontFamily: 'Georgia, serif',
-            fontSize: '1.75rem',
-            fontStyle: 'italic',
-            marginBottom: '0.5rem',
-          }}
-        >
-          You're done!
-        </h1>
-        <p style={s.sub}>You voted on all {songs.length} songs in your group.</p>
-        <div style={{ marginTop: '2rem', display: 'flex', gap: '1.5rem' }}>
-          <div style={s.statBox}>
-            <span style={{ color: '#4caf50', fontSize: '2rem' }}>{'👍'}</span>
-            <span style={{ color: '#fff', fontSize: '1.5rem', fontWeight: 700 }}>
-              {Object.values(votes).filter((v) => v === 'like').length}
-            </span>
-            <span style={s.sub}>liked</span>
-          </div>
-          <div style={s.statBox}>
-            <span style={{ color: '#e63946', fontSize: '2rem' }}>{'👎'}</span>
-            <span style={{ color: '#fff', fontSize: '1.5rem', fontWeight: 700 }}>
-              {Object.values(votes).filter((v) => v === 'dislike').length}
-            </span>
-            <span style={s.sub}>passed</span>
+      <div style={s.outer}>
+        <div style={phoneShell}>
+          <div style={{ ...phoneInner, alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ fontSize: '3.5rem', marginBottom: '1.5rem' }}>{'🎵'}</div>
+            <h1
+              style={{
+                color: '#fff',
+                fontFamily: 'Georgia, serif',
+                fontSize: '1.6rem',
+                fontStyle: 'italic',
+                marginBottom: '0.5rem',
+                textAlign: 'center',
+              }}
+            >
+              You're done!
+            </h1>
+            <p style={{ ...s.sub, textAlign: 'center', padding: '0 2rem' }}>
+              You voted on all {songs.length} songs.
+            </p>
+            <div style={{ marginTop: '2.5rem', display: 'flex', gap: '2rem' }}>
+              <div style={s.statBox}>
+                <span style={{ color: '#4caf50', fontSize: '2rem' }}>{'👍'}</span>
+                <span
+                  style={{
+                    color: '#fff',
+                    fontSize: '1.75rem',
+                    fontWeight: 700,
+                    fontFamily: 'Georgia, serif',
+                  }}
+                >
+                  {Object.values(votes).filter((v) => v === 'like').length}
+                </span>
+                <span style={s.sub}>liked</span>
+              </div>
+              <div style={s.statBox}>
+                <span style={{ color: '#e63946', fontSize: '2rem' }}>{'👎'}</span>
+                <span
+                  style={{
+                    color: '#fff',
+                    fontSize: '1.75rem',
+                    fontWeight: 700,
+                    fontFamily: 'Georgia, serif',
+                  }}
+                >
+                  {Object.values(votes).filter((v) => v === 'dislike').length}
+                </span>
+                <span style={s.sub}>passed</span>
+              </div>
+            </div>
           </div>
         </div>
         <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
@@ -354,391 +429,405 @@ export default function ListenPage() {
     )
 
   return (
-    <div
-      style={{
-        minHeight: '100vh',
-        background: '#0a0a0a',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-        padding: '2rem 1rem',
-      }}
-      onTouchStart={onTouchStart}
-      onTouchEnd={onTouchEnd}
-    >
-      {/* Header */}
-      <div style={{ width: '100%', maxWidth: 480, marginBottom: '1.5rem' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <p
-            style={{
-              color: '#ff8c42',
-              fontFamily: "'Courier New', monospace",
-              fontSize: '0.7rem',
-              letterSpacing: '0.2em',
-              textTransform: 'uppercase',
-              margin: 0,
-            }}
-          >
-            {currentSong?.groupName}
-          </p>
-          <p
-            style={{
-              color: '#666',
-              fontFamily: "'Courier New', monospace",
-              fontSize: '0.75rem',
-              margin: 0,
-            }}
-          >
-            {votedCount} / {songs.length} voted
-          </p>
-        </div>
-        <div
-          style={{
-            height: 3,
-            background: '#222',
-            borderRadius: 99,
-            marginTop: '0.5rem',
-            overflow: 'hidden',
-          }}
-        >
+    <div style={s.outer}>
+      {/* Hidden WaveSurfer */}
+      <div
+        ref={hiddenWaveformRef}
+        style={{
+          position: 'fixed',
+          top: -9999,
+          left: -9999,
+          width: 390,
+          height: 80,
+          pointerEvents: 'none',
+          visibility: 'hidden',
+        }}
+      />
+
+      {/* Phone shell */}
+      <div style={phoneShell} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+        <div style={phoneInner}>
+          {/* Status bar notch area */}
           <div
             style={{
-              height: '100%',
-              width: `${(votedCount / songs.length) * 100}%`,
-              background: '#e63946',
-              borderRadius: 99,
-              transition: 'width 0.3s ease',
+              height: 52,
+              display: 'flex',
+              alignItems: 'flex-end',
+              justifyContent: 'center',
+              paddingBottom: 8,
             }}
-          />
-        </div>
-      </div>
-
-      {/* Song card */}
-      <div
-        style={{
-          width: '100%',
-          maxWidth: 480,
-          transform:
-            swipeDir === 'right'
-              ? 'translateX(120%) rotate(15deg)'
-              : swipeDir === 'left'
-                ? 'translateX(-120%) rotate(-15deg)'
-                : 'none',
-          transition: swipeDir ? 'transform 0.5s ease' : 'none',
-          opacity: swipeDir ? 0 : 1,
-        }}
-      >
-        <div
-          style={{
-            background: '#1a1a2e',
-            borderRadius: 16,
-            padding: '1.5rem',
-            border: '1px solid rgba(255,255,255,0.08)',
-          }}
-        >
-          {/* Song number */}
-          <div style={{ textAlign: 'center', marginBottom: '1.25rem' }}>
-            <p
+          >
+            <div
               style={{
-                color: '#666',
-                fontFamily: "'Courier New', monospace",
-                fontSize: '0.75rem',
-                margin: '0 0 4px',
+                width: 120,
+                height: 4,
+                borderRadius: 99,
+                background: 'rgba(255,255,255,0.08)',
+              }}
+            />
+          </div>
+
+          {/* Group header */}
+          <div style={{ padding: '0.75rem 1.5rem 0' }}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                marginBottom: '0.5rem',
               }}
             >
-              Song {currentIndex + 1} of {songs.length}
+              <p
+                style={{
+                  color: '#ff8c42',
+                  fontFamily: "'Courier New', monospace",
+                  fontSize: '0.65rem',
+                  letterSpacing: '0.25em',
+                  textTransform: 'uppercase',
+                  margin: 0,
+                }}
+              >
+                {currentSong?.groupName}
+              </p>
+              <p
+                style={{
+                  color: 'rgba(255,255,255,0.3)',
+                  fontFamily: "'Courier New', monospace",
+                  fontSize: '0.65rem',
+                  margin: 0,
+                }}
+              >
+                {votedCount} / {songs.length}
+              </p>
+            </div>
+            <div
+              style={{
+                height: 1,
+                background: 'rgba(255,255,255,0.06)',
+                borderRadius: 99,
+                overflow: 'hidden',
+              }}
+            >
+              <div
+                style={{
+                  height: '100%',
+                  width: `${(votedCount / songs.length) * 100}%`,
+                  background: '#e63946',
+                  borderRadius: 99,
+                  transition: 'width 0.3s ease',
+                }}
+              />
+            </div>
+          </div>
+
+          {/* Song number — large editorial */}
+          <div
+            style={{
+              padding: '2rem 1.5rem 1.5rem',
+              flex: 1,
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+            }}
+          >
+            <p
+              style={{
+                color: 'rgba(255,255,255,0.08)',
+                fontFamily: 'Georgia, serif',
+                fontSize: '5rem',
+                fontStyle: 'italic',
+                fontWeight: 700,
+                margin: '0 0 -1rem',
+                lineHeight: 1,
+              }}
+            >
+              {String(currentIndex + 1).padStart(2, '0')}
             </p>
             <p
               style={{
-                color: 'rgba(255,255,255,0.1)',
+                color: 'rgba(255,255,255,0.15)',
                 fontFamily: "'Courier New', monospace",
-                fontSize: '0.65rem',
-                margin: 0,
+                fontSize: '0.6rem',
+                letterSpacing: '0.15em',
+                margin: '0 0 1.5rem',
               }}
             >
               {currentSong?.anonToken.slice(0, 8)}
             </p>
-          </div>
 
-          {/* Hidden WaveSurfer for audio + PNG generation */}
-          <div
-            ref={hiddenWaveformRef}
-            style={{
-              position: 'absolute',
-              visibility: 'hidden',
-              width: 448,
-              height: 80,
-              pointerEvents: 'none',
-            }}
-          />
-
-          {/* Waveform display */}
-          <div
-            style={{
-              position: 'relative',
-              marginBottom: '0.75rem',
-              borderRadius: 8,
-              overflow: 'hidden',
-              height: 80,
-              background: '#0a0a0a',
-            }}
-          >
-            {audioLoading && (
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  background: '#0a0a0a',
-                  zIndex: 2,
-                }}
-              >
-                <div style={s.spinner} />
-              </div>
-            )}
-
-            {/* Full waveform PNG */}
-            {waveformPng && (
-              <img
-                src={waveformPng}
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'fill',
-                  opacity: 0.3,
-                  filter: 'grayscale(100%)', // 👈 fully desaturate
-                }}
-              />
-            )}
-
-            {/* Region highlight — clickable for seeking */}
-            {waveformPng && (
-              <div
-                onClick={handleRegionClick}
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: `${regionLeftPct}%`,
-                  width: `${regionWidthPct}%`,
-                  height: '100%',
-                  background: 'rgba(230,57,70,0.15)',
-                  borderLeft: '2px solid rgba(230,57,70,0.8)',
-                  borderRight: '2px solid rgba(230,57,70,0.8)',
-                  cursor: 'pointer',
-                  zIndex: 1,
-                }}
-              >
-                {/* Progress fill within region */}
+            {/* Waveform */}
+            <div
+              style={{
+                position: 'relative',
+                marginBottom: '0.5rem',
+                borderRadius: 6,
+                overflow: 'hidden',
+                height: 72,
+                background: 'rgba(0,0,0,0.5)',
+              }}
+            >
+              {audioLoading && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    zIndex: 2,
+                  }}
+                >
+                  <div style={s.spinner} />
+                </div>
+              )}
+              {waveformPng && (
+                <img
+                  src={waveformPng}
+                  alt="waveform"
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'fill',
+                    opacity: 0.25,
+                    filter: 'grayscale(100%)',
+                  }}
+                />
+              )}
+              {waveformPng && (
+                <div
+                  onClick={handleRegionClick}
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: `${regionLeftPct}%`,
+                    width: `${regionWidthPct}%`,
+                    height: '100%',
+                    background: 'rgba(230,57,70,0.08)',
+                    borderLeft: '1px solid rgba(230,57,70,0.8)',
+                    borderRight: '1px solid rgba(230,57,70,0.8)',
+                    cursor: 'pointer',
+                    zIndex: 1,
+                  }}
+                >
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      width: `${progressPct}%`,
+                      height: '100%',
+                      background: 'rgba(230,57,70,0.2)',
+                      transition: 'width 0.1s linear',
+                    }}
+                  />
+                  <img
+                    src={waveformPng}
+                    alt=""
+                    style={{
+                      position: 'absolute',
+                      top: 0,
+                      height: '100%',
+                      objectFit: 'fill',
+                      width: `${100 / (regionWidthPct / 100)}%`,
+                      left: `${-(regionLeftPct / regionWidthPct) * 100}%`,
+                      opacity: 0.0,
+                      filter: 'brightness(2) saturate(0)',
+                      mixBlendMode: 'screen',
+                      pointerEvents: 'none',
+                    }}
+                  />
+                </div>
+              )}
+              {waveformPng && voteState !== 'idle' && (
                 <div
                   style={{
                     position: 'absolute',
                     top: 0,
-                    left: 0,
-                    width: `${progressPct}%`,
+                    left: `${regionLeftPct + progressPct}%`,
+                    width: 1,
                     height: '100%',
-                    background: 'rgba(230,57,70,0.3)',
-                    transition: 'width 0.1s linear',
+                    background: 'rgba(255,255,255,0.8)',
+                    zIndex: 3,
+                    pointerEvents: 'none',
                   }}
                 />
+              )}
+            </div>
 
-                {/* Bright waveform overlay in region */}
-                {waveformPng && (
-                  <img
-                    src={waveformPng}
-                    style={{
-                      position: 'absolute',
-                      inset: 0,
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'fill',
-                      opacity: 0.3,
-                      filter: 'grayscale(100%)', // 👈 fully desaturate
-                    }}
-                  />
-                )}
-              </div>
-            )}
-
-            {/* Playhead cursor */}
-            {waveformPng && voteState !== 'idle' && (
-              <div
+            {/* Time row */}
+            <div
+              style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1.5rem' }}
+            >
+              <span
                 style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: `${regionLeftPct + progressPct}%`,
-                  width: 2,
-                  height: '100%',
-                  background: '#fff',
-                  zIndex: 3,
-                  pointerEvents: 'none',
+                  color: 'rgba(255,255,255,0.2)',
+                  fontFamily: "'Courier New', monospace",
+                  fontSize: '0.65rem',
                 }}
-              />
+              >
+                {Math.floor(currentTime)}s / 30s
+              </span>
+              <span
+                style={{
+                  color: voteState === 'preview_done' ? '#4caf50' : 'rgba(255,255,255,0.2)',
+                  fontFamily: "'Courier New', monospace",
+                  fontSize: '0.65rem',
+                }}
+              >
+                {voteState === 'preview_done' ? '✓ done' : '30s preview'}
+              </span>
+            </div>
+
+            {/* Transport */}
+            <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1.25rem' }}>
+              <button
+                onClick={() => seek(-5)}
+                disabled={audioLoading || !waveformPng}
+                style={s.transport}
+              >
+                {'«'}
+              </button>
+              <button
+                onClick={togglePlay}
+                disabled={audioLoading || !waveformPng}
+                style={{ ...s.transport, flex: 3, letterSpacing: '0.1em' }}
+              >
+                {audioLoading ? '…' : voteState === 'playing' ? '⏸' : '▶'}
+              </button>
+              <button
+                onClick={() => seek(5)}
+                disabled={audioLoading || !waveformPng}
+                style={s.transport}
+              >
+                {'»'}
+              </button>
+            </div>
+
+            {/* Vote buttons */}
+            <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '1rem' }}>
+              <button
+                onClick={() => castVote('dislike')}
+                disabled={!canVote}
+                style={{
+                  flex: 1,
+                  padding: '1.25rem 1rem',
+                  background: canVote ? 'rgba(230,57,70,0.1)' : 'rgba(255,255,255,0.02)',
+                  border: `1px solid ${canVote ? 'rgba(230,57,70,0.4)' : 'rgba(255,255,255,0.04)'}`,
+                  borderRadius: 16,
+                  color: canVote ? '#e63946' : '#2a2a2a',
+                  fontSize: '1.75rem',
+                  cursor: canVote ? 'pointer' : 'not-allowed',
+                  transition: 'all 0.2s',
+                }}
+              >
+                {'👎'}
+              </button>
+              <button
+                onClick={() => castVote('like')}
+                disabled={!canVote}
+                style={{
+                  flex: 1,
+                  padding: '1.25rem 1rem',
+                  background: canVote ? 'rgba(76,175,80,0.1)' : 'rgba(255,255,255,0.02)',
+                  border: `1px solid ${canVote ? 'rgba(76,175,80,0.4)' : 'rgba(255,255,255,0.04)'}`,
+                  borderRadius: 16,
+                  color: canVote ? '#4caf50' : '#2a2a2a',
+                  fontSize: '1.75rem',
+                  cursor: canVote ? 'pointer' : 'not-allowed',
+                  transition: 'all 0.2s',
+                }}
+              >
+                {'👍'}
+              </button>
+            </div>
+
+            {voteState === 'idle' && !audioLoading && waveformPng && (
+              <p
+                style={{
+                  textAlign: 'center',
+                  color: 'rgba(255,255,255,0.15)',
+                  fontFamily: "'Courier New', monospace",
+                  fontSize: '0.65rem',
+                  letterSpacing: '0.08em',
+                }}
+              >
+                tap region or press play
+              </p>
+            )}
+
+            {currentIndex > 0 && (
+              <button
+                onClick={() => {
+                  killAudio()
+                  setCurrentIndex((i) => i - 1)
+                }}
+                style={{
+                  width: '100%',
+                  marginTop: '0.75rem',
+                  padding: '6px',
+                  background: 'transparent',
+                  border: 'none',
+                  color: 'rgba(255,255,255,0.12)',
+                  fontFamily: "'Courier New', monospace",
+                  fontSize: '0.7rem',
+                  cursor: 'pointer',
+                  letterSpacing: '0.08em',
+                }}
+              >
+                {'← prev'}
+              </button>
             )}
           </div>
 
-          {/* Time */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
-            <span
-              style={{ color: '#666', fontFamily: "'Courier New', monospace", fontSize: '0.7rem' }}
-            >
-              {Math.floor(currentTime)}s / 30s
-            </span>
-            <span
-              style={{
-                color: voteState === 'preview_done' ? '#4caf50' : '#666',
-                fontFamily: "'Courier New', monospace",
-                fontSize: '0.7rem',
-              }}
-            >
-              {voteState === 'preview_done' ? '✓ Preview complete' : '30s preview'}
-            </span>
-          </div>
-
-          {/* Transport */}
-          <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1.5rem' }}>
-            <button
-              onClick={() => seek(-5)}
-              disabled={audioLoading || !waveformPng}
-              style={s.transport}
-            >
-              {'« 5s'}
-            </button>
-            <button
-              onClick={togglePlay}
-              disabled={audioLoading || !waveformPng}
-              style={{ ...s.transport, flex: 2, background: 'rgba(255,255,255,0.08)' }}
-            >
-              {audioLoading ? 'Loading…' : voteState === 'playing' ? '⏸ Pause' : '▶ Play'}
-            </button>
-            <button
-              onClick={() => seek(5)}
-              disabled={audioLoading || !waveformPng}
-              style={s.transport}
-            >
-              {'5s »'}
-            </button>
-          </div>
-
-          {/* Vote buttons */}
-          <div style={{ display: 'flex', gap: '1rem' }}>
-            <button
-              onClick={() => castVote('dislike')}
-              disabled={!canVote}
-              style={{
-                flex: 1,
-                padding: '1rem',
-                background: canVote ? 'rgba(230,57,70,0.15)' : 'rgba(255,255,255,0.03)',
-                border: `1.5px solid ${canVote ? '#e63946' : 'rgba(255,255,255,0.08)'}`,
-                borderRadius: 12,
-                color: canVote ? '#e63946' : '#444',
-                fontSize: '1.5rem',
-                cursor: canVote ? 'pointer' : 'not-allowed',
-                transition: 'all 0.15s',
-              }}
-            >
-              {'👎'}
-            </button>
-            <button
-              onClick={() => castVote('like')}
-              disabled={!canVote}
-              style={{
-                flex: 1,
-                padding: '1rem',
-                background: canVote ? 'rgba(76,175,80,0.15)' : 'rgba(255,255,255,0.03)',
-                border: `1.5px solid ${canVote ? '#4caf50' : 'rgba(255,255,255,0.08)'}`,
-                borderRadius: 12,
-                color: canVote ? '#4caf50' : '#444',
-                fontSize: '1.5rem',
-                cursor: canVote ? 'pointer' : 'not-allowed',
-                transition: 'all 0.15s',
-              }}
-            >
-              {'👍'}
-            </button>
-          </div>
-
-          {voteState === 'idle' && !audioLoading && waveformPng && (
-            <p
-              style={{
-                textAlign: 'center',
-                color: '#555',
-                fontFamily: "'Courier New', monospace",
-                fontSize: '0.7rem',
-                marginTop: '0.75rem',
-              }}
-            >
-              Click the highlighted region or press play
-            </p>
-          )}
-
-          {currentIndex > 0 && (
-            <button
-              onClick={() => {
-                killAudio()
-                setCurrentIndex((i) => i - 1)
-              }}
-              style={{
-                width: '100%',
-                marginTop: '1rem',
-                padding: '6px',
-                background: 'transparent',
-                border: 'none',
-                color: '#555',
-                fontFamily: "'Courier New', monospace",
-                fontSize: '0.75rem',
-                cursor: 'pointer',
-              }}
-            >
-              {'← previous song'}
-            </button>
-          )}
+          {/* Bottom hint */}
+          <p
+            style={{
+              textAlign: 'center',
+              color: 'rgba(255,255,255,0.08)',
+              fontFamily: "'Courier New', monospace",
+              fontSize: '0.6rem',
+              letterSpacing: '0.15em',
+              margin: '0 0 0.5rem',
+            }}
+          >
+            {'← dislike · like →'}
+          </p>
         </div>
       </div>
 
-      <p
-        style={{
-          color: '#333',
-          fontFamily: "'Courier New', monospace",
-          fontSize: '0.65rem',
-          marginTop: '1.5rem',
-          letterSpacing: '0.1em',
-        }}
-      >
-        {'← dislike · like →'}
-      </p>
-
-      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+      <style>{`
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @media (max-width: 480px) {
+          .phone-shell { border-radius: 0 !important; max-width: 100% !important; min-height: 100vh !important; }
+        }
+      `}</style>
     </div>
   )
 }
 
 const s: Record<string, React.CSSProperties> = {
-  screen: {
+  outer: {
     minHeight: '100vh',
-    background: '#0a0a0a',
     display: 'flex',
-    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: '1rem',
+    padding: '2rem 1rem',
+    background: '#030305',
   },
   spinner: {
-    width: 32,
-    height: 32,
-    border: '3px solid #222',
+    width: 28,
+    height: 28,
+    border: '2px solid rgba(255,255,255,0.08)',
     borderTopColor: '#e63946',
     borderRadius: '50%',
     animation: 'spin 0.8s linear infinite',
   },
   sub: {
-    color: '#666',
+    color: 'rgba(255,255,255,0.3)',
     fontFamily: "'Courier New', monospace",
-    fontSize: '0.85rem',
+    fontSize: '0.8rem',
     margin: 0,
   },
   statBox: {
@@ -749,13 +838,13 @@ const s: Record<string, React.CSSProperties> = {
   },
   transport: {
     flex: 1,
-    padding: '10px',
-    background: 'rgba(255,255,255,0.05)',
-    border: '1px solid rgba(255,255,255,0.1)',
-    borderRadius: 8,
-    color: '#fff',
+    padding: '12px 8px',
+    background: 'rgba(255,255,255,0.04)',
+    border: '1px solid rgba(255,255,255,0.08)',
+    borderRadius: 10,
+    color: 'rgba(255,255,255,0.5)',
     fontFamily: "'Courier New', monospace",
-    fontSize: '0.8rem',
+    fontSize: '0.9rem',
     cursor: 'pointer',
   },
 }
