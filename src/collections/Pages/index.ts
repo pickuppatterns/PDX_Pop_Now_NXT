@@ -18,6 +18,7 @@ import {
   EventListBlock,
   CompilationBlock,
   TeamGridBlock,
+  NewsletterSignupBlock,
 } from '@/blocks/PDXBlocks/config'
 
 import {
@@ -90,6 +91,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 EventListBlock,
                 CompilationBlock,
                 TeamGridBlock,
+                NewsletterSignupBlock,
               ],
               required: true,
               admin: {

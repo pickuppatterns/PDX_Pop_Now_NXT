@@ -8,6 +8,7 @@ export const auth = betterAuth({
   database: new Pool({
     connectionString: process.env.DATABASE_URL,
   }),
+
   emailAndPassword: {
     enabled: true,
     requireEmailVerification: false,
@@ -25,7 +26,6 @@ export const auth = betterAuth({
         to: user.email,
         subject: 'PDX Pop Now! — Set Your Password',
         html: `
-  <!-- Preheader spacer to prevent Gmail truncation -->
   <div style="display:none;max-height:0;overflow:hidden;">
     Action required: set your PDX Pop Now! volunteer account password.
     &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;
@@ -83,7 +83,11 @@ export const auth = betterAuth({
     },
   },
 
-  trustedOrigins: [process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'],
+  trustedOrigins: [
+    process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000',
+    'http://localhost:3000',
+    'http://192.168.0.89:3000',
+  ],
 })
 
 export type Session = typeof auth.$Infer.Session

@@ -10,6 +10,7 @@ import { SponsorGridBlockComponent } from '@/blocks/PDXBlocks/SponsorGridBlock'
 import { EventListBlockComponent } from '@/blocks/PDXBlocks/EventListBlock'
 import { CompilationBlockComponent } from '@/blocks/PDXBlocks/CompilationBlock'
 import { TeamGridBlockComponent } from '@/blocks/PDXBlocks/TeamGridBlock'
+import { NewsletterSignupBlock } from '@/blocks/PDXBlocks/NewsletterSignup/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -22,6 +23,7 @@ const blockComponents = {
   eventList: EventListBlockComponent,
   compilation: CompilationBlockComponent,
   teamGrid: TeamGridBlockComponent,
+  newsletterSignup: NewsletterSignupBlock,
 }
 
 export const RenderBlocks: React.FC<{

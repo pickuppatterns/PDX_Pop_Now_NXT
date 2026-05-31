@@ -19,6 +19,7 @@ export async function GET() {
       SELECT
         g.id as group_id,
         g.name as group_name,
+        g.round,  
         s.id as song_id,
         s.original_filename,
         COUNT(CASE WHEN v.vote = 'like' THEN 1 END) as likes,
@@ -30,7 +31,7 @@ export async function GET() {
       JOIN lc_songs s ON s.id = gs.song_id
       JOIN lc_group_members gm ON gm.group_id = g.id
       LEFT JOIN lc_votes v ON v.song_id = s.id AND v.listener_id = gm.listener_id
-      WHERE g.round = 1
+      WHERE g.round IN (1, 2)
       GROUP BY g.id, g.name, s.id, s.original_filename
       ORDER BY g.name, likes DESC
     `)
@@ -63,6 +64,7 @@ export async function GET() {
         groupMap[row.group_id] = {
           groupId: row.group_id,
           groupName: row.group_name,
+          round: Number(row.round),
           totalListeners: Number(row.total_listeners),
           songs: [],
           totalVotes: 0,

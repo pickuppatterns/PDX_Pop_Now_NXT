@@ -33,6 +33,7 @@ export async function GET() {
       `SELECT g.id, g.name FROM lc_groups g
        JOIN lc_group_members gm ON gm.group_id = g.id
        WHERE gm.listener_id = ${listener.id}
+       ORDER BY g.round DESC
        LIMIT 1`,
     )
 

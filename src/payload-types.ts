@@ -371,6 +371,15 @@ export interface Page {
         blockName?: string | null;
         blockType: 'teamGrid';
       }
+    | {
+        heading?: string | null;
+        subheading?: string | null;
+        buttonLabel?: string | null;
+        theme?: ('dark' | 'light') | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'newsletterSignup';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -2144,6 +2153,16 @@ export interface PagesSelect<T extends boolean = true> {
                   };
               columns?: T;
               style?: T;
+              id?: T;
+              blockName?: T;
+            };
+        newsletterSignup?:
+          | T
+          | {
+              heading?: T;
+              subheading?: T;
+              buttonLabel?: T;
+              theme?: T;
               id?: T;
               blockName?: T;
             };
